@@ -3,11 +3,11 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "La Put* Vuelta",
-  description: "La Put* Vuelta — eventos, activaciones y directo.",
+  description: "Eventos, activaciones y directo.",
   metadataBase: new URL("https://laputvuelta.com"),
   openGraph: {
     title: "La Put* Vuelta",
-    description: "La Put* Vuelta — eventos, activaciones y directo.",
+    description: "Eventos, activaciones y directo.",
     url: "https://laputvuelta.com",
     siteName: "La Put* Vuelta",
     locale: "es_ES",
@@ -17,7 +17,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="es">
       <body>{children}</body>
