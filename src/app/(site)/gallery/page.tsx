@@ -158,10 +158,7 @@ export default async function GalleryPage() {
 
         {upcoming.length ? (
           <div className="mt-8">
-            <Section
-              title="Próximos eventos"
-              subtitle="Todavía sin álbum, pero ya puedes entrar cuando esté listo."
-            >
+            <Section title="Próximos eventos" subtitle="">
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {upcoming.map((e) => (
                   <EventCard key={e._id} e={e} />
