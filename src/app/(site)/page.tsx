@@ -4,6 +4,13 @@ import { site } from "@/lib/site";
 import { Container } from "@/components/site/Container";
 import { Badge } from "@/components/site/Badge";
 import { ButtonLink } from "@/components/site/ButtonLink";
+import { Metadata } from "next/dist/lib/metadata/types/metadata-interface";
+
+export const metadata: Metadata = {
+  title: "Inicio | La Put* Vuelta",
+  description:
+    "La Put* Vuelta, edición tras edición. Directo en Kick, activaciones durante la noche y una experiencia cuidada en distintas salas.",
+};
 
 export default function Home() {
   return (

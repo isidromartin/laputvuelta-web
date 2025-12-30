@@ -5,8 +5,15 @@ import { client } from "@/sanity/lib/client";
 import { urlForImage } from "@/sanity/lib/image";
 import { Container } from "@/components/site/Container";
 import { Badge } from "@/components/site/Badge";
+import type { Metadata } from "next";
 
 export const revalidate = 60;
+
+export const metadata: Metadata = {
+  title: "Eventos | La Put* Vuelta",
+  description:
+    "Eventos oficiales de La Put* Vuelta. Consulta las próximas fechas y salas donde estaremos presentando el show en vivo.",
+};
 
 const query = groq`*[_type=="event"] | order(startAt desc){
   _id,

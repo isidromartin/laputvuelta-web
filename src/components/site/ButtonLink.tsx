@@ -17,6 +17,9 @@ export function ButtonLink({
     variant === "solid"
       ? "inline-flex items-center justify-center rounded-full bg-white text-black px-5 py-2 text-sm hover:opacity-90 transition"
       : "inline-flex items-center justify-center rounded-full border border-white/15 px-5 py-2 text-sm text-white/85 hover:text-white hover:border-white/30 transition";
+  variant === "outline"
+    ? "inline-flex items-center justify-center rounded-full text-white px-5 py-2 text-sm hover:opacity-90 transition"
+    : "inline-flex items-center justify-center rounded-full border border-white/15 px-5 py-2 text-sm text-white/85 hover:text-white hover:border-white/30 transition";
 
   if (external) {
     return (

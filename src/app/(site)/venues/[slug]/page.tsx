@@ -7,6 +7,13 @@ import { Container } from "@/components/site/Container";
 import { Badge } from "@/components/site/Badge";
 import { ButtonLink } from "@/components/site/ButtonLink";
 import { Section } from "@/components/site/Section";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Salas | La Put* Vuelta",
+  description:
+    "Salas oficiales de La Put* Vuelta. Consulta la información de las distintas salas donde presentamos el show en vivo.",
+};
 
 export const revalidate = 60;
 

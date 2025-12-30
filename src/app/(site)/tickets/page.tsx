@@ -1,7 +1,14 @@
 import { Container } from "@/components/site/Container";
 import { FourvenuesEmbed } from "@/components/site/FourvenuesEmbed";
+import type { Metadata } from "next";
 
 export const revalidate = 60;
+
+export const metadata: Metadata = {
+  title: "Calendario | La Put* Vuelta",
+  description:
+    "Próximos eventos de La Put* Vuelta. Consulta y compra entradas para nuestras presentaciones en vivo.",
+};
 
 export default function TicketsPage() {
   const publicUrl =

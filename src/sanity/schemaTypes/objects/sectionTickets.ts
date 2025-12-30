@@ -13,8 +13,10 @@ export const sectionTickets = defineType({
     }),
     defineField({
       name: "fourvenuesUrl",
-      title: "Fourvenues URL",
+      title: "Fourvenues URL (evento)",
       type: "url",
+      description:
+        "Pega la URL pública del evento. Ej: https://web.fourvenues.com/es/team-.../events/...",
       validation: (r) => r.required(),
     }),
   ],
