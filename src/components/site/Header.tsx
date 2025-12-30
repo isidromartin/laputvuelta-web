@@ -32,7 +32,7 @@ export function Header() {
         </nav>
 
         {/* Mobile drawer */}
-        <div className="md:hidden">
+        <div className="md:hidden ">
           <MobileNav nav={nav} />
         </div>
       </div>

@@ -27,3 +27,7 @@ body {
 ::selection {
   background: rgba(255, 255, 255, 0.18);
 }
+
+.kick {
+  background-color: rgb(83, 252, 24);
+}
