@@ -123,7 +123,8 @@ export function GalleryGrid({
 
               {/* Image */}
               <div className="relative bg-black">
-                <div className="relative mx-auto w-full aspect-[16/10] max-h-[72vh]">
+                {/* Contenedor con altura fija por viewport */}
+                <div className="relative mx-auto w-full h-[78vh]">
                   <Image
                     src={current.full}
                     alt={title}
