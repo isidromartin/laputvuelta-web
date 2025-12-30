@@ -111,14 +111,14 @@ export default async function VenuesPage() {
                         </div>
 
                         {v.mapsUrl ? (
-                          <a
+                          <Link
                             href={v.mapsUrl}
                             target="_blank"
                             rel="noreferrer"
                             className="text-xs text-white/55 hover:text-white transition z-10"
                           >
                             Maps →
-                          </a>
+                          </Link>
                         ) : null}
                       </div>
 
