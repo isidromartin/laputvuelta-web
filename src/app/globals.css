@@ -19,3 +19,11 @@ body {
   background: hsl(var(--bg));
   color: hsl(var(--text));
 }
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: rgba(255, 255, 255, 0.18);
+}

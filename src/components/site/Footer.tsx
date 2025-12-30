@@ -36,7 +36,7 @@ export function Footer() {
         <div className="flex flex-col gap-1 text-xs text-white/50">
           <p>{site.copy.footerNote}</p>
           <p>
-            © {new Date().getFullYear()} {site.name} · {site.domain}
+            © {new Date().getFullYear()} {site.name}
           </p>
         </div>
       </div>
