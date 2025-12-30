@@ -107,7 +107,7 @@ export default function LivePage() {
 
           <Link
             href="/tickets"
-            className="rounded-3xl border border-white/10 bg-white/[0.02] p-6"
+            className="rounded-3xl border border-white/10 bg-white/[0.02] p-6 hover:bg-white/[0.03] hover:border-white/20 transition"
           >
             <p className="text-sm font-semibold text-white/90">Entradas</p>
             <p className="mt-2 text-sm text-white/65">

@@ -12,12 +12,12 @@ export const sectionPartners = defineType({
       initialValue: "Partners",
     }),
     defineField({
-      name: "partnerSlugs",
-      title: "Partners del evento (slugs)",
+      name: "partners",
+      title: "Partners",
       type: "array",
-      of: [{ type: "string" }],
-      description: "Ej: rives, redbull…",
+      of: [{ type: "reference", to: [{ type: "partner" }] }],
     }),
+
     defineField({
       name: "includeGlobal",
       title: "Incluir partners globales",

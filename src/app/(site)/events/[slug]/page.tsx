@@ -11,6 +11,7 @@ import { Section } from "@/components/site/Section";
 import { Badge } from "@/components/site/Badge";
 import { ButtonLink } from "@/components/site/ButtonLink";
 
+import { PartnersGrid } from "@/components/site/PartnersGrid";
 import { FourvenuesEmbedEvent } from "@/components/site/FourvenuesEmbedEvent";
 
 export const revalidate = 60;
@@ -51,11 +52,18 @@ type SectionActivations = {
   }>;
 };
 
+type Partner = {
+  _id: string;
+  name: string;
+  websiteUrl?: string;
+  logo?: any;
+};
+
 type SectionPartners = {
   _type: "sectionPartners";
   heading?: string;
-  partnerSlugs?: string[];
   includeGlobal?: boolean;
+  partners?: Partner[];
 };
 
 type EventDoc = {
@@ -72,7 +80,7 @@ const metaQuery = groq`*[_type=="event" && slug.current==$slug][0]{
   title,
   startAt,
   coverImage,
-  venue->{ name, city }
+  venue->{ name, city },
 }`;
 
 export async function generateMetadata({
@@ -158,7 +166,12 @@ const query = groq`*[_type=="event" && slug.current==$slug][0]{
     autoplay,
     muted,
     items,
-    partnerSlugs,
+    partners[]->{
+      _id,
+      name,
+      websiteUrl,
+      logo
+    },
     includeGlobal
   }
 }`;
@@ -464,23 +477,28 @@ export default async function EventPage({
             </Section>
           ) : null}
 
-          {/* Partners (si existe sección) */}
           {(() => {
-            const partners = getSection<SectionPartners>(
+            const partnersSection = getSection<SectionPartners>(
               event.sections,
               "sectionPartners"
             );
-            if (!partners?.partnerSlugs?.length) return null;
+            if (!partnersSection) return null;
+
+            const includeGlobal = partnersSection.includeGlobal ?? false;
+            const hasEventPartners =
+              (partnersSection.partners?.length ?? 0) > 0;
+
+            if (!includeGlobal && !hasEventPartners) return null;
+
             return (
               <Section
-                title={partners.heading ?? "Partners"}
+                title={partnersSection.heading ?? "Partners"}
                 subtitle="Colaboradores de esta edición."
               >
-                <div className="flex flex-wrap gap-2">
-                  {partners.partnerSlugs.map((p) => (
-                    <Badge key={p}>{p}</Badge>
-                  ))}
-                </div>
+                <PartnersGrid
+                  partners={partnersSection.partners}
+                  includeGlobal={includeGlobal}
+                />
               </Section>
             );
           })()}
