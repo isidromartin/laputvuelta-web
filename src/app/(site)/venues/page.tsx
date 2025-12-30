@@ -110,7 +110,7 @@ export default async function VenuesPage() {
                           {v.nextEvent ? <Badge>Próximo</Badge> : null}
                         </div>
 
-                        {v.mapsUrl ? (
+                        {/* {v.mapsUrl ? (
                           <Link
                             href={v.mapsUrl}
                             target="_blank"
@@ -119,7 +119,7 @@ export default async function VenuesPage() {
                           >
                             Maps →
                           </Link>
-                        ) : null}
+                        ) : null} */}
                       </div>
 
                       <h3 className="relative mt-3 text-base font-semibold text-white/90 group-hover:text-white transition">
