@@ -7,8 +7,7 @@ export const metadata: Metadata = {
     default: "La Put* Vuelta",
     template: "%s | La Put* Vuelta",
   },
-  description:
-    "Live en Kick, activaciones durante la noche y eventos en distintas salas.",
+  description: "¿Hace cuánto no sales a dar una vuelta?",
   icons: {
     icon: [
       { url: "/favicon.ico" },
@@ -24,8 +23,7 @@ export const metadata: Metadata = {
     url: "https://laputvuelta.com",
     siteName: "La Put* Vuelta",
     title: "La Put* Vuelta",
-    description:
-      "Live en Kick, activaciones durante la noche y eventos en distintas salas.",
+    description: "¿Hace cuánto no sales a dar una vuelta?",
     images: [
       {
         url: "/og.jpg", // crea este archivo si quieres OG pro
@@ -38,8 +36,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "La Put* Vuelta",
-    description:
-      "Live en Kick, activaciones durante la noche y eventos en distintas salas.",
+    description: "¿Hace cuánto no sales a dar una vuelta?",
     images: ["/og.jpg"],
   },
 };

@@ -4,8 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "La Put* Vuelta",
     short_name: "La Put* Vuelta",
-    description:
-      "Live en Kick, activaciones durante la noche y eventos en distintas salas.",
+    description: "¿Hace cuánto no sales a dar una vuelta?",
     start_url: "/",
     display: "standalone",
     background_color: "#0b0b0d",

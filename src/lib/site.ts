@@ -9,6 +9,6 @@ export const site = {
   // Ajusta estos textos cuando quieras
   copy: {
     tagline: "Eventos, activaciones y directo.",
-    footerNote: "¿Hace cuanto no sales a dar una vuelta?",
+    footerNote: "¿Hace cuánto no sales a dar una vuelta?",
   },
 } as const;
