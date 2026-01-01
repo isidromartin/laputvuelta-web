@@ -1,13 +1,34 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://laputvuelta.com";
+
+export const viewport: Viewport = {
+  themeColor: "#c0182a",
+  width: "device-width",
+  initialScale: 1,
+  colorScheme: "dark light",
+};
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://laputvuelta.com"),
+  metadataBase: new URL(siteUrl),
   title: {
     default: "La Put* Vuelta",
     template: "%s | La Put* Vuelta",
   },
   description: "¿Hace cuánto no sales a dar una vuelta?",
+  applicationName: "La Put* Vuelta",
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
   icons: {
     icon: [
       { url: "/favicon.ico" },
@@ -17,16 +38,24 @@ export const metadata: Metadata = {
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
   },
   manifest: "/manifest.webmanifest",
-  themeColor: "#c0182a",
+  appleWebApp: {
+    capable: true,
+    title: "La Put* Vuelta",
+    statusBarStyle: "black-translucent",
+  },
+  formatDetection: {
+    telephone: false,
+  },
   openGraph: {
     type: "website",
-    url: "https://laputvuelta.com",
+    url: "/",
     siteName: "La Put* Vuelta",
     title: "La Put* Vuelta",
     description: "¿Hace cuánto no sales a dar una vuelta?",
+    locale: "es_ES",
     images: [
       {
-        url: "/og.jpg", // crea este archivo si quieres OG pro
+        url: "/hero/slide-3.png",
         width: 1200,
         height: 630,
         alt: "La Put* Vuelta",
@@ -37,7 +66,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "La Put* Vuelta",
     description: "¿Hace cuánto no sales a dar una vuelta?",
-    images: ["/og.jpg"],
+    images: ["/hero/slide-3.png"],
   },
 };
 
@@ -48,7 +77,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
-      <body>{children}</body>
+      <body className="min-h-dvh antialiased">{children}</body>
     </html>
   );
 }
