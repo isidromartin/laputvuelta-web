@@ -1,20 +1,20 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Container } from "@/components/site/Container";
+import { ContainerFull } from "@/components/site/ContainerFull";
 import { Badge } from "@/components/site/Badge";
 import { ButtonLink } from "@/components/site/ButtonLink";
 import { Section } from "@/components/site/Section";
 import { HeroCarousel } from "@/components/site/HeroCarousel";
 
 export const metadata: Metadata = {
-  title: "La Put* Vuelta",
-  description:
-    "La Put* Vuelta: live en Kick, activaciones durante la noche y ediciones en distintas salas.",
+  title: "Inicio",
+  description: "La Put* Vuelta - ¿Hace cuanto no sales a dar una vuelta?",
 };
 
 const slides = [
   {
-    src: "https://res.cloudinary.com/dlqacmx8q/image/upload/f_auto,q_auto,w_2000/laputvuelta/hero/slide-1.jpg",
+    src: "/hero/slide-1.png",
     alt: "La Put* Vuelta — ambiente",
     eyebrow: "Live + activaciones",
     title: "La Put* Vuelta",
@@ -22,7 +22,7 @@ const slides = [
       "Cada edición en una sala distinta. Directo en Kick, activaciones durante la noche y un cierre que se recuerda.",
   },
   {
-    src: "https://res.cloudinary.com/dlqacmx8q/image/upload/f_auto,q_auto,w_2000/laputvuelta/hero/slide-2.jpg",
+    src: "/hero/slide-2.png",
     alt: "La Put* Vuelta — sala",
     eyebrow: "Ediciones",
     title: "Vol. / EP. / Sala",
@@ -30,7 +30,7 @@ const slides = [
       "No repetimos fórmula. Cambian las activaciones, el timing y la energía. Tú solo entra a vivirla.",
   },
   {
-    src: "https://res.cloudinary.com/dlqacmx8q/image/upload/f_auto,q_auto,w_2000/laputvuelta/hero/slide-3.jpg",
+    src: "/hero/slide-3.png",
     alt: "La Put* Vuelta — close up",
     eyebrow: "Comunidad",
     title: "Entra. Graba. Comparte.",
@@ -42,25 +42,26 @@ const slides = [
 export default function HomePage() {
   return (
     <main className="py-10 md:py-12">
-      <Container>
+      <ContainerFull>
         {/* Hero */}
         <div className="relative">
           <HeroCarousel slides={slides} />
 
           {/* Marca grande (diablito/corazón) */}
-          <div className="pointer-events-none absolute -bottom-8 right-6 md:right-10 md:-bottom-10 opacity-80">
-            {/* Pon aquí tu logo/mascota en /public/devil-mark.png (recomendado) */}
-            <Image
-              src="/devil-mark.png"
-              alt="La Put* Vuelta"
-              width={220}
-              height={220}
-              className="drop-shadow-[0_0_45px_rgba(255,40,60,0.20)]"
-              priority
-            />
+          <div className="pointer-events-none absolute right-4 bottom-3 md:right-10 md:bottom-6 opacity-80">
+            <div className="relative w-[120px] h-[120px] sm:w-[150px] sm:h-[150px] md:w-[220px] md:h-[220px]">
+              <Image
+                src="/devil-mark.png"
+                alt="La Put* Vuelta"
+                fill
+                className="object-contain drop-shadow-[0_0_45px_rgba(255,40,60,0.20)]"
+                priority
+              />
+            </div>
           </div>
         </div>
-
+      </ContainerFull>
+      <Container>
         {/* CTAs */}
         <div className="mt-8 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
           <div className="flex flex-wrap items-center gap-2">

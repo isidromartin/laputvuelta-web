@@ -36,7 +36,7 @@ export function HeroCarousel({
   const active = safeSlides[index];
 
   return (
-    <div className="relative overflow-hidden rounded-[2.25rem] border border-white/10 bg-black">
+    <div className="relative overflow-hidden rounded-xl border border-white/10 bg-black">
       {/* Imagen */}
       <div className="relative h-[72vh] min-h-[520px] w-full">
         <Image
@@ -103,18 +103,37 @@ export function HeroCarousel({
           <button
             type="button"
             onClick={() => setIndex((i) => (i - 1 + count) % count)}
-            className="absolute left-4 top-1/2 -translate-y-1/2 rounded-2xl border border-white/15 bg-black/35 px-3 py-2 text-sm font-semibold text-white/90 hover:bg-black/55 hover:border-white/25 transition"
+            className="absolute left-4 top-1/2 -translate-y-1/2 rounded-2xl border border-white/15 bg-black/35 p-2 hover:bg-black/55 hover:border-white/25 transition"
             aria-label="Anterior"
           >
-            ←
+            <span className="relative block h-6 w-6">
+              <Image
+                src="https://cdn-icons-png.flaticon.com/512/271/271228.png"
+                alt=""
+                fill
+                className="object-contain invert brightness-0 scale-x-[-1]"
+                sizes="24px"
+                priority
+              />
+            </span>
           </button>
+
           <button
             type="button"
             onClick={() => setIndex((i) => (i + 1) % count)}
-            className="absolute right-4 top-1/2 -translate-y-1/2 rounded-2xl border border-white/15 bg-black/35 px-3 py-2 text-sm font-semibold text-white/90 hover:bg-black/55 hover:border-white/25 transition"
+            className="absolute right-4 top-1/2 -translate-y-1/2 rounded-2xl border border-white/15 bg-black/35 p-2 hover:bg-black/55 hover:border-white/25 transition"
             aria-label="Siguiente"
           >
-            →
+            <span className="relative block h-6 w-6">
+              <Image
+                src="https://cdn-icons-png.flaticon.com/512/271/271228.png"
+                alt=""
+                fill
+                className="object-contain invert brightness-0"
+                sizes="24px"
+                priority
+              />
+            </span>
           </button>
         </>
       ) : null}
