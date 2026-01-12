@@ -66,34 +66,30 @@ export default function ContactPage() {
                 <Link
                   href="/live"
                   className="text-sm text-white/70 hover:text-white transition"
-                >
-                  Ir a la página Live →
-                </Link>
+                ></Link>
               </div>
             </div>
 
             <div className="rounded-3xl border border-white/10 bg-white/[0.02] p-6">
               <p className="text-sm font-semibold text-white/90">Entradas</p>
-              <p className="mt-1 text-sm text-white/60">
-                Venta oficial en Fourvenues.
-              </p>
+              <p className="mt-1 text-sm text-white/60">Venta oficial.</p>
               <a
                 className="mt-4 inline-flex rounded-2xl border border-white/15 bg-white/[0.03] px-4 py-2 text-sm text-white/90 hover:bg-white/[0.06] hover:border-white/25 transition"
-                href="https://web.fourvenues.com/es/team-la-putvuelta1/"
+                href="/tickets"
                 target="_blank"
                 rel="noreferrer"
               >
-                Abrir Fourvenues
+                Ver calendario
               </a>
 
-              <div className="mt-4">
+              {/* <div className="mt-4">
                 <Link
                   href="/tickets"
                   className="text-sm text-white/70 hover:text-white transition"
                 >
                   Ir a Entradas →
                 </Link>
-              </div>
+              </div> */}
             </div>
           </div>
 
