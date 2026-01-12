@@ -15,27 +15,27 @@ export const metadata: Metadata = {
 const slides = [
   {
     src: "/hero/slide-1.png",
-    alt: "La Put* Vuelta — ambiente",
-    eyebrow: "Live + activaciones",
-    title: "La Put* Vuelta",
+    alt: "La Put* Vuelta",
+    eyebrow: "",
+    title: "LA PUT* VUELTA",
     subtitle:
-      "Cada edición en una sala distinta. Directo en Kick, activaciones durante la noche y un cierre que se recuerda.",
+      "Una fiesta pensada para los que nos gustan tener una historia que contar al día siguiente",
   },
   {
     src: "/hero/slide-2.png",
-    alt: "La Put* Vuelta — sala",
-    eyebrow: "Ediciones",
-    title: "Vol. / EP. / Sala",
+    alt: "La Put* Vuelta",
+    eyebrow: "",
+    title: "ALL IN LIVE",
     subtitle:
-      "No repetimos fórmula. Cambian las activaciones, el timing y la energía. Tú solo entra a vivirla.",
+      "TODO lo que ocurra se emitirá en DIRECTO a través de nuestro canal de KICK. Por si no te quieres acordar de algo… ya sabes",
   },
   {
     src: "/hero/slide-3.png",
-    alt: "La Put* Vuelta — close up",
-    eyebrow: "Comunidad",
-    title: "Entra. Graba. Comparte.",
+    alt: "La Put* Vuelta",
+    eyebrow: "",
+    title: "LA PUT* VUELTA SHOW",
     subtitle:
-      "Galería por evento, reels y highlights. Si estuviste, aquí queda. Si no, ya sabes lo que toca.",
+      "Durante la fiesta irán ocurriendo MOMENTOS ESPECIALES, algunos con SORPRESAS y REGALOS y otros con… ¿esperabas saberlo todo aquí?",
   },
 ];
 
@@ -86,10 +86,13 @@ export default function HomePage() {
             <p className="text-sm text-white/70">
               LA PUT*VUELTA es una fiesta dónde todo pasa. Una fiesta pensada
               para los que nos gustan que pasen cosas, para los que queremos una
-              historia que contar. Cada fiesta es diferente, retransmitida al
-              100% en directo hace que puedas seguir la fiesta hasta en el sofá
-              de casa. Pero al fin y al cabo, ¿Hace cuánto no sales a dar una
-              vuelta?
+              historia que contar.
+              <br /> <br />
+              Cada fiesta es diferente, retransmitida al 100% en directo hace
+              que puedas seguir la fiesta hasta en el sofá de casa.
+              <br />
+              <br />
+              Pero al fin y al cabo, ¿Hace cuánto no sales a dar una vuelta?
             </p>
           </Section>
 
