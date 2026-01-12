@@ -10,9 +10,9 @@ import type { Metadata } from "next";
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: "Eventos | La Put* Vuelta",
+  title: "Shows | La Put* Vuelta",
   description:
-    "Eventos oficiales de La Put* Vuelta. Consulta las próximas fechas y salas donde estaremos presentando el show en vivo.",
+    "Shows oficiales de La Put* Vuelta. Consulta las próximas fechas y salas donde estaremos presentando el show en vivo.",
 };
 
 const query = groq`*[_type=="event"] | order(startAt desc){
@@ -45,11 +45,11 @@ export default async function EventsPage() {
       <Container>
         <div className="flex flex-col gap-3">
           <h1 className="text-2xl md:text-3xl font-semibold tracking-tight">
-            Eventos
+            Shows
           </h1>
           <p className="text-white/70 max-w-2xl">
-            La Put* Vuelta en distintas salas. Cada edición puede traer
-            activaciones diferentes.
+            Aquí tienes donde y cuando puedes salir a dar una vuelta. Tranqui,
+            tenemos muchas vueltas pendientes…
           </p>
         </div>
 

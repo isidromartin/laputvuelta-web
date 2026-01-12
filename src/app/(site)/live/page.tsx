@@ -29,11 +29,12 @@ export default function LivePage() {
           </div>
 
           <h1 className="text-2xl md:text-3xl font-semibold tracking-tight">
-            Directo oficial
+            ALL IN LIVE
           </h1>
 
           <p className="text-white/70 max-w-2xl">
-            Aquí se emite el live de La Put* Vuelta.
+            Desde aquí, puedes ver todo lo que pasa en la fiesta, pero que no te
+            de FOMO.
           </p>
 
           <div className="mt-2 flex flex-wrap gap-3">
@@ -100,8 +101,9 @@ export default function LivePage() {
           <div className="rounded-3xl border border-white/10 bg-white/[0.02] p-6">
             <p className="text-sm font-semibold text-white/90">Cómo funciona</p>
             <p className="mt-2 text-sm text-white/65">
-              Durante la noche hacemos activaciones. En cada evento el contenido
-              puede variar según la sala y el horario.
+              La fiesta será retransmitida desde que entre la primera persona
+              hasta que se vaya la última para te pierdas nada de lo que pasa en
+              LA PUT*VUELTA
             </p>
           </div>
 

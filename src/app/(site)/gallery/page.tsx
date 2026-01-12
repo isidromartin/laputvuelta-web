@@ -128,8 +128,9 @@ export default async function GalleryPage() {
           </h1>
 
           <p className="text-white/70 max-w-2xl">
-            Cada edición tiene su propio álbum. Entra en un evento para ver las
-            fotos.
+            No creo que quieras verte la cara después de todo lo que te bebiste
+            aquel día, pero por si acaso, aquí tienes algún recuerdo de nuestros
+            SHOWS.
           </p>
         </div>
 
