@@ -85,9 +85,6 @@ export default async function EventsPage() {
                     <div className="h-full w-full flex items-center justify-center">
                       <div className="text-center">
                         <p className="text-xs text-white/45">Sin cartel</p>
-                        <p className="mt-1 text-xs text-white/30">
-                          Añade coverImage en Sanity
-                        </p>
                       </div>
                     </div>
                   )}
@@ -95,8 +92,8 @@ export default async function EventsPage() {
                   {/* gradient overlay para que quede premium */}
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
 
-                  <div className="absolute left-4 right-4 top-4 flex items-center justify-between gap-3">
-                    <Badge>{future ? "Próximo" : "Pasado"}</Badge>
+                  <div className="absolute left-4 right-4 top-4 flex items-center justify-between gap-3 backdrop-blur-l bg-black/30 rounded-2xl px-3 py-1.5a">
+                    <p>{future ? "Próximo" : "Pasado"}</p>
                     <p className="text-xs text-white/80">
                       {new Date(e.startAt).toLocaleDateString("es-ES", {
                         dateStyle: "medium",
