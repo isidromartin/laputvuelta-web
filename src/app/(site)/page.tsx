@@ -48,7 +48,7 @@ export default function HomePage() {
           <HeroCarousel slides={slides} />
 
           {/* Marca grande (diablito/corazón) */}
-          <div className="pointer-events-none absolute right-4 bottom-3 md:right-10 md:bottom-6 opacity-80">
+          {/* <div className="pointer-events-none absolute right-4 bottom-3 md:right-10 md:bottom-6 opacity-80">
             <div className="relative w-[120px] h-[120px] sm:w-[150px] sm:h-[150px] md:w-[220px] md:h-[220px]">
               <Image
                 src="/devil-mark.png"
@@ -58,7 +58,7 @@ export default function HomePage() {
                 priority
               />
             </div>
-          </div>
+          </div> */}
         </div>
       </ContainerFull>
       <Container>
