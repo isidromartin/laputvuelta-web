@@ -82,14 +82,14 @@ export default function HomePage() {
 
         {/* Info */}
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
-          <Section
-            title="Qué es"
-            subtitle="Formato rápido, directo y con narrativa."
-          >
+          <Section title="Qué es" subtitle="La fiesta que estabas esperando.">
             <p className="text-sm text-white/70">
-              La Put* Vuelta es una fiesta itinerante: cambia la sala, cambian
-              las activaciones y el ritmo de la noche. El directo sucede en Kick
-              y lo mejor de cada edición se queda en la galería.
+              LA PUT*VUELTA es una fiesta dónde todo pasa. Una fiesta pensada
+              para los que nos gustan que pasen cosas, para los que queremos una
+              historia que contar. Cada fiesta es diferente, retransmitida al
+              100% en directo hace que puedas seguir la fiesta hasta en el sofá
+              de casa. Pero al fin y al cabo, ¿Hace cuánto no sales a dar una
+              vuelta?
             </p>
           </Section>
 
@@ -98,11 +98,9 @@ export default function HomePage() {
             subtitle="Todo claro: entradas, directo y momentos."
           >
             <ul className="space-y-2 text-sm text-white/70">
-              <li>• Entradas integradas (Fourvenues) desde la web.</li>
+              <li>• Entradas desde la web.</li>
               <li>• Directo en Kick durante la noche.</li>
-              <li>
-                • Activaciones por franjas: aparecen si están configuradas.
-              </li>
+              <li>• Activaciones y regalos.</li>
             </ul>
           </Section>
 
