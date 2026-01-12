@@ -101,8 +101,8 @@ export default function LivePage() {
           <div className="rounded-3xl border border-white/10 bg-white/[0.02] p-6">
             <p className="text-sm font-semibold text-white/90">Cómo funciona</p>
             <p className="mt-2 text-sm text-white/65">
-              La fiesta será retransmitida desde que entre la primera persona
-              hasta que se vaya la última para te pierdas nada de lo que pasa en
+              La fiesta será retransmitida desde que entre la PRIMERA persona
+              hasta que se vaya la ÚLTIMA para te pierdas NADA de lo que pasa en
               LA PUT*VUELTA
             </p>
           </div>

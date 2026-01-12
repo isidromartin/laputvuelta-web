@@ -154,7 +154,7 @@ export function ContactForm() {
             <input
               value={form.name}
               onChange={(e) => update("name", e.target.value)}
-              className="mt-2 w-full rounded-2xl border border-white/10 bg-black px-4 py-3 text-sm text-white/90 outline-none focus:border-white/25"
+              className="mt-2 w-full rounded-2xl border border-white/10 px-4 py-3 text-sm text-white/90 outline-none focus:border-white/25"
               placeholder="Tu nombre"
               autoComplete="name"
             />
@@ -165,7 +165,7 @@ export function ContactForm() {
             <input
               value={form.email}
               onChange={(e) => update("email", e.target.value)}
-              className="mt-2 w-full rounded-2xl border border-white/10 bg-black px-4 py-3 text-sm text-white/90 outline-none focus:border-white/25"
+              className="mt-2 w-full rounded-2xl border border-white/10 px-4 py-3 text-sm text-white/90 outline-none focus:border-white/25"
               placeholder="tu@email.com"
               autoComplete="email"
               inputMode="email"
@@ -184,7 +184,7 @@ export function ContactForm() {
                   e.target.value as FormState["inquiryType"]
                 )
               }
-              className="mt-2 w-full rounded-2xl border border-white/10 bg-black px-4 py-3 text-sm text-white/90 outline-none focus:border-white/25"
+              className="mt-2 w-full rounded-2xl border border-white/10 px-4 py-3 text-sm text-white/90 outline-none focus:border-white/25"
             >
               <option value="General">General</option>
               <option value="Partners">Partners</option>
@@ -198,7 +198,7 @@ export function ContactForm() {
             <input
               value={form.phone}
               onChange={(e) => update("phone", e.target.value)}
-              className="mt-2 w-full rounded-2xl border border-white/10 bg-black px-4 py-3 text-sm text-white/90 outline-none focus:border-white/25"
+              className="mt-2 w-full rounded-2xl border border-white/10 px-4 py-3 text-sm text-white/90 outline-none focus:border-white/25"
               placeholder="+34 600 123 456"
               inputMode="tel"
               autoComplete="tel"
@@ -211,7 +211,7 @@ export function ContactForm() {
           <input
             value={form.instagram}
             onChange={(e) => update("instagram", e.target.value)}
-            className="mt-2 w-full rounded-2xl border border-white/10 bg-black px-4 py-3 text-sm text-white/90 outline-none focus:border-white/25"
+            className="mt-2 w-full rounded-2xl border border-white/10 px-4 py-3 text-sm text-white/90 outline-none focus:border-white/25"
             placeholder="@usuario"
             autoComplete="off"
           />
@@ -222,7 +222,7 @@ export function ContactForm() {
           <input
             value={form.subject}
             onChange={(e) => update("subject", e.target.value)}
-            className="mt-2 w-full rounded-2xl border border-white/10 bg-black px-4 py-3 text-sm text-white/90 outline-none focus:border-white/25"
+            className="mt-2 w-full rounded-2xl border border-white/10 px-4 py-3 text-sm text-white/90 outline-none focus:border-white/25"
             placeholder="Ej: partnership / booking / prensa..."
             autoComplete="off"
           />
@@ -233,7 +233,7 @@ export function ContactForm() {
           <textarea
             value={form.message}
             onChange={(e) => update("message", e.target.value)}
-            className="mt-2 min-h-[140px] w-full rounded-2xl border border-white/10 bg-black px-4 py-3 text-sm text-white/90 outline-none focus:border-white/25"
+            className="mt-2 min-h-[140px] w-full rounded-2xl border border-white/10 px-4 py-3 text-sm text-white/90 outline-none focus:border-white/25"
             placeholder="Cuéntanos lo que necesitas..."
           />
         </div>
