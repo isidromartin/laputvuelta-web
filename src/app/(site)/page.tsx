@@ -82,7 +82,10 @@ export default function HomePage() {
 
         {/* Info */}
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
-          <Section title="Qué es" subtitle="La fiesta que estabas esperando.">
+          <Section
+            title="¿Qué es la Put*vuelta?"
+            subtitle="La fiesta que estabas esperando."
+          >
             <p className="text-sm text-white/70">
               LA PUT*VUELTA es una fiesta dónde todo pasa. Una fiesta pensada
               para los que nos gustan que pasen cosas, para los que queremos una
