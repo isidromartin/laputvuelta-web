@@ -76,7 +76,6 @@ export function MobileNav({ nav }: { nav: readonly NavItem[] }) {
         aria-label="Abrir menú"
       >
         <IconMenu />
-        Menú
       </button>
 
       {/* CLAVE: no renderizar nada cuando open=false */}
