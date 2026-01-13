@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import type { NavItem } from "@/components/site/nav";
+import Image from "next/image";
 
 function IconMenu() {
   return (
@@ -67,10 +68,11 @@ export function MobileNav({ nav }: { nav: readonly NavItem[] }) {
 
   return (
     <>
+      {/* Trigger */}
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-black/20 px-4 py-2 text-sm text-white/90 hover:border-white/30 transition"
+        className="glass inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-2 text-sm font-bold uppercase tracking-[0.22em] text-white/80 hover:text-white hover:border-white/20 hover:bg-white/[0.06] transition"
         aria-label="Abrir menú"
       >
         <IconMenu />
@@ -95,19 +97,32 @@ export function MobileNav({ nav }: { nav: readonly NavItem[] }) {
             aria-modal="true"
             aria-label="Menú"
           >
-            <div className="h-full bg-black border-l border-white/10 shadow-2xl pb-[env(safe-area-inset-bottom)]">
+            <div className="relative h-full bg-black border-l border-white/10 shadow-2xl pb-[env(safe-area-inset-bottom)]">
+              {/* Ambient (decorativo, no afecta a layout) */}
+              <div className="pointer-events-none absolute inset-0">
+                <div className="absolute -top-24 -right-24 h-[320px] w-[320px] rounded-full bg-[var(--primary)]/18 blur-[120px]" />
+                <div className="absolute bottom-[-140px] left-[-120px] h-[360px] w-[360px] rounded-full bg-[var(--primary)]/10 blur-[140px]" />
+              </div>
+
               {/* Header drawer */}
-              <div className="flex items-center justify-between px-4 py-4 border-b border-white/10">
+              <div className="relative flex items-center justify-between px-4 py-4 border-b border-white/10">
                 <div className="flex flex-col">
-                  <p className="text-sm font-semibold text-white">
-                    La Put* Vuelta
-                  </p>
+                  <Link href="/">
+                    <Image
+                      src="/logo.png"
+                      alt="La Put* Vuelta"
+                      width={160}
+                      height={40}
+                      priority
+                      className="h-8 w-auto"
+                    />
+                  </Link>
                 </div>
 
                 <button
                   type="button"
                   onClick={() => setOpen(false)}
-                  className="inline-flex items-center justify-center rounded-full border border-white/15 bg-black px-3 py-2 text-white/85 hover:text-white hover:border-white/30 transition"
+                  className="glass inline-flex items-center justify-center rounded-full border border-white/10 px-3 py-2 text-white/80 hover:text-white hover:border-white/20 hover:bg-white/[0.06] transition"
                   aria-label="Cerrar menú"
                 >
                   <IconClose />
@@ -115,31 +130,43 @@ export function MobileNav({ nav }: { nav: readonly NavItem[] }) {
               </div>
 
               {/* Links */}
-              <nav className="px-3 py-4">
+              <nav className="relative px-3 py-4">
                 <ul className="space-y-2">
                   {nav.map((item) => (
                     <li key={item.href}>
                       <Link
                         href={item.href}
                         onClick={() => setOpen(false)}
-                        className="flex items-center justify-between rounded-2xl bg-white/[0.03] px-4 py-3 text-sm text-white/85 hover:bg-white/[0.06] hover:text-white transition"
+                        className="group flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm font-semibold text-white/85 hover:bg-white/[0.06] hover:border-white/20 hover:text-white transition"
                       >
-                        <span>{item.label}</span>
-                        <span className="text-xs text-white/45">→</span>
+                        <span className="uppercase tracking-widest text-[13px]">
+                          {item.label}
+                        </span>
+                        <span className="text-[var(--primary)]/80 group-hover:text-[var(--primary)] transition">
+                          →
+                        </span>
                       </Link>
                     </li>
                   ))}
                 </ul>
               </nav>
 
-              <div className="px-5 pt-2">
+              {/* CTA */}
+              <div className="relative px-5 pt-2">
                 <Link
                   href="/tickets"
                   onClick={() => setOpen(false)}
-                  className="block w-full rounded-2xl bg-white px-4 py-3 text-center text-sm font-medium text-black hover:opacity-90 transition"
+                  className="relative block w-full rounded-2xl bg-[var(--primary)] px-4 py-3 text-center text-sm font-black uppercase tracking-widest text-white transition-all hover:brightness-110 neon-border"
                 >
                   Comprar entradas
                 </Link>
+              </div>
+
+              {/* Footer mini */}
+              <div className="relative mt-6 border-t border-white/10 px-5 py-4">
+                <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/35">
+                  © {new Date().getFullYear()} La Put* Vuelta
+                </p>
               </div>
             </div>
           </aside>
