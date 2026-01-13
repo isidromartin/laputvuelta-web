@@ -121,7 +121,7 @@ export default function HomePage() {
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/10 via-black/15 to-black/55" />
 
             {/* Watermark diablo */}
-            <div className="pointer-events-none absolute -right-6 -bottom-10 opacity-70 md:opacity-80">
+            {/* <div className="pointer-events-none absolute -right-6 -bottom-10 opacity-70 md:opacity-80">
               <div className="relative h-[180px] w-[180px] md:h-[260px] md:w-[260px]">
                 <Image
                   src="/devil-mark.png"
@@ -131,7 +131,7 @@ export default function HomePage() {
                   priority
                 />
               </div>
-            </div>
+            </div> */}
 
             {/* Borde neon sutil */}
             <div className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-white/10" />

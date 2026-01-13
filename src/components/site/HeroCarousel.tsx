@@ -58,7 +58,7 @@ export function HeroCarousel({
         <div className="pointer-events-none absolute -right-28 top-10 h-[560px] w-[560px] rounded-full bg-[var(--primary)]/12 blur-[200px]" />
 
         {/* Watermark devil (opcional) */}
-        <div className="pointer-events-none absolute -right-6 -bottom-10 opacity-70 md:opacity-80">
+        {/* <div className="pointer-events-none absolute -right-6 -bottom-10 opacity-70 md:opacity-80">
           <div className="relative h-[160px] w-[160px] md:h-[240px] md:w-[240px]">
             <Image
               src="/devil-mark.png"
@@ -68,7 +68,7 @@ export function HeroCarousel({
               priority
             />
           </div>
-        </div>
+        </div> */}
       </div>
 
       {/* Copy */}

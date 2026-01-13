@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import type { NavItem } from "@/components/site/nav";
-import Image from "next/image";
 
 function IconMenu() {
   return (
@@ -56,124 +55,96 @@ export function MobileNav({ nav }: { nav: readonly NavItem[] }) {
     };
   }, [open]);
 
+  // Cierra con ESC
+  useEffect(() => {
+    if (!open) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [open]);
+
   return (
     <>
-      {/* Trigger (glass + neon) */}
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="group relative inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.03] px-4 py-2 text-sm font-black uppercase tracking-[0.22em] text-white/85 backdrop-blur transition hover:bg-white/[0.06] hover:border-[var(--primary)]/35 hover:text-white"
+        className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-black/20 px-4 py-2 text-sm text-white/90 hover:border-white/30 transition"
         aria-label="Abrir menú"
       >
-        <span className="pointer-events-none absolute -inset-2 -z-10 rounded-full bg-[var(--primary)]/0 blur-xl transition group-hover:bg-[var(--primary)]/14" />
         <IconMenu />
         Menú
       </button>
 
-      {/* Overlay + Drawer */}
-      <div
-        className={`fixed inset-0 z-[80] ${open ? "" : "pointer-events-none"}`}
-        aria-hidden={!open}
-      >
-        {/* Overlay (más premium: gradient + blur) */}
-        <div
-          className={`absolute inset-0 transition-opacity duration-200 ${
-            open ? "opacity-100" : "opacity-0"
-          } bg-black/70 backdrop-blur-sm`}
-          onClick={() => setOpen(false)}
-        >
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,77,94,0.16),transparent_55%),radial-gradient(circle_at_80%_70%,rgba(255,77,94,0.10),transparent_60%)]" />
-        </div>
+      {/* CLAVE: no renderizar nada cuando open=false */}
+      {open ? (
+        <div className="fixed inset-0 z-[80]">
+          {/* Overlay */}
+          <button
+            type="button"
+            aria-label="Cerrar menú"
+            className="absolute inset-0 bg-black/80"
+            onClick={() => setOpen(false)}
+          />
 
-        {/* Drawer */}
-        <aside
-          className={`absolute right-0 top-0 h-full w-[86vw] max-w-sm transform transition-transform duration-200 ${
-            open ? "translate-x-0" : "translate-x-full"
-          }`}
-          role="dialog"
-          aria-modal="true"
-          aria-label="Menú"
-        >
-          <div className="relative h-full border-l border-white/10 bg-black/70 backdrop-blur-2xl shadow-2xl">
-            {/* halos */}
-            <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-[var(--primary)]/14 blur-3xl" />
-            <div className="pointer-events-none absolute -left-24 bottom-[-120px] h-80 w-80 rounded-full bg-[var(--primary)]/10 blur-3xl" />
-
-            {/* Header drawer */}
-            <div className="relative px-4 pt-4">
-              <div className="glass flex items-center justify-between rounded-2xl border border-white/10 px-4 py-3">
+          {/* Drawer */}
+          <aside
+            className="absolute right-0 top-0 h-[100dvh] w-[86vw] max-w-sm"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Menú"
+          >
+            <div className="h-full bg-black border-l border-white/10 shadow-2xl pb-[env(safe-area-inset-bottom)]">
+              {/* Header drawer */}
+              <div className="flex items-center justify-between px-4 py-4 border-b border-white/10">
                 <div className="flex flex-col">
-                  <p className="text-sm font-black uppercase tracking-tight text-white">
-                    <Link href="/" className="flex items-center gap-3">
-                      <Image
-                        src="/logo.png"
-                        alt="La Put* Vuelta"
-                        width={160}
-                        height={40}
-                        priority
-                        className="h-8 w-auto"
-                      />
-                    </Link>
+                  <p className="text-sm font-semibold text-white">
+                    La Put* Vuelta
                   </p>
-                  {/* <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/45">
-                    Navegación
-                  </p> */}
                 </div>
 
                 <button
                   type="button"
                   onClick={() => setOpen(false)}
-                  className="group relative inline-flex items-center justify-center rounded-full border border-white/12 bg-white/[0.03] px-3 py-2 text-white/85 backdrop-blur transition hover:bg-white/[0.06] hover:border-[var(--primary)]/35 hover:text-white"
+                  className="inline-flex items-center justify-center rounded-full border border-white/15 bg-black px-3 py-2 text-white/85 hover:text-white hover:border-white/30 transition"
                   aria-label="Cerrar menú"
                 >
-                  <span className="pointer-events-none absolute -inset-2 -z-10 rounded-full bg-[var(--primary)]/0 blur-xl transition group-hover:bg-[var(--primary)]/14" />
                   <IconClose />
                 </button>
               </div>
-            </div>
 
-            {/* Links */}
-            <nav className="relative px-4 py-5">
-              <ul className="space-y-2">
-                {nav.map((item) => (
-                  <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      onClick={() => setOpen(false)}
-                      className="group flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm font-bold uppercase tracking-[0.18em] text-white/80 backdrop-blur transition hover:bg-white/[0.06] hover:text-white hover:border-[var(--primary)]/30"
-                    >
-                      <span>{item.label}</span>
-                      <span className="text-xs text-white/35 transition group-hover:text-[var(--primary)]">
-                        →
-                      </span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
+              {/* Links */}
+              <nav className="px-3 py-4">
+                <ul className="space-y-2">
+                  {nav.map((item) => (
+                    <li key={item.href}>
+                      <Link
+                        href={item.href}
+                        onClick={() => setOpen(false)}
+                        className="flex items-center justify-between rounded-2xl bg-white/[0.03] px-4 py-3 text-sm text-white/85 hover:bg-white/[0.06] hover:text-white transition"
+                      >
+                        <span>{item.label}</span>
+                        <span className="text-xs text-white/45">→</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
 
-            {/* CTA */}
-            <div className="relative px-5 pt-1">
-              <Link
-                href="/tickets"
-                onClick={() => setOpen(false)}
-                className="relative block w-full rounded-2xl bg-[var(--primary)] px-4 py-3 text-center text-sm font-black uppercase tracking-[0.22em] text-white transition hover:bg-[color:rgba(255,77,94,0.9)] hover:scale-[1.01]"
-              >
-                <span className="pointer-events-none absolute -inset-[2px] rounded-2xl border border-white/15" />
-                <span className="pointer-events-none absolute -inset-2 -z-10 rounded-2xl bg-[var(--primary)]/25 blur-xl" />
-                Comprar entradas
-              </Link>
+              <div className="px-5 pt-2">
+                <Link
+                  href="/tickets"
+                  onClick={() => setOpen(false)}
+                  className="block w-full rounded-2xl bg-white px-4 py-3 text-center text-sm font-medium text-black hover:opacity-90 transition"
+                >
+                  Comprar entradas
+                </Link>
+              </div>
             </div>
-
-            {/* Footer */}
-            <div className="absolute bottom-0 left-0 right-0 border-t border-white/10 px-5 py-5">
-              <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/35">
-                Viva el pecado
-              </p>
-            </div>
-          </div>
-        </aside>
-      </div>
+          </aside>
+        </div>
+      ) : null}
     </>
   );
 }
