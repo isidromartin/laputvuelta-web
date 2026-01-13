@@ -4,14 +4,14 @@ import Link from "next/link";
 import { ContactForm } from "@/components/site/ContactForm";
 
 export const metadata: Metadata = {
-  title: "Para salas | La Putivuelta",
+  title: "Para salas | La Put* Vuelta",
   description:
-    "Dossier B2B para salas: formato de evento llave en mano (marketing + operación + activación en puerta).",
+    "Dossier B2B para salas: formato llave en mano (marketing + activación + operación) orientado a afluencia y consumo.",
   robots: { index: true, follow: true },
   openGraph: {
     title: "La Put* Vuelta para salas",
     description:
-      "Formato de evento llave en mano para salas: marketing, activación y operación.",
+      "Formato llave en mano para salas: marketing, activación y operación. Enfoque: afluencia + barra.",
     type: "website",
     url: "/b2b",
   },
@@ -19,15 +19,11 @@ export const metadata: Metadata = {
 
 const BRAND = {
   name: "La Put* Vuelta",
-  pageTitle: "Para salas",
+  pageTitle: "Dossier para salas",
   accentLabel: "B2B",
-  // Ajusta esto a tu número real (formato internacional recomendado)
   whatsappE164: "+34674873549",
-  // Ajusta esto a tu email real
   email: "laput.vuelta@gmail.com",
-  // Sube tu dossier a /public y pon aquí la ruta, o usa un enlace externo
   dossierUrl: "/docs/laputvuelta-dossier.pdf",
-  // Opcional: media kit
   mediaKitUrl: "/docs/laputvuelta-media-kit.zip",
 };
 
@@ -40,39 +36,40 @@ function waLink(message: string) {
 const FAQS: { q: string; a: string }[] = [
   {
     q: "¿Qué aporta a la sala?",
-    a: "Un formato de evento con marketing y operación integrados: preventa cuando aplique, activación con promotores/listas, y coordinación de puerta para maximizar afluencia y consumo.",
+    a: "Un formato con marketing y operación integrados: comunicación coordinada, activación con listas/promotores (si aplica) y coordinación de puerta. Objetivo: afluencia + consumo.",
   },
   {
     q: "¿Qué necesitáis por parte de la sala?",
-    a: "Fecha y condiciones claras, apoyo mínimo de comunicación (stories/1 post si encaja), coordinación de puerta/seguridad, y acceso al material audiovisual del local para creatividades si se desea.",
+    a: "Fecha y condiciones claras, coordinación de puerta/seguridad y un mínimo de apoyo en comunicación (si encaja). Si hay material audiovisual del local, lo integramos en creatividades.",
   },
   {
     q: "¿Trabajáis con fijo, porcentaje o híbrido?",
-    a: "Nos adaptamos. Habitualmente trabajamos con tres modelos: fijo/garantía, porcentaje de puerta, o híbrido (mínimo + variable). En la propuesta se detalla qué incluye cada uno.",
+    a: "Sí. Trabajamos con fijo/garantía, % de puerta o híbrido (mínimo + variable). Elegimos modelo según plaza, fecha y objetivos.",
   },
   {
     q: "¿Tenéis rider técnico?",
-    a: "Sí. Incluimos un rider resumido en el dossier y compartimos el detalle (cabina, micro, timing) al cerrar fecha.",
+    a: "Sí. Compartimos rider resumido en el dossier y cerramos el detalle al confirmar fecha (cabina, micro, timing, etc.).",
   },
   {
     q: "¿Cuánto tardáis en activar una fecha?",
-    a: "Idealmente 10–21 días para una activación completa. Si la fecha es urgente, se puede condensar con un plan de comunicación adaptado.",
+    a: "Ideal: 10–21 días. Si es urgente, podemos condensar con un plan de comunicación adaptado y foco en tracción inmediata.",
   },
   {
     q: "¿Podéis aportar contenido y creatividades?",
-    a: "Sí. Plantillas, copies y creatividades listas. Si la sala tiene branding propio, lo integramos sin problema.",
+    a: "Sí. Creatividades, copies, plantillas y líneas de comunicación. Integramos el branding del local si es necesario.",
   },
 ];
 
 const MODELS = [
   {
     title: "Modelo A — Fijo / Garantía",
-    forWho: "Ideal si buscas reducir incertidumbre y asegurar un mínimo.",
+    forWho: "Si quieres reducir incertidumbre y asegurar un mínimo.",
     bullets: [
       "Condiciones cerradas desde el inicio",
       "Activación completa (creatividades + plan de difusión)",
       "Coordinación de puerta y reporting operativo",
     ],
+    tag: "Seguridad",
   },
   {
     title: "Modelo B — % de Puerta",
@@ -82,6 +79,7 @@ const MODELS = [
       "Foco en tracción (listas/promotores + difusión)",
       "Cierre con métricas y propuesta de repetición",
     ],
+    tag: "Performance",
   },
   {
     title: "Modelo C — Híbrido",
@@ -91,328 +89,439 @@ const MODELS = [
       "Recomendado para nuevas plazas o primeras fechas",
       "Modelo preferente para construir recurrencia",
     ],
+    tag: "Equilibrio",
   },
 ];
 
 export default function B2BPage() {
   const primaryMessage =
-    "Hola, soy de una sala y quiero información para reservar fecha de La Put* Vuelta. Te cuento ciudad, sala y fecha propuesta:";
+    "Hola, soy de una sala y quiero información para reservar fecha de La Put* Vuelta. Te paso ciudad, sala, aforo aproximado y fechas propuestas:";
   const whatsappHref = waLink(primaryMessage);
 
-  return (
-    <main className="min-h-screen bg-[#0B1020] text-white">
-      {/* Background */}
-      <div className="pointer-events-none fixed inset-0 -z-10">
-        <div className="absolute inset-0 bg-[radial-gradient(1000px_circle_at_20%_10%,rgba(59,130,246,0.28),transparent_45%),radial-gradient(900px_circle_at_80%_30%,rgba(16,185,129,0.22),transparent_45%),radial-gradient(900px_circle_at_50%_90%,rgba(99,102,241,0.18),transparent_45%)]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/50" />
-      </div>
+  const mailHref = `mailto:${BRAND.email}?subject=${encodeURIComponent(
+    "Propuesta B2B — La Put* Vuelta"
+  )}&body=${encodeURIComponent(primaryMessage)}`;
 
-      {/* Top bar */}
-      <header className="sticky top-0 z-30 border-b border-white/10 bg-black/25 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3">
+  return (
+    <main className="relative min-h-screen bg-[color:var(--background-dark,#0b0b10)] text-white pt-24 pb-16 md:pt-28 md:pb-24">
+      {/* Ambient + grain */}
+      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute left-1/2 top-[-260px] h-[620px] w-[620px] -translate-x-1/2 rounded-full bg-[var(--primary)]/18 blur-[190px]" />
+        <div className="absolute right-[-220px] top-[240px] h-[540px] w-[540px] rounded-full bg-[var(--primary)]/10 blur-[210px]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-black/10 to-black/45" />
+      </div>
+      <div className="grain" />
+
+      {/* Top bar (sticky) */}
+      <header className="fixed top-0 left-0 right-0 z-40 px-6 py-4 flex justify-center">
+        <nav className="max-w-[1200px] w-full glass rounded-full px-6 py-3 flex items-center justify-between border border-white/10">
           <div className="flex items-center gap-3">
-            <span className="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-2.5 py-1 text-xs font-semibold tracking-wide text-white/90">
+            <span className="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.35em] text-white/80">
               {BRAND.accentLabel}
             </span>
+
             <div className="leading-tight">
-              <div className="text-sm font-semibold">{BRAND.name}</div>
-              <div className="text-xs text-white/70">{BRAND.pageTitle}</div>
+              <p className="text-sm font-semibold text-white/95">
+                {BRAND.name}
+              </p>
+              <p className="text-[11px] font-semibold text-white/55">
+                {BRAND.pageTitle}
+              </p>
             </div>
+          </div>
+
+          <div className="hidden md:flex items-center gap-6 text-[11px] font-bold uppercase tracking-[0.35em] text-white/60">
+            <a
+              className="hover:text-[var(--primary)] transition"
+              href="#modelo"
+            >
+              Modelos
+            </a>
+            <a className="hover:text-[var(--primary)] transition" href="#faq">
+              FAQ
+            </a>
+            <a
+              className="hover:text-[var(--primary)] transition"
+              href="#contacto"
+            >
+              Contacto
+            </a>
           </div>
 
           <div className="flex items-center gap-2">
-            <Link
+            <a
               href="#contacto"
-              className="rounded-xl border border-white/15 bg-white/5 px-3 py-2 text-sm font-semibold text-white/90 hover:bg-white/10"
+              className="hidden sm:inline-flex rounded-2xl border border-white/15 bg-white/[0.03] px-4 py-2 text-sm font-semibold text-white/90 hover:bg-white/[0.06] hover:border-white/25 transition"
             >
               Solicitar propuesta
-            </Link>
-            <Link
+            </a>
+            <a
               href={whatsappHref}
               target="_blank"
-              className="rounded-xl bg-white px-3 py-2 text-sm font-semibold text-black hover:bg-white/90"
+              rel="noreferrer"
+              className="relative inline-flex items-center justify-center bg-[var(--primary)] hover:bg-[color:rgba(255,77,94,0.82)] text-white px-5 py-2 rounded-full font-bold text-sm transition-all transform hover:scale-[1.02] neon-border"
             >
               WhatsApp
-            </Link>
+            </a>
           </div>
-        </div>
+        </nav>
       </header>
 
-      {/* Hero */}
-      <section className="mx-auto max-w-6xl px-5 pt-14 pb-10">
-        <div className="grid gap-10 md:grid-cols-[1.15fr_0.85fr] md:items-start">
-          <div>
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-semibold text-white/80">
-              <span className="h-1.5 w-1.5 rounded-full bg-white/70" />
-              Booking / Dossier para salas
-            </div>
+      {/* HERO */}
+      <section className="mx-auto max-w-[1200px] px-6">
+        <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
+          <div className="glass relative overflow-hidden rounded-3xl border border-white/10 p-7 md:p-10">
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_25%,rgba(255,77,94,0.14),transparent_55%),radial-gradient(circle_at_85%_75%,rgba(255,77,94,0.08),transparent_60%)]" />
 
-            <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-              {BRAND.name} para salas
-            </h1>
-            <p className="mt-4 max-w-xl text-base leading-relaxed text-white/75">
-              Formato de evento llave en mano: concepto, marketing, activación y
-              coordinación operativa. En 30 segundos: qué es, cómo funciona y
-              cómo cerramos fecha.
-            </p>
+            <div className="relative">
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.03] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.22em] text-white/70">
+                <span className="h-1.5 w-1.5 rounded-full bg-[var(--primary)] shadow-[0_0_14px_rgba(255,77,94,0.35)]" />
+                Booking / Dossier para salas
+              </div>
 
-            <div className="mt-7 flex flex-wrap gap-3">
-              <Link
-                href="#contacto"
-                className="rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-black hover:bg-white/90"
-              >
-                Solicitar propuesta
-              </Link>
-              <Link
-                href={whatsappHref}
-                target="_blank"
-                className="rounded-2xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white/90 hover:bg-white/10"
-              >
-                Hablar por WhatsApp
-              </Link>
-              <Link
-                href={BRAND.dossierUrl}
-                target="_blank"
-                className="rounded-2xl border border-white/15 bg-transparent px-5 py-3 text-sm font-semibold text-white/80 hover:bg-white/5"
-              >
-                Ver dossier (PDF)
-              </Link>
-            </div>
+              <h1 className="text-3xl md:text-5xl font-black uppercase tracking-tight text-white/95">
+                {BRAND.name}
+              </h1>
+              <p className="mt-2 text-[11px] font-bold uppercase tracking-[0.35em] text-white/45">
+                Formato llave en mano
+              </p>
 
-            {/* Value bullets */}
-            <div className="mt-10 grid gap-3 sm:grid-cols-3">
-              {[
-                {
-                  k: "Tracción",
-                  v: "Promotores + listas + comunicación",
-                },
-                {
-                  k: "Operación",
-                  v: "Puerta coordinada y timing",
-                },
-                {
-                  k: "Resultado",
-                  v: "Foco en afluencia y barra",
-                },
-              ].map((item) => (
-                <div
-                  key={item.k}
-                  className="rounded-2xl border border-white/10 bg-white/5 p-4"
+              <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/70">
+                Concepto, marketing, activación y coordinación operativa.
+                Diseñado para mejorar{" "}
+                <span className="text-white/85">afluencia</span> y{" "}
+                <span className="text-white/85">consumo</span> sin complicarte
+                la vida: proceso claro, ejecución replicable y reporting.
+              </p>
+
+              <div className="mt-7 flex flex-wrap gap-3">
+                <a
+                  href="#contacto"
+                  className="inline-flex items-center justify-center rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-black hover:opacity-90 transition"
                 >
-                  <div className="text-xs font-semibold text-white/60">
-                    {item.k}
-                  </div>
-                  <div className="mt-1 text-sm font-semibold text-white/90">
-                    {item.v}
-                  </div>
-                </div>
-              ))}
+                  Solicitar propuesta
+                </a>
+
+                <a
+                  href={whatsappHref}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white/[0.03] px-5 py-3 text-sm font-semibold text-white/90 hover:bg-white/[0.06] hover:border-white/25 transition"
+                >
+                  Hablar por WhatsApp
+                </a>
+
+                <a
+                  href={BRAND.dossierUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center rounded-2xl border border-white/15 bg-transparent px-5 py-3 text-sm font-semibold text-white/75 hover:bg-white/[0.04] transition"
+                >
+                  Ver dossier (PDF)
+                </a>
+              </div>
+
+              {/* Value chips */}
+              <div className="mt-10 grid gap-3 sm:grid-cols-3">
+                <ValueChip
+                  k="Tracción"
+                  v="Comunicación + empuje final 48–72h"
+                />
+                <ValueChip k="Operación" v="Puerta coordinada + timing" />
+                <ValueChip k="Resultado" v="Afluencia y barra (reporting)" />
+              </div>
             </div>
           </div>
 
-          {/* Stats card */}
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-[0_20px_60px_rgba(0,0,0,0.35)]">
-            <div className="flex items-center justify-between">
+          {/* SIDE CARD */}
+          <aside className="glass rounded-3xl border border-white/10 p-7 md:p-8">
+            <div className="flex items-start justify-between gap-4">
               <div>
-                <div className="text-xs font-semibold text-white/60">
+                <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/45">
+                  Resumen B2B
+                </p>
+                <h2 className="mt-2 text-xl font-black uppercase tracking-tight text-white/90">
                   Datos rápidos
-                </div>
-                <div className="mt-1 text-lg font-semibold">Resumen B2B</div>
+                </h2>
               </div>
-              <span className="rounded-full border border-white/15 bg-black/20 px-3 py-1 text-xs font-semibold text-white/75">
+
+              <span className="rounded-full border border-white/15 bg-black/20 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.35em] text-white/70">
                 2026
               </span>
             </div>
 
             <div className="mt-6 space-y-4">
+              <StatRow label="Público" value="Universitario + joven adulto" />
+              <StatRow label="Formato" value="Noche temática / show party" />
+              <StatRow label="Duración" value="4–6 horas (adaptable)" />
               <StatRow
-                label="Perfil de público"
-                value="Universitario + joven adulto"
-              />
-              <StatRow label="Formato" value="Fiesta temática / night event" />
-              <StatRow label="Duración típica" value="4–6 horas (adaptable)" />
-              <StatRow
-                label="Material"
-                value="Dossier + media kit + creatividades"
+                label="Entregables"
+                value="Dossier + media kit + piezas"
               />
             </div>
 
-            <div className="mt-6 rounded-2xl border border-white/10 bg-black/20 p-4">
-              <div className="text-xs font-semibold text-white/60">
-                Siguiente paso
-              </div>
-              <p className="mt-1 text-sm text-white/75">
-                Envíanos ciudad, nombre de la sala, aforo aproximado y dos
-                fechas posibles. Respondemos con propuesta y condiciones.
+            <div className="mt-6 rounded-2xl border border-white/10 bg-black/20 p-5">
+              <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/45">
+                Para enviarte propuesta
               </p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                <Link
+              <p className="mt-2 text-sm text-white/70">
+                Ciudad, sala, aforo aproximado y dos fechas posibles.
+                Respondemos con modelo recomendado y condiciones.
+              </p>
+
+              <div className="mt-4 grid gap-2 sm:grid-cols-2">
+                <a
                   href={whatsappHref}
                   target="_blank"
-                  className="rounded-xl bg-white px-3 py-2 text-sm font-semibold text-black hover:bg-white/90"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center rounded-2xl bg-white px-4 py-3 text-sm font-semibold text-black hover:opacity-90 transition"
                 >
                   WhatsApp
-                </Link>
-                <Link
-                  href={`mailto:${BRAND.email}?subject=${encodeURIComponent(
-                    "Propuesta B2B — La Putivuelta"
-                  )}&body=${encodeURIComponent(primaryMessage)}`}
-                  className="rounded-xl border border-white/15 bg-white/5 px-3 py-2 text-sm font-semibold text-white/90 hover:bg-white/10"
+                </a>
+                <a
+                  href={mailHref}
+                  className="inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white/[0.03] px-4 py-3 text-sm font-semibold text-white/90 hover:bg-white/[0.06] hover:border-white/25 transition"
                 >
                   Email
-                </Link>
+                </a>
               </div>
             </div>
-          </div>
+
+            <div className="mt-5 grid gap-3">
+              <a
+                href={BRAND.dossierUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-2xl border border-white/10 bg-white/[0.02] px-5 py-4 hover:bg-white/[0.04] hover:border-white/20 transition"
+              >
+                <p className="text-sm font-semibold text-white/90">
+                  Dossier PDF
+                </p>
+                <p className="mt-1 text-sm text-white/60">Ver en una pestaña</p>
+              </a>
+
+              <a
+                href={BRAND.dossierUrl}
+                download
+                className="rounded-2xl border border-white/10 bg-white/[0.02] px-5 py-4 hover:bg-white/[0.04] hover:border-white/20 transition"
+              >
+                <p className="text-sm font-semibold text-white/90">
+                  Descargar dossier
+                </p>
+                <p className="mt-1 text-sm text-white/60">
+                  PDF (para dirección)
+                </p>
+              </a>
+            </div>
+          </aside>
         </div>
       </section>
 
-      {/* What you get */}
-      <section className="mx-auto max-w-6xl px-5 py-10">
+      {/* WHAT YOU GET */}
+      <section className="mx-auto max-w-[1200px] px-6 mt-10 md:mt-14">
         <div className="grid gap-6 md:grid-cols-2">
           <SectionCard
             title="Qué aporta a tu sala"
-            subtitle="Pensado para fechas valle o para consolidar una noche fija."
+            subtitle="Ideal para fechas valle o para consolidar una noche recurrente."
             items={[
               "Afluencia incremental con activación dirigida",
               "Mejora de consumo por dinámica y timing",
               "Preventa (si aplica) para reducir incertidumbre",
-              "Creatividades y copies listos para la sala",
-              "Coordinación operativa: puerta, listas y reporting",
+              "Creatividades + copies listos para la sala",
+              "Coordinación de puerta, listas y reporting",
             ]}
           />
+
           <SectionCard
             title="Qué incluye el pack"
-            subtitle="Nos encargamos del producto, tú del espacio."
+            subtitle="Nosotros ponemos el producto. Tú pones el espacio."
             items={[
               "Concepto + estructura musical + timing",
-              "Plan de difusión (orgánico + colaboraciones)",
-              "Gestión de promotores/listas (si aplica)",
-              "Guía de operación y coordinación el día del evento",
+              "Plan de difusión coordinado con la sala",
+              "Gestión de listas/promotores (si aplica)",
+              "Guía operativa y coordinación el día del evento",
               "Cierre con conclusiones y propuesta de repetición",
             ]}
           />
         </div>
       </section>
 
-      {/* How it works */}
-      <section className="mx-auto max-w-6xl px-5 py-10">
-        <div className="rounded-3xl border border-white/10 bg-white/5 p-7">
+      {/* HOW IT WORKS */}
+      <section className="mx-auto max-w-[1200px] px-6 mt-10 md:mt-14">
+        <div className="glass rounded-3xl border border-white/10 p-7 md:p-10">
           <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
             <div>
-              <h2 className="text-xl font-semibold">Cómo trabajamos</h2>
-              <p className="mt-2 text-sm text-white/70">
-                Proceso simple y replicable para cerrar fechas con claridad.
+              <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/45">
+                Proceso
+              </p>
+              <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90">
+                Cómo trabajamos
+              </h2>
+              <p className="mt-3 text-sm text-white/65 max-w-2xl">
+                Flujo simple y replicable para cerrar fechas con claridad,
+                ejecutar sin fricción y decidir repetición con datos.
               </p>
             </div>
-            <Link
+
+            <a
               href="#contacto"
-              className="mt-4 inline-flex w-fit rounded-2xl border border-white/15 bg-white/5 px-4 py-2 text-sm font-semibold text-white/90 hover:bg-white/10 md:mt-0"
+              className="mt-4 inline-flex w-fit rounded-2xl border border-white/15 bg-white/[0.03] px-4 py-2 text-sm font-semibold text-white/90 hover:bg-white/[0.06] hover:border-white/25 transition md:mt-0"
             >
-              Ver propuesta
-            </Link>
+              Solicitar propuesta
+            </a>
           </div>
 
-          <div className="mt-7 grid gap-4 md:grid-cols-4">
+          <div className="mt-8 grid gap-4 md:grid-cols-4">
             <Step
               n="01"
               title="Fecha y condiciones"
-              text="Definimos el modelo (fijo / % / híbrido) y el plan de activación."
+              text="Modelo (fijo / % / híbrido) + objetivos + responsabilidades."
             />
             <Step
               n="02"
               title="Creatividades"
-              text="Adaptamos piezas a la sala y lanzamos comunicación coordinada."
+              text="Adaptamos piezas a la sala y coordinamos el calendario de comunicación."
             />
             <Step
               n="03"
               title="Activación"
-              text="Listas/promotores (si aplica), contenidos y empuje final 48–72h."
+              text="Listas/promotores (si aplica) + empuje final 48–72h + ajustes."
             />
             <Step
               n="04"
               title="Ejecución + cierre"
-              text="Puerta coordinada, timing de sala, y métricas para repetir."
+              text="Puerta coordinada, timing, incidencias y reporting para repetir."
             />
           </div>
         </div>
       </section>
 
-      {/* Collaboration models */}
-      <section className="mx-auto max-w-6xl px-5 py-10">
+      {/* MODELS */}
+      <section
+        id="modelo"
+        className="mx-auto max-w-[1200px] px-6 mt-10 md:mt-14"
+      >
         <div className="flex items-end justify-between gap-6">
           <div>
-            <h2 className="text-xl font-semibold">Modelos de colaboración</h2>
-            <p className="mt-2 text-sm text-white/70">
+            <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/45">
+              Colaboración
+            </p>
+            <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90">
+              Modelos de colaboración
+            </h2>
+            <p className="mt-3 text-sm text-white/65 max-w-2xl">
               Elegimos el modelo según plaza, fecha y objetivos
-              (afluencia/barra).
+              (afluencia/barra). Te recomendamos el más coherente para el primer
+              test.
             </p>
           </div>
-          <Link
+
+          <a
             href={whatsappHref}
             target="_blank"
-            className="hidden rounded-2xl bg-white px-4 py-2 text-sm font-semibold text-black hover:bg-white/90 md:inline-flex"
+            rel="noreferrer"
+            className="hidden md:inline-flex rounded-2xl bg-[var(--primary)] px-4 py-2 text-sm font-semibold text-white hover:bg-[color:rgba(255,77,94,0.82)] transition neon-border"
           >
             Consultar condiciones
-          </Link>
+          </a>
         </div>
 
         <div className="mt-6 grid gap-4 md:grid-cols-3">
           {MODELS.map((m) => (
             <div
               key={m.title}
-              className="rounded-3xl border border-white/10 bg-white/5 p-6"
+              className="glass relative overflow-hidden rounded-3xl border border-white/10 p-7"
             >
-              <div className="text-sm font-semibold">{m.title}</div>
-              <div className="mt-2 text-sm text-white/70">{m.forWho}</div>
-              <ul className="mt-4 space-y-2 text-sm text-white/80">
-                {m.bullets.map((b) => (
-                  <li key={b} className="flex gap-2">
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/70" />
-                    <span>{b}</span>
-                  </li>
-                ))}
-              </ul>
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,77,94,0.12),transparent_55%)]" />
+              <div className="relative">
+                <div className="flex items-center justify-between gap-4">
+                  <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-white/60">
+                    {m.tag}
+                  </p>
+                  <span className="h-2 w-2 rounded-full bg-[var(--primary)] shadow-[0_0_16px_rgba(255,77,94,0.35)]" />
+                </div>
+
+                <h3 className="mt-2 text-base font-black uppercase tracking-[0.06em] text-white/90">
+                  {m.title}
+                </h3>
+
+                <p className="mt-3 text-sm text-white/65">{m.forWho}</p>
+
+                <ul className="mt-5 space-y-2 text-sm text-white/80">
+                  {m.bullets.map((b) => (
+                    <li key={b} className="flex gap-2">
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/60" />
+                      <span>{b}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-6 flex gap-2">
+                  <a
+                    href="#contacto"
+                    className="inline-flex rounded-2xl border border-white/15 bg-white/[0.03] px-4 py-2 text-sm font-semibold text-white/90 hover:bg-white/[0.06] hover:border-white/25 transition"
+                  >
+                    Pedir propuesta
+                  </a>
+                  <a
+                    href={whatsappHref}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex rounded-2xl bg-white px-4 py-2 text-sm font-semibold text-black hover:opacity-90 transition"
+                  >
+                    WhatsApp
+                  </a>
+                </div>
+              </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Dossier / assets */}
-      <section className="mx-auto max-w-6xl px-5 py-10">
-        <div className="rounded-3xl border border-white/10 bg-white/5 p-7">
-          <h2 className="text-xl font-semibold">Material</h2>
-          <p className="mt-2 text-sm text-white/70">
-            Dossier para dirección de sala y material descargable.
+      {/* MATERIAL */}
+      <section className="mx-auto max-w-[1200px] px-6 mt-10 md:mt-14">
+        <div className="glass rounded-3xl border border-white/10 p-7 md:p-10">
+          <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/45">
+            Material
+          </p>
+          <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90">
+            Dossier y descargables
+          </h2>
+          <p className="mt-3 text-sm text-white/65 max-w-2xl">
+            Documento para dirección de sala con concepto, modelos, requisitos,
+            referencias y condiciones. Media kit opcional para creatividades.
           </p>
 
           <div className="mt-6 flex flex-wrap gap-3">
-            <Link
+            <a
               href={BRAND.dossierUrl}
               target="_blank"
-              className="rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-black hover:bg-white/90"
+              rel="noreferrer"
+              className="rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-black hover:opacity-90 transition"
             >
               Ver dossier (PDF)
-            </Link>
-            <Link
+            </a>
+
+            <a
               href={BRAND.dossierUrl}
               download
-              className="rounded-2xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white/90 hover:bg-white/10"
+              className="rounded-2xl border border-white/15 bg-white/[0.03] px-5 py-3 text-sm font-semibold text-white/90 hover:bg-white/[0.06] hover:border-white/25 transition"
             >
               Descargar dossier
-            </Link>
-            <Link
+            </a>
+
+            <a
               href={BRAND.mediaKitUrl}
-              className="rounded-2xl border border-white/15 bg-transparent px-5 py-3 text-sm font-semibold text-white/80 hover:bg-white/5"
+              className="rounded-2xl border border-white/15 bg-transparent px-5 py-3 text-sm font-semibold text-white/75 hover:bg-white/[0.04] transition"
             >
               Media kit (opcional)
-            </Link>
+            </a>
           </div>
 
           <div className="mt-6 grid gap-3 md:grid-cols-3">
             <MiniInfo
               title="Incluye"
-              text="Concepto, modelos, requisitos y casos."
+              text="Concepto, modelos, requisitos y flujo."
             />
             <MiniInfo title="Uso" text="Comparativa rápida para dirección." />
             <MiniInfo
@@ -424,12 +533,18 @@ export default function B2BPage() {
       </section>
 
       {/* FAQ */}
-      <section className="mx-auto max-w-6xl px-5 py-10">
+      <section id="faq" className="mx-auto max-w-[1200px] px-6 mt-10 md:mt-14">
         <div className="flex items-end justify-between gap-6">
           <div>
-            <h2 className="text-xl font-semibold">FAQ para salas</h2>
-            <p className="mt-2 text-sm text-white/70">
-              Respuestas directas a lo que normalmente pregunta un venue.
+            <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/45">
+              Preguntas frecuentes
+            </p>
+            <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90">
+              FAQ para salas
+            </h2>
+            <p className="mt-3 text-sm text-white/65 max-w-2xl">
+              Respuestas directas a lo que normalmente pregunta un venue al
+              valorar una colaboración.
             </p>
           </div>
         </div>
@@ -438,7 +553,7 @@ export default function B2BPage() {
           {FAQS.map((f) => (
             <details
               key={f.q}
-              className="group rounded-2xl border border-white/10 bg-white/5 p-5"
+              className="glass group rounded-2xl border border-white/10 p-5 hover:border-white/20 transition"
             >
               <summary className="cursor-pointer list-none text-sm font-semibold text-white/90">
                 <div className="flex items-center justify-between gap-4">
@@ -448,7 +563,7 @@ export default function B2BPage() {
                   </span>
                 </div>
               </summary>
-              <p className="mt-3 text-sm leading-relaxed text-white/75">
+              <p className="mt-3 text-sm leading-relaxed text-white/70">
                 {f.a}
               </p>
             </details>
@@ -456,13 +571,22 @@ export default function B2BPage() {
         </div>
       </section>
 
-      {/* Contact */}
-      <section id="contacto" className="mx-auto max-w-6xl px-5 pt-10 pb-16">
-        <div className="grid gap-6 md:grid-cols-[1fr_1fr]">
+      {/* CONTACT */}
+      <section
+        id="contacto"
+        className="mx-auto max-w-[1200px] px-6 mt-10 md:mt-14"
+      >
+        <div className="grid gap-6 md:grid-cols-2">
           <ContactForm />
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-7">
-            <h3 className="text-lg font-semibold">Contacto directo</h3>
-            <p className="mt-2 text-sm text-white/70">
+
+          <div className="glass rounded-3xl border border-white/10 p-7 md:p-8">
+            <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/45">
+              Contacto directo
+            </p>
+            <h3 className="mt-2 text-xl font-black uppercase tracking-tight text-white/90">
+              Cerramos más rápido por aquí
+            </h3>
+            <p className="mt-3 text-sm text-white/65">
               Si prefieres ir al grano, estos canales suelen cerrar más rápido.
             </p>
 
@@ -473,13 +597,7 @@ export default function B2BPage() {
                 href={whatsappHref}
                 primary
               />
-              <ActionCard
-                title="Email"
-                text={BRAND.email}
-                href={`mailto:${BRAND.email}?subject=${encodeURIComponent(
-                  "Propuesta B2B — La Putivuelta"
-                )}&body=${encodeURIComponent(primaryMessage)}`}
-              />
+              <ActionCard title="Email" text={BRAND.email} href={mailHref} />
               <ActionCard
                 title="Dossier PDF"
                 text="Ver / descargar"
@@ -488,9 +606,9 @@ export default function B2BPage() {
             </div>
 
             <div className="mt-7 rounded-2xl border border-white/10 bg-black/20 p-5">
-              <div className="text-xs font-semibold text-white/60">
+              <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/45">
                 Checklist para propuesta
-              </div>
+              </p>
               <ul className="mt-3 space-y-2 text-sm text-white/80">
                 {[
                   "Ciudad y nombre de sala",
@@ -500,11 +618,20 @@ export default function B2BPage() {
                   "Modelo preferido (fijo / % / híbrido)",
                 ].map((x) => (
                   <li key={x} className="flex gap-2">
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/70" />
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/60" />
                     <span>{x}</span>
                   </li>
                 ))}
               </ul>
+            </div>
+
+            <div className="mt-7 flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.02] px-5 py-4">
+              <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-white/55">
+                Tiempo de respuesta
+              </p>
+              <p className="text-sm font-semibold text-white/85">
+                24–72h laborables
+              </p>
             </div>
           </div>
         </div>
@@ -513,17 +640,39 @@ export default function B2BPage() {
           © {new Date().getFullYear()} {BRAND.name}. Sección B2B.
         </footer>
       </section>
+
+      {/* Mobile floating CTA */}
+      <div className="fixed bottom-6 right-6 z-50 md:hidden">
+        <a
+          href={whatsappHref}
+          target="_blank"
+          rel="noreferrer"
+          className="h-14 w-14 rounded-full bg-[var(--primary)] shadow-[0_0_30px_rgba(255,77,94,0.45)] border border-white/15 flex items-center justify-center font-black"
+          aria-label="WhatsApp"
+        >
+          WA
+        </a>
+      </div>
     </main>
+  );
+}
+
+function ValueChip({ k, v }: { k: string; v: string }) {
+  return (
+    <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+      <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/45">
+        {k}
+      </p>
+      <p className="mt-2 text-sm font-semibold text-white/85">{v}</p>
+    </div>
   );
 }
 
 function StatRow({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex items-start justify-between gap-4">
-      <div className="text-xs font-semibold text-white/55">{label}</div>
-      <div className="text-sm font-semibold text-white/90 text-right">
-        {value}
-      </div>
+      <p className="text-xs font-semibold text-white/55">{label}</p>
+      <p className="text-sm font-semibold text-white/90 text-right">{value}</p>
     </div>
   );
 }
@@ -531,9 +680,11 @@ function StatRow({ label, value }: { label: string; value: string }) {
 function Step({ n, title, text }: { n: string; title: string; text: string }) {
   return (
     <div className="rounded-2xl border border-white/10 bg-black/20 p-5">
-      <div className="text-xs font-semibold text-white/60">{n}</div>
-      <div className="mt-2 text-sm font-semibold">{title}</div>
-      <div className="mt-2 text-sm leading-relaxed text-white/70">{text}</div>
+      <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/45">
+        {n}
+      </p>
+      <p className="mt-2 text-sm font-semibold text-white/90">{title}</p>
+      <p className="mt-2 text-sm leading-relaxed text-white/65">{text}</p>
     </div>
   );
 }
@@ -548,13 +699,15 @@ function SectionCard({
   items: string[];
 }) {
   return (
-    <div className="rounded-3xl border border-white/10 bg-white/5 p-7">
-      <h2 className="text-xl font-semibold">{title}</h2>
-      <p className="mt-2 text-sm text-white/70">{subtitle}</p>
-      <ul className="mt-5 space-y-2 text-sm text-white/80">
+    <div className="glass rounded-3xl border border-white/10 p-7 md:p-8">
+      <h2 className="text-xl md:text-2xl font-black uppercase tracking-tight text-white/90">
+        {title}
+      </h2>
+      <p className="mt-3 text-sm text-white/65">{subtitle}</p>
+      <ul className="mt-6 space-y-2 text-sm text-white/80">
         {items.map((x) => (
           <li key={x} className="flex gap-2">
-            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/70" />
+            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/60" />
             <span>{x}</span>
           </li>
         ))}
@@ -566,8 +719,10 @@ function SectionCard({
 function MiniInfo({ title, text }: { title: string; text: string }) {
   return (
     <div className="rounded-2xl border border-white/10 bg-black/20 p-5">
-      <div className="text-xs font-semibold text-white/60">{title}</div>
-      <div className="mt-2 text-sm font-semibold text-white/90">{text}</div>
+      <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/45">
+        {title}
+      </p>
+      <p className="mt-2 text-sm font-semibold text-white/85">{text}</p>
     </div>
   );
 }
@@ -584,60 +739,34 @@ function ActionCard({
   primary?: boolean;
 }) {
   return (
-    <Link
+    <a
       href={href}
       target="_blank"
+      rel="noreferrer"
       className={[
-        "rounded-2xl border border-white/10 p-5 transition",
+        "rounded-2xl border border-white/10 p-5 transition block",
         primary
           ? "bg-white text-black hover:bg-white/90"
-          : "bg-black/20 text-white hover:bg-white/5",
+          : "bg-black/20 text-white hover:bg-white/[0.04] hover:border-white/20",
       ].join(" ")}
     >
-      <div className="text-sm font-semibold">{title}</div>
-      <div
+      <p className="text-sm font-semibold">{title}</p>
+      <p
         className={
-          primary ? "mt-1 text-sm text-black/70" : "mt-1 text-sm text-white/70"
+          primary ? "mt-1 text-sm text-black/70" : "mt-1 text-sm text-white/60"
         }
       >
         {text}
-      </div>
-      <div
+      </p>
+      <p
         className={
           primary
-            ? "mt-3 text-xs font-semibold text-black/70"
-            : "mt-3 text-xs font-semibold text-white/60"
+            ? "mt-3 text-[11px] font-bold uppercase tracking-[0.22em] text-black/70"
+            : "mt-3 text-[11px] font-bold uppercase tracking-[0.22em] text-white/45"
         }
       >
         Abrir →
-      </div>
-    </Link>
-  );
-}
-
-function Field({
-  label,
-  name,
-  placeholder,
-  type = "text",
-}: {
-  label: string;
-  name: string;
-  placeholder?: string;
-  type?: string;
-}) {
-  return (
-    <div className="grid gap-2">
-      <label htmlFor={name} className="text-xs font-semibold text-white/70">
-        {label}
-      </label>
-      <input
-        id={name}
-        name={name}
-        type={type}
-        placeholder={placeholder}
-        className="w-full rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white/90 placeholder:text-white/40 outline-none focus:ring-2 focus:ring-white/20"
-      />
-    </div>
+      </p>
+    </a>
   );
 }

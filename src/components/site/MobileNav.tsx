@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import type { NavItem } from "@/components/site/nav";
+import Image from "next/image";
 
 function IconMenu() {
   return (
@@ -103,11 +104,20 @@ export function MobileNav({ nav }: { nav: readonly NavItem[] }) {
               <div className="glass flex items-center justify-between rounded-2xl border border-white/10 px-4 py-3">
                 <div className="flex flex-col">
                   <p className="text-sm font-black uppercase tracking-tight text-white">
-                    La Put* Vuelta
+                    <Link href="/" className="flex items-center gap-3">
+                      <Image
+                        src="/logo.png"
+                        alt="La Put* Vuelta"
+                        width={160}
+                        height={40}
+                        priority
+                        className="h-8 w-auto"
+                      />
+                    </Link>
                   </p>
-                  <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/45">
+                  {/* <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/45">
                     Navegación
-                  </p>
+                  </p> */}
                 </div>
 
                 <button
@@ -153,9 +163,6 @@ export function MobileNav({ nav }: { nav: readonly NavItem[] }) {
                 <span className="pointer-events-none absolute -inset-2 -z-10 rounded-2xl bg-[var(--primary)]/25 blur-xl" />
                 Comprar entradas
               </Link>
-              <p className="mt-3 text-xs text-white/45">
-                Compra oficial vía Fourvenues.
-              </p>
             </div>
 
             {/* Footer */}

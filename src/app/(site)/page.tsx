@@ -5,6 +5,7 @@ import { ContainerFull } from "@/components/site/ContainerFull";
 import { Badge } from "@/components/site/Badge";
 import { ButtonLink } from "@/components/site/ButtonLink";
 import { Section } from "@/components/site/Section";
+import Link from "next/link";
 import { HeroCarousel } from "@/components/site/HeroCarousel";
 
 export const metadata: Metadata = {
@@ -38,6 +39,66 @@ const slides = [
       "Durante la fiesta irán ocurriendo MOMENTOS ESPECIALES, algunos con SORPRESAS y REGALOS y otros con… ¿esperabas saberlo todo aquí?",
   },
 ];
+
+/** Helpers locales (ponlos debajo del componente o arriba del return) **/
+
+function InfoCard({
+  index,
+  tag,
+  title,
+  subtitle,
+  actions,
+  children,
+}: {
+  index: string;
+  tag: string;
+  title: string;
+  subtitle: string;
+  actions?: React.ReactNode;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="glass group relative overflow-hidden rounded-3xl border border-white/10 p-1">
+      <div className="pointer-events-none absolute -right-12 -top-12 h-48 w-48 rounded-full bg-[var(--primary)]/10 blur-3xl transition group-hover:bg-[var(--primary)]/20" />
+      <div className="rounded-[22px] p-7 md:p-8">
+        <div className="mb-5 flex items-end justify-between gap-4">
+          <span className="text-[var(--primary)] font-black text-5xl opacity-20 leading-none">
+            {index}
+          </span>
+          <span className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/40">
+            {tag}
+          </span>
+        </div>
+
+        <div className="flex items-start justify-between gap-4">
+          <div className="min-w-0">
+            <h3 className="text-lg md:text-xl font-black uppercase tracking-tight text-white/90">
+              {title}
+            </h3>
+            <p className="mt-2 text-sm text-white/65">{subtitle}</p>
+          </div>
+          {actions ? <div className="shrink-0">{actions}</div> : null}
+        </div>
+
+        <div className="mt-6">{children}</div>
+      </div>
+    </div>
+  );
+}
+
+function Dot() {
+  return (
+    <span className="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-[var(--primary)] shadow-[0_0_14px_rgba(255,77,94,0.35)]" />
+  );
+}
+
+function Pill({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="inline-flex items-center rounded-full border border-white/15 bg-white/[0.03] px-3 py-1 text-xs font-semibold text-white/80">
+      {children}
+    </span>
+  );
+}
 
 export default function HomePage() {
   return (
@@ -101,107 +162,138 @@ export default function HomePage() {
 
         {/* Info */}
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
-          {/* Card 01 */}
-          <div className="glass group relative overflow-hidden rounded-3xl border border-white/10 p-1">
-            <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-[var(--primary)]/10 blur-3xl transition group-hover:bg-[var(--primary)]/20" />
-            <div className="rounded-[22px] p-7 md:p-8">
-              <div className="mb-4 flex items-end justify-between gap-4">
-                <span className="text-[var(--primary)] font-black text-5xl opacity-20 leading-none">
-                  01
-                </span>
-                <span className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/40">
-                  DOSSIER
-                </span>
-              </div>
+          <InfoCard
+            index="01"
+            tag="DOSSIER"
+            title="¿Qué es La Put* Vuelta?"
+            subtitle="Fiesta + show + directo. Todo pasa."
+          >
+            <p className="text-sm text-white/70 leading-relaxed">
+              LA PUT* VUELTA es una noche donde se juntan fiesta, narrativa y
+              momentos. Está pensada para quien quiere que pasen cosas, para
+              quien quiere una historia que contar al día siguiente.
+            </p>
 
-              <Section
-                title="¿Qué es la Put*vuelta?"
-                subtitle="La fiesta que estabas esperando."
-              >
-                <p className="text-sm text-white/70 leading-relaxed">
-                  LA PUT*VUELTA es una fiesta dónde todo pasa. Una fiesta
-                  pensada para los que nos gustan que pasen cosas, para los que
-                  queremos una historia que contar.
-                  <br /> <br />
-                  Cada fiesta es diferente, retransmitida al 100% en directo
-                  hace que puedas seguir la fiesta hasta en el sofá de casa.
-                  <br />
-                  <br />
-                  Pero al fin y al cabo, ¿Hace cuánto no sales a dar una vuelta?
-                </p>
-              </Section>
+            <p className="mt-4 text-sm text-white/70 leading-relaxed">
+              Cada edición se vive dentro… y también fuera: retransmisión en
+              directo para seguir la noche incluso desde casa. Pero la pregunta
+              sigue siendo:
+              <span className="text-white/85 font-semibold">
+                {" "}
+                ¿hace cuánto no sales a dar una vuelta?
+              </span>
+            </p>
+
+            <div className="mt-6 flex flex-wrap gap-2">
+              <Pill>Fiesta temática</Pill>
+              <Pill>Momento viral</Pill>
+              <Pill>Live en Kick</Pill>
             </div>
-          </div>
+          </InfoCard>
 
-          {/* Card 02 */}
-          <div className="glass group relative overflow-hidden rounded-3xl border border-white/10 p-1">
-            <div className="pointer-events-none absolute -left-10 -top-10 h-40 w-40 rounded-full bg-[var(--primary)]/10 blur-3xl transition group-hover:bg-[var(--primary)]/20" />
-            <div className="rounded-[22px] p-7 md:p-8">
-              <div className="mb-4 flex items-end justify-between gap-4">
-                <span className="text-[var(--primary)] font-black text-5xl opacity-20 leading-none">
-                  02
-                </span>
-                <span className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/40">
-                  FLOW
-                </span>
-              </div>
-
-              <Section
-                title="Cómo funciona"
-                subtitle="Todo claro: entradas, directo y momentos."
-              >
-                <ul className="space-y-2 text-sm text-white/70 leading-relaxed">
-                  <li>• Entradas desde la web.</li>
-                  <li>• Directo en Kick durante la noche.</li>
-                  <li>• Activaciones y regalos.</li>
-                </ul>
-              </Section>
-            </div>
-          </div>
-
-          {/* Card 03 */}
-          <div className="glass group relative overflow-hidden rounded-3xl border border-white/10 p-1">
-            <div className="pointer-events-none absolute -right-10 -bottom-10 h-44 w-44 rounded-full bg-[var(--primary)]/10 blur-3xl transition group-hover:bg-[var(--primary)]/20" />
-            <div className="rounded-[22px] p-7 md:p-8">
-              <div className="mb-4 flex items-end justify-between gap-4">
-                <span className="text-[var(--primary)] font-black text-5xl opacity-20 leading-none">
-                  03
-                </span>
-                <span className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/40">
-                  LINKS
-                </span>
-              </div>
-
-              <Section
-                title="Dónde verlo"
-                subtitle="Links oficiales."
-                actions={
-                  <div className="relative inline-flex">
-                    {/* Glow wrapper para que el solid se vea más “neon” */}
-                    <span className="pointer-events-none absolute -inset-2 -z-10 rounded-2xl bg-[var(--primary)]/20 blur-xl" />
-                    <ButtonLink
-                      href="https://kick.com/laputvuelta-oficial"
-                      external
-                      variant="solid"
-                    >
-                      Ir a Kick
-                    </ButtonLink>
-                  </div>
-                }
-              >
-                <div className="space-y-2 text-sm text-white/70">
-                  <p>
-                    Kick:{" "}
-                    <span className="text-white/85">laputvuelta-oficial</span>
-                  </p>
-                  <p>
-                    Instagram:{" "}
-                    <span className="text-white/85">@laputvuelta.oficial</span>
+          <InfoCard
+            index="02"
+            tag="FLOW"
+            title="Cómo funciona"
+            subtitle="Entradas, directo y activación sin líos."
+          >
+            <ul className="mt-1 space-y-3 text-sm text-white/70">
+              <li className="flex gap-3">
+                <Dot />
+                <div>
+                  <p className="text-white/85 font-semibold">Entradas</p>
+                  <p className="text-white/60">
+                    Venta oficial desde la web (Fourvenues).
                   </p>
                 </div>
-              </Section>
+              </li>
+
+              <li className="flex gap-3">
+                <Dot />
+                <div>
+                  <p className="text-white/85 font-semibold">Directo</p>
+                  <p className="text-white/60">
+                    Streaming durante la noche en Kick.
+                  </p>
+                </div>
+              </li>
+
+              <li className="flex gap-3">
+                <Dot />
+                <div>
+                  <p className="text-white/85 font-semibold">Activaciones</p>
+                  <p className="text-white/60">
+                    Momentos, regalos y dinámicas (según edición).
+                  </p>
+                </div>
+              </li>
+            </ul>
+
+            <div className="mt-6 rounded-2xl border border-white/10 bg-black/20 p-4">
+              <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-white/45">
+                Operativa
+              </p>
+              <p className="mt-2 text-sm text-white/70">
+                Coordinamos puerta, timing y comunicación con la sala para
+                maximizar afluencia y consumo.
+              </p>
             </div>
-          </div>
+          </InfoCard>
+
+          <InfoCard
+            index="03"
+            tag="LINKS"
+            title="Dónde verlo"
+            subtitle="Canales oficiales y acceso directo."
+            actions={
+              <div className="relative inline-flex">
+                <span className="pointer-events-none absolute -inset-2 -z-10 rounded-2xl bg-[var(--primary)]/20 blur-xl" />
+                <ButtonLink
+                  href="https://kick.com/laputvuelta-oficial"
+                  external
+                  variant="solid"
+                >
+                  Ir a Kick
+                </ButtonLink>
+              </div>
+            }
+          >
+            <div className="space-y-3 text-sm text-white/70">
+              <a
+                href="https://kick.com/laputvuelta-oficial"
+                target="_blank"
+                rel="noreferrer"
+                className="group flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.02] px-4 py-3 hover:bg-white/[0.04] hover:border-white/20 transition"
+              >
+                <span className="text-white/85 font-semibold">Kick</span>
+                <span className="text-white/55 group-hover:text-white/70 transition">
+                  laputvuelta-oficial →
+                </span>
+              </a>
+
+              <a
+                href="https://instagram.com/laputvuelta.oficial"
+                target="_blank"
+                rel="noreferrer"
+                className="group flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.02] px-4 py-3 hover:bg-white/[0.04] hover:border-white/20 transition"
+              >
+                <span className="text-white/85 font-semibold">Instagram</span>
+                <span className="text-white/55 group-hover:text-white/70 transition">
+                  @laputvuelta.oficial →
+                </span>
+              </a>
+
+              <Link
+                href="/tickets"
+                className="group flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.02] px-4 py-3 hover:bg-white/[0.04] hover:border-white/20 transition"
+              >
+                <span className="text-white/85 font-semibold">Entradas</span>
+                <span className="text-white/55 group-hover:text-white/70 transition">
+                  Ver calendario →
+                </span>
+              </Link>
+            </div>
+          </InfoCard>
         </div>
 
         {/* CTA final (conversion) */}

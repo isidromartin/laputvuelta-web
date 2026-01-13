@@ -43,10 +43,10 @@ export function Header() {
 
         {/* Right CTA + Mobile */}
         <div className="flex items-center gap-4">
-          {/* CTA: aquí idealmente deberías enlazar a /tickets o a Fourvenues */}
+          {/* CTA: solo tablet/desktop (>= md) */}
           <Link
             href="/tickets"
-            className="relative flex items-center justify-center bg-[var(--primary)] hover:bg-[color:rgba(255,77,94,0.8)] text-white px-6 py-2 rounded-full font-bold text-sm transition-all transform hover:scale-105 neon-border group"
+            className="relative hidden md:inline-flex items-center justify-center bg-[var(--primary)] hover:bg-[color:rgba(255,77,94,0.8)] text-white px-6 py-2 rounded-full font-bold text-sm transition-all transform hover:scale-105 neon-border group"
           >
             <span className="absolute -top-1 -right-1 flex h-3 w-3">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75" />
@@ -55,6 +55,7 @@ export function Header() {
             COMPRAR ENTRADAS
           </Link>
 
+          {/* Mobile drawer: solo móvil (< md) */}
           <div className="md:hidden">
             <MobileNav nav={nav} />
           </div>
