@@ -187,10 +187,16 @@ const GAMES_AND_CHALLENGES = [
 const FILMMAKERS = [
   {
     name: "Otherview",
+    ig: "https://instagram.com/o1herview",
+    img: "/b2b/team/otherview.jpg",
+    acc: "o1herview",
     text: "Equipo audiovisual con experiencia en proyectos con artistas y festivales.",
   },
   {
     name: "Bau Creator",
+    ig: "https://instagram.com/bau.creator",
+    img: "/b2b/team/bau-creator.jpg",
+    acc: "bau.creator",
     text: "Cobertura y narrativa visual pensada para maximizar contenido útil para redes.",
   },
 ];
@@ -280,10 +286,34 @@ const EXTRAS = [
 ];
 
 const TEAM = [
-  { name: "Villalobos", role: "DJ" },
-  { name: "Tomi Demaio", role: "DJ" },
-  { name: "Lalo Sánchez", role: "DJ" },
-  { name: "Gonmarin", role: "DJ" },
+  {
+    name: "Villalobos",
+    role: "DJ",
+    img: "/b2b/team/villalobos.png",
+    acc: "villalobospjulio",
+    ig: "https://www.instagram.com/villalobospjulio/",
+  },
+  {
+    name: "Tomi Demaio",
+    role: "DJ",
+    img: "/b2b/team/tomi-demaio.png",
+    acc: "tomidemaio",
+    ig: "https://www.instagram.com/tomidemaio/",
+  },
+  {
+    name: "Lalo Sánchez",
+    role: "DJ",
+    img: "/b2b/team/lalo-sanchez.jpg",
+    acc: "lalosl7",
+    ig: "https://www.instagram.com/lalosl7/",
+  },
+  {
+    name: "Gonmarin",
+    role: "DJ",
+    img: "/b2b/team/gonmarin.jpg",
+    acc: "gonmariin",
+    ig: "https://www.instagram.com/gonmariin/",
+  },
 ];
 
 const FAQS: { q: string; a: string }[] = [
@@ -885,17 +915,33 @@ export default function B2BPage() {
 
           <div className="mt-6 grid gap-4 md:grid-cols-2">
             {FILMMAKERS.map((f) => (
-              <div
+              <Link
+                href={f.ig}
                 key={f.name}
                 className="rounded-3xl border border-white/10 bg-black/20 p-7"
               >
-                <p className="text-base font-black uppercase tracking-[0.06em] text-white/90">
-                  {f.name}
-                </p>
-                <p className="mt-3 text-sm leading-relaxed text-white/70">
-                  {f.text}
-                </p>
-              </div>
+                <div className="flex items-start gap-4">
+                  <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]">
+                    <Image
+                      src={f.img}
+                      alt={f.name}
+                      fill
+                      className="object-cover"
+                      sizes="56px"
+                      priority={false}
+                    />
+                  </div>
+
+                  <div className="min-w-0">
+                    <p className="text-base font-black uppercase tracking-[0.06em] text-white/90">
+                      {f.name} · @{f.acc}
+                    </p>
+                    <p className="mt-2 text-sm leading-relaxed text-white/70">
+                      {f.text}
+                    </p>
+                  </div>
+                </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -1075,15 +1121,30 @@ export default function B2BPage() {
 
           <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {TEAM.map((t) => (
-              <div
+              <Link
+                href={t.ig}
                 key={t.name}
                 className="rounded-3xl border border-white/10 bg-black/20 p-6"
               >
-                <p className="text-sm font-semibold text-white/90">{t.name}</p>
+                <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]">
+                  <Image
+                    src={t.img}
+                    alt={t.name}
+                    fill
+                    className="object-cover"
+                    sizes="(min-width: 1024px) 240px, (min-width: 640px) 45vw, 90vw"
+                    priority={false}
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
+                </div>
+
+                <p className="mt-4 text-sm font-semibold text-white/90">
+                  {t.name} · @{t.acc}
+                </p>
                 <p className="mt-2 text-[11px] font-bold uppercase tracking-[0.22em] text-white/55">
                   {t.role}
                 </p>
-              </div>
+              </Link>
             ))}
           </div>
 
