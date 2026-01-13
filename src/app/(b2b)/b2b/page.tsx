@@ -776,7 +776,7 @@ export default function B2BPage() {
                     </li>
                   ))}
                 </ul>
-                <div className="mt-6 flex gap-2">
+                {/* <div className="mt-6 flex gap-2">
                   <a
                     href="#contacto"
                     className="inline-flex rounded-2xl border border-white/15 bg-white/[0.03] px-4 py-2 text-sm font-semibold text-white/90 hover:bg-white/[0.06] hover:border-white/25 transition"
@@ -791,7 +791,7 @@ export default function B2BPage() {
                   >
                     WhatsApp
                   </a>
-                </div>
+                </div> */}
               </div>
             ))}
           </div>
@@ -937,12 +937,12 @@ export default function B2BPage() {
             ))}
           </div>
 
-          <div className="mt-6 rounded-2xl border border-white/10 bg-white/[0.02] px-5 py-4">
+          {/* <div className="mt-6 rounded-2xl border border-white/10 bg-white/[0.02] px-5 py-4">
             <p className="text-sm font-semibold text-white/85">Sello propio</p>
             <p className="mt-2 text-sm text-white/70 italic">
               ¿Hace cuánto no sales a dar una vuelta?
             </p>
-          </div>
+          </div> */}
         </div>
       </section>
 
@@ -1336,7 +1336,7 @@ function StatRow({ label, value }: { label: string; value: string }) {
 function Step({ n, title, text }: { n: string; title: string; text: string }) {
   return (
     <div className="rounded-2xl border border-white/10 bg-black/20 p-5">
-      <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/45">
+      <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
         {n}
       </p>
       <p className="mt-2 text-sm font-semibold text-white/90">{title}</p>
