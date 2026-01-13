@@ -10,6 +10,10 @@
   --accent2: 330 80% 60%;
 }
 
+:root {
+  --font-display: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
 html,
 body {
   height: 100%;
@@ -30,4 +34,64 @@ body {
 
 .kick {
   background-color: rgb(83, 252, 24);
+}
+
+:root {
+  --primary: #ff4d5e;
+  --background-dark: #0b0b10;
+  --background-light: #f8f5f6;
+  --surface: #16161d;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+/* Fuente principal (si ya usas next/font, puedes borrar esto) */
+body {
+  font-family: "Space Grotesk", system-ui, -apple-system, Segoe UI, Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+}
+
+/* Material Symbols */
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+
+.neon-glow {
+  text-shadow: 0 0 10px rgba(255, 77, 94, 0.8), 0 0 20px rgba(255, 77, 94, 0.4);
+}
+
+.neon-border {
+  box-shadow: 0 0 15px rgba(255, 77, 94, 0.3);
+  border: 1px solid rgba(255, 77, 94, 0.5);
+}
+
+.glass {
+  background: rgba(22, 22, 29, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.grain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.04;
+  background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBmRPFw2X6QKIsRRJuN-Rg_LFTRsSIQOizISLea9wuZ0TQUNVDUOdeuyEE9q2AhYQshTvr-Q5EXLyLjmhEbEQTluTUEgA4Lqj1na0OZNbIHFGri3ZOLA3ceCf-rpNwG-T5DUoeLGccBGzEQGvWjmGUP3ky1ULuyCcg0BjHgOdj30xPgX920Cp5_MixiyPj0FPRZcaXlUoikpIY9c3Q-HL1tcbOW2fDniFG5VlZImckaNLS0GQdsuYc1O23axRRvEO_A6lU630jZxEU");
+}
+
+.text-outline {
+  -webkit-text-stroke: 1px #ff4d5e;
+  color: transparent;
+}
+
+/* Forma diagonal del bloque agenda */
+.diagonal-bg {
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
 }

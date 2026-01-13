@@ -199,6 +199,13 @@ function formatDateES(iso?: string) {
   return d.toLocaleDateString("es-ES", { dateStyle: "long" });
 }
 
+function formatTimeES(iso?: string) {
+  if (!iso) return "";
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return "";
+  return d.toLocaleTimeString("es-ES", { timeStyle: "short" });
+}
+
 function getSection<T extends { _type: string }>(
   sections: any[] | undefined,
   type: T["_type"]
@@ -215,28 +222,35 @@ function ActivationTimeline({
     <ol className="relative border-l border-white/10 pl-6 space-y-4">
       {items.map((it, idx) => (
         <li key={idx} className="relative">
-          <span className="absolute -left-[9px] top-2 h-4 w-4 rounded-full border border-white/20 bg-black" />
-          <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-4">
-            <div className="flex items-start justify-between gap-4">
-              <p className="text-sm font-semibold text-white/90">
-                {it.title ?? "Activación"}
-              </p>
-              {it.window ? (
-                <p className="text-xs text-white/55">{it.window}</p>
+          <span className="absolute -left-[9px] top-3 h-4 w-4 rounded-full border border-white/20 bg-black shadow-[0_0_16px_rgba(255,77,94,0.15)]" />
+          <div className="glass group relative overflow-hidden rounded-2xl border border-white/10 p-4">
+            <div className="pointer-events-none absolute -right-16 -top-16 h-44 w-44 rounded-full bg-[var(--primary)]/10 blur-3xl transition group-hover:bg-[var(--primary)]/16" />
+            <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-white/5" />
+
+            <div className="relative">
+              <div className="flex items-start justify-between gap-4">
+                <p className="text-sm font-black uppercase tracking-[0.06em] text-white/90">
+                  {it.title ?? "Activación"}
+                </p>
+                {it.window ? (
+                  <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/45">
+                    {it.window}
+                  </p>
+                ) : null}
+              </div>
+
+              {it.location ? (
+                <p className="mt-1 text-xs text-white/55">{it.location}</p>
+              ) : null}
+
+              {it.secret ? (
+                <p className="mt-2 text-sm text-white/70">
+                  Sorpresa. Ya te enteras allí.
+                </p>
+              ) : it.description ? (
+                <p className="mt-2 text-sm text-white/75">{it.description}</p>
               ) : null}
             </div>
-
-            {it.location ? (
-              <p className="mt-1 text-xs text-white/55">{it.location}</p>
-            ) : null}
-
-            {it.secret ? (
-              <p className="mt-2 text-sm text-white/70">
-                Sorpresa. Ya te enteras allí.
-              </p>
-            ) : it.description ? (
-              <p className="mt-2 text-sm text-white/75">{it.description}</p>
-            ) : null}
           </div>
         </li>
       ))}
@@ -262,7 +276,7 @@ export default async function EventPage({
   );
 
   const kickUrl =
-    live?.kickUrlOverride || "https://kick.com/laputivuelta-oficial";
+    live?.kickUrlOverride || "https://kick.com/laputvuelta-oficial";
   const kickUser = kickUsernameFromUrl(kickUrl);
   const kickPlayerSrc =
     kickUser && live
@@ -286,12 +300,36 @@ export default async function EventPage({
     Boolean(event.venue?.mapsUrl);
 
   return (
-    <main className={`pt-8 pb-12 ${hasSticky ? "pb-28 md:pb-12" : ""}`}>
+    <main
+      className={`relative pt-28 pb-16 md:pt-32 md:pb-24 ${
+        hasSticky ? "pb-28 md:pb-24" : ""
+      }`}
+    >
+      {/* Ambient */}
+      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute left-1/2 top-[-220px] h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-[var(--primary)]/18 blur-[180px]" />
+        <div className="absolute right-[-160px] top-[260px] h-[460px] w-[460px] rounded-full bg-[var(--primary)]/10 blur-[190px]" />
+      </div>
+      <div className="grain" />
+
       <Container>
-        {/* HERO con cartel */}
-        <section className="relative overflow-hidden rounded-3xl border border-white/10 bg-black">
+        {/* HERO */}
+        <section className="glass group relative overflow-hidden rounded-3xl border border-white/10">
+          {/* watermark opcional (si tienes /devil-mark.png) */}
+          <div className="pointer-events-none absolute -right-8 -bottom-10 opacity-60 hidden md:block">
+            <div className="relative h-[220px] w-[220px]">
+              <Image
+                src="/devil-mark.png"
+                alt=""
+                fill
+                className="object-contain drop-shadow-[0_0_45px_rgba(255,77,94,0.22)]"
+                priority={false}
+              />
+            </div>
+          </div>
+
           {coverUrl ? (
-            <div className="relative aspect-[21/9] w-full">
+            <div className="relative aspect-[21/9] w-full border-b border-white/10 bg-black/40">
               <Image
                 src={coverUrl}
                 alt={event.title ?? "Evento"}
@@ -300,10 +338,11 @@ export default async function EventPage({
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 1200px"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,77,94,0.16),transparent_45%)]" />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent" />
             </div>
           ) : (
-            <div className="h-40 w-full bg-white/[0.02]" />
+            <div className="h-40 w-full border-b border-white/10 bg-white/[0.02]" />
           )}
 
           <div className="relative p-6 md:p-8">
@@ -320,112 +359,145 @@ export default async function EventPage({
               ) : null}
             </div>
 
-            <h1 className="mt-4 text-2xl md:text-4xl font-semibold tracking-tight text-white">
-              {event.title ?? "Evento"}
-            </h1>
+            <div className="mt-4 flex items-end justify-between gap-4">
+              <h1 className="text-2xl md:text-5xl font-black uppercase tracking-tight text-white/95">
+                {event.title ?? "Evento"}
+              </h1>
+              <span className="hidden md:block text-[var(--primary)] font-black text-6xl opacity-20 leading-none">
+                01
+              </span>
+            </div>
 
-            <p className="mt-2 text-sm md:text-base text-white/70">
+            <p className="mt-2 text-sm md:text-base text-white/65 leading-relaxed">
               {formatDateTimeES(event.startAt)}
               {event.venue?.address ? ` · ${event.venue.address}` : ""}
             </p>
 
-            <div className="mt-5 flex flex-wrap gap-3">
-              {/* {tickets?.fourvenuesUrl ? (
-                <ButtonLink
+            <div className="mt-6 flex flex-wrap gap-3">
+              {/* Comprar / Entradas */}
+              {tickets?.fourvenuesUrl ? (
+                <a
                   href={tickets.fourvenuesUrl}
-                  external
-                  variant="solid"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="relative inline-flex items-center justify-center rounded-2xl bg-[var(--primary)] px-5 py-3 text-sm font-black uppercase tracking-[0.12em] text-white transition hover:bg-[color:rgba(255,77,94,0.9)] hover:scale-[1.01] shadow-[0_0_30px_rgba(255,77,94,0.18)]"
                 >
+                  <span className="pointer-events-none absolute -inset-[2px] rounded-2xl border border-white/15" />
                   Comprar entradas
-                </ButtonLink>
+                </a>
               ) : (
                 <ButtonLink href="/tickets" variant="solid">
                   Entradas
                 </ButtonLink>
-              )} */}
+              )}
 
+              {/* Kick */}
               {live ? (
                 <a
                   href={kickUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center justify-center rounded-full kick px-5 py-3 text-sm font-semibold text-black hover:opacity-90 transition"
+                  className="inline-flex items-center justify-center rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-3 text-sm font-black uppercase tracking-[0.12em] text-white/90 backdrop-blur transition hover:bg-white/[0.06] hover:border-[var(--primary)]/35 hover:text-white"
                 >
                   Abrir en Kick
                 </a>
               ) : (
-                <a
+                <Link
                   href="/live"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center justify-center rounded-full kick px-5 py-2 text-sm font-semibold text-black hover:opacity-90 transition"
+                  className="inline-flex items-center justify-center rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-3 text-sm font-black uppercase tracking-[0.12em] text-white/90 backdrop-blur transition hover:bg-white/[0.06] hover:border-[var(--primary)]/35 hover:text-white"
                 >
                   Abrir en Kick
-                </a>
+                </Link>
               )}
 
+              {/* Maps */}
               {event.venue?.mapsUrl ? (
-                <ButtonLink href={event.venue.mapsUrl} external variant="solid">
+                <a
+                  href={event.venue.mapsUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-3 text-sm font-black uppercase tracking-[0.12em] text-white/90 backdrop-blur transition hover:bg-white/[0.06] hover:border-[var(--primary)]/35 hover:text-white"
+                >
                   Cómo llegar
-                </ButtonLink>
+                </a>
               ) : null}
 
-              <ButtonLink href="/events">Ver todos</ButtonLink>
+              <ButtonLink href="/events" variant="outline">
+                Ver todos
+              </ButtonLink>
             </div>
           </div>
         </section>
 
         {/* QUICK FACTS */}
         <div className="mt-6 grid gap-4 md:grid-cols-3">
-          <div className="rounded-3xl border border-white/10 bg-white/[0.02] p-5">
-            <p className="text-xs text-white/55">Sala</p>
-            <p className="mt-1 text-sm font-semibold text-white/90">
-              {event.venue?.name ?? "Por confirmar"}
-            </p>
-            <p className="mt-1 text-sm text-white/65">
-              {event.venue?.city ?? ""}
-            </p>
+          <div className="glass relative overflow-hidden rounded-3xl border border-white/10 p-5">
+            <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-[var(--primary)]/10 blur-3xl" />
+            <div className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-white/5" />
+            <div className="relative">
+              <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/45">
+                Sala
+              </p>
+              <p className="mt-2 text-sm font-black uppercase tracking-[0.06em] text-white/90">
+                {event.venue?.name ?? "Por confirmar"}
+              </p>
+              <p className="mt-1 text-sm text-white/60">
+                {event.venue?.city ?? ""}
+              </p>
+            </div>
           </div>
 
-          <div className="rounded-3xl border border-white/10 bg-white/[0.02] p-5">
-            <p className="text-xs text-white/55">Fecha</p>
-            <p className="mt-1 text-sm font-semibold text-white/90">
-              {formatDateES(event.startAt) || "Por confirmar"}
-            </p>
-            <p className="mt-1 text-sm text-white/65">
-              {event.startAt
-                ? new Date(event.startAt).toLocaleTimeString("es-ES", {
-                    timeStyle: "short",
-                  })
-                : ""}
-            </p>
+          <div className="glass relative overflow-hidden rounded-3xl border border-white/10 p-5">
+            <div className="pointer-events-none absolute -left-20 -bottom-16 h-56 w-56 rounded-full bg-[var(--primary)]/10 blur-3xl" />
+            <div className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-white/5" />
+            <div className="relative">
+              <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/45">
+                Fecha
+              </p>
+              <p className="mt-2 text-sm font-black uppercase tracking-[0.06em] text-white/90">
+                {formatDateES(event.startAt) || "Por confirmar"}
+              </p>
+              <p className="mt-1 text-sm text-white/60">
+                {formatTimeES(event.startAt)}
+              </p>
+            </div>
           </div>
 
-          <div className="rounded-3xl border border-white/10 bg-white/[0.02] p-5">
-            <p className="text-xs text-white/55">Links</p>
-            <div className="mt-2 flex flex-wrap gap-2">
-              <ButtonLink href="/gallery" variant="outline">
-                Galería
-              </ButtonLink>
+          <div className="glass relative overflow-hidden rounded-3xl border border-white/10 p-5">
+            <div className="pointer-events-none absolute -right-24 -bottom-20 h-64 w-64 rounded-full bg-[var(--primary)]/8 blur-3xl" />
+            <div className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-white/5" />
+            <div className="relative">
+              <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/45">
+                Links
+              </p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                <ButtonLink href="/gallery" variant="outline">
+                  Galería
+                </ButtonLink>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* SECCIONES (si existen) */}
+        {/* SECCIONES */}
         <div className="mt-10 space-y-6">
-          {/* Entradas (si hay sección) */}
+          {/* Entradas */}
           {tickets?.fourvenuesUrl ? (
             <Section
               title={tickets.heading ?? "Entradas"}
               subtitle="Venta oficial vía Fourvenues."
               actions={
-                <ButtonLink href={tickets.fourvenuesUrl} external>
+                <a
+                  href={tickets.fourvenuesUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-2 text-[11px] font-black uppercase tracking-[0.22em] text-white/85 backdrop-blur transition hover:bg-white/[0.06] hover:border-[var(--primary)]/35 hover:text-white"
+                >
                   Abrir en Fourvenues
-                </ButtonLink>
+                </a>
               }
             >
               <div className="space-y-4">
-                {/* EMBED del evento (si está configurado) */}
                 <FourvenuesEmbedEvent
                   publicUrl={tickets.fourvenuesUrl}
                   title={`Entradas · ${event.title ?? "La Put* Vuelta"}`}
@@ -434,7 +506,7 @@ export default async function EventPage({
             </Section>
           ) : null}
 
-          {/* Live (si hay sección)
+          {/* Live (si decides activarlo) */}
           {live ? (
             <Section
               title={live.heading ?? "Live"}
@@ -460,14 +532,19 @@ export default async function EventPage({
               )}
 
               <div className="mt-4">
-                <ButtonLink href={kickUrl} external>
+                <a
+                  href={kickUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center rounded-2xl bg-[var(--primary)] px-5 py-3 text-sm font-black uppercase tracking-[0.12em] text-white transition hover:bg-[color:rgba(255,77,94,0.9)] hover:scale-[1.01]"
+                >
                   Abrir en Kick
-                </ButtonLink>
+                </a>
               </div>
             </Section>
-          ) : null} */}
+          ) : null}
 
-          {/* Activaciones en formato timeline */}
+          {/* Activaciones */}
           {activations?.items?.length ? (
             <Section
               title={activations.heading ?? "Activaciones"}
@@ -477,6 +554,7 @@ export default async function EventPage({
             </Section>
           ) : null}
 
+          {/* Partners */}
           {(() => {
             const partnersSection = getSection<SectionPartners>(
               event.sections,
@@ -487,7 +565,6 @@ export default async function EventPage({
             const includeGlobal = partnersSection.includeGlobal ?? false;
             const hasEventPartners =
               (partnersSection.partners?.length ?? 0) > 0;
-
             if (!includeGlobal && !hasEventPartners) return null;
 
             return (
@@ -507,7 +584,7 @@ export default async function EventPage({
 
       {/* STICKY CTA (móvil) */}
       {hasSticky ? (
-        <div className="fixed bottom-0 left-0 right-0 z-[60] border-t border-white/10 bg-black/95 backdrop-blur md:hidden">
+        <div className="fixed bottom-0 left-0 right-0 z-[60] border-t border-white/10 bg-black/90 backdrop-blur md:hidden">
           <div className="mx-auto max-w-6xl px-4 py-3">
             <div className="grid grid-cols-3 gap-2">
               {tickets?.fourvenuesUrl ? (
@@ -515,14 +592,14 @@ export default async function EventPage({
                   href={tickets.fourvenuesUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center justify-center rounded-2xl bg-white px-3 py-3 text-sm font-semibold text-black hover:opacity-90 transition"
+                  className="inline-flex items-center justify-center rounded-2xl bg-[var(--primary)] px-3 py-3 text-sm font-black uppercase tracking-[0.10em] text-white transition hover:bg-[color:rgba(255,77,94,0.9)]"
                 >
                   Comprar
                 </a>
               ) : (
                 <Link
                   href="/tickets"
-                  className="inline-flex items-center justify-center rounded-2xl bg-white px-3 py-3 text-sm font-semibold text-black hover:opacity-90 transition"
+                  className="inline-flex items-center justify-center rounded-2xl bg-[var(--primary)] px-3 py-3 text-sm font-black uppercase tracking-[0.10em] text-white transition hover:bg-[color:rgba(255,77,94,0.9)]"
                 >
                   Entradas
                 </Link>
@@ -533,14 +610,14 @@ export default async function EventPage({
                   href={kickUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white/[0.03] px-3 py-3 text-sm font-semibold text-white/90 hover:bg-white/[0.06] hover:border-white/25 transition"
+                  className="inline-flex items-center justify-center rounded-2xl border border-white/10 bg-white/[0.03] px-3 py-3 text-sm font-black uppercase tracking-[0.10em] text-white/90 transition hover:bg-white/[0.06] hover:border-[var(--primary)]/35"
                 >
                   Live
                 </a>
               ) : (
                 <Link
                   href="/live"
-                  className="inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white/[0.03] px-3 py-3 text-sm font-semibold text-white/90 hover:bg-white/[0.06] hover:border-white/25 transition"
+                  className="inline-flex items-center justify-center rounded-2xl border border-white/10 bg-white/[0.03] px-3 py-3 text-sm font-black uppercase tracking-[0.10em] text-white/90 transition hover:bg-white/[0.06] hover:border-[var(--primary)]/35"
                 >
                   Live
                 </Link>
@@ -551,14 +628,14 @@ export default async function EventPage({
                   href={event.venue.mapsUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white/[0.03] px-3 py-3 text-sm font-semibold text-white/90 hover:bg-white/[0.06] hover:border-white/25 transition"
+                  className="inline-flex items-center justify-center rounded-2xl border border-white/10 bg-white/[0.03] px-3 py-3 text-sm font-black uppercase tracking-[0.10em] text-white/90 transition hover:bg-white/[0.06] hover:border-[var(--primary)]/35"
                 >
                   Mapa
                 </a>
               ) : (
                 <Link
                   href="/venues"
-                  className="inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white/[0.03] px-3 py-3 text-sm font-semibold text-white/90 hover:bg-white/[0.06] hover:border-white/25 transition"
+                  className="inline-flex items-center justify-center rounded-2xl border border-white/10 bg-white/[0.03] px-3 py-3 text-sm font-black uppercase tracking-[0.10em] text-white/90 transition hover:bg-white/[0.06] hover:border-[var(--primary)]/35"
                 >
                   Salas
                 </Link>

@@ -36,6 +36,7 @@ export async function PartnersGrid({
   const globals = includeGlobal
     ? await client.fetch<Partner[]>(globalPartnersQuery)
     : [];
+
   const merged = dedupePartners([...(globals ?? []), ...(partners ?? [])]);
   const shown = typeof max === "number" ? merged.slice(0, max) : merged;
 
@@ -48,48 +49,66 @@ export async function PartnersGrid({
 
   const cardClass =
     variant === "footer"
-      ? "flex items-center justify-center rounded-2xl border border-white/10 bg-white/[0.02] px-3 py-3 hover:border-white/25 hover:bg-white/[0.04] transition"
-      : "group flex items-center justify-center rounded-2xl border border-white/10 bg-white/[0.02] p-4 hover:border-white/25 hover:bg-white/[0.04] transition";
+      ? "group relative flex items-center justify-center rounded-2xl border border-white/10 bg-white/[0.03] px-3 py-3 backdrop-blur transition hover:bg-white/[0.06] hover:border-[var(--primary)]/30"
+      : "group relative flex items-center justify-center rounded-2xl border border-white/10 bg-white/[0.03] p-4 backdrop-blur transition hover:bg-white/[0.06] hover:border-[var(--primary)]/30";
 
   const logoBoxClass =
     variant === "footer" ? "relative h-8 w-full" : "relative h-10 w-full";
 
+  const titleWrapClass = "mb-5 flex items-end justify-between gap-4";
+
   return (
     <div>
       {title ? (
-        <div className="mb-4">
-          <p className="text-sm font-semibold text-white/90">{title}</p>
-          {subtitle ? (
-            <p className="mt-1 text-sm text-white/65">{subtitle}</p>
-          ) : null}
+        <div className={titleWrapClass}>
+          <div>
+            <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/45">
+              Partners
+            </p>
+            <p className="mt-2 text-xl md:text-2xl font-black uppercase tracking-tight text-white/95">
+              {title}
+            </p>
+            {subtitle ? (
+              <p className="mt-2 text-sm text-white/60 max-w-2xl leading-relaxed">
+                {subtitle}
+              </p>
+            ) : null}
+          </div>
+
+          {/* marca dossier opcional */}
+          <span className="hidden md:block text-[var(--primary)] font-black text-6xl opacity-20 leading-none">
+            {variant === "footer" ? "" : "04"}
+          </span>
         </div>
       ) : null}
 
       <div className={gridClass}>
         {shown.map((p) => {
           const logoUrl = p.logo
-            ? urlForImage(p.logo)
-                // .width(100)
-                // .height(100)
-                .fit("max")
-                .auto("format")
-                .url()
+            ? urlForImage(p.logo).fit("max").auto("format").url()
             : null;
 
           const content = (
             <div className={cardClass} title={p.name} aria-label={p.name}>
+              {/* halo neon en hover */}
+              <span className="pointer-events-none absolute -inset-6 -z-10 rounded-2xl bg-[var(--primary)]/0 blur-2xl transition group-hover:bg-[var(--primary)]/14" />
+              {/* borde interior sutil */}
+              <span className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-white/5" />
+
               {logoUrl ? (
                 <div className={logoBoxClass}>
                   <Image
                     src={logoUrl}
                     alt={p.name}
                     fill
-                    className="object-contain"
+                    className="object-contain opacity-90 transition group-hover:opacity-100"
                     sizes="(max-width: 768px) 40vw, 160px"
                   />
                 </div>
               ) : (
-                <span className="text-xs text-white/70">{p.name}</span>
+                <span className="text-[11px] font-bold uppercase tracking-[0.22em] text-white/70">
+                  {p.name}
+                </span>
               )}
             </div>
           );
@@ -101,11 +120,14 @@ export async function PartnersGrid({
               target="_blank"
               rel="noreferrer"
               aria-label={p.name}
+              className="block"
             >
               {content}
             </a>
           ) : (
-            <div key={p._id}>{content}</div>
+            <div key={p._id} className="block">
+              {content}
+            </div>
           );
         })}
       </div>

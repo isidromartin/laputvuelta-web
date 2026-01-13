@@ -64,42 +64,76 @@ function EventCard({ e }: { e: EventListItem }) {
   return (
     <Link
       href={`/gallery/${e.slug}`}
-      className="group rounded-3xl border border-white/10 bg-white/[0.02] overflow-hidden hover:border-white/25 transition"
+      className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] backdrop-blur transition hover:border-[var(--primary)]/30 hover:bg-white/[0.06]"
     >
-      <div className="relative aspect-[4/5] w-full bg-black/40 border-b border-white/10">
+      {/* Halo hover */}
+      <span className="pointer-events-none absolute -inset-10 -z-10 rounded-3xl bg-[var(--primary)]/0 blur-3xl transition group-hover:bg-[var(--primary)]/14" />
+      {/* Inner ring */}
+      <span className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-white/5" />
+
+      <div className="relative aspect-[4/5] w-full border-b border-white/10 bg-black/40">
         {coverUrl ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={coverUrl}
             alt={e.title}
-            className="h-full w-full object-cover group-hover:scale-[1.02] transition"
+            className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]"
             loading="lazy"
           />
         ) : (
-          <div className="h-full w-full flex items-center justify-center text-xs text-white/35">
-            Sin cartel
+          <div className="h-full w-full flex items-center justify-center">
+            <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-white/45">
+              Sin cartel
+            </p>
           </div>
         )}
 
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent" />
+        {/* Overlays premium */}
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,77,94,0.14),transparent_45%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
 
-        <div className="absolute left-4 right-4 bottom-4 flex items-center justify-between gap-3">
-          <Badge>{future ? "Próximo" : "Álbum"}</Badge>
-          <p className="text-xs text-white/70">{formatDate(e.startAt)}</p>
+        {/* Bottom meta bar */}
+        <div className="absolute left-4 right-4 bottom-4">
+          <div className="glass flex items-center justify-between gap-3 rounded-2xl border border-white/10 px-3 py-2">
+            <div className="flex items-center gap-2">
+              <span
+                className={[
+                  "h-2 w-2 rounded-full",
+                  future
+                    ? "bg-[var(--primary)] shadow-[0_0_14px_rgba(255,77,94,0.35)]"
+                    : "bg-white/35",
+                ].join(" ")}
+              />
+              <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/70">
+                {future ? "Próximo" : "Álbum"}
+              </p>
+            </div>
+
+            <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/55">
+              {formatDate(e.startAt)}
+            </p>
+          </div>
         </div>
       </div>
 
-      <div className="p-5">
-        <h3 className="text-base font-semibold text-white/90 group-hover:text-white transition line-clamp-2">
+      <div className="relative p-5">
+        <h3 className="text-base font-black uppercase tracking-[0.06em] text-white/90 group-hover:text-white transition line-clamp-2">
           {e.title}
         </h3>
 
-        <p className="mt-2 text-sm text-white/65">
+        <p className="mt-2 text-sm text-white/60">
           {e.venue?.name ?? "Sala por confirmar"}
           {e.venue?.city ? ` · ${e.venue.city}` : ""}
         </p>
 
-        <p className="mt-3 text-xs text-white/55">Entrar al álbum →</p>
+        <div className="mt-4 flex items-center justify-between">
+          <span className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/35">
+            Entrar al álbum
+          </span>
+          <span className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)] transition group-hover:translate-x-0.5">
+            →
+          </span>
+        </div>
       </div>
     </Link>
   );
@@ -111,29 +145,66 @@ export default async function GalleryPage() {
   const upcoming = events.filter((e) => isFuture(e.startAt));
   const past = events.filter((e) => !isFuture(e.startAt));
 
-  const latestAlbums = past.slice(0, 6); // últimos 6 eventos pasados
-  const restAlbums = past.slice(6);
+  const latestAlbums = past.slice(0, 6);
+  // const restAlbums = past.slice(6);
 
   return (
-    <main className="py-12">
+    <main className="relative pt-28 pb-16 md:pt-32 md:pb-24">
+      {/* Ambient */}
+      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute left-1/2 top-[-220px] h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-[var(--primary)]/18 blur-[180px]" />
+        <div className="absolute right-[-160px] top-[260px] h-[460px] w-[460px] rounded-full bg-[var(--primary)]/10 blur-[190px]" />
+      </div>
+      <div className="grain" />
+
       <Container>
-        <div className="flex flex-col gap-3">
-          <div className="flex flex-wrap items-center gap-2">
-            <Badge>Galería</Badge>
-            <Badge>Por evento</Badge>
+        {/* Header premium */}
+        <div className="glass relative overflow-hidden rounded-3xl border border-white/10 p-7 md:p-10">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_20%,rgba(255,77,94,0.14),transparent_55%),radial-gradient(circle_at_85%_75%,rgba(255,77,94,0.08),transparent_60%)]" />
+
+          <div className="relative flex flex-col gap-4">
+            <div className="flex flex-wrap items-center gap-2">
+              <Badge>Galería</Badge>
+              <Badge>Por evento</Badge>
+            </div>
+
+            <div className="flex items-end justify-between gap-4">
+              <div>
+                <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/45">
+                  Álbumes oficiales
+                </p>
+                <h1 className="mt-2 text-3xl md:text-5xl font-black uppercase tracking-tight text-white/95">
+                  Fotos por edición
+                </h1>
+              </div>
+
+              <span className="hidden md:block text-[var(--primary)] font-black text-6xl opacity-20 leading-none">
+                01
+              </span>
+            </div>
+
+            <p className="text-white/65 max-w-2xl leading-relaxed">
+              No creo que quieras verte la cara después de todo lo que te
+              bebiste aquel día, pero por si acaso: aquí tienes recuerdos de
+              nuestros shows.
+            </p>
+
+            <div className="flex flex-wrap gap-3 pt-1">
+              <ButtonLink
+                href="https://instagram.com/laputvuelta.oficial"
+                external
+                variant="outline"
+              >
+                Ver Reels
+              </ButtonLink>
+              <ButtonLink href="/events" variant="outline">
+                Ver Shows
+              </ButtonLink>
+            </div>
           </div>
-
-          <h1 className="text-2xl md:text-4xl font-semibold tracking-tight">
-            Álbumes
-          </h1>
-
-          <p className="text-white/70 max-w-2xl">
-            No creo que quieras verte la cara después de todo lo que te bebiste
-            aquel día, pero por si acaso, aquí tienes algún recuerdo de nuestros
-            SHOWS.
-          </p>
         </div>
 
+        {/* Últimos álbumes */}
         {latestAlbums.length ? (
           <div className="mt-10">
             <Section
@@ -144,7 +215,7 @@ export default async function GalleryPage() {
                   href="https://instagram.com/laputvuelta.oficial"
                   external
                 >
-                  Ver Reels
+                  Instagram
                 </ButtonLink>
               }
             >
@@ -155,11 +226,21 @@ export default async function GalleryPage() {
               </div>
             </Section>
           </div>
-        ) : null}
+        ) : (
+          <div className="mt-10 glass rounded-3xl border border-white/10 p-8 text-center">
+            <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/45">
+              Sin álbumes
+            </p>
+            <p className="mt-3 text-white/70">
+              Aún no hay fotos publicadas. Vuelve pronto.
+            </p>
+          </div>
+        )}
 
+        {/* Próximos */}
         {upcoming.length ? (
           <div className="mt-8">
-            <Section title="Próximos eventos" subtitle="">
+            <Section title="Próximos eventos" subtitle="Ediciones futuras.">
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {upcoming.map((e) => (
                   <EventCard key={e._id} e={e} />
@@ -169,6 +250,7 @@ export default async function GalleryPage() {
           </div>
         ) : null}
 
+        {/* Histórico (si lo quieres reactivar) */}
         {/* <div className="mt-8">
           <Section
             title="Histórico"

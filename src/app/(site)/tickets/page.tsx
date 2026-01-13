@@ -20,23 +20,94 @@ export default function TicketsPage() {
     "team-la-putvuelta1/events";
 
   return (
-    <main className="py-12">
+    <main className="relative pt-28 pb-16 md:pt-32 md:pb-24">
+      {/* Ambient: halo + grain (si ya lo tienes global, elimina estos bloques) */}
+      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute left-1/2 top-[-220px] h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-[var(--primary)]/18 blur-[180px]" />
+        <div className="absolute right-[-140px] top-[260px] h-[420px] w-[420px] rounded-full bg-[var(--primary)]/10 blur-[170px]" />
+      </div>
+      <div className="grain" />
+
       <Container>
-        <div className="flex flex-col gap-3">
-          <h1 className="text-2xl md:text-3xl font-semibold tracking-tight">
-            Calendario
-          </h1>
-          <p className="text-white/70 max-w-2xl">
-            Próximos eventos de La Put* Vuelta.
-          </p>
+        {/* Header de página (dossier style) */}
+        <div className="glass relative overflow-hidden rounded-3xl border border-white/10 p-7 md:p-10">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,77,94,0.14),transparent_55%),radial-gradient(circle_at_80%_70%,rgba(255,77,94,0.08),transparent_60%)]" />
+          <div className="relative flex flex-col gap-3">
+            <div className="flex items-end justify-between gap-4">
+              <span className="text-[var(--primary)] font-black text-6xl opacity-20 leading-none">
+                01
+              </span>
+              <span className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/40">
+                CALENDARIO
+              </span>
+            </div>
+
+            <h1 className="text-3xl md:text-5xl font-black uppercase tracking-tight">
+              Próximos eventos
+            </h1>
+            <p className="text-white/65 max-w-2xl leading-relaxed">
+              Consulta las fechas disponibles y accede a{" "}
+              <span className="text-white/85">entradas</span>,{" "}
+              <span className="text-white/85">lista</span> y{" "}
+              <span className="text-white/85">reservas</span> desde el
+              calendario oficial.
+            </p>
+
+            {/* Micro-CTAs (sin inventar links: usamos tu publicUrl como fallback) */}
+            <div className="mt-3 flex flex-wrap gap-3">
+              <a
+                href={publicUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="relative inline-flex items-center justify-center rounded-full bg-[var(--primary)] px-5 py-2 text-sm font-black uppercase tracking-widest text-white transition hover:bg-[color:rgba(255,77,94,0.9)] hover:scale-[1.02]"
+              >
+                <span className="pointer-events-none absolute -inset-[2px] rounded-full border border-white/15" />
+                <span className="pointer-events-none absolute -inset-2 -z-10 rounded-full bg-[var(--primary)]/25 blur-xl" />
+                Abrir en Fourvenues
+              </a>
+
+              <a
+                href="#embed"
+                className="glass inline-flex items-center justify-center rounded-full border border-white/10 px-5 py-2 text-sm font-bold uppercase tracking-widest text-white/80 transition hover:text-white hover:bg-white/[0.06]"
+              >
+                Ver calendario aquí
+              </a>
+            </div>
+          </div>
         </div>
 
-        <div className="mt-10">
-          <FourvenuesEmbed
-            path={embedPath}
-            publicUrl={publicUrl}
-            minHeight={860}
-          />
+        {/* Embed */}
+        <div className="mt-10" id="embed">
+          <div className="glass relative overflow-hidden rounded-3xl border border-white/10">
+            {/* Top bar “widget frame” */}
+            <div className="flex items-center justify-between gap-3 border-b border-white/10 px-5 py-4">
+              <div className="flex items-center gap-2">
+                <span className="inline-block h-2.5 w-2.5 rounded-full bg-white/30" />
+                <span className="inline-block h-2.5 w-2.5 rounded-full bg-white/20" />
+                <span className="inline-block h-2.5 w-2.5 rounded-full bg-white/15" />
+                <span className="ml-3 text-[10px] font-bold uppercase tracking-[0.35em] text-white/40">
+                  Fourvenues Embed
+                </span>
+              </div>
+
+              <a
+                href={publicUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/45 hover:text-[var(--primary)] transition-colors"
+              >
+                Abrir externo
+              </a>
+            </div>
+
+            <div className="p-2 md:p-3">
+              <FourvenuesEmbed
+                path={embedPath}
+                publicUrl={publicUrl}
+                minHeight={860}
+              />
+            </div>
+          </div>
         </div>
       </Container>
     </main>

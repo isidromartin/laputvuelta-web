@@ -57,12 +57,14 @@ export function MobileNav({ nav }: { nav: readonly NavItem[] }) {
 
   return (
     <>
+      {/* Trigger (glass + neon) */}
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-black px-4 py-2 text-sm text-white/90 hover:border-white/30 transition"
+        className="group relative inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.03] px-4 py-2 text-sm font-black uppercase tracking-[0.22em] text-white/85 backdrop-blur transition hover:bg-white/[0.06] hover:border-[var(--primary)]/35 hover:text-white"
         aria-label="Abrir menú"
       >
+        <span className="pointer-events-none absolute -inset-2 -z-10 rounded-full bg-[var(--primary)]/0 blur-xl transition group-hover:bg-[var(--primary)]/14" />
         <IconMenu />
         Menú
       </button>
@@ -72,13 +74,15 @@ export function MobileNav({ nav }: { nav: readonly NavItem[] }) {
         className={`fixed inset-0 z-[80] ${open ? "" : "pointer-events-none"}`}
         aria-hidden={!open}
       >
-        {/* Overlay */}
+        {/* Overlay (más premium: gradient + blur) */}
         <div
-          className={`absolute inset-0 bg-black transition-opacity duration-200 ${
-            open ? "opacity-80" : "opacity-0"
-          }`}
+          className={`absolute inset-0 transition-opacity duration-200 ${
+            open ? "opacity-100" : "opacity-0"
+          } bg-black/70 backdrop-blur-sm`}
           onClick={() => setOpen(false)}
-        />
+        >
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,77,94,0.16),transparent_55%),radial-gradient(circle_at_80%_70%,rgba(255,77,94,0.10),transparent_60%)]" />
+        </div>
 
         {/* Drawer */}
         <aside
@@ -89,61 +93,75 @@ export function MobileNav({ nav }: { nav: readonly NavItem[] }) {
           aria-modal="true"
           aria-label="Menú"
         >
-          <div className="h-full bg-black border-l border-white/10 shadow-2xl">
-            {/* Header drawer */}
-            <div className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.02] px-4 py-3 text-sm text-white/85 hover:bg-white/[0.06] hover:border-white/20 hover:text-white active:scale-[0.99] transition">
-              <div className="flex flex-col">
-                <p className="text-sm font-semibold text-white">
-                  La Put* Vuelta
-                </p>
-                {/* <p className="text-xs text-white/55">Navegación</p> */}
-              </div>
+          <div className="relative h-full border-l border-white/10 bg-black/70 backdrop-blur-2xl shadow-2xl">
+            {/* halos */}
+            <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-[var(--primary)]/14 blur-3xl" />
+            <div className="pointer-events-none absolute -left-24 bottom-[-120px] h-80 w-80 rounded-full bg-[var(--primary)]/10 blur-3xl" />
 
-              <button
-                type="button"
-                onClick={() => setOpen(false)}
-                className="inline-flex items-center justify-center rounded-full border border-white/15 bg-black px-3 py-2 text-white/85 hover:text-white hover:border-white/30 transition"
-                aria-label="Cerrar menú"
-              >
-                <IconClose />
-              </button>
+            {/* Header drawer */}
+            <div className="relative px-4 pt-4">
+              <div className="glass flex items-center justify-between rounded-2xl border border-white/10 px-4 py-3">
+                <div className="flex flex-col">
+                  <p className="text-sm font-black uppercase tracking-tight text-white">
+                    La Put* Vuelta
+                  </p>
+                  <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/45">
+                    Navegación
+                  </p>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => setOpen(false)}
+                  className="group relative inline-flex items-center justify-center rounded-full border border-white/12 bg-white/[0.03] px-3 py-2 text-white/85 backdrop-blur transition hover:bg-white/[0.06] hover:border-[var(--primary)]/35 hover:text-white"
+                  aria-label="Cerrar menú"
+                >
+                  <span className="pointer-events-none absolute -inset-2 -z-10 rounded-full bg-[var(--primary)]/0 blur-xl transition group-hover:bg-[var(--primary)]/14" />
+                  <IconClose />
+                </button>
+              </div>
             </div>
 
             {/* Links */}
-            <nav className="px-3 py-4">
+            <nav className="relative px-4 py-5">
               <ul className="space-y-2">
                 {nav.map((item) => (
                   <li key={item.href}>
                     <Link
                       href={item.href}
                       onClick={() => setOpen(false)}
-                      className="flex items-center justify-between rounded-2xl bg-white/[0.03] px-4 py-3 text-sm text-white/85 hover:bg-white/[0.06] hover:text-white transition"
+                      className="group flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm font-bold uppercase tracking-[0.18em] text-white/80 backdrop-blur transition hover:bg-white/[0.06] hover:text-white hover:border-[var(--primary)]/30"
                     >
                       <span>{item.label}</span>
-                      <span className="text-xs text-white/45">→</span>
+                      <span className="text-xs text-white/35 transition group-hover:text-[var(--primary)]">
+                        →
+                      </span>
                     </Link>
                   </li>
                 ))}
               </ul>
             </nav>
 
-            <div className="px-5 pt-5">
+            {/* CTA */}
+            <div className="relative px-5 pt-1">
               <Link
                 href="/tickets"
                 onClick={() => setOpen(false)}
-                className="block w-full rounded-2xl bg-white px-4 py-3 text-center text-sm font-medium text-black hover:opacity-90 transition"
+                className="relative block w-full rounded-2xl bg-[var(--primary)] px-4 py-3 text-center text-sm font-black uppercase tracking-[0.22em] text-white transition hover:bg-[color:rgba(255,77,94,0.9)] hover:scale-[1.01]"
               >
+                <span className="pointer-events-none absolute -inset-[2px] rounded-2xl border border-white/15" />
+                <span className="pointer-events-none absolute -inset-2 -z-10 rounded-2xl bg-[var(--primary)]/25 blur-xl" />
                 Comprar entradas
               </Link>
-              {/* <p className="mt-2 text-xs text-white/55">
+              <p className="mt-3 text-xs text-white/45">
                 Compra oficial vía Fourvenues.
-              </p> */}
+              </p>
             </div>
 
             {/* Footer */}
             <div className="absolute bottom-0 left-0 right-0 border-t border-white/10 px-5 py-5">
-              <p className="text-xs text-white/55">
-                {/* Live en Kick y activaciones durante la noche. */}
+              <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/35">
+                Viva el pecado
               </p>
             </div>
           </div>
