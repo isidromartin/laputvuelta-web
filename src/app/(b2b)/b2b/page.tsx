@@ -892,6 +892,60 @@ export default function B2BPage() {
         </div>
       </section>
 
+      {/* EQUIPO */}
+      <section
+        id="equipo"
+        className="mx-auto max-w-[1200px] px-6 mt-10 md:mt-14"
+      >
+        <div className="glass rounded-3xl border border-white/10 p-7 md:p-10">
+          <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/45">
+            Quién trabaja
+          </p>
+          <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90">
+            Equipo
+          </h2>
+          <p className="mt-3 text-sm text-white/65 max-w-2xl">
+            Line-up con 4 de los mejores DJs nacionales.
+          </p>
+
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {TEAM.map((t) => (
+              <Link
+                href={t.ig}
+                key={t.name}
+                className="rounded-3xl border border-white/10 bg-black/20 p-6"
+              >
+                <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]">
+                  <Image
+                    src={t.img}
+                    alt={t.name}
+                    fill
+                    className="object-cover"
+                    sizes="(min-width: 1024px) 240px, (min-width: 640px) 45vw, 90vw"
+                    priority={false}
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
+                </div>
+
+                <p className="mt-4 text-sm font-semibold text-white/90">
+                  {t.name} · @{t.acc}
+                </p>
+                <p className="mt-2 text-[11px] font-bold uppercase tracking-[0.22em] text-white/55">
+                  {t.role}
+                </p>
+              </Link>
+            ))}
+          </div>
+
+          <div className="mt-6 rounded-2xl border border-white/10 bg-white/[0.02] px-5 py-4">
+            <p className="text-sm font-semibold text-white/85">Sello propio</p>
+            <p className="mt-2 text-sm text-white/70 italic">
+              ¿Hace cuánto no sales a dar una vuelta?
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* FILMMAKERS */}
       <section
         id="filmmakers"
@@ -1099,61 +1153,6 @@ export default function B2BPage() {
               </li>
             ))}
           </ul>
-        </div>
-      </section>
-
-      {/* EQUIPO */}
-      <section
-        id="equipo"
-        className="mx-auto max-w-[1200px] px-6 mt-10 md:mt-14"
-      >
-        <div className="glass rounded-3xl border border-white/10 p-7 md:p-10">
-          <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/45">
-            Quién trabaja
-          </p>
-          <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90">
-            Equipo artístico
-          </h2>
-          <p className="mt-3 text-sm text-white/65 max-w-2xl">
-            Line-up con DJs de referencia (según fecha y plaza). Se concreta al
-            cerrar condiciones.
-          </p>
-
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {TEAM.map((t) => (
-              <Link
-                href={t.ig}
-                key={t.name}
-                className="rounded-3xl border border-white/10 bg-black/20 p-6"
-              >
-                <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]">
-                  <Image
-                    src={t.img}
-                    alt={t.name}
-                    fill
-                    className="object-cover"
-                    sizes="(min-width: 1024px) 240px, (min-width: 640px) 45vw, 90vw"
-                    priority={false}
-                  />
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
-                </div>
-
-                <p className="mt-4 text-sm font-semibold text-white/90">
-                  {t.name} · @{t.acc}
-                </p>
-                <p className="mt-2 text-[11px] font-bold uppercase tracking-[0.22em] text-white/55">
-                  {t.role}
-                </p>
-              </Link>
-            ))}
-          </div>
-
-          <div className="mt-6 rounded-2xl border border-white/10 bg-white/[0.02] px-5 py-4">
-            <p className="text-sm font-semibold text-white/85">Sello propio</p>
-            <p className="mt-2 text-sm text-white/70 italic">
-              ¿Hace cuánto no sales a dar una vuelta?
-            </p>
-          </div>
         </div>
       </section>
 
