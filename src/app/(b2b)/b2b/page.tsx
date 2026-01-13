@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Para salas | La Put* Vuelta",
+  title: "Para salas",
   description:
     "Dossier B2B para salas y promotores: formato 360º llave en mano (show + streaming + activaciones + contenido) orientado a afluencia y consumo.",
   robots: { index: true, follow: true },
