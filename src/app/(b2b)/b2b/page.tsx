@@ -8,7 +8,11 @@ export const metadata: Metadata = {
   title: "Para salas",
   description:
     "Dossier B2B para salas y promotores: formato 360º llave en mano (show + streaming + activaciones + contenido) orientado a afluencia y consumo.",
-  robots: { index: true, follow: true },
+  robots: {
+    index: false,
+    follow: false,
+    googleBot: { index: false, follow: false },
+  },
   openGraph: {
     title: "La Put* Vuelta para salas",
     description:
