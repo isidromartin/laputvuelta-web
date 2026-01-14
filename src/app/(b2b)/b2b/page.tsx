@@ -2,6 +2,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { ContactForm } from "@/components/site/ContactForm";
+import { Timeline } from "@/components/b2b/Timeline";
 
 export const metadata: Metadata = {
   title: "Para salas | La Put* Vuelta",
@@ -293,6 +294,8 @@ const TEAM = [
     img: "/b2b/team/villalobos.png",
     acc: "villalobospjulio",
     ig: "https://www.instagram.com/villalobospjulio/",
+    sig: "+8k",
+    stk: "+20k",
   },
   {
     name: "Tomi Demaio",
@@ -300,6 +303,8 @@ const TEAM = [
     img: "/b2b/team/tomi-demaio.png",
     acc: "tomidemaio",
     ig: "https://www.instagram.com/tomidemaio/",
+    sig: "+10k",
+    stk: "+100k",
   },
   {
     name: "Lalo Sánchez",
@@ -307,6 +312,8 @@ const TEAM = [
     img: "/b2b/team/lalo-sanchez.jpg",
     acc: "lalosl7",
     ig: "https://www.instagram.com/lalosl7/",
+    sig: "+5k",
+    stk: "",
   },
   {
     name: "Gonmarin",
@@ -314,6 +321,8 @@ const TEAM = [
     img: "/b2b/team/gonmarin.jpg",
     acc: "gonmariin",
     ig: "https://www.instagram.com/gonmariin/",
+    sig: "+3k",
+    stk: "",
   },
 ];
 
@@ -862,6 +871,8 @@ export default function B2BPage() {
         </div>
       </section>
 
+      <Timeline />
+
       {/* NOCHE */}
       <section
         id="noche"
@@ -1146,6 +1157,51 @@ export default function B2BPage() {
                     priority={false}
                   />
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
+
+                  {/* Stats badge (top-right) */}
+                  {(t.sig || t.stk) && (
+                    <div className="absolute right-3 bottom-3">
+                      <div className="rounded-2xl border border-white/15 bg-black/55 backdrop-blur-xl px-3 py-2 shadow-[0_18px_50px_rgba(0,0,0,0.45)]">
+                        <div className="mt-1 flex items-center gap-3">
+                          {t.sig ? (
+                            <div className="flex items-center gap-1.5">
+                              <span className="inline-flex h-5 w-5 items-center justify-center rounded-full border border-white/15 bg-white/[0.04]">
+                                <Image
+                                  src="/instagram.png"
+                                  alt="Instagram"
+                                  width={16}
+                                  height={16}
+                                  className="h-3.5 w-3.5 invert opacity-90"
+                                />
+                              </span>
+
+                              <span className="text-[11px] font-semibold text-white/90 tabular-nums">
+                                {t.sig}
+                              </span>
+                            </div>
+                          ) : null}
+
+                          {t.stk ? (
+                            <div className="flex items-center gap-1.5">
+                              <span className="inline-flex h-5 w-5 items-center justify-center rounded-full border border-white/15 bg-white/[0.04]">
+                                <Image
+                                  src="/tk.png"
+                                  alt="TikTok"
+                                  width={16}
+                                  height={16}
+                                  className="h-3.5 w-3.5 opacity-90"
+                                />
+                              </span>
+
+                              <span className="text-[11px] font-semibold text-white/90 tabular-nums">
+                                {t.stk}
+                              </span>
+                            </div>
+                          ) : null}
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 <p className="mt-4 text-sm font-semibold text-white/90">
@@ -1158,6 +1214,23 @@ export default function B2BPage() {
               </a>
             ))}
           </div>
+          <p className="mt-6 text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
+            Con presencia en escenarios como:
+          </p>
+          <p className="mt-2 text-sm text-white/65">
+            <strong>Starlite Fest</strong> (Marbella), <strong>Pelicano</strong>{" "}
+            (A Coruña), <strong>Fitz</strong> (Madrid),{" "}
+            <strong>Marchica</strong> (Formigal), <strong>Condado</strong>{" "}
+            (Denia), <strong>Teatro Barceló</strong> (Madrid), Playa Canalla,
+            Phiphi y Blu Puerto Sherry (Pto Sta Mª),{" "}
+            <strong>Santos Club</strong> (Castellón),{" "}
+            <strong>Bahia Sound</strong> (Cádiz), <strong>Santalia</strong>{" "}
+            (Badajoz), <strong>Cocoa</strong> (Barcelona),{" "}
+            <strong>Granada 10</strong> (Granada), <strong>Lust in Rio</strong>{" "}
+            (Lisboa), <strong>WSNF</strong> (Andorra), <strong>Mute</strong>{" "}
+            (Mar de Plata, ARG), <strong>Rocbar</strong> (Chicago, US),{" "}
+            <strong>Mün</strong> (Cancún, MX)
+          </p>
         </div>
       </section>
 
@@ -1213,6 +1286,27 @@ export default function B2BPage() {
                 </div>
               </a>
             ))}
+          </div>
+          <div className="mt-6 grid gap-4 md:grid-cols-2">
+            {/* Bloque 1 */}
+            <div className="p-5">
+              <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
+                Experiencia en proyectos con artistas como:
+              </p>
+              <p className="mt-2 text-sm text-white/65">
+                Anuel AA, Mora, Eladio Carrión, Omar Courtz…
+              </p>
+            </div>
+
+            {/* Bloque 2 */}
+            <div className="p-5">
+              <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
+                Además de festivales como:
+              </p>
+              <p className="mt-2 text-sm text-white/65">
+                Arenal Sound, Bienvenida Fest, Daddytheparty, etc…
+              </p>
+            </div>
           </div>
         </div>
       </section>
