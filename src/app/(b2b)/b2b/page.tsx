@@ -1,13 +1,12 @@
 // app/b2b/page.tsx
 import type { Metadata } from "next";
-import { ContactForm } from "@/components/site/ContactForm";
 import Image from "next/image";
-import Link from "next/link";
+import { ContactForm } from "@/components/site/ContactForm";
 
 export const metadata: Metadata = {
-  title: "Para salas",
+  title: "Para salas | La Put* Vuelta",
   description:
-    "Dossier B2B para salas y promotores: formato 360º llave en mano (show + streaming + activaciones + contenido) orientado a afluencia y consumo.",
+    "Dossier B2B: formato 360º llave en mano (show + activación + contenido + streaming opcional) orientado a pista activa, picos de consumo y visibilidad.",
   robots: {
     index: false,
     follow: false,
@@ -16,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "La Put* Vuelta para salas",
     description:
-      "Formato 360º llave en mano: show, streaming, activaciones y contenido. Enfoque: pista siempre activa + picos de consumo + visibilidad.",
+      "Formato 360º llave en mano: show, activación, contenido y streaming opcional. Enfoque: pista siempre activa + picos de consumo + visibilidad.",
     type: "website",
     url: "/b2b",
   },
@@ -39,7 +38,6 @@ const BRAND = {
   instagramHandle: "laputvueltaoficial",
   tiktokHandle: "laputvueltaoficial",
   dossierUrl: "/docs/laputvuelta-dossier.pdf",
-  mediaKitUrl: "/docs/laputvuelta-media-kit.zip",
   streamingPlatform: "Kick",
 };
 
@@ -74,70 +72,88 @@ function ttLink(handle: string) {
 }
 
 const PRIMARY_MESSAGE =
-  "Hola, soy de una sala/promotora y quiero info para reservar fecha de La Put* Vuelta. Te paso ciudad, sala, aforo aproximado y fechas propuestas:";
+  "Hola, soy de una sala/promotora y quiero reservar fecha para La Put* Vuelta. Te paso ciudad, sala, aforo aproximado y 2 fechas propuestas:";
 
 const VALUE_PROPOSITION = [
   {
-    title: "Más horas de sala, más consumo",
-    text: "Pista con ambiente toda la noche: narrativa + momentos programados + sorpresas. Menos ratos muertos y más gente con ganas de llegar hasta el cierre.",
+    title: "Más horas útiles de club (menos ratos muertos)",
+    text: "No es “que la gente aparezca a las 3:00”. Construimos una narrativa desde el primer tema para que la pista se mantenga viva hasta el cierre.",
   },
   {
-    title: "Contenido premium para la sala",
-    text: "Reels, fotos y vídeo (según pack) listos para publicar. Contenido pensado para que el evento “se vea grande” y eleve la imagen del club.",
+    title: "Picos programados de energía y consumo",
+    text: "Momentos Putivuelta: activaciones, retos y sorpresas que empujan la noche cuando más interesa (sin romper el flujo del club).",
   },
   {
-    title: "Visibilidad más allá de la noche",
-    text: "Contenido compartible y material viralizable. Impacto digital que trasciende el evento y refuerza la marca de la sala.",
+    title: "Contenido que se publica solo",
+    text: "Material listo para RRSS: reels/clips, fotos y vídeo según alcance. El evento se ve grande, y la sala se queda con activos para comunicar después.",
   },
   {
-    title: "Diferente a lo de siempre",
-    text: "Identidad propia + show + interacción real. Una experiencia memorable que se traduce en repetición y conversación.",
+    title: "Diferenciación real (no otra sesión más)",
+    text: "Sello reconocible + show + interacción. Una experiencia que la gente comenta, graba y quiere repetir.",
   },
   {
-    title: "Potencial de fidelización",
-    text: "Formato repetible: puede convertirse en una noche insignia en tu programación, creando costumbre y recurrencia.",
+    title: "Formato repetible = noche insignia",
+    text: "Si encaja, se convierte en una fecha recurrente: fidelización y hábito del público. No dependes de “una noche suelta”.",
   },
 ];
 
 const OFFER = [
   {
-    title: "Show (6 horas)",
+    title: "Show de ~6 horas (adaptable)",
     bullets: ["3 DJs premium", "1 presentador/a", "2 azafatas"],
-    tag: "6h",
+    tag: "SHOW",
   },
   {
-    title: "Streaming en vivo + producción técnica",
+    title: "Activación dentro de la fiesta",
     bullets: [
-      "Streaming en directo (según condiciones)",
-      "Pantallas / visuales (si aplica)",
-      "Timing, calidad y continuidad",
-    ],
-    tag: BRAND.streamingPlatform,
-  },
-  {
-    title: "Dinámicas, juegos y retos",
-    bullets: [
-      "Ruptura de hielo + activación",
-      "Picos de energía y consumo estratégicos",
+      "Dinámicas y retos (call & response, equipos, sorpresas)",
+      "Momentos Putivuelta (picos planificados)",
       "Adaptación a normas y perfil de sala",
     ],
-    tag: "Activación",
+    tag: "ACTIVACIÓN",
   },
   {
-    title: "Contenido y visibilidad",
+    title: "Contenido y cobertura",
     bullets: [
-      "Reels / clips en tiempo real (según pack)",
-      "Aftermovie y fotos (según pack)",
-      "Material listo para redes",
+      "Clips/reels (según alcance)",
+      "Aftermovie + fotos (según alcance)",
+      "Entrega lista para publicar",
     ],
     tag: "RRSS",
+  },
+  {
+    title: `Streaming opcional + técnica (${BRAND.streamingPlatform})`,
+    bullets: [
+      "Retransmisión si la operativa lo permite",
+      "Calidad, timing y continuidad",
+      "Visuales/pantallas si aplica",
+    ],
+    tag: "OPCIONAL",
+  },
+];
+
+const PROCESS = [
+  {
+    n: "01",
+    title: "Encaje + propuesta",
+    text: "Revisamos ciudad, sala, aforo y fecha. Te devolvemos un plan recomendado (alcance + operativa) y presupuesto a medida.",
+  },
+  {
+    n: "02",
+    title: "Preproducción sin fricción",
+    text: "Piezas y calendario coordinado. Alineamos timings, activaciones y puntos de grabación para que el evento salga “redondo”.",
+  },
+  {
+    n: "03",
+    title: "Ejecución + cierre con datos",
+    text: "Pista activa, coordinación y control de momentos. Post-evento: conclusiones, entregables y propuesta de repetición.",
   },
 ];
 
 const NIGHT_FLOW = [
   {
     title: "Inicio envolvente y warm-up",
-    text: "Ambientación, primeras dinámicas y bienvenida al público.",
+    text: "Ambientación, bienvenida y primeras dinámicas.",
   },
   {
     title: "Subida de energía progresiva",
@@ -145,101 +161,84 @@ const NIGHT_FLOW = [
   },
   {
     title: "Momentos Putivuelta",
-    text: "Retos, juegos y picos de consumo estratégicos.",
+    text: "Retos, juegos y picos estratégicos de consumo.",
   },
   {
     title: "Peak time: máxima intensidad",
-    text: "Pista llena, show y energía en su punto álgido.",
+    text: "Pista llena, show y energía en el punto álgido.",
   },
   {
     title: "Cierre épico y memorable",
-    text: "Despedida con impacto, dejando huella en la sala.",
+    text: "Despedida con impacto para dejar huella.",
   },
   {
     title: "Pista siempre activa",
-    text: "Momentos diseñados para mantener la intensidad.",
+    text: "Momentos diseñados para sostener intensidad.",
   },
 ];
 
 const GAMES_AND_CHALLENGES = [
   {
     title: "Retos exprés en pista",
-    text: "Activaciones espontáneas para romper el hielo y animar.",
+    text: "Ruptura de hielo y activación rápida.",
   },
   {
     title: "Dinámicas por equipos",
-    text: "Competencias sanas que fomentan la participación grupal.",
+    text: "Participación grupal y competición sana.",
   },
   {
     title: "Momentos call & response",
-    text: "Interacción colectiva para elevar la energía del club.",
+    text: "Interacción colectiva para elevar energía.",
   },
   {
     title: "Sorpresas programadas",
-    text: "Intervenciones inesperadas que generan viralidad.",
+    text: "Intervenciones que generan viralidad.",
   },
   {
     title: "Seguridad y personalización",
-    text: "Dinámicas adaptadas al perfil y normas de cada sala.",
-  },
-];
-
-const FILMMAKERS = [
-  {
-    name: "Otherview",
-    ig: "https://instagram.com/o1herview",
-    img: "/b2b/team/otherview.jpg",
-    acc: "o1herview",
-    text: "Equipo audiovisual con experiencia en proyectos con artistas y festivales.",
-  },
-  {
-    name: "Bau Creator",
-    ig: "https://instagram.com/bau.creator",
-    img: "/b2b/team/bau-creator.jpg",
-    acc: "bau.creator",
-    text: "Cobertura y narrativa visual pensada para maximizar contenido útil para redes.",
+    text: "Todo se pacta y ajusta a normas, flujo de puerta y perfil del local.",
   },
 ];
 
 const CONTENT_BLOCK = [
   {
-    title: "Reels verticales listos para viralizar",
-    text: "Pack de reels personalizados para el evento (cantidad a definir).",
+    title: "Reels/clips verticales",
+    text: "Piezas rápidas para viralizar (según alcance y objetivos).",
   },
   {
     title: "Aftermovie profesional",
-    text: "Resumen audiovisual de la noche (duración a definir).",
+    text: "Resumen audiovisual con narrativa del evento (según alcance).",
   },
   {
     title: "Pack de fotos sociales",
-    text: "Imágenes editadas de alta calidad para RRSS (cantidad a definir).",
+    text: "Imágenes editadas para RRSS y comunicación del local (según alcance).",
   },
   {
-    title: "Clips en tiempo real y directos opcionales",
-    text: "Material para stories/publicación durante la noche (según condiciones).",
+    title: "Contenido en tiempo real",
+    text: "Clips/stories durante la noche para amplificar mientras ocurre (según operativa).",
   },
   {
-    title: "Entrega de contenido listo para publicar",
-    text: "Facilitamos la difusión y el impacto en redes de la sala.",
+    title: "Entrega lista para publicar",
+    text: "Sin fricción: te lo damos preparado para que impacte.",
   },
 ];
 
 const TECH_REQUIREMENTS = [
   {
     title: "Cabina y sonido",
-    text: "Setup estándar, micro, entradas libres, monitores.",
+    text: "Setup estándar + micro + monitores (según sala).",
   },
   {
     title: "Espacios funcionales",
-    text: "Zona de dinámicas, photocall y puntos de grabación.",
+    text: "Zona para dinámicas, photocall y puntos de grabación.",
   },
   {
     title: "Operativa y logística",
-    text: "Horarios, accesos, pruebas y contacto de sala definidos.",
+    text: "Horarios, accesos, pruebas y contacto operativo definidos.",
   },
   {
     title: "Adaptabilidad total",
-    text: "Requisitos flexibles según condiciones del local.",
+    text: "Ajustamos necesidades técnicas a condiciones reales del local.",
   },
 ];
 
@@ -248,41 +247,43 @@ const PACKS = [
     title: "Pack Base",
     subtitle: "Putivuelta esencial",
     bullets: [
-      "Experiencia básica + DJs + dinámicas",
-      "Contenido esencial para redes (según acuerdo)",
+      "Show + activación principal",
+      "Contenido esencial para redes (según alcance)",
       "Producción adaptada al local",
     ],
-    priceHint: "Precio: a medida",
+    whoFor: "Ideal para primer test o fecha valle con foco en afluencia.",
     tag: "Base",
   },
   {
     title: "Pack Pro",
     subtitle: "Más show y contenido",
     bullets: [
-      "Más espectáculo y juegos",
+      "Más espectáculo y juegos programados",
       "Mayor producción audiovisual",
       "Piezas extra para reforzar difusión",
     ],
-    priceHint: "Precio: a medida",
+    whoFor: "Ideal para noches con objetivo de imagen + tracción fuerte.",
     tag: "Pro",
   },
   {
     title: "Pack Full Experience",
     subtitle: "Todo incluido",
     bullets: [
-      "Decoración / puesta en escena completa (según sala)",
-      "Contenido premium + experiencia integral",
-      "Activación completa y máxima visibilidad",
+      "Puesta en escena/identidad más completa (según sala)",
+      "Contenido premium y cobertura más amplia",
+      "Activación completa para maximizar impacto",
     ],
-    priceHint: "Precio: a medida",
+    whoFor:
+      "Ideal para fechas clave, aperturas, aniversarios o “noche insignia”.",
     tag: "Full",
   },
 ];
 
 const EXTRAS = [
-  "Elementos adicionales según sala y necesidades",
-  "Personalización por ciudad, aforo y requisitos",
-  "Opcionales de contenido y streaming según operativa",
+  "Personalización por ciudad, aforo y perfil musical",
+  "Opcionales de streaming según operativa",
+  "Refuerzo de creatividades y contenido según objetivo",
+  "Ajustes de timings y momentos Putivuelta por sala",
 ];
 
 const TEAM = [
@@ -316,30 +317,47 @@ const TEAM = [
   },
 ];
 
+const FILMMAKERS = [
+  {
+    name: "Otherview",
+    ig: "https://instagram.com/o1herview",
+    img: "/b2b/team/otherview.jpg",
+    acc: "o1herview",
+    text: "Equipo audiovisual con experiencia en proyectos con artistas y festivales.",
+  },
+  {
+    name: "Bau Creator",
+    ig: "https://instagram.com/bau.creator",
+    img: "/b2b/team/bau-creator.jpg",
+    acc: "bau.creator",
+    text: "Cobertura y narrativa visual pensada para maximizar contenido útil para redes.",
+  },
+];
+
 const FAQS: { q: string; a: string }[] = [
   {
     q: "¿Qué es La Put* Vuelta?",
-    a: "Una fiesta formato 360º: show + activaciones + contenido + (opcional) streaming en vivo. Diseñada para mantener la pista activa y maximizar afluencia y consumo.",
+    a: "Un formato 360º: show + activación + contenido (y streaming opcional). Diseñado para mantener la pista activa y crear picos estratégicos de energía y consumo.",
   },
   {
-    q: "¿Qué aporta a la sala?",
-    a: "Más horas útiles de club (menos ratos muertos), narrativa de noche con picos de energía/consumo, contenido premium para redes y diferenciación real en programación.",
+    q: "¿Qué gana la sala?",
+    a: "Más horas útiles de club (menos ratos muertos), diferenciación real en programación, contenido listo para redes y posibilidad de repetir como fecha fija si encaja.",
   },
   {
-    q: "¿Qué necesitáis por parte de la sala?",
-    a: "Fecha y condiciones claras, coordinación con puerta/seguridad, espacios funcionales para activaciones y grabación, y un punto de contacto operativo.",
+    q: "¿Qué necesitáis para hacerme una propuesta?",
+    a: "Ciudad, sala, aforo aproximado, horario habitual y 2 fechas candidatas. Si me dices el objetivo principal (afluencia/barra/imagen), afino el pack recomendado.",
   },
   {
     q: "¿Trabajáis con fijo, porcentaje o híbrido?",
-    a: "Sí. Podemos trabajar con fijo/garantía, % (puerta) o híbrido. Recomendamos el modelo en función de plaza, fecha y objetivo.",
+    a: "Se define en la propuesta según plaza, fecha y objetivos. Lo importante: alinear incentivo y asegurar que la noche salga rentable para la sala.",
   },
   {
-    q: "¿Tenéis requisitos técnicos?",
-    a: "Sí: cabina/sonido estándar, micro, espacios para dinámicas y grabación, y logística coordinada (horarios, accesos y pruebas).",
+    q: "¿Qué requisitos técnicos tenéis?",
+    a: "Cabina/sonido estándar con micro, espacios funcionales para activación y grabación, y coordinación logística (accesos, pruebas, timings). Detalle completo cuando cerremos fecha.",
   },
   {
     q: "¿Cuánto tardáis en activar una fecha?",
-    a: "Ideal: 10–21 días. Si es urgente, condensamos el plan con foco en tracción inmediata y ejecución.",
+    a: "Ideal: 10–21 días. Si es urgente, lo condensamos con un plan enfocado a tracción y ejecución.",
   },
 ];
 
@@ -357,7 +375,10 @@ export default function B2BPage() {
   )}&body=${encodeURIComponent(PRIMARY_MESSAGE)}`;
 
   return (
-    <main className="relative min-h-screen bg-[color:var(--background-dark,#0b0b10)] text-white pt-24 pb-16 md:pt-28 md:pb-24">
+    <main
+      id="top"
+      className="relative min-h-screen bg-[color:var(--background-dark,#0b0b10)] text-white pt-24 pb-16 md:pt-28 md:pb-24"
+    >
       {/* Ambient + grain */}
       <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute left-1/2 top-[-260px] h-[620px] w-[620px] -translate-x-1/2 rounded-full bg-[var(--primary)]/18 blur-[190px]" />
@@ -370,20 +391,7 @@ export default function B2BPage() {
       <header className="fixed top-0 left-0 right-0 z-40 px-6 py-4 flex justify-center">
         <nav className="max-w-[1200px] w-full glass rounded-full px-4 sm:px-6 py-3 flex items-center justify-between border border-white/10">
           {/* Brand */}
-          <a href="/b2b" className="flex items-center gap-3 group">
-            {/* <span className="hidden sm:inline-flex items-center rounded-full border border-white/15 bg-white/5 px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.35em] text-white/80">
-              {BRAND.accentLabel}
-            </span>
-
-            <div className="leading-tight">
-              <p className="text-sm font-semibold text-white/95 group-hover:text-white transition">
-                {BRAND.name}
-              </p>
-              <p className="text-[11px] font-semibold text-white/55">
-                {BRAND.pageTitle}
-              </p>
-            </div> */}
-            {/* <Link href="/" className="flex items-center gap-3"> */}
+          <a href="#top" className="flex items-center gap-3 group">
             <Image
               src="/logo.png"
               alt="La Put* Vuelta"
@@ -392,10 +400,12 @@ export default function B2BPage() {
               priority
               className="h-8 w-auto"
             />
-            {/* </Link> */}
+            <span className="hidden md:inline-flex items-center rounded-full border border-white/15 bg-white/5 px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.35em] text-white/80">
+              {BRAND.accentLabel}
+            </span>
           </a>
 
-          {/* Desktop: reduce to 3 anchors + dropdown */}
+          {/* Desktop: focus + dropdown */}
           <div className="hidden lg:flex items-center gap-6 text-[11px] font-bold uppercase tracking-[0.35em] text-white/60">
             <a className="hover:text-[var(--primary)] transition" href="#valor">
               Valor
@@ -407,7 +417,7 @@ export default function B2BPage() {
               className="hover:text-[var(--primary)] transition"
               href="#contacto"
             >
-              Contacto
+              Propuesta
             </a>
 
             <div className="relative">
@@ -419,10 +429,11 @@ export default function B2BPage() {
                   </span>
                 </summary>
 
-                <div className="absolute right-0 mt-3 w-56 rounded-2xl border border-white/10 bg-black/60 backdrop-blur-xl p-2 shadow-[0_18px_50px_rgba(0,0,0,0.45)]">
+                <div className="absolute right-0 mt-3 w-60 rounded-2xl border border-white/10 bg-black/60 backdrop-blur-xl p-2 shadow-[0_18px_50px_rgba(0,0,0,0.45)]">
                   {[
                     { label: "Concepto", href: "#concepto" },
                     { label: "Qué ofrecemos", href: "#ofrecemos" },
+                    { label: "Proceso", href: "#proceso" },
                     { label: "Noche", href: "#noche" },
                     { label: "Contenido", href: "#contenido" },
                     { label: "Equipo", href: "#equipo" },
@@ -445,18 +456,25 @@ export default function B2BPage() {
           <div className="flex items-center gap-2">
             <a
               href="#contacto"
-              className="hidden sm:inline-flex rounded-2xl border border-white/15 bg-white/[0.03] px-4 py-2 text-sm font-semibold text-white/90 hover:bg-white/[0.06] hover:border-white/25 transition"
+              className="sm:inline-flex rounded-2xl border border-white/15 bg-white/[0.03] px-4 py-2 text-sm font-semibold text-white/90 hover:bg-white/[0.06] hover:border-white/25 transition"
             >
               Solicitar propuesta
             </a>
-            <a
+            {/* <a
               href={whatsappPrimaryHref}
               target="_blank"
               rel="noreferrer"
               className="relative inline-flex items-center justify-center bg-[var(--primary)] hover:bg-[color:rgba(255,77,94,0.82)] text-white px-5 py-2 rounded-full font-bold text-sm transition-all transform hover:scale-[1.02] neon-border"
             >
-              WhatsApp
-            </a>
+              <Image
+                src="/whatsapp.png"
+                alt="La Put* Vuelta"
+                width={160}
+                height={40}
+                priority
+                className="h-8 w-auto invert"
+              />
+            </a> */}
           </div>
         </nav>
       </header>
@@ -476,32 +494,34 @@ export default function B2BPage() {
               <h1 className="text-3xl md:text-5xl font-black uppercase tracking-tight text-white/95">
                 {BRAND.name}
               </h1>
-              <p className="mt-2 text-[11px] font-bold uppercase tracking-[0.35em] text-white/45">
-                Formato 360º llave en mano
+              <p className="mt-2 text-[11px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
+                Formato llave en mano para salas
               </p>
 
               <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/70">
                 Una experiencia donde{" "}
                 <span className="text-white/85 font-semibold">TODO PASA</span>:
-                música, activaciones, show, decoración y contenido. Diseñada
-                para mejorar <span className="text-white/85">afluencia</span> y{" "}
+                música, show, activaciones y contenido. Diseñada para mejorar{" "}
+                <span className="text-white/85">afluencia</span> y{" "}
                 <span className="text-white/85">consumo</span> manteniendo la{" "}
                 <span className="text-white/85">pista siempre activa</span>.
               </p>
 
-              <p className="mt-4 text-base leading-relaxed text-white/70">
-                Sello propio:{" "}
-                <span className="text-white/90 font-semibold italic">
+              <div className="mt-4 rounded-2xl border border-white/10 bg-black/20 px-5 py-4">
+                <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
+                  Sello propio
+                </p>
+                <p className="mt-2 text-sm text-white/80 italic">
                   ¿Hace cuánto no sales a dar una vuelta?
-                </span>
-              </p>
+                </p>
+              </div>
 
               <div className="mt-7 flex flex-wrap gap-3">
                 <a
                   href="#contacto"
                   className="inline-flex items-center justify-center rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-black hover:opacity-90 transition"
                 >
-                  Solicitar propuesta
+                  Quiero propuesta para mi sala
                 </a>
 
                 <a
@@ -510,26 +530,42 @@ export default function B2BPage() {
                   rel="noreferrer"
                   className="inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white/[0.03] px-5 py-3 text-sm font-semibold text-white/90 hover:bg-white/[0.06] hover:border-white/25 transition"
                 >
-                  Hablar por WhatsApp
+                  <Image
+                    src="/whatsapp.png"
+                    alt="La Put* Vuelta"
+                    width={160}
+                    height={40}
+                    priority
+                    className="h-8 w-auto invert"
+                  />
                 </a>
 
-                <a
+                {/* <a
                   href={BRAND.dossierUrl}
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center justify-center rounded-2xl border border-white/15 bg-transparent px-5 py-3 text-sm font-semibold text-white/75 hover:bg-white/[0.04] transition"
                 >
                   Ver dossier (PDF)
-                </a>
+                </a> */}
               </div>
 
               {/* Value chips */}
               <div className="mt-10 grid gap-3 sm:grid-cols-3">
-                <ValueChip k="Show" v="6 horas · 3 DJs + presentador/a" />
-                <ValueChip k="Activación" v="Dinámicas, juegos y picos" />
-                <ValueChip
-                  k="Contenido"
-                  v="Reels · fotos · aftermovie (pack)"
+                <ValueChip k="Show" v="~6 horas · 3 DJs + presentador/a" />
+                <ValueChip k="Activación" v="Momentos Putivuelta programados" />
+                <ValueChip k="RRSS" v="Contenido listo (según alcance)" />
+              </div>
+
+              {/* Trust + urgency */}
+              <div className="mt-6 grid gap-3 md:grid-cols-2">
+                <MiniInfo
+                  title="Respuesta rápida"
+                  text="Te devolvemos propuesta y encaje operativo en 24–72h laborables."
+                />
+                <MiniInfo
+                  title="Cero fricción"
+                  text="Nos encargamos de estructura, momentos y coordinación. Tú pones el espacio."
                 />
               </div>
             </div>
@@ -539,7 +575,7 @@ export default function B2BPage() {
           <aside className="glass rounded-3xl border border-white/10 p-7 md:p-8">
             <div className="flex items-start justify-between gap-4">
               <div>
-                <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/45">
+                <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
                   Resumen B2B
                 </p>
                 <h2 className="mt-2 text-xl font-black uppercase tracking-tight text-white/90">
@@ -555,21 +591,24 @@ export default function B2BPage() {
             <div className="mt-6 space-y-4">
               <StatRow label="Formato" value="Fiesta 360º / show party" />
               <StatRow label="Duración" value="~6 horas (adaptable)" />
+              <StatRow label="Foco" value="Pista activa + picos de consumo" />
               <StatRow
-                label="Producción"
-                value={`Streaming + técnica (${BRAND.streamingPlatform})`}
+                label="Streaming"
+                value={`Opcional (${BRAND.streamingPlatform})`}
               />
-              <StatRow label="Entrega" value="Contenido listo + reporting" />
+              <StatRow
+                label="Entrega"
+                value="Contenido listo + cierre operativo"
+              />
             </div>
 
             <div className="mt-6 rounded-2xl border border-white/10 bg-black/20 p-5">
-              <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/45">
-                Para enviarte propuesta
+              <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
+                Para proponerte un plan
               </p>
               <p className="mt-2 text-sm text-white/70">
-                Ciudad, sala, aforo aproximado y dos fechas posibles.
-                Respondemos con modelo recomendado, requisitos y presupuesto por
-                pack.
+                Envíanos ciudad, sala, aforo y 2 fechas. Te devolvemos un
+                alcance recomendado (pack + operativa) y presupuesto a medida.
               </p>
 
               <div className="mt-4 grid gap-2 sm:grid-cols-2">
@@ -579,7 +618,14 @@ export default function B2BPage() {
                   rel="noreferrer"
                   className="inline-flex items-center justify-center rounded-2xl bg-white px-4 py-3 text-sm font-semibold text-black hover:opacity-90 transition"
                 >
-                  WhatsApp
+                  <Image
+                    src="/whatsapp.png"
+                    alt="La Put* Vuelta"
+                    width={160}
+                    height={40}
+                    priority
+                    className="h-8 w-auto"
+                  />
                 </a>
                 <a
                   href={mailHref}
@@ -591,7 +637,7 @@ export default function B2BPage() {
             </div>
 
             <div className="mt-5 grid gap-3">
-              <a
+              {/* <a
                 href={BRAND.dossierUrl}
                 target="_blank"
                 rel="noreferrer"
@@ -600,33 +646,30 @@ export default function B2BPage() {
                 <p className="text-sm font-semibold text-white/90">
                   Dossier PDF
                 </p>
-                <p className="mt-1 text-sm text-white/60">Ver en una pestaña</p>
-              </a>
-
-              <a
-                href={BRAND.dossierUrl}
-                download
-                className="rounded-2xl border border-white/10 bg-white/[0.02] px-5 py-4 hover:bg-white/[0.04] hover:border-white/20 transition"
-              >
-                <p className="text-sm font-semibold text-white/90">
-                  Descargar dossier
-                </p>
                 <p className="mt-1 text-sm text-white/60">
-                  PDF (para dirección)
+                  Abrir en una pestaña
                 </p>
-              </a>
+              </a> */}
 
-              <a
-                href={BRAND.mediaKitUrl}
-                className="rounded-2xl border border-white/10 bg-white/[0.02] px-5 py-4 hover:bg-white/[0.04] hover:border-white/20 transition"
-              >
-                <p className="text-sm font-semibold text-white/90">
-                  Media kit (opcional)
+              <div className="rounded-2xl border border-white/10 bg-black/20 px-5 py-4">
+                <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
+                  Checklist express
                 </p>
-                <p className="mt-1 text-sm text-white/60">
-                  Creatividades y assets
-                </p>
-              </a>
+                <ul className="mt-3 space-y-2 text-sm text-white/80">
+                  {[
+                    "Ciudad y sala",
+                    "Aforo aproximado",
+                    "Horario habitual",
+                    "2 fechas candidatas",
+                    "Objetivo (afluencia / barra / imagen)",
+                  ].map((x) => (
+                    <li key={x} className="flex gap-2">
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/60" />
+                      <span>{x}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </aside>
         </div>
@@ -638,43 +681,36 @@ export default function B2BPage() {
         className="mx-auto max-w-[1200px] px-6 mt-10 md:mt-14"
       >
         <div className="glass rounded-3xl border border-white/10 p-7 md:p-10">
-          <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/45">
+          <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
             Qué es
           </p>
           <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90">
             El concepto
           </h2>
+
           <p className="mt-4 text-sm leading-relaxed text-white/70 max-w-3xl">
             <span className="text-white/85 font-semibold">{BRAND.name}</span> es
             una fiesta donde{" "}
-            <span className="text-white/85 font-semibold">TODO PASA</span>. Un
-            formato pensado para los que nos gusta tener una historia que
-            contar: música, activaciones, show, decoración adaptada a cada sala
-            y contenido grabado para que quede recuerdo.
-          </p>
-          <p className="mt-4 text-sm leading-relaxed text-white/70 max-w-3xl">
-            Además, incorporamos interacción real (dinámicas/retos y momentos
-            programados). Si la operativa lo permite, retransmitimos en directo
-            para ampliar alcance y conversación.
+            <span className="text-white/85 font-semibold">TODO PASA</span>:
+            música, show, activaciones y contenido grabado. Cada fecha se adapta
+            a la sala, pero el objetivo es constante: pista viva, momentos
+            memorables y una noche que se comenta.
           </p>
 
           <div className="mt-8 grid gap-3 md:grid-cols-2">
             <MiniInfo
-              title="Identidad y sello reconocible"
-              text="Fiesta temática única con narrativa propia."
+              title="Identidad reconocible"
+              text="Sello propio y narrativa de noche."
             />
             <MiniInfo
               title="Interacción real"
-              text="DJs, performances y dinámicas que conectan con el público."
+              text="DJs + presentador/a + dinámicas."
             />
             <MiniInfo
               title="Momentos sorpresa"
               text="Diseñados para subir energía y consumo."
             />
-            <MiniInfo
-              title="Viralidad y redes"
-              text="Contenido listo para potenciar la imagen de la sala."
-            />
+            <MiniInfo title="Viralidad" text="El club se ve grande en redes." />
           </div>
         </div>
       </section>
@@ -686,25 +722,23 @@ export default function B2BPage() {
       >
         <div className="flex items-end justify-between gap-6">
           <div>
-            <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/45">
+            <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
               Propuesta de valor
             </p>
             <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90">
-              ¿Qué gana la sala?
+              Esto es lo que cambia en tu sala
             </h2>
             <p className="mt-3 text-sm text-white/65 max-w-2xl">
-              Más horas útiles de club, más consumo y más impacto digital. Un
-              formato diferenciador con potencial de repetición.
+              No prometemos humo. Diseñamos la noche para que la pista no se
+              apague y el consumo tenga momentos claros.
             </p>
           </div>
 
           <a
-            href={whatsappPrimaryHref}
-            target="_blank"
-            rel="noreferrer"
-            className="hidden md:inline-flex rounded-2xl bg-[var(--primary)] px-4 py-2 text-sm font-semibold text-white hover:bg-[color:rgba(255,77,94,0.82)] transition neon-border"
+            href="#contacto"
+            className="hidden md:inline-flex rounded-2xl border border-white/15 bg-white/[0.03] px-4 py-2 text-sm font-semibold text-white/90 hover:bg-white/[0.06] hover:border-white/25 transition"
           >
-            Consultar condiciones
+            Quiero propuesta
           </a>
         </div>
 
@@ -733,15 +767,15 @@ export default function B2BPage() {
         <div className="glass rounded-3xl border border-white/10 p-7 md:p-10">
           <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
             <div>
-              <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/45">
+              <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
                 Producción
               </p>
               <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90">
-                ¿Qué ofrecemos?
+                ¿Qué incluye la experiencia?
               </h2>
               <p className="mt-3 text-sm text-white/65 max-w-2xl">
-                Show de 6 horas + activación + contenido. Paquetes adaptables
-                según sala, aforo y objetivos.
+                Lo importante: no te “metemos” cosas por meter. Diseñamos
+                alcance según objetivo y operativa real del local.
               </p>
             </div>
 
@@ -776,47 +810,54 @@ export default function B2BPage() {
                     </li>
                   ))}
                 </ul>
-                {/* <div className="mt-6 flex gap-2">
-                  <a
-                    href="#contacto"
-                    className="inline-flex rounded-2xl border border-white/15 bg-white/[0.03] px-4 py-2 text-sm font-semibold text-white/90 hover:bg-white/[0.06] hover:border-white/25 transition"
-                  >
-                    Pedir propuesta
-                  </a>
-                  <a
-                    href={whatsappPrimaryHref}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex rounded-2xl bg-white px-4 py-2 text-sm font-semibold text-black hover:opacity-90 transition"
-                  >
-                    WhatsApp
-                  </a>
-                </div> */}
               </div>
             ))}
           </div>
+        </div>
+      </section>
 
-          <div className="mt-8 grid gap-4 md:grid-cols-4">
-            <Step
-              n="01"
-              title="Fecha y condiciones"
-              text="Modelo, objetivos, responsabilidades y encaje de sala."
-            />
-            <Step
-              n="02"
-              title="Creatividades"
-              text="Adaptación de piezas y calendario de comunicación."
-            />
-            <Step
-              n="03"
-              title="Activación"
-              text="Momentos programados + empuje final 48–72h."
-            />
-            <Step
-              n="04"
-              title="Ejecución + cierre"
-              text="Puerta coordinada, timing, incidencias y reporting."
-            />
+      {/* PROCESO */}
+      <section
+        id="proceso"
+        className="mx-auto max-w-[1200px] px-6 mt-10 md:mt-14"
+      >
+        <div className="glass rounded-3xl border border-white/10 p-7 md:p-10">
+          <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
+                Operativa
+              </p>
+              <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90">
+                Cómo trabajamos (sin complicarte)
+              </h2>
+              <p className="mt-3 text-sm text-white/65 max-w-2xl">
+                Flujo simple, replicable y pensado para dirección: claridad
+                antes, control durante y cierre con datos.
+              </p>
+            </div>
+
+            <a
+              href="#contacto"
+              className="mt-4 inline-flex w-fit rounded-2xl bg-white px-4 py-2 text-sm font-semibold text-black hover:opacity-90 transition md:mt-0"
+            >
+              Enviar datos y fechas
+            </a>
+          </div>
+
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
+            {PROCESS.map((s) => (
+              <Step key={s.n} n={s.n} title={s.title} text={s.text} />
+            ))}
+          </div>
+
+          <div className="mt-6 rounded-2xl border border-white/10 bg-black/20 p-5">
+            <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
+              Resultado esperado
+            </p>
+            <p className="mt-2 text-sm text-white/70">
+              Una noche con narrativa, momentos y ejecución que se notan: pista
+              con ambiente, picos claros y contenido útil para repetir.
+            </p>
           </div>
         </div>
       </section>
@@ -828,7 +869,7 @@ export default function B2BPage() {
       >
         <div className="grid gap-6 md:grid-cols-2">
           <div className="glass rounded-3xl border border-white/10 p-7 md:p-8">
-            <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/45">
+            <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
               Estructura
             </p>
             <h2 className="mt-2 text-xl md:text-2xl font-black uppercase tracking-tight text-white/90">
@@ -852,15 +893,15 @@ export default function B2BPage() {
           </div>
 
           <div className="glass rounded-3xl border border-white/10 p-7 md:p-8">
-            <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/45">
+            <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
               Activación
             </p>
             <h2 className="mt-2 text-xl md:text-2xl font-black uppercase tracking-tight text-white/90">
               Juegos y retos con el público
             </h2>
             <p className="mt-3 text-sm text-white/65">
-              Dinámicas pensadas para elevar energía, crear momentos y generar
-              contenido, siempre adaptadas a normas de sala.
+              Activaciones que suben energía y crean contenido, siempre pactadas
+              y adaptadas a la sala.
             </p>
 
             <div className="mt-6 space-y-3">
@@ -884,119 +925,10 @@ export default function B2BPage() {
                 Nota operativa
               </p>
               <p className="mt-2 text-sm text-white/70">
-                Las dinámicas se pactan con antelación y se ajustan a seguridad,
-                flujo de puerta y perfil del local.
+                Las dinámicas se cierran con antelación y se ajustan a
+                seguridad, flujo de puerta y perfil del local.
               </p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* EQUIPO */}
-      <section
-        id="equipo"
-        className="mx-auto max-w-[1200px] px-6 mt-10 md:mt-14"
-      >
-        <div className="glass rounded-3xl border border-white/10 p-7 md:p-10">
-          <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/45">
-            Quién trabaja
-          </p>
-          <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90">
-            Equipo
-          </h2>
-          <p className="mt-3 text-sm text-white/65 max-w-2xl">
-            Line-up con 4 de los mejores DJs nacionales.
-          </p>
-
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {TEAM.map((t) => (
-              <Link
-                href={t.ig}
-                key={t.name}
-                className="rounded-3xl border border-white/10 bg-black/20 p-6"
-              >
-                <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]">
-                  <Image
-                    src={t.img}
-                    alt={t.name}
-                    fill
-                    className="object-cover"
-                    sizes="(min-width: 1024px) 240px, (min-width: 640px) 45vw, 90vw"
-                    priority={false}
-                  />
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
-                </div>
-
-                <p className="mt-4 text-sm font-semibold text-white/90">
-                  {t.name} · @{t.acc}
-                </p>
-                <p className="mt-2 text-[11px] font-bold uppercase tracking-[0.22em] text-white/55">
-                  {t.role}
-                </p>
-              </Link>
-            ))}
-          </div>
-
-          {/* <div className="mt-6 rounded-2xl border border-white/10 bg-white/[0.02] px-5 py-4">
-            <p className="text-sm font-semibold text-white/85">Sello propio</p>
-            <p className="mt-2 text-sm text-white/70 italic">
-              ¿Hace cuánto no sales a dar una vuelta?
-            </p>
-          </div> */}
-        </div>
-      </section>
-
-      {/* FILMMAKERS */}
-      <section
-        id="filmmakers"
-        className="mx-auto max-w-[1200px] px-6 mt-10 md:mt-14"
-      >
-        <div className="glass rounded-3xl border border-white/10 p-7 md:p-10">
-          <div className="flex items-end justify-between gap-6">
-            <div>
-              <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/45">
-                Equipo audiovisual
-              </p>
-              <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90">
-                2 filmmakers de primer nivel
-              </h2>
-              <p className="mt-3 text-sm text-white/65 max-w-2xl">
-                Cobertura diseñada para generar piezas útiles para redes y
-                reforzar visibilidad de la sala.
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-6 grid gap-4 md:grid-cols-2">
-            {FILMMAKERS.map((f) => (
-              <Link
-                href={f.ig}
-                key={f.name}
-                className="rounded-3xl border border-white/10 bg-black/20 p-7"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]">
-                    <Image
-                      src={f.img}
-                      alt={f.name}
-                      fill
-                      className="object-cover"
-                      sizes="56px"
-                      priority={false}
-                    />
-                  </div>
-
-                  <div className="min-w-0">
-                    <p className="text-base font-black uppercase tracking-[0.06em] text-white/90">
-                      {f.name} · @{f.acc}
-                    </p>
-                    <p className="mt-2 text-sm leading-relaxed text-white/70">
-                      {f.text}
-                    </p>
-                  </div>
-                </div>
-              </Link>
-            ))}
           </div>
         </div>
       </section>
@@ -1007,15 +939,15 @@ export default function B2BPage() {
         className="mx-auto max-w-[1200px] px-6 mt-10 md:mt-14"
       >
         <div className="glass rounded-3xl border border-white/10 p-7 md:p-10">
-          <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/45">
-            Contenido, requisitos y presupuesto
+          <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
+            Contenido
           </p>
           <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90">
             Contenido viral para tus redes
           </h2>
           <p className="mt-3 text-sm text-white/65 max-w-2xl">
-            Piezas listas para publicar y mantener tracción antes, durante y
-            después del evento.
+            Lo que se graba esa noche no se pierde: se convierte en piezas para
+            amplificar antes/durante/después.
           </p>
 
           <div className="mt-6 grid gap-4 md:grid-cols-2">
@@ -1033,8 +965,8 @@ export default function B2BPage() {
           </div>
 
           <div className="mt-8 rounded-3xl border border-white/10 bg-black/20 p-7">
-            <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/45">
-              Requerimientos técnicos mínimos
+            <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
+              Requerimientos técnicos orientativos
             </p>
             <div className="mt-4 grid gap-4 md:grid-cols-2">
               {TECH_REQUIREMENTS.map((x) => (
@@ -1051,6 +983,14 @@ export default function B2BPage() {
                 </div>
               ))}
             </div>
+
+            <div className="mt-6 rounded-2xl border border-white/10 bg-white/[0.02] px-5 py-4">
+              <p className="text-sm font-semibold text-white/85">Importante</p>
+              <p className="mt-2 text-sm text-white/70">
+                El detalle completo se confirma al cerrar fecha, para adaptarlo
+                a tu sala (sin exigir de más ni quedarnos cortos).
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -1062,23 +1002,23 @@ export default function B2BPage() {
       >
         <div className="flex items-end justify-between gap-6">
           <div>
-            <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/45">
-              Paquetes y presupuesto
+            <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
+              Packs
             </p>
             <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90">
-              Packs y personalización
+              Alcance por pack + personalización
             </h2>
             <p className="mt-3 text-sm text-white/65 max-w-2xl">
-              Presupuesto ajustable por ciudad, aforo y requisitos. Te
-              recomendamos el pack según objetivo (afluencia/barra/imagen).
+              Los packs son niveles de alcance. El presupuesto es a medida según
+              ciudad, aforo, fecha y objetivo.
             </p>
           </div>
 
           <a
             href="#contacto"
-            className="hidden md:inline-flex rounded-2xl border border-white/15 bg-white/[0.03] px-4 py-2 text-sm font-semibold text-white/90 hover:bg-white/[0.06] hover:border-white/25 transition"
+            className="hidden md:inline-flex rounded-2xl bg-[var(--primary)] px-4 py-2 text-sm font-semibold text-white hover:bg-[color:rgba(255,77,94,0.82)] transition neon-border"
           >
-            Pedir presupuesto
+            Pedir propuesta
           </a>
         </div>
 
@@ -1102,6 +1042,13 @@ export default function B2BPage() {
                 </h3>
                 <p className="mt-2 text-sm text-white/65">{p.subtitle}</p>
 
+                <div className="mt-4 rounded-2xl border border-white/10 bg-black/20 px-4 py-3">
+                  <p className="text-sm font-semibold text-white/85">
+                    ¿Para quién?
+                  </p>
+                  <p className="mt-1 text-sm text-white/70">{p.whoFor}</p>
+                </div>
+
                 <ul className="mt-5 space-y-2 text-sm text-white/80">
                   {p.bullets.map((b) => (
                     <li key={b} className="flex gap-2">
@@ -1113,10 +1060,10 @@ export default function B2BPage() {
 
                 <div className="mt-5 rounded-2xl border border-white/10 bg-black/25 px-4 py-3">
                   <p className="text-sm font-semibold text-white/85">
-                    {p.priceHint}
+                    Presupuesto a medida
                   </p>
                   <p className="mt-1 text-xs text-white/55">
-                    Se define tras revisar sala, fecha y operativa.
+                    Se define tras revisar sala, fecha, operativa y objetivos.
                   </p>
                 </div>
 
@@ -1133,7 +1080,14 @@ export default function B2BPage() {
                     rel="noreferrer"
                     className="inline-flex rounded-2xl bg-white px-4 py-2 text-sm font-semibold text-black hover:opacity-90 transition"
                   >
-                    WhatsApp
+                    <Image
+                      src="/whatsapp.png"
+                      alt="La Put* Vuelta"
+                      width={160}
+                      height={40}
+                      priority
+                      className="h-6 w-auto"
+                    />
                   </a>
                 </div>
               </div>
@@ -1142,8 +1096,8 @@ export default function B2BPage() {
         </div>
 
         <div className="mt-6 glass rounded-3xl border border-white/10 p-7">
-          <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/45">
-            Extras
+          <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
+            Extras y ajustes
           </p>
           <ul className="mt-4 space-y-2 text-sm text-white/80">
             {EXTRAS.map((x) => (
@@ -1156,19 +1110,126 @@ export default function B2BPage() {
         </div>
       </section>
 
+      {/* EQUIPO */}
+      <section
+        id="equipo"
+        className="mx-auto max-w-[1200px] px-6 mt-10 md:mt-14"
+      >
+        <div className="glass rounded-3xl border border-white/10 p-7 md:p-10">
+          <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
+            Quién trabaja
+          </p>
+          <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90">
+            Equipo artístico
+          </h2>
+          <p className="mt-3 text-sm text-white/65 max-w-2xl">
+            Line-up con DJs de referencia. Se concreta por plaza y fecha al
+            cerrar propuesta.
+          </p>
+
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {TEAM.map((t) => (
+              <a
+                key={t.name}
+                href={t.ig}
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-3xl border border-white/10 bg-black/20 p-6 hover:border-white/20 hover:bg-white/[0.03] transition block"
+              >
+                <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]">
+                  <Image
+                    src={t.img}
+                    alt={t.name}
+                    fill
+                    className="object-cover"
+                    sizes="(min-width: 1024px) 240px, (min-width: 640px) 45vw, 90vw"
+                    priority={false}
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
+                </div>
+
+                <p className="mt-4 text-sm font-semibold text-white/90">
+                  {t.name} <span className="text-white/60">· </span>
+                  <span className="text-[var(--primary)]">@{t.acc}</span>
+                </p>
+                <p className="mt-2 text-[11px] font-bold uppercase tracking-[0.22em] text-white/55">
+                  {t.role} · Abrir →
+                </p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FILMMAKERS */}
+      <section
+        id="filmmakers"
+        className="mx-auto max-w-[1200px] px-6 mt-10 md:mt-14"
+      >
+        <div className="glass rounded-3xl border border-white/10 p-7 md:p-10">
+          <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
+            Equipo audiovisual
+          </p>
+          <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90">
+            Filmmakers (contenido que se nota)
+          </h2>
+          <p className="mt-3 text-sm text-white/65 max-w-2xl">
+            Cobertura orientada a piezas útiles para RRSS y para elevar imagen
+            de la sala.
+          </p>
+
+          <div className="mt-6 grid gap-4 md:grid-cols-2">
+            {FILMMAKERS.map((f) => (
+              <a
+                key={f.name}
+                href={f.ig}
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-3xl border border-white/10 bg-black/20 p-7 hover:border-white/20 hover:bg-white/[0.03] transition block"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]">
+                    <Image
+                      src={f.img}
+                      alt={f.name}
+                      fill
+                      className="object-cover"
+                      sizes="56px"
+                    />
+                  </div>
+
+                  <div className="min-w-0">
+                    <p className="text-base font-black uppercase tracking-[0.06em] text-white/90">
+                      {f.name} <span className="text-white/60">· </span>
+                      <span className="text-[var(--primary)]">@{f.acc}</span>
+                    </p>
+                    <p className="mt-2 text-sm leading-relaxed text-white/70">
+                      {f.text}
+                    </p>
+                    <p className="mt-3 text-[11px] font-bold uppercase tracking-[0.22em] text-white/55">
+                      Abrir →
+                    </p>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* FAQ */}
-      <section id="faq" className="mx-auto max-w-[1200px] px-6 mt-10 md:mt-14">
+      {/* <section id="faq" className="mx-auto max-w-[1200px] px-6 mt-10 md:mt-14">
         <div className="flex items-end justify-between gap-6">
           <div>
-            <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/45">
+            <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
               Preguntas frecuentes
             </p>
             <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90">
-              FAQ para salas
+              FAQ para dirección
             </h2>
             <p className="mt-3 text-sm text-white/65 max-w-2xl">
-              Respuestas directas a lo que normalmente se pregunta al valorar
-              una colaboración.
+              Respuestas directas, sin letra pequeña aquí. El detalle va en la
+              propuesta específica.
             </p>
           </div>
         </div>
@@ -1193,7 +1254,7 @@ export default function B2BPage() {
             </details>
           ))}
         </div>
-      </section>
+      </section> */}
 
       {/* CONTACTO */}
       <section
@@ -1203,52 +1264,59 @@ export default function B2BPage() {
         <div className="grid gap-6 md:grid-cols-2">
           <ContactForm />
 
-          <div className="glass rounded-3xl border border-white/10 p-7 md:p-8">
-            <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/45">
-              Condiciones, contacto y cierre
+          <div className="glass rounded-3xl border border-white/10 p-7 md:p-8 showing">
+            <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
+              Contacto y propuesta
             </p>
             <h3 className="mt-2 text-xl font-black uppercase tracking-tight text-white/90">
-              Cerramos más rápido por aquí
+              Si te encaja, cerremos fecha
             </h3>
             <p className="mt-3 text-sm text-white/65">
-              Para propuesta: ciudad + sala + aforo + dos fechas. Te devolvemos
-              modelo recomendado, requisitos y pack.
+              Envíanos ciudad, sala, aforo y 2 fechas. Te devolvemos un plan
+              recomendado y presupuesto a medida.
             </p>
 
             <div className="mt-6 grid gap-3">
-              <ActionCard
-                title={`WhatsApp (${primaryContact.name})`}
-                text="Ciudad + sala + aforo + 2 fechas"
-                href={whatsappPrimaryHref}
-                primary
-              />
-              {CONTACTS.length > 1 ? (
+              <div
+                className={
+                  CONTACTS.length > 1
+                    ? "grid gap-3 sm:grid-cols-2"
+                    : "grid gap-3"
+                }
+              >
                 <ActionCard
-                  title={`WhatsApp (${CONTACTS[1].name})`}
-                  text="Alternativa de contacto"
-                  href={whatsappSecondaryHref}
+                  title={`WhatsApp (${primaryContact.name})`}
+                  text=" "
+                  href={whatsappPrimaryHref}
+                  primary
                 />
-              ) : null}
+
+                {CONTACTS.length > 1 ? (
+                  <ActionCard
+                    title={`WhatsApp (${CONTACTS[1].name})`}
+                    text=""
+                    href={whatsappSecondaryHref}
+                    primary
+                  />
+                ) : null}
+              </div>
               <ActionCard title="Email" text={BRAND.email} href={mailHref} />
-              <ActionCard
-                title="Instagram"
-                text={`@${BRAND.instagramHandle}`}
-                href={igLink(BRAND.instagramHandle)}
-              />
-              <ActionCard
-                title="TikTok"
-                text={`@${BRAND.tiktokHandle}`}
-                href={ttLink(BRAND.tiktokHandle)}
-              />
-              <ActionCard
-                title="Dossier PDF"
-                text="Ver / descargar"
-                href={BRAND.dossierUrl}
-              />
+              <div className="grid gap-3 sm:grid-cols-2">
+                <ActionCard
+                  title="Instagram"
+                  text={`@${BRAND.instagramHandle}`}
+                  href={igLink(BRAND.instagramHandle)}
+                />
+                <ActionCard
+                  title="TikTok"
+                  text={`@${BRAND.tiktokHandle}`}
+                  href={ttLink(BRAND.tiktokHandle)}
+                />
+              </div>
             </div>
 
             <div className="mt-7 rounded-2xl border border-white/10 bg-black/20 p-5">
-              <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/45">
+              <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
                 Checklist para propuesta
               </p>
               <ul className="mt-3 space-y-2 text-sm text-white/80">
@@ -1268,16 +1336,16 @@ export default function B2BPage() {
               </ul>
             </div>
 
-            <div className="mt-7 flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.02] px-5 py-4">
+            {/* <div className="mt-7 flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.02] px-5 py-4">
               <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-white/55">
                 Tiempo de respuesta
               </p>
               <p className="text-sm font-semibold text-white/85">
                 24–72h laborables
               </p>
-            </div>
+            </div> */}
 
-            <div className="mt-5 text-xs text-white/45">
+            {/* <div className="mt-5 text-xs text-[var(--primary)]">
               <p className="font-semibold text-white/60">Contactos</p>
               <ul className="mt-2 space-y-1">
                 {CONTACTS.map((c) => (
@@ -1288,11 +1356,11 @@ export default function B2BPage() {
                   @{BRAND.instagramHandle} · @{BRAND.tiktokHandle}
                 </li>
               </ul>
-            </div>
+            </div> */}
           </div>
         </div>
 
-        <footer className="mt-10 border-t border-white/10 pt-6 text-xs text-white/45">
+        <footer className="mt-10 border-t border-white/10 pt-6 text-xs text-[var(--primary)]">
           © {new Date().getFullYear()} {BRAND.name}. Sección B2B.
         </footer>
       </section>
@@ -1306,7 +1374,14 @@ export default function B2BPage() {
           className="h-14 w-14 rounded-full bg-[var(--primary)] shadow-[0_0_30px_rgba(255,77,94,0.45)] border border-white/15 flex items-center justify-center font-black"
           aria-label="WhatsApp"
         >
-          WA
+          <Image
+            src="/whatsapp.png"
+            alt="La Put* Vuelta"
+            width={160}
+            height={40}
+            priority
+            className="h-8 w-auto invert"
+          />
         </a>
       </div>
     </main>
@@ -1316,7 +1391,7 @@ export default function B2BPage() {
 function ValueChip({ k, v }: { k: string; v: string }) {
   return (
     <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-      <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/45">
+      <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
         {k}
       </p>
       <p className="mt-2 text-sm font-semibold text-white/85">{v}</p>
@@ -1348,7 +1423,7 @@ function Step({ n, title, text }: { n: string; title: string; text: string }) {
 function MiniInfo({ title, text }: { title: string; text: string }) {
   return (
     <div className="rounded-2xl border border-white/10 bg-black/20 p-5">
-      <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/45">
+      <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
         {title}
       </p>
       <p className="mt-2 text-sm font-semibold text-white/85">{text}</p>
@@ -1379,14 +1454,14 @@ function ActionCard({
       className={[
         "rounded-2xl border border-white/10 p-5 transition block",
         primary
-          ? "bg-white text-black hover:bg-white/90"
+          ? "bg-[var(--primary)] text-white hover:bg-[var(--primary)]/90"
           : "bg-black/20 text-white hover:bg-white/[0.04] hover:border-white/20",
       ].join(" ")}
     >
       <p className="text-sm font-semibold">{title}</p>
       <p
         className={
-          primary ? "mt-1 text-sm text-black/70" : "mt-1 text-sm text-white/60"
+          primary ? "mt-1 text-sm text-white/70" : "mt-1 text-sm text-white/60"
         }
       >
         {text}
@@ -1394,8 +1469,8 @@ function ActionCard({
       <p
         className={
           primary
-            ? "mt-3 text-[11px] font-bold uppercase tracking-[0.22em] text-black/70"
-            : "mt-3 text-[11px] font-bold uppercase tracking-[0.22em] text-white/45"
+            ? "mt-3 text-[11px] font-bold uppercase tracking-[0.22em] text-white/70"
+            : "mt-3 text-[11px] font-bold uppercase tracking-[0.22em] text-[var(--primary)]"
         }
       >
         Abrir →
