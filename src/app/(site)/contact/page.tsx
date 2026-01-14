@@ -141,15 +141,14 @@ export default function ContactPage() {
                 <p className="mt-2 text-sm text-white/60 leading-relaxed">
                   Venta oficial y calendario de eventos.
                 </p>
-
-                {/* OJO: esto es interno, no hace falta target=_blank */}
-                <Link
-                  className="mt-4 inline-flex w-fit items-center justify-center rounded-2xl bg-[var(--primary)] px-4 py-2 text-[11px] font-black uppercase tracking-[0.22em] text-white transition hover:bg-[color:rgba(255,77,94,0.9)] hover:scale-[1.01]"
+                <a
+                  className="mt-4 inline-flex w-fit items-center justify-center rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-2 text-[11px] font-black uppercase tracking-[0.22em] text-white/85 backdrop-blur transition hover:bg-white/[0.06] hover:border-[var(--primary)]/35 hover:text-white"
                   href="/tickets"
+                  target="_blank"
+                  rel="noreferrer"
                 >
-                  <span className="pointer-events-none absolute -inset-[2px] rounded-2xl border border-white/15" />
                   Ver calendario
-                </Link>
+                </a>
 
                 <div className="mt-4">
                   <Link
