@@ -34,15 +34,15 @@ export default function TicketsPage() {
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,77,94,0.14),transparent_55%),radial-gradient(circle_at_80%_70%,rgba(255,77,94,0.08),transparent_60%)]" />
           <div className="relative flex flex-col gap-3">
             <div className="flex items-end justify-between gap-4">
-              <span className="text-[var(--primary)] font-black text-6xl opacity-20 leading-none">
-                01
+              <span className="text-[var(--primary)] font-black text-6xl leading-none secondaryFont">
+                02
               </span>
-              <span className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/40">
+              <span className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
                 CALENDARIO
               </span>
             </div>
 
-            <h1 className="text-3xl md:text-5xl font-black uppercase tracking-tight">
+            <h1 className="text-3xl md:text-5xl font-black uppercase tracking-tight secondaryFont">
               Próximos eventos
             </h1>
             <p className="text-white/65 max-w-2xl leading-relaxed">
@@ -86,7 +86,7 @@ export default function TicketsPage() {
                 <span className="inline-block h-2.5 w-2.5 rounded-full bg-white/20" />
                 <span className="inline-block h-2.5 w-2.5 rounded-full bg-white/15" />
                 <span className="ml-3 text-[10px] font-bold uppercase tracking-[0.35em] text-white/40">
-                  Fourvenues Embed
+                  Fourvenues
                 </span>
               </div>
 

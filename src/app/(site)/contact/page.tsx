@@ -33,16 +33,16 @@ export default function ContactPage() {
 
             <div className="flex items-end justify-between gap-4">
               <div>
-                <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/45">
+                <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
                   Oficial
                 </p>
-                <h1 className="mt-2 text-3xl md:text-5xl font-black uppercase tracking-tight text-white/95">
+                <h1 className="mt-2 text-3xl md:text-5xl font-black uppercase tracking-tight text-white/95 secondaryFont">
                   Hablemos
                 </h1>
               </div>
 
-              <span className="hidden md:block text-[var(--primary)] font-black text-6xl opacity-20 leading-none">
-                01
+              <span className="hidden md:block text-[var(--primary)] font-black text-6xl leading-none secondaryFont">
+                05
               </span>
             </div>
 

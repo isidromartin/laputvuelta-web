@@ -1,5 +1,5 @@
 export const site = {
-  name: "La Put* Vuelta",
+  name: "La Put*Vuelta",
   domain: "laputvuelta.com",
   urls: {
     kick: "https://kick.com/laputivuelta-oficial",

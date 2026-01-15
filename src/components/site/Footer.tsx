@@ -78,11 +78,11 @@ export function Footer() {
 
             {/* Bottom row */}
             <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-              <div className="text-xs text-white/45 leading-relaxed">
-                <p>{site.copy.footerNote}</p>
+              <div className="text-white/45 leading-relaxed">
+                <p className="secondaryFont text-xl">{site.copy.footerNote}</p>
               </div>
 
-              <div className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/35">
+              <div className="text-[12px] font-bold uppercase tracking-[0.35em] text-white/35">
                 © {new Date().getFullYear()} {site.name}
               </div>
             </div>

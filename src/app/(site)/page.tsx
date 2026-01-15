@@ -72,7 +72,7 @@ function InfoCard({
 
         <div className="flex items-start justify-between gap-4">
           <div className="min-w-0">
-            <h3 className="text-lg md:text-xl font-black uppercase tracking-tight text-white/90">
+            <h3 className="text-lg md:text-xl font-black uppercase tracking-tight text-white/90 secondaryFont">
               {title}
             </h3>
             <p className="mt-2 text-sm text-white/65">{subtitle}</p>
@@ -169,7 +169,7 @@ export default function HomePage() {
             subtitle=""
           >
             <p className="text-sm text-white/70 leading-relaxed">
-              LA PUT* VUELTA es una noche donde se juntan fiesta, narrativa y
+              LA PUT*VUELTA es una noche donde se juntan fiesta, narrativa y
               momentos. Está pensada para quien quiere que pasen cosas, para
               quien quiere una historia que contar al día siguiente.
             </p>
@@ -178,7 +178,7 @@ export default function HomePage() {
               Cada edición se vive dentro… y también fuera: retransmisión en
               directo para seguir la noche incluso desde casa. Pero la pregunta
               sigue siendo:
-              <span className="text-white/85 font-semibold">
+              <span className="text-white/85 font-semibold text-lg secondaryFont">
                 {" "}
                 ¿hace cuánto no sales a dar una vuelta?
               </span>
@@ -253,7 +253,7 @@ export default function HomePage() {
                   external
                   variant="solid"
                 >
-                  Ir a Kick
+                  Live
                 </ButtonLink>
               </div>
             }
@@ -353,24 +353,28 @@ export default function HomePage() {
         <div className="mt-10 md:mt-12">
           <div className="glass relative overflow-hidden rounded-3xl border border-white/10 p-8 md:p-10">
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(255,77,94,0.18),transparent_55%),radial-gradient(circle_at_80%_60%,rgba(255,77,94,0.10),transparent_60%)]" />
+
             <div className="relative flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-              <div>
-                <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tight">
+              {/* Left: limita ancho en desktop para dejar sitio a botones */}
+              <div className="md:max-w-[420px] lg:max-w-[460px]">
+                <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tight secondaryFont">
                   ¿Listo para dar la vuelta?
                 </h3>
-                <p className="mt-2 text-sm md:text-base text-white/60 max-w-xl">
+                <p className="mt-2 text-sm md:text-base text-white/60">
                   Entra con entradas o asegura tu sitio con reserva. La noche se
                   diseña para vivirse dentro.
                 </p>
               </div>
 
-              <div className="flex flex-wrap gap-3">
-                <div className="relative">
+              {/* Right: en móvil columna, en desktop en línea */}
+              <div className="flex w-full flex-col gap-3 md:w-auto md:flex-row md:items-center md:justify-end">
+                <div className="relative w-full md:w-auto">
                   <span className="pointer-events-none absolute -inset-2 -z-10 rounded-2xl bg-[var(--primary)]/25 blur-xl" />
                   <ButtonLink href="/tickets" variant="solid">
                     Comprar entradas
                   </ButtonLink>
                 </div>
+
                 <ButtonLink href="/events">Ver próximos eventos</ButtonLink>
               </div>
             </div>

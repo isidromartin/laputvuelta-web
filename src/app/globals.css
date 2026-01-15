@@ -10,6 +10,14 @@
 }
 
 @font-face {
+  font-family: "SecondaryFont";
+  src: url("/fonts/SketchCaslon-Italic.woff2") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
   font-family: "HelveticaLocal";
   src: url("/fonts/HelveticaOblique.otf") format("opentype");
   font-weight: 400;
@@ -64,6 +72,10 @@ body {
   font-family: var(--font-display);
 }
 
+.secondaryFont {
+  font-family: "SecondaryFont", serif;
+}
+
 * {
   -webkit-tap-highlight-color: transparent;
 }
@@ -77,10 +89,12 @@ body {
 }
 
 :root {
-  --primary: #ff4d5e;
-  --background-dark: #0b0b10;
-  --background-light: #f8f5f6;
-  --surface: #16161d;
+  --primary: #b01c1c;
+  --secondary: #edc7bf;
+  --background-dark: #212121;
+  --background-light: #ffe3db;
+  --surface: #212121;
+  --oficial-white: #ffe3db;
 }
 
 html.dark {
