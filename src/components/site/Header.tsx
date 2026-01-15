@@ -1,9 +1,14 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { nav } from "@/components/site/nav";
 import { MobileNav } from "@/components/site/MobileNav";
 
 export function Header() {
+  const pathname = usePathname();
+
   return (
     <header className="fixed top-0 w-full z-40 px-6 py-4 flex justify-center">
       <nav className="max-w-[1200px] w-full glass rounded-full px-6 py-3 flex items-center justify-between border border-white/10">
@@ -21,13 +26,19 @@ export function Header() {
           </Link>
         </div>
 
-        {/* Desktop nav (desde nav.ts) */}
+        {/* Desktop nav */}
         <div className="hidden md:flex gap-8 text-sm font-medium uppercase tracking-widest text-white/70">
           {nav.map((item) => {
-            // Para anchors tipo "#concepto": usamos <a>
             const isHash = item.href.startsWith("#");
 
-            const className = "hover:text-[var(--primary)] transition-colors";
+            // Solo marcamos "active" para rutas reales (no anchors)
+            const isActive = !isHash && pathname === item.href;
+
+            const className = [
+              "transition-colors",
+              isActive ? "text-[var(--primary)]" : "text-white/70",
+              "hover:text-[var(--primary)]",
+            ].join(" ");
 
             return isHash ? (
               <a key={item.href} href={item.href} className={className}>
@@ -43,7 +54,6 @@ export function Header() {
 
         {/* Right CTA + Mobile */}
         <div className="flex items-center gap-4">
-          {/* CTA solo md+ (iPad/desktop) */}
           <Link
             href="/tickets"
             className="hidden md:inline-flex relative items-center justify-center bg-[var(--primary)] hover:bg-[color:rgba(255,77,94,0.8)] text-white px-6 py-2 rounded-full font-bold text-sm transition-all transform hover:scale-105 neon-border group"
@@ -55,7 +65,6 @@ export function Header() {
             COMPRAR ENTRADAS
           </Link>
 
-          {/* Menú móvil */}
           <div className="md:hidden">
             <MobileNav nav={nav} />
           </div>
