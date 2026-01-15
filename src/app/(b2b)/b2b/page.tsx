@@ -400,7 +400,7 @@ export default function B2BPage() {
       <header className="fixed top-0 left-0 right-0 z-40 px-6 py-4 flex justify-center">
         <nav className="max-w-[1200px] w-full glass rounded-full px-4 sm:px-6 py-3 flex items-center justify-between border border-white/10">
           {/* Brand */}
-          <a href="#top" className="flex items-center gap-3 group">
+          <a href="/" className="flex items-center gap-3 group">
             <Image
               src="/logo.png"
               alt="La Put* Vuelta"

@@ -84,7 +84,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es" className={`${spaceGrotesk.variable} dark`}>
+    <html lang="es" className={`dark`}>
       <head>
         {/* Material Symbols Outlined */}
         <link

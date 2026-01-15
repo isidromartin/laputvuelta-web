@@ -1,6 +1,38 @@
 /* src/app/globals.css */
 @import "tailwindcss";
 
+@font-face {
+  font-family: "HelveticaLocal";
+  src: url("/fonts/Helvetica.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "HelveticaLocal";
+  src: url("/fonts/HelveticaOblique.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "HelveticaLocal";
+  src: url("/fonts/HelveticaBold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "HelveticaLocal";
+  src: url("/fonts/HelveticaBoldOblique.otf") format("opentype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
 /* Tokens de marca (cámbialos aquí cuando quieras) */
 :root {
   --bg: 0 0% 0%;
@@ -10,8 +42,10 @@
   --accent2: 330 80% 60%;
 }
 
+/* Fuente display / global */
 :root {
-  --font-display: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --font-display: "HelveticaLocal", system-ui, -apple-system, Segoe UI, Roboto,
+    Arial, sans-serif;
 }
 
 html,
@@ -23,6 +57,11 @@ body {
 body {
   background: hsl(var(--bg));
   color: hsl(var(--text));
+}
+
+/* Fuente principal */
+body {
+  font-family: var(--font-display);
 }
 
 * {
@@ -46,12 +85,6 @@ body {
 
 html.dark {
   color-scheme: dark;
-}
-
-/* Fuente principal (si ya usas next/font, puedes borrar esto) */
-body {
-  font-family: "Space Grotesk", system-ui, -apple-system, Segoe UI, Roboto,
-    "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
 }
 
 /* Material Symbols */
