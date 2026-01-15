@@ -32,7 +32,10 @@ export function Header() {
             const isHash = item.href.startsWith("#");
 
             // Solo marcamos "active" para rutas reales (no anchors)
-            const isActive = !isHash && pathname === item.href;
+            // const isActive = !isHash && pathname === item.href;
+            const isActive =
+              !isHash &&
+              (pathname === item.href || pathname.startsWith(item.href + "/"));
 
             const className = [
               "transition-colors",
