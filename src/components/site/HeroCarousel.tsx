@@ -81,7 +81,7 @@ export function HeroCarousel({
           ) : null}
 
           {active.title ? (
-            <h2 className="mt-3 text-3xl md:text-6xl font-black uppercase tracking-tight text-white">
+            <h2 className="mt-3 text-3xl md:text-6xl font-black uppercase tracking-tight text-white secondaryFont">
               <span className="drop-shadow-[0_0_18px_rgba(255,77,94,0.12)]">
                 {active.title}
               </span>
