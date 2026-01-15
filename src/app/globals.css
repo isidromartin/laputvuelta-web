@@ -11,7 +11,7 @@
 
 @font-face {
   font-family: "SecondaryFont";
-  src: url("/fonts/SketchCaslon-Italic.woff2") format("opentype");
+  src: url("/fonts/SketchCaslon-Italic.woff2") format("woff2");
   font-weight: 400;
   font-style: italic;
   font-display: swap;
