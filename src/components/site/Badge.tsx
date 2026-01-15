@@ -6,8 +6,8 @@ export function Badge({ children }: { children: React.ReactNode }) {
         rounded-full
         border border-white/10
         bg-white/[0.04]
-        px-3 py-1
-        text-[11px] font-bold uppercase tracking-[0.22em]
+        px-5 py-2
+        text-sm font-bold uppercase tracking-[0.22em]
         text-white/75
         backdrop-blur
         transition

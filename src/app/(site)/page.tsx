@@ -62,7 +62,7 @@ function InfoCard({
       <div className="pointer-events-none absolute -right-12 -top-12 h-48 w-48 rounded-full bg-[var(--primary)]/10 blur-3xl transition group-hover:bg-[var(--primary)]/20" />
       <div className="rounded-[22px] p-7 md:p-8">
         <div className="mb-5 flex items-end justify-between gap-4">
-          <span className="text-[var(--primary)] font-black text-5xl opacity-20 leading-none">
+          <span className="text-[var(--primary)] font-black text-5xl leading-none">
             {index}
           </span>
           <span className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/40">
@@ -144,7 +144,7 @@ export default function HomePage() {
         <div className="mt-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           {/* Badges (envueltas en glass) */}
           <div className="glass inline-flex w-fit flex-wrap items-center gap-2 rounded-2xl border border-white/10 px-4 py-3">
-            <Badge>La Put* Vuelta</Badge>
+            {/* <Badge>La Put* Vuelta</Badge> */}
             <Badge>Live en Kick</Badge>
             <Badge>Activaciones</Badge>
           </div>
@@ -164,9 +164,9 @@ export default function HomePage() {
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
           <InfoCard
             index="01"
-            tag="DOSSIER"
+            tag="Fiesta + show + directo. Todo pasa."
             title="¿Qué es La Put* Vuelta?"
-            subtitle="Fiesta + show + directo. Todo pasa."
+            subtitle=""
           >
             <p className="text-sm text-white/70 leading-relaxed">
               LA PUT* VUELTA es una noche donde se juntan fiesta, narrativa y
@@ -193,9 +193,9 @@ export default function HomePage() {
 
           <InfoCard
             index="02"
-            tag="FLOW"
+            tag="Entradas, directo y activación sin líos."
             title="Cómo funciona"
-            subtitle="Entradas, directo y activación sin líos."
+            subtitle=""
           >
             <ul className="mt-1 space-y-3 text-sm text-white/70">
               <li className="flex gap-3">
@@ -242,9 +242,9 @@ export default function HomePage() {
 
           <InfoCard
             index="03"
-            tag="LINKS"
+            tag="Canales oficiales y acceso directo."
             title="Dónde verlo"
-            subtitle="Canales oficiales y acceso directo."
+            subtitle=""
             actions={
               <div className="relative inline-flex">
                 <span className="pointer-events-none absolute -inset-2 -z-10 rounded-2xl bg-[var(--primary)]/20 blur-xl" />
@@ -259,37 +259,90 @@ export default function HomePage() {
             }
           >
             <div className="space-y-3 text-sm text-white/70">
+              {/* Kick */}
               <a
                 href="https://kick.com/laputvuelta-oficial"
                 target="_blank"
                 rel="noreferrer"
-                className="group flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.02] px-4 py-3 hover:bg-white/[0.04] hover:border-white/20 transition"
+                className="group flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.02] px-4 py-3 hover:bg-white/[0.04] hover:border-[var(--primary)]/50 transition"
               >
-                <span className="text-white/85 font-semibold">Kick</span>
-                <span className="text-white/55 group-hover:text-white/70 transition">
-                  laputvuelta-oficial →
+                <span className="flex items-center gap-3">
+                  <span className="relative inline-flex h-9 w-9 items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04]">
+                    <Image
+                      src="/kick.png"
+                      alt="Kick"
+                      width={20}
+                      height={20}
+                      className="h-5 w-5 object-contain opacity-90 group-hover:opacity-100 transition fill-white"
+                      priority={false}
+                    />
+                  </span>
+                </span>
+
+                <span className="text-sm text-white/55 group-hover:text-white/75 transition">
+                  laputvuelta-oficial <span className="opacity-70">→</span>
                 </span>
               </a>
 
+              {/* Instagram */}
               <a
                 href="https://instagram.com/laputvuelta.oficial"
                 target="_blank"
                 rel="noreferrer"
-                className="group flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.02] px-4 py-3 hover:bg-white/[0.04] hover:border-white/20 transition"
+                className="group flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.02] px-4 py-3 hover:bg-white/[0.04] hover:border-[var(--primary)]/50 transition"
               >
-                <span className="text-white/85 font-semibold">Instagram</span>
-                <span className="text-white/55 group-hover:text-white/70 transition">
-                  @laputvuelta.oficial →
+                <span className="flex items-center gap-3">
+                  <span className="relative inline-flex h-9 w-9 items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04]">
+                    <Image
+                      src="/instagram.png"
+                      alt="Instagram"
+                      width={20}
+                      height={20}
+                      className="h-5 w-5 object-contain opacity-90 group-hover:opacity-100 transition invert"
+                      priority={false}
+                    />
+                  </span>
+                </span>
+
+                <span className="text-sm text-white/55 group-hover:text-white/75 transition">
+                  @laputvuelta.oficial <span className="opacity-70">→</span>
                 </span>
               </a>
 
+              {/* Tickets */}
               <Link
                 href="/tickets"
-                className="group flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.02] px-4 py-3 hover:bg-white/[0.04] hover:border-white/20 transition"
+                className="group flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.02] px-4 py-3 hover:bg-white/[0.04] hover:border-[var(--primary)]/50 transition"
               >
-                <span className="text-white/85 font-semibold">Entradas</span>
-                <span className="text-white/55 group-hover:text-white/70 transition">
-                  Ver calendario →
+                <span className="flex items-center gap-3">
+                  <span className="relative inline-flex h-9 w-9 items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04]">
+                    {/* Icono simple para “tickets” sin librerías */}
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      aria-hidden="true"
+                      className="opacity-90 group-hover:opacity-100 transition"
+                    >
+                      <path
+                        d="M4 8h16v4a2 2 0 010 4v4H4v-4a2 2 0 010-4V8z"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinejoin="round"
+                      />
+                      <path
+                        d="M9 8v12"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeDasharray="2 2"
+                      />
+                    </svg>
+                  </span>
+                </span>
+
+                <span className="text-sm text-white/55 group-hover:text-white/75 transition">
+                  Ver calendario <span className="opacity-70">→</span>
                 </span>
               </Link>
             </div>
