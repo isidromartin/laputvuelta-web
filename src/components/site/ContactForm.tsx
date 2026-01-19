@@ -139,7 +139,7 @@ export function ContactForm() {
             <span className="material-symbols-outlined text-[var(--primary)] text-2xl">
               forum
             </span>
-            <h2 className="text-lg md:text-xl font-black uppercase tracking-tight text-white/95">
+            <h2 className="text-lg md:text-xl font-black uppercase tracking-tight text-white/95 secondaryFont">
               Contacto
             </h2>
           </div>

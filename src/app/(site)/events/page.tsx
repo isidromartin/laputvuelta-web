@@ -157,7 +157,7 @@ export default async function EventsPage() {
                 </div>
 
                 <div className="relative p-5">
-                  <h2 className="text-base font-black uppercase tracking-[0.06em] text-white/90 group-hover:text-white transition">
+                  <h2 className="text-base font-black uppercase tracking-[0.06em] text-white/90 group-hover:text-white transition secondaryFont">
                     {e.title}
                   </h2>
 

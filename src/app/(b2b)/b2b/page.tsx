@@ -500,7 +500,7 @@ export default function B2BPage() {
                 Fiesta 360º · Show · Activación · Contenido
               </div>
 
-              <h1 className="text-3xl md:text-5xl font-black uppercase tracking-tight text-white/95">
+              <h1 className="text-3xl md:text-5xl font-black uppercase tracking-tight text-white/95 secondaryFont">
                 {BRAND.name}
               </h1>
               <p className="mt-2 text-[11px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
@@ -520,7 +520,7 @@ export default function B2BPage() {
                 <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
                   Sello propio
                 </p>
-                <p className="mt-2 text-sm text-white/80 italic">
+                <p className="mt-2 text-lg text-white/80 italic secondaryFont">
                   ¿Hace cuánto no sales a dar una vuelta?
                 </p>
               </div>
@@ -587,7 +587,7 @@ export default function B2BPage() {
                 <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
                   Resumen B2B
                 </p>
-                <h2 className="mt-2 text-xl font-black uppercase tracking-tight text-white/90">
+                <h2 className="mt-2 text-xl font-black uppercase tracking-tight text-white/90 secondaryFont">
                   Datos rápidos
                 </h2>
               </div>
@@ -693,7 +693,7 @@ export default function B2BPage() {
           <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
             Qué es
           </p>
-          <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90">
+          <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90 secondaryFont">
             El concepto
           </h2>
 
@@ -734,7 +734,7 @@ export default function B2BPage() {
             <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
               Propuesta de valor
             </p>
-            <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90">
+            <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90 secondaryFont">
               Esto es lo que cambia en tu sala
             </h2>
             <p className="mt-3 text-sm text-white/65 max-w-2xl">
@@ -779,7 +779,7 @@ export default function B2BPage() {
               <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
                 Producción
               </p>
-              <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90">
+              <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90 secondaryFont">
                 ¿Qué incluye la experiencia?
               </h2>
               <p className="mt-3 text-sm text-white/65 max-w-2xl">
@@ -836,7 +836,7 @@ export default function B2BPage() {
               <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
                 Operativa
               </p>
-              <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90">
+              <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90 secondaryFont">
                 Cómo trabajamos (sin complicarte)
               </h2>
               <p className="mt-3 text-sm text-white/65 max-w-2xl">
@@ -883,7 +883,7 @@ export default function B2BPage() {
             <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
               Estructura
             </p>
-            <h2 className="mt-2 text-xl md:text-2xl font-black uppercase tracking-tight text-white/90">
+            <h2 className="mt-2 text-xl md:text-2xl font-black uppercase tracking-tight text-white/90 secondaryFont">
               Así transcurre la noche
             </h2>
             <div className="mt-6 space-y-3">
@@ -907,7 +907,7 @@ export default function B2BPage() {
             <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
               Activación
             </p>
-            <h2 className="mt-2 text-xl md:text-2xl font-black uppercase tracking-tight text-white/90">
+            <h2 className="mt-2 text-xl md:text-2xl font-black uppercase tracking-tight text-white/90 secondaryFont">
               Juegos y retos con el público
             </h2>
             <p className="mt-3 text-sm text-white/65">
@@ -953,7 +953,7 @@ export default function B2BPage() {
           <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
             Contenido
           </p>
-          <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90">
+          <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90 secondaryFont">
             Contenido viral para tus redes
           </h2>
           <p className="mt-3 text-sm text-white/65 max-w-2xl">
@@ -1016,7 +1016,7 @@ export default function B2BPage() {
             <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
               Packs
             </p>
-            <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90">
+            <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90 secondaryFont">
               Alcance por pack + personalización
             </h2>
             <p className="mt-3 text-sm text-white/65 max-w-2xl">
@@ -1048,7 +1048,7 @@ export default function B2BPage() {
                   <span className="h-2 w-2 rounded-full bg-[var(--primary)] shadow-[0_0_16px_rgba(255,77,94,0.35)]" />
                 </div>
 
-                <h3 className="mt-2 text-base font-black uppercase tracking-[0.06em] text-white/90">
+                <h3 className="mt-2 text-base font-black uppercase tracking-[0.06em] text-white/90 secondaryFont">
                   {p.title}
                 </h3>
                 <p className="mt-2 text-sm text-white/65">{p.subtitle}</p>
@@ -1130,7 +1130,7 @@ export default function B2BPage() {
           <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
             Quién trabaja
           </p>
-          <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90">
+          <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90 secondaryFont">
             Equipo artístico
           </h2>
           <p className="mt-3 text-sm text-white/65 max-w-2xl">
@@ -1243,7 +1243,7 @@ export default function B2BPage() {
           <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
             Equipo audiovisual
           </p>
-          <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90">
+          <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90 secondaryFont">
             Filmmakers (contenido que se nota)
           </h2>
           <p className="mt-3 text-sm text-white/65 max-w-2xl">
@@ -1362,7 +1362,7 @@ export default function B2BPage() {
             <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
               Contacto y propuesta
             </p>
-            <h3 className="mt-2 text-xl font-black uppercase tracking-tight text-white/90">
+            <h3 className="mt-2 text-xl font-black uppercase tracking-tight text-white/90 secondaryFont">
               Si te encaja, cerremos fecha
             </h3>
             <p className="mt-3 text-sm text-white/65">
@@ -1454,7 +1454,7 @@ export default function B2BPage() {
           </div>
         </div>
 
-        <footer className="mt-10 border-t border-white/10 pt-6 text-xs text-[var(--primary)]">
+        <footer className="mt-10 border-t border-white/10 pt-6 text-xs text-[var(--offwhite)] text-center">
           © {new Date().getFullYear()} {BRAND.name}. Sección B2B.
         </footer>
       </section>

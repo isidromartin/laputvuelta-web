@@ -93,7 +93,7 @@ export default async function GalleryEventPage({
                 <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/45">
                   Álbum oficial
                 </p>
-                <h1 className="mt-2 text-3xl md:text-5xl font-black uppercase tracking-tight text-white/95">
+                <h1 className="mt-2 text-3xl md:text-5xl font-black uppercase tracking-tight text-white/95 secondaryFont">
                   {event.title ?? "Evento"}
                 </h1>
               </div>

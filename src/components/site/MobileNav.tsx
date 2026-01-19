@@ -113,7 +113,7 @@ export function MobileNav({ nav }: { nav: readonly NavItem[] }) {
                       width={160}
                       height={40}
                       priority
-                      className="h-8 w-auto"
+                      className="h-8 w-auto object-contain"
                     />
                   </Link>
                 </div>
@@ -155,7 +155,7 @@ export function MobileNav({ nav }: { nav: readonly NavItem[] }) {
                 <Link
                   href="/tickets"
                   onClick={() => setOpen(false)}
-                  className="relative block w-full rounded-2xl bg-[var(--primary)] px-4 py-3 text-center text-sm font-black uppercase tracking-widest text-white transition-all hover:brightness-110 neon-border"
+                  className="relative block w-full rounded-2xl bg-[var(--primary)] px-4 py-3 text-center text-sm font-black uppercase tracking-widest text-white transition-all hover:brightness-110 neon-border secondaryFont"
                 >
                   Comprar entradas
                 </Link>

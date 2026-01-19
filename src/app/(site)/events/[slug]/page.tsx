@@ -229,7 +229,7 @@ function ActivationTimeline({
 
             <div className="relative">
               <div className="flex items-start justify-between gap-4">
-                <p className="text-sm font-black uppercase tracking-[0.06em] text-white/90">
+                <p className="text-sm font-black uppercase tracking-[0.06em] text-white/90 secondaryFont">
                   {it.title ?? "Activación"}
                 </p>
                 {it.window ? (
@@ -360,7 +360,7 @@ export default async function EventPage({
             </div>
 
             <div className="mt-4 flex items-end justify-between gap-4">
-              <h1 className="text-2xl md:text-5xl font-black uppercase tracking-tight text-white/95">
+              <h1 className="text-2xl md:text-5xl font-black uppercase tracking-tight text-white/95 secondaryFont">
                 {event.title ?? "Evento"}
               </h1>
               <span className="hidden md:block text-[var(--primary)] font-black text-6xl opacity-20 leading-none">

@@ -67,7 +67,7 @@ export default function ContactPage() {
                   <span className="material-symbols-outlined text-[var(--primary)] text-2xl">
                     photo_camera
                   </span>
-                  <p className="text-sm font-black uppercase tracking-[0.18em] text-white/90">
+                  <p className="text-sm font-black uppercase tracking-[0.18em] text-white/90 secondaryFont">
                     Instagram
                   </p>
                 </div>
@@ -96,7 +96,7 @@ export default function ContactPage() {
                   <span className="material-symbols-outlined text-[var(--primary)] text-2xl">
                     live_tv
                   </span>
-                  <p className="text-sm font-black uppercase tracking-[0.18em] text-white/90">
+                  <p className="text-sm font-black uppercase tracking-[0.18em] text-white/90 secondaryFont">
                     Live (Kick)
                   </p>
                 </div>
@@ -134,7 +134,7 @@ export default function ContactPage() {
                   <span className="material-symbols-outlined text-[var(--primary)] text-2xl">
                     confirmation_number
                   </span>
-                  <p className="text-sm font-black uppercase tracking-[0.18em] text-white/90">
+                  <p className="text-sm font-black uppercase tracking-[0.18em] text-white/90 secondaryFont">
                     Entradas
                   </p>
                 </div>

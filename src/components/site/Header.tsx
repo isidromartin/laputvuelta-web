@@ -21,7 +21,7 @@ export function Header() {
               width={160}
               height={40}
               priority
-              className="h-8 w-auto"
+              className="h-8 w-auto object-contain"
             />
           </Link>
         </div>
@@ -59,7 +59,7 @@ export function Header() {
         <div className="flex items-center gap-4">
           <Link
             href="/tickets"
-            className="hidden md:inline-flex relative items-center justify-center bg-[var(--primary)] hover:bg-[color:rgba(255,77,94,0.8)] text-white px-6 py-2 rounded-full font-bold text-sm transition-all transform hover:scale-105 neon-border group"
+            className="hidden md:inline-flex relative items-center justify-center bg-[var(--primary)] hover:bg-[color:rgba(255,77,94,0.8)] text-white px-6 py-2 rounded-full font-bold text-sm transition-all transform hover:scale-105 neon-border group secondaryFont"
           >
             <span className="absolute -top-1 -right-1 flex h-3 w-3">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75" />

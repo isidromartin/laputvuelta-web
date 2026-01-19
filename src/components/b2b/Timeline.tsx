@@ -16,7 +16,7 @@ export function Timeline() {
             </p>
 
             <div className="mt-2 flex items-start gap-3">
-              <h2 className="text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90 leading-[1.05]">
+              <h2 className="text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90 leading-[1.05] secondaryFont">
                 ¿Cómo organizamos
                 <br className="hidden sm:block" /> La Put*Vuelta?
               </h2>

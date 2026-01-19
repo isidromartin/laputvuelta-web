@@ -22,7 +22,7 @@ export function Section({
 
       <div className="relative flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
         <div className="flex flex-col gap-2">
-          <h2 className="text-xl md:text-2xl font-black uppercase tracking-tight text-white/95">
+          <h2 className="text-xl md:text-2xl font-black uppercase tracking-tight text-white/95 secondaryFont">
             {title}
           </h2>
           {subtitle ? (
