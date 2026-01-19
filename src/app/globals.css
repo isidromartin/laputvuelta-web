@@ -52,8 +52,9 @@
 
 /* Fuente display / global */
 :root {
-  --font-display: "HelveticaLocal", system-ui, -apple-system, Segoe UI, Roboto,
-    Arial, sans-serif;
+  --font-display:
+    "HelveticaLocal", system-ui, -apple-system, Segoe UI, Roboto, Arial,
+    sans-serif;
 }
 
 html,
@@ -103,11 +104,17 @@ html.dark {
 
 /* Material Symbols */
 .material-symbols-outlined {
-  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
 }
 
 .neon-glow {
-  text-shadow: 0 0 10px rgba(255, 77, 94, 0.8), 0 0 20px rgba(255, 77, 94, 0.4);
+  text-shadow:
+    0 0 10px rgba(255, 77, 94, 0.8),
+    0 0 20px rgba(255, 77, 94, 0.4);
 }
 
 .neon-border {
@@ -122,6 +129,14 @@ html.dark {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+@supports (-webkit-touch-callout: none) {
+  .glass {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background: rgba(22, 22, 29, 0.82);
+  }
+}
+
 .grain {
   position: fixed;
   top: 0;
@@ -134,6 +149,18 @@ html.dark {
   background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBmRPFw2X6QKIsRRJuN-Rg_LFTRsSIQOizISLea9wuZ0TQUNVDUOdeuyEE9q2AhYQshTvr-Q5EXLyLjmhEbEQTluTUEgA4Lqj1na0OZNbIHFGri3ZOLA3ceCf-rpNwG-T5DUoeLGccBGzEQGvWjmGUP3ky1ULuyCcg0BjHgOdj30xPgX920Cp5_MixiyPj0FPRZcaXlUoikpIY9c3Q-HL1tcbOW2fDniFG5VlZImckaNLS0GQdsuYc1O23axRRvEO_A6lU630jZxEU");
 }
 
+@media (max-width: 768px) {
+  .grain {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .neon-border {
+    box-shadow: 0 0 10px rgba(255, 77, 94, 0.22);
+  }
+}
+
 .text-outline {
   -webkit-text-stroke: 1px #ff4d5e;
   color: transparent;
@@ -142,4 +169,14 @@ html.dark {
 /* Forma diagonal del bloque agenda */
 .diagonal-bg {
   clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+}
+
+.min-h-screen-ios {
+  min-height: 100vh;
+  min-height: 100svh;
+  min-height: 100dvh;
+}
+
+section[id] {
+  scroll-margin-top: 110px;
 }
