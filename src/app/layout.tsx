@@ -91,6 +91,13 @@ export default function RootLayout({
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
         />
+        <link
+          rel="preload"
+          href="/fonts/SketchCaslon-Italic.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
       </head>
       <body className="relative min-h-screen-ios overflow-x-hidden min-h-dvh antialiased">
         {children}

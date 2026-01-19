@@ -59,7 +59,13 @@ function InfoCard({
 }) {
   return (
     <div className="glass group relative overflow-hidden rounded-3xl border border-white/10 p-1">
-      <div className="pointer-events-none absolute -right-12 -top-12 h-48 w-48 rounded-full bg-[var(--primary)]/10 blur-3xl transition group-hover:bg-[var(--primary)]/20" />
+      {/* <div className="pointer-events-none absolute -right-12 -top-12 h-48 w-48 rounded-full bg-[var(--primary)]/10 blur-3xl transition group-hover:bg-[var(--primary)]/20" /> */}
+      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute left-1/2 top-[-260px] h-[620px] w-[620px] -translate-x-1/2 rounded-full bg-[var(--primary)]/18 blur-[190px] hidden md:block" />
+        <div className="absolute right-[-220px] top-[240px] h-[540px] w-[540px] rounded-full bg-[var(--primary)]/10 blur-[210px] hidden md:block" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-black/10 to-black/45" />
+      </div>
+
       <div className="rounded-[22px] p-7 md:p-8">
         <div className="mb-5 flex items-end justify-between gap-4">
           <span className="text-[var(--primary)] font-black text-5xl leading-none">
