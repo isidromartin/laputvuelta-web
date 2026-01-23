@@ -793,11 +793,8 @@ export default function B2BPage() {
 
           <Stagger className="mt-6 grid gap-4 md:grid-cols-2">
             {VALUE_PROPOSITION.map((x) => (
-              <StaggerItem>
-                <div
-                  key={x.title}
-                  className="glass rounded-3xl border border-white/10 p-7"
-                >
+              <StaggerItem key={x.title}>
+                <div className="glass rounded-3xl border border-white/10 p-7">
                   <p className="text-base font-black uppercase tracking-[0.06em] text-white/90">
                     {x.title}
                   </p>
@@ -842,11 +839,8 @@ export default function B2BPage() {
 
             <Stagger className="mt-8 grid gap-4 md:grid-cols-2">
               {OFFER.map((o) => (
-                <StaggerItem>
-                  <div
-                    key={o.title}
-                    className="rounded-3xl border border-white/10 bg-black/20 p-7"
-                  >
+                <StaggerItem key={o.title}>
+                  <div className="rounded-3xl border border-white/10 bg-black/20 p-7">
                     <div className="flex items-center justify-between gap-4">
                       <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-white/60">
                         {o.tag}

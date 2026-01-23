@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
 import React from "react";
+import { motion, type Variants } from "framer-motion";
 
 type RevealProps = {
   children: React.ReactNode;
@@ -20,17 +20,18 @@ export function Reveal({
   children,
   className,
   delay = 0,
-  y = 14,
+  y = 18,
   once = true,
 }: RevealProps) {
   return (
     <motion.div
       className={className}
+      style={{ willChange: "transform, opacity" }}
       variants={variants(y)}
       initial="hidden"
       whileInView="show"
-      viewport={{ once, amount: 0.45 }}
-      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay }}
+      viewport={{ once, amount: 0.25 }}
+      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay }}
     >
       {children}
     </motion.div>

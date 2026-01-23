@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Space_Grotesk } from "next/font/google";
+import { MotionProvider } from "@/components/providers/MotionProvider";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://laputvuelta.com";
 
@@ -100,7 +101,7 @@ export default function RootLayout({
         />
       </head>
       <body className="relative min-h-screen-ios overflow-x-hidden min-h-dvh antialiased">
-        {children}
+        <MotionProvider>{children}</MotionProvider>
       </body>
     </html>
   );
