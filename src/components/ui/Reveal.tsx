@@ -29,7 +29,7 @@ export function Reveal({
       variants={variants(y)}
       initial="hidden"
       whileInView="show"
-      viewport={{ once, amount: 0.2 }}
+      viewport={{ once, amount: 0.45 }}
       transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay }}
     >
       {children}

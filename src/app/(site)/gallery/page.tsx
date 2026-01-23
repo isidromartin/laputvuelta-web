@@ -161,47 +161,49 @@ export default async function GalleryPage() {
 
       <Container>
         {/* Header premium */}
-        <Reveal className="glass relative overflow-hidden rounded-3xl border border-white/10 p-7 md:p-10">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_20%,rgba(255,77,94,0.14),transparent_55%),radial-gradient(circle_at_85%_75%,rgba(255,77,94,0.08),transparent_60%)]" />
+        <Reveal>
+          <div className="glass relative overflow-hidden rounded-3xl border border-white/10 p-7 md:p-10">
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_20%,rgba(255,77,94,0.14),transparent_55%),radial-gradient(circle_at_85%_75%,rgba(255,77,94,0.08),transparent_60%)]" />
 
-          <div className="relative flex flex-col gap-4">
-            {/* <div className="flex flex-wrap items-center gap-2">
+            <div className="relative flex flex-col gap-4">
+              {/* <div className="flex flex-wrap items-center gap-2">
               <Badge>Galería</Badge>
               <Badge>Por evento</Badge>
             </div> */}
 
-            <div className="flex items-end justify-between gap-4">
-              <div>
-                <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
-                  Álbumes oficiales
-                </p>
-                <h1 className="mt-2 text-3xl md:text-5xl font-black uppercase tracking-tight text-white/95 secondaryFont">
-                  Fotos por edición
-                </h1>
+              <div className="flex items-end justify-between gap-4">
+                <div>
+                  <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
+                    Álbumes oficiales
+                  </p>
+                  <h1 className="mt-2 text-3xl md:text-5xl font-black uppercase tracking-tight text-white/95 secondaryFont">
+                    Fotos por edición
+                  </h1>
+                </div>
+
+                <span className="hidden md:block text-[var(--primary)] font-black text-6xl leading-none secondaryFont">
+                  03
+                </span>
               </div>
 
-              <span className="hidden md:block text-[var(--primary)] font-black text-6xl leading-none secondaryFont">
-                03
-              </span>
-            </div>
+              <p className="text-white/65 max-w-2xl leading-relaxed">
+                No creo que quieras verte la cara después de todo lo que te
+                bebiste aquel día, pero por si acaso: aquí tienes recuerdos de
+                nuestros shows.
+              </p>
 
-            <p className="text-white/65 max-w-2xl leading-relaxed">
-              No creo que quieras verte la cara después de todo lo que te
-              bebiste aquel día, pero por si acaso: aquí tienes recuerdos de
-              nuestros shows.
-            </p>
-
-            <div className="flex flex-wrap gap-3 pt-1">
-              <ButtonLink
-                href="https://instagram.com/laputvuelta.oficial"
-                external
-                variant="outline"
-              >
-                Ver Reels
-              </ButtonLink>
-              <ButtonLink href="/events" variant="outline">
-                Ver Shows
-              </ButtonLink>
+              <div className="flex flex-wrap gap-3 pt-1">
+                <ButtonLink
+                  href="https://instagram.com/laputvuelta.oficial"
+                  external
+                  variant="outline"
+                >
+                  Ver Reels
+                </ButtonLink>
+                <ButtonLink href="/events" variant="outline">
+                  Ver Shows
+                </ButtonLink>
+              </div>
             </div>
           </div>
         </Reveal>
