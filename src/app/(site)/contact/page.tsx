@@ -3,6 +3,8 @@ import Link from "next/link";
 import { Container } from "@/components/site/Container";
 import { Badge } from "@/components/site/Badge";
 import { ContactForm } from "@/components/site/ContactForm";
+import { Reveal } from "@/components/ui/Reveal";
+import { Stagger, StaggerItem } from "@/components/ui/Stagger";
 
 export const metadata: Metadata = {
   title: "Contacto",
@@ -22,7 +24,7 @@ export default function ContactPage() {
 
       <Container>
         {/* Header */}
-        <div className="glass relative overflow-hidden rounded-3xl border border-white/10 p-7 md:p-10">
+        <Reveal className="glass relative overflow-hidden rounded-3xl border border-white/10 p-7 md:p-10">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_20%,rgba(255,77,94,0.14),transparent_55%),radial-gradient(circle_at_85%_75%,rgba(255,77,94,0.08),transparent_60%)]" />
 
           <div className="relative flex flex-col gap-4">
@@ -51,14 +53,14 @@ export default function ContactPage() {
               Escríbenos y te respondemos.
             </p>
           </div>
-        </div>
+        </Reveal>
 
         {/* Body */}
-        <div className="mt-10 grid gap-6 lg:grid-cols-12">
+        <Stagger className="mt-10 grid gap-6 lg:grid-cols-12">
           {/* Info */}
           <div className="lg:col-span-5 space-y-4">
             {/* Instagram */}
-            <div className="glass group relative overflow-hidden rounded-3xl border border-white/10 p-6">
+            <StaggerItem className="glass group relative overflow-hidden rounded-3xl border border-white/10 p-6">
               <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-[var(--primary)]/10 blur-3xl transition group-hover:bg-[var(--primary)]/16" />
               <div className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-white/5" />
 
@@ -84,10 +86,10 @@ export default function ContactPage() {
                   @laputvuelta.oficial
                 </a>
               </div>
-            </div>
+            </StaggerItem>
 
             {/* Live */}
-            <div className="glass group relative overflow-hidden rounded-3xl border border-white/10 p-6">
+            <StaggerItem className="glass group relative overflow-hidden rounded-3xl border border-white/10 p-6">
               <div className="pointer-events-none absolute -left-16 -top-16 h-56 w-56 rounded-full bg-[var(--primary)]/10 blur-3xl transition group-hover:bg-[var(--primary)]/16" />
               <div className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-white/5" />
 
@@ -122,10 +124,10 @@ export default function ContactPage() {
                   </Link>
                 </div>
               </div>
-            </div>
+            </StaggerItem>
 
             {/* Entradas */}
-            <div className="glass group relative overflow-hidden rounded-3xl border border-white/10 p-6">
+            <StaggerItem className="glass group relative overflow-hidden rounded-3xl border border-white/10 p-6">
               <div className="pointer-events-none absolute -right-16 -bottom-20 h-64 w-64 rounded-full bg-[var(--primary)]/10 blur-3xl transition group-hover:bg-[var(--primary)]/16" />
               <div className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-white/5" />
 
@@ -159,14 +161,14 @@ export default function ContactPage() {
                   </Link>
                 </div>
               </div>
-            </div>
+            </StaggerItem>
           </div>
 
           {/* Form */}
-          <div className="lg:col-span-7">
+          <StaggerItem className="lg:col-span-7">
             <ContactForm />
-          </div>
-        </div>
+          </StaggerItem>
+        </Stagger>
       </Container>
     </main>
   );

@@ -8,6 +8,8 @@ import { Container } from "@/components/site/Container";
 import { Badge } from "@/components/site/Badge";
 import { Section } from "@/components/site/Section";
 import { ButtonLink } from "@/components/site/ButtonLink";
+import { Reveal } from "@/components/ui/Reveal";
+import { Stagger, StaggerItem } from "@/components/ui/Stagger";
 
 export const revalidate = 60;
 
@@ -159,7 +161,7 @@ export default async function GalleryPage() {
 
       <Container>
         {/* Header premium */}
-        <div className="glass relative overflow-hidden rounded-3xl border border-white/10 p-7 md:p-10">
+        <Reveal className="glass relative overflow-hidden rounded-3xl border border-white/10 p-7 md:p-10">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_20%,rgba(255,77,94,0.14),transparent_55%),radial-gradient(circle_at_85%_75%,rgba(255,77,94,0.08),transparent_60%)]" />
 
           <div className="relative flex flex-col gap-4">
@@ -202,11 +204,11 @@ export default async function GalleryPage() {
               </ButtonLink>
             </div>
           </div>
-        </div>
+        </Reveal>
 
         {/* Últimos álbumes */}
         {latestAlbums.length ? (
-          <div className="mt-10">
+          <Stagger className="mt-10">
             <Section
               title="Últimos álbumes"
               subtitle="Las últimas ediciones publicadas."
@@ -219,13 +221,13 @@ export default async function GalleryPage() {
                 </ButtonLink>
               }
             >
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <StaggerItem className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {latestAlbums.map((e) => (
                   <EventCard key={e._id} e={e} />
                 ))}
-              </div>
+              </StaggerItem>
             </Section>
-          </div>
+          </Stagger>
         ) : (
           <div className="mt-10 glass rounded-3xl border border-white/10 p-8 text-center">
             <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/45">
@@ -239,15 +241,15 @@ export default async function GalleryPage() {
 
         {/* Próximos */}
         {upcoming.length ? (
-          <div className="mt-8">
+          <Stagger className="mt-8">
             <Section title="Próximos eventos" subtitle="Ediciones futuras.">
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <StaggerItem className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {upcoming.map((e) => (
                   <EventCard key={e._id} e={e} />
                 ))}
-              </div>
+              </StaggerItem>
             </Section>
-          </div>
+          </Stagger>
         ) : null}
 
         {/* Histórico (si lo quieres reactivar) */}

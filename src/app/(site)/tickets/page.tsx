@@ -1,11 +1,13 @@
 import { Container } from "@/components/site/Container";
 import { FourvenuesEmbed } from "@/components/site/FourvenuesEmbed";
 import type { Metadata } from "next";
+import { Reveal } from "@/components/ui/Reveal";
+import { Stagger, StaggerItem } from "@/components/ui/Stagger";
 
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: "Calendario | La Put* Vuelta",
+  title: "Calendario",
   description:
     "Próximos eventos de La Put* Vuelta. Consulta y compra entradas para nuestras presentaciones en vivo.",
 };
@@ -30,7 +32,7 @@ export default function TicketsPage() {
 
       <Container>
         {/* Header de página (dossier style) */}
-        <div className="glass relative overflow-hidden rounded-3xl border border-white/10 p-7 md:p-10">
+        <Reveal className="glass relative overflow-hidden rounded-3xl border border-white/10 p-7 md:p-10">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,77,94,0.14),transparent_55%),radial-gradient(circle_at_80%_70%,rgba(255,77,94,0.08),transparent_60%)]" />
           <div className="relative flex flex-col gap-3">
             <div className="flex items-end justify-between gap-4">
@@ -74,41 +76,43 @@ export default function TicketsPage() {
               </a>
             </div>
           </div>
-        </div>
+        </Reveal>
 
         {/* Embed */}
-        <div className="mt-10" id="embed">
-          <div className="glass relative overflow-hidden rounded-3xl border border-white/10">
-            {/* Top bar “widget frame” */}
-            <div className="flex items-center justify-between gap-3 border-b border-white/10 px-5 py-4">
-              <div className="flex items-center gap-2">
-                <span className="inline-block h-2.5 w-2.5 rounded-full bg-white/30" />
-                <span className="inline-block h-2.5 w-2.5 rounded-full bg-white/20" />
-                <span className="inline-block h-2.5 w-2.5 rounded-full bg-white/15" />
-                <span className="ml-3 text-[10px] font-bold uppercase tracking-[0.35em] text-white/40">
-                  Fourvenues
-                </span>
+        <Reveal className="mt-10">
+          <div id="embed">
+            <div className="glass relative overflow-hidden rounded-3xl border border-white/10">
+              {/* Top bar “widget frame” */}
+              <div className="flex items-center justify-between gap-3 border-b border-white/10 px-5 py-4">
+                <div className="flex items-center gap-2">
+                  <span className="inline-block h-2.5 w-2.5 rounded-full bg-white/30" />
+                  <span className="inline-block h-2.5 w-2.5 rounded-full bg-white/20" />
+                  <span className="inline-block h-2.5 w-2.5 rounded-full bg-white/15" />
+                  <span className="ml-3 text-[10px] font-bold uppercase tracking-[0.35em] text-white/40">
+                    Fourvenues
+                  </span>
+                </div>
+
+                <a
+                  href={publicUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/45 hover:text-[var(--primary)] transition-colors"
+                >
+                  Abrir externo
+                </a>
               </div>
 
-              <a
-                href={publicUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/45 hover:text-[var(--primary)] transition-colors"
-              >
-                Abrir externo
-              </a>
-            </div>
-
-            <div className="p-2 md:p-3">
-              <FourvenuesEmbed
-                path={embedPath}
-                publicUrl={publicUrl}
-                minHeight={860}
-              />
+              <div className="p-2 md:p-3">
+                <FourvenuesEmbed
+                  path={embedPath}
+                  publicUrl={publicUrl}
+                  minHeight={860}
+                />
+              </div>
             </div>
           </div>
-        </div>
+        </Reveal>
       </Container>
     </main>
   );

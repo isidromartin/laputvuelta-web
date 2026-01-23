@@ -13,6 +13,8 @@ import { ButtonLink } from "@/components/site/ButtonLink";
 
 import { PartnersGrid } from "@/components/site/PartnersGrid";
 import { FourvenuesEmbedEvent } from "@/components/site/FourvenuesEmbedEvent";
+import { Reveal } from "@/components/ui/Reveal";
+import { Stagger, StaggerItem } from "@/components/ui/Stagger";
 
 export const revalidate = 60;
 
@@ -314,7 +316,7 @@ export default async function EventPage({
 
       <Container>
         {/* HERO */}
-        <section className="glass group relative overflow-hidden rounded-3xl border border-white/10">
+        <Reveal className="glass group relative overflow-hidden rounded-3xl border border-white/10">
           {/* watermark opcional (si tienes /devil-mark.png) */}
           {/* <div className="pointer-events-none absolute -right-8 -bottom-10 opacity-60 hidden md:block">
             <div className="relative h-[220px] w-[220px]">
@@ -427,11 +429,11 @@ export default async function EventPage({
               </ButtonLink>
             </div>
           </div>
-        </section>
+        </Reveal>
 
         {/* QUICK FACTS */}
-        <div className="mt-6 grid gap-4 md:grid-cols-3">
-          <div className="glass relative overflow-hidden rounded-3xl border border-white/10 p-5">
+        <Stagger className="mt-6 grid gap-4 md:grid-cols-3">
+          <StaggerItem className="glass relative overflow-hidden rounded-3xl border border-white/10 p-5">
             <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-[var(--primary)]/10 blur-3xl" />
             <div className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-white/5" />
             <div className="relative">
@@ -445,9 +447,9 @@ export default async function EventPage({
                 {event.venue?.city ?? ""}
               </p>
             </div>
-          </div>
+          </StaggerItem>
 
-          <div className="glass relative overflow-hidden rounded-3xl border border-white/10 p-5">
+          <StaggerItem className="glass relative overflow-hidden rounded-3xl border border-white/10 p-5">
             <div className="pointer-events-none absolute -left-20 -bottom-16 h-56 w-56 rounded-full bg-[var(--primary)]/10 blur-3xl" />
             <div className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-white/5" />
             <div className="relative">
@@ -461,9 +463,9 @@ export default async function EventPage({
                 {formatTimeES(event.startAt)}
               </p>
             </div>
-          </div>
+          </StaggerItem>
 
-          <div className="glass relative overflow-hidden rounded-3xl border border-white/10 p-5">
+          <StaggerItem className="glass relative overflow-hidden rounded-3xl border border-white/10 p-5">
             <div className="pointer-events-none absolute -right-24 -bottom-20 h-64 w-64 rounded-full bg-[var(--primary)]/8 blur-3xl" />
             <div className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-white/5" />
             <div className="relative">
@@ -476,82 +478,88 @@ export default async function EventPage({
                 </ButtonLink>
               </div>
             </div>
-          </div>
-        </div>
+          </StaggerItem>
+        </Stagger>
 
         {/* SECCIONES */}
         <div className="mt-10 space-y-6">
           {/* Entradas */}
           {tickets?.fourvenuesUrl ? (
-            <Section
-              title={tickets.heading ?? "Entradas"}
-              subtitle="Venta oficial vía Fourvenues."
-              actions={
-                <a
-                  href={tickets.fourvenuesUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center justify-center rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-2 text-[11px] font-black uppercase tracking-[0.22em] text-white/85 backdrop-blur transition hover:bg-white/[0.06] hover:border-[var(--primary)]/35 hover:text-white"
-                >
-                  Abrir en Fourvenues
-                </a>
-              }
-            >
-              <div className="space-y-4">
-                <FourvenuesEmbedEvent
-                  publicUrl={tickets.fourvenuesUrl}
-                  title={`Entradas · ${event.title ?? "La Put* Vuelta"}`}
-                />
-              </div>
-            </Section>
+            <Reveal>
+              <Section
+                title={tickets.heading ?? "Entradas"}
+                subtitle="Venta oficial vía Fourvenues."
+                actions={
+                  <a
+                    href={tickets.fourvenuesUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center justify-center rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-2 text-[11px] font-black uppercase tracking-[0.22em] text-white/85 backdrop-blur transition hover:bg-white/[0.06] hover:border-[var(--primary)]/35 hover:text-white"
+                  >
+                    Abrir en Fourvenues
+                  </a>
+                }
+              >
+                <div className="space-y-4">
+                  <FourvenuesEmbedEvent
+                    publicUrl={tickets.fourvenuesUrl}
+                    title={`Entradas · ${event.title ?? "La Put* Vuelta"}`}
+                  />
+                </div>
+              </Section>
+            </Reveal>
           ) : null}
 
           {/* Live (si decides activarlo) */}
           {live ? (
-            <Section
-              title={live.heading ?? "Live"}
-              subtitle="Directo en Kick (si hay emisión)."
-            >
-              {kickPlayerSrc ? (
-                <div className="w-full overflow-hidden rounded-3xl border border-white/10 bg-black">
-                  <div className="aspect-video">
-                    <iframe
-                      src={kickPlayerSrc}
-                      className="h-full w-full"
-                      frameBorder="0"
-                      scrolling="no"
-                      allow="autoplay; fullscreen"
-                      allowFullScreen
-                    />
+            <Reveal>
+              <Section
+                title={live.heading ?? "Live"}
+                subtitle="Directo en Kick (si hay emisión)."
+              >
+                {kickPlayerSrc ? (
+                  <div className="w-full overflow-hidden rounded-3xl border border-white/10 bg-black">
+                    <div className="aspect-video">
+                      <iframe
+                        src={kickPlayerSrc}
+                        className="h-full w-full"
+                        frameBorder="0"
+                        scrolling="no"
+                        allow="autoplay; fullscreen"
+                        allowFullScreen
+                      />
+                    </div>
                   </div>
-                </div>
-              ) : (
-                <p className="text-sm text-white/65">
-                  No hay embed disponible ahora. Abre el canal directamente.
-                </p>
-              )}
+                ) : (
+                  <p className="text-sm text-white/65">
+                    No hay embed disponible ahora. Abre el canal directamente.
+                  </p>
+                )}
 
-              <div className="mt-4">
-                <a
-                  href={kickUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center justify-center rounded-2xl bg-[var(--primary)] px-5 py-3 text-sm font-black uppercase tracking-[0.12em] text-white transition hover:bg-[color:rgba(255,77,94,0.9)] hover:scale-[1.01]"
-                >
-                  Abrir en Kick
-                </a>
-              </div>
-            </Section>
+                <div className="mt-4">
+                  <a
+                    href={kickUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center justify-center rounded-2xl bg-[var(--primary)] px-5 py-3 text-sm font-black uppercase tracking-[0.12em] text-white transition hover:bg-[color:rgba(255,77,94,0.9)] hover:scale-[1.01]"
+                  >
+                    Abrir en Kick
+                  </a>
+                </div>
+              </Section>
+            </Reveal>
           ) : null}
 
           {/* Activaciones */}
           {activations?.items?.length ? (
-            <Section
-              title={activations.heading ?? "Activaciones"}
-              subtitle="Horarios aproximados. Pueden variar."
-            >
-              <ActivationTimeline items={activations.items} />
-            </Section>
+            <Reveal>
+              <Section
+                title={activations.heading ?? "Activaciones"}
+                subtitle="Horarios aproximados. Pueden variar."
+              >
+                <ActivationTimeline items={activations.items} />
+              </Section>
+            </Reveal>
           ) : null}
 
           {/* Partners */}
@@ -568,15 +576,17 @@ export default async function EventPage({
             if (!includeGlobal && !hasEventPartners) return null;
 
             return (
-              <Section
-                title={partnersSection.heading ?? "Partners"}
-                subtitle="Colaboradores de esta edición."
-              >
-                <PartnersGrid
-                  partners={partnersSection.partners}
-                  includeGlobal={includeGlobal}
-                />
-              </Section>
+              <Reveal>
+                <Section
+                  title={partnersSection.heading ?? "Partners"}
+                  subtitle="Colaboradores de esta edición."
+                >
+                  <PartnersGrid
+                    partners={partnersSection.partners}
+                    includeGlobal={includeGlobal}
+                  />
+                </Section>
+              </Reveal>
             );
           })()}
         </div>

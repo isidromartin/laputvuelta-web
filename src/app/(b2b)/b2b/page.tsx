@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { ContactForm } from "@/components/site/ContactForm";
 import { Timeline } from "@/components/b2b/Timeline";
+import { Reveal } from "@/components/ui/Reveal";
+import { Stagger, StaggerItem } from "@/components/ui/Stagger";
 
 export const metadata: Metadata = {
   title: "Para salas",
@@ -400,7 +402,7 @@ export default function B2BPage() {
       <header className="fixed top-0 left-0 right-0 z-40 px-6 py-4 flex justify-center">
         <nav className="max-w-[1200px] w-full glass rounded-full px-4 sm:px-6 py-3 flex items-center justify-between border border-white/10">
           {/* Brand */}
-          <a href="/" className="flex items-center gap-3 group">
+          <a href="/b2b" className="flex items-center gap-3 group">
             <Image
               src="/logo.png"
               alt="La Put* Vuelta"
@@ -490,66 +492,70 @@ export default function B2BPage() {
 
       {/* HERO */}
       <section className="mx-auto max-w-[1200px] px-6">
-        <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
-          <div className="glass relative overflow-hidden rounded-3xl border border-white/10 p-7 md:p-10">
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_25%,rgba(255,77,94,0.14),transparent_55%),radial-gradient(circle_at_85%_75%,rgba(255,77,94,0.08),transparent_60%)]" />
+        <Stagger className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
+          <StaggerItem>
+            <div className="glass relative overflow-hidden rounded-3xl border border-white/10 p-7 md:p-10">
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_25%,rgba(255,77,94,0.14),transparent_55%),radial-gradient(circle_at_85%_75%,rgba(255,77,94,0.08),transparent_60%)]" />
 
-            <div className="relative">
-              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.03] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.22em] text-white/70">
-                <span className="h-1.5 w-1.5 rounded-full bg-[var(--primary)] shadow-[0_0_14px_rgba(255,77,94,0.35)]" />
-                Fiesta 360º · Show · Activación · Contenido
-              </div>
+              <div className="relative">
+                <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.03] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.22em] text-white/70">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[var(--primary)] shadow-[0_0_14px_rgba(255,77,94,0.35)]" />
+                  Fiesta 360º · Show · Activación · Contenido
+                </div>
 
-              <h1 className="text-3xl md:text-5xl font-black uppercase tracking-tight text-white/95 secondaryFont">
-                {BRAND.name}
-              </h1>
-              <p className="mt-2 text-[11px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
-                Formato llave en mano para salas
-              </p>
-
-              <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/70">
-                Una experiencia donde{" "}
-                <span className="text-white/85 font-semibold">TODO PASA</span>:
-                música, show, activaciones y contenido. Diseñada para mejorar{" "}
-                <span className="text-white/85">afluencia</span> y{" "}
-                <span className="text-white/85">consumo</span> manteniendo la{" "}
-                <span className="text-white/85">pista siempre activa</span>.
-              </p>
-
-              <div className="mt-4 rounded-2xl border border-white/10 bg-black/20 px-5 py-4">
-                <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
-                  Sello propio
+                <h1 className="text-3xl md:text-5xl font-black uppercase tracking-tight text-white/95 secondaryFont">
+                  {BRAND.name}
+                </h1>
+                <p className="mt-2 text-[11px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
+                  Formato llave en mano para salas
                 </p>
-                <p className="mt-2 text-lg text-white/80 italic secondaryFont">
-                  ¿Hace cuánto no sales a dar una vuelta?
+
+                <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/70">
+                  Una experiencia donde{" "}
+                  <span className="text-white/85 font-semibold">TODO PASA</span>
+                  : música, show, activaciones y contenido. Diseñada para
+                  mejorar <span className="text-white/85">afluencia</span> y{" "}
+                  <span className="text-white/85">consumo</span> manteniendo la{" "}
+                  <span className="text-white/85">pista siempre activa</span>.
                 </p>
-              </div>
 
-              <div className="mt-7 flex flex-wrap gap-3">
-                <a
-                  href="#contacto"
-                  className="inline-flex items-center justify-center rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-black hover:opacity-90 transition"
-                >
-                  Quiero propuesta para mi sala
-                </a>
+                <div className="mt-4 rounded-2xl border border-white/10 bg-black/20 px-5 py-4">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
+                    Sello propio
+                  </p>
+                  <p className="mt-2 text-lg text-white/80 italic secondaryFont">
+                    ¿Hace cuánto no sales a dar una vuelta?
+                  </p>
+                </div>
 
-                <a
-                  href={whatsappPrimaryHref}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white/[0.03] px-5 py-3 text-sm font-semibold text-white/90 hover:bg-white/[0.06] hover:border-white/25 transition"
-                >
-                  <Image
-                    src="/whatsapp.png"
-                    alt="La Put* Vuelta"
-                    width={160}
-                    height={40}
-                    priority
-                    className="h-8 w-auto invert"
-                  />
-                </a>
+                <Stagger className="mt-7 flex flex-wrap gap-3">
+                  <StaggerItem>
+                    <a
+                      href="#contacto"
+                      className="inline-flex items-center justify-center rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-black hover:opacity-90 transition"
+                    >
+                      Quiero propuesta para mi sala
+                    </a>
+                  </StaggerItem>
+                  <StaggerItem>
+                    <a
+                      href={whatsappPrimaryHref}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white/[0.03] px-5 py-3 text-sm font-semibold text-white/90 hover:bg-white/[0.06] hover:border-white/25 transition"
+                    >
+                      <Image
+                        src="/whatsapp.png"
+                        alt="La Put* Vuelta"
+                        width={160}
+                        height={40}
+                        priority
+                        className="h-8 w-auto invert"
+                      />
+                    </a>
+                  </StaggerItem>
 
-                {/* <a
+                  {/* <a
                   href={BRAND.dossierUrl}
                   target="_blank"
                   rel="noreferrer"
@@ -557,131 +563,151 @@ export default function B2BPage() {
                 >
                   Ver dossier (PDF)
                 </a> */}
-              </div>
+                </Stagger>
 
-              {/* Value chips */}
-              <div className="mt-10 grid gap-3 sm:grid-cols-3">
-                <ValueChip k="Show" v="~6 horas · 3 DJs + presentador/a" />
-                <ValueChip k="Activación" v="Momentos Putivuelta programados" />
-                <ValueChip k="RRSS" v="Contenido listo (según alcance)" />
-              </div>
+                {/* Value chips */}
+                <Stagger className="mt-10 grid gap-3 sm:grid-cols-3">
+                  <StaggerItem>
+                    <ValueChip k="Show" v="~6 horas · 3 DJs + presentador/a" />
+                  </StaggerItem>
+                  <StaggerItem>
+                    <ValueChip
+                      k="Activación"
+                      v="Momentos Putivuelta programados"
+                    />
+                  </StaggerItem>
+                  <StaggerItem>
+                    <ValueChip k="RRSS" v="Contenido listo (según alcance)" />
+                  </StaggerItem>
+                </Stagger>
 
-              {/* Trust + urgency */}
-              <div className="mt-6 grid gap-3 md:grid-cols-2">
-                <MiniInfo
-                  title="Respuesta rápida"
-                  text="Te devolvemos propuesta y encaje operativo en 24–72h laborables."
-                />
-                <MiniInfo
-                  title="Cero fricción"
-                  text="Nos encargamos de estructura, momentos y coordinación. Tú pones el espacio."
-                />
+                {/* Trust + urgency */}
+                <Stagger className="mt-6 grid gap-3 md:grid-cols-2">
+                  <StaggerItem>
+                    <MiniInfo
+                      title="Respuesta rápida"
+                      text="Te devolvemos propuesta y encaje operativo en 24–72h laborables."
+                    />
+                  </StaggerItem>
+                  <StaggerItem>
+                    <MiniInfo
+                      title="Cero fricción"
+                      text="Nos encargamos de estructura, momentos y coordinación. Tú pones el espacio."
+                    />
+                  </StaggerItem>
+                </Stagger>
               </div>
             </div>
-          </div>
+          </StaggerItem>
 
           {/* SIDE CARD */}
-          <aside className="glass rounded-3xl border border-white/10 p-7 md:p-8">
-            <div className="flex items-start justify-between gap-4">
-              <div>
+          <StaggerItem>
+            <aside className="glass rounded-3xl border border-white/10 p-7 md:p-8">
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
+                    Resumen B2B
+                  </p>
+                  <h2 className="mt-2 text-xl font-black uppercase tracking-tight text-white/90 secondaryFont">
+                    Datos rápidos
+                  </h2>
+                </div>
+
+                <span className="rounded-full border border-white/15 bg-black/20 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.35em] text-white/70">
+                  {BRAND.yearLabel}
+                </span>
+              </div>
+
+              <div className="mt-6 space-y-4">
+                <StatRow label="Formato" value="Fiesta 360º / show party" />
+                <StatRow label="Duración" value="~6 horas (adaptable)" />
+                <StatRow label="Foco" value="Pista activa + picos de consumo" />
+                <StatRow
+                  label="Streaming"
+                  value={`Opcional (${BRAND.streamingPlatform})`}
+                />
+                <StatRow
+                  label="Entrega"
+                  value="Contenido listo + cierre operativo"
+                />
+              </div>
+
+              <div className="mt-6 rounded-2xl border border-white/10 bg-black/20 p-5">
                 <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
-                  Resumen B2B
+                  Para proponerte un plan
                 </p>
-                <h2 className="mt-2 text-xl font-black uppercase tracking-tight text-white/90 secondaryFont">
-                  Datos rápidos
-                </h2>
+                <p className="mt-2 text-sm text-white/70">
+                  Envíanos ciudad, sala, aforo y 2 fechas. Te devolvemos un
+                  alcance recomendado (pack + operativa) y presupuesto a medida.
+                </p>
+
+                <Stagger className="mt-4 grid gap-2 sm:grid-cols-2">
+                  <StaggerItem>
+                    <a
+                      href={whatsappPrimaryHref}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center justify-center rounded-2xl bg-white px-4 py-3 text-sm font-semibold text-black hover:opacity-90 transition"
+                    >
+                      <Image
+                        src="/whatsapp.png"
+                        alt="La Put* Vuelta"
+                        width={160}
+                        height={40}
+                        priority
+                        className="h-8 w-auto"
+                      />
+                    </a>
+                  </StaggerItem>
+                  <StaggerItem>
+                    <a
+                      href={mailHref}
+                      className="inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white/[0.03] px-4 py-3 text-sm font-semibold text-white/90 hover:bg-white/[0.06] hover:border-white/25 transition"
+                    >
+                      Email
+                    </a>
+                  </StaggerItem>
+                </Stagger>
               </div>
 
-              <span className="rounded-full border border-white/15 bg-black/20 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.35em] text-white/70">
-                {BRAND.yearLabel}
-              </span>
-            </div>
+              <div className="mt-5 grid gap-3">
+                {/* <a
+                    href={BRAND.dossierUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="rounded-2xl border border-white/10 bg-white/[0.02] px-5 py-4 hover:bg-white/[0.04] hover:border-white/20 transition"
+                  >
+                    <p className="text-sm font-semibold text-white/90">
+                      Dossier PDF
+                    </p>
+                    <p className="mt-1 text-sm text-white/60">
+                      Abrir en una pestaña
+                    </p>
+                  </a> */}
 
-            <div className="mt-6 space-y-4">
-              <StatRow label="Formato" value="Fiesta 360º / show party" />
-              <StatRow label="Duración" value="~6 horas (adaptable)" />
-              <StatRow label="Foco" value="Pista activa + picos de consumo" />
-              <StatRow
-                label="Streaming"
-                value={`Opcional (${BRAND.streamingPlatform})`}
-              />
-              <StatRow
-                label="Entrega"
-                value="Contenido listo + cierre operativo"
-              />
-            </div>
-
-            <div className="mt-6 rounded-2xl border border-white/10 bg-black/20 p-5">
-              <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
-                Para proponerte un plan
-              </p>
-              <p className="mt-2 text-sm text-white/70">
-                Envíanos ciudad, sala, aforo y 2 fechas. Te devolvemos un
-                alcance recomendado (pack + operativa) y presupuesto a medida.
-              </p>
-
-              <div className="mt-4 grid gap-2 sm:grid-cols-2">
-                <a
-                  href={whatsappPrimaryHref}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center justify-center rounded-2xl bg-white px-4 py-3 text-sm font-semibold text-black hover:opacity-90 transition"
-                >
-                  <Image
-                    src="/whatsapp.png"
-                    alt="La Put* Vuelta"
-                    width={160}
-                    height={40}
-                    priority
-                    className="h-8 w-auto"
-                  />
-                </a>
-                <a
-                  href={mailHref}
-                  className="inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white/[0.03] px-4 py-3 text-sm font-semibold text-white/90 hover:bg-white/[0.06] hover:border-white/25 transition"
-                >
-                  Email
-                </a>
+                <div className="rounded-2xl border border-white/10 bg-black/20 px-5 py-4">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
+                    Checklist express
+                  </p>
+                  <ul className="mt-3 space-y-2 text-sm text-white/80">
+                    {[
+                      "Ciudad y sala",
+                      "Aforo aproximado",
+                      "Horario habitual",
+                      "2 fechas candidatas",
+                      "Objetivo (afluencia / barra / imagen)",
+                    ].map((x) => (
+                      <li key={x} className="flex gap-2">
+                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/60" />
+                        <span>{x}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-            </div>
-
-            <div className="mt-5 grid gap-3">
-              {/* <a
-                href={BRAND.dossierUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="rounded-2xl border border-white/10 bg-white/[0.02] px-5 py-4 hover:bg-white/[0.04] hover:border-white/20 transition"
-              >
-                <p className="text-sm font-semibold text-white/90">
-                  Dossier PDF
-                </p>
-                <p className="mt-1 text-sm text-white/60">
-                  Abrir en una pestaña
-                </p>
-              </a> */}
-
-              <div className="rounded-2xl border border-white/10 bg-black/20 px-5 py-4">
-                <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
-                  Checklist express
-                </p>
-                <ul className="mt-3 space-y-2 text-sm text-white/80">
-                  {[
-                    "Ciudad y sala",
-                    "Aforo aproximado",
-                    "Horario habitual",
-                    "2 fechas candidatas",
-                    "Objetivo (afluencia / barra / imagen)",
-                  ].map((x) => (
-                    <li key={x} className="flex gap-2">
-                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/60" />
-                      <span>{x}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </aside>
-        </div>
+            </aside>
+          </StaggerItem>
+        </Stagger>
       </section>
 
       {/* CONCEPTO */}
@@ -689,39 +715,52 @@ export default function B2BPage() {
         id="concepto"
         className="mx-auto max-w-[1200px] px-6 mt-10 md:mt-14"
       >
-        <div className="glass rounded-3xl border border-white/10 p-7 md:p-10">
-          <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
-            Qué es
-          </p>
-          <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90 secondaryFont">
-            El concepto
-          </h2>
+        <Reveal>
+          <div className="glass rounded-3xl border border-white/10 p-7 md:p-10">
+            <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
+              Qué es
+            </p>
+            <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90 secondaryFont">
+              El concepto
+            </h2>
 
-          <p className="mt-4 text-sm leading-relaxed text-white/70 max-w-3xl">
-            <span className="text-white/85 font-semibold">{BRAND.name}</span> es
-            una fiesta donde{" "}
-            <span className="text-white/85 font-semibold">TODO PASA</span>:
-            música, show, activaciones y contenido grabado. Cada fecha se adapta
-            a la sala, pero el objetivo es constante: pista viva, momentos
-            memorables y una noche que se comenta.
-          </p>
+            <p className="mt-4 text-sm leading-relaxed text-white/70 max-w-3xl">
+              <span className="text-white/85 font-semibold">{BRAND.name}</span>{" "}
+              es una fiesta donde{" "}
+              <span className="text-white/85 font-semibold">TODO PASA</span>:
+              música, show, activaciones y contenido grabado. Cada fecha se
+              adapta a la sala, pero el objetivo es constante: pista viva,
+              momentos memorables y una noche que se comenta.
+            </p>
 
-          <div className="mt-8 grid gap-3 md:grid-cols-2">
-            <MiniInfo
-              title="Identidad reconocible"
-              text="Sello propio y narrativa de noche."
-            />
-            <MiniInfo
-              title="Interacción real"
-              text="DJs + presentador/a + dinámicas."
-            />
-            <MiniInfo
-              title="Momentos sorpresa"
-              text="Diseñados para subir energía y consumo."
-            />
-            <MiniInfo title="Viralidad" text="El club se ve grande en redes." />
+            <Stagger className="mt-8 grid gap-3 md:grid-cols-2">
+              <StaggerItem>
+                <MiniInfo
+                  title="Identidad reconocible"
+                  text="Sello propio y narrativa de noche."
+                />
+              </StaggerItem>
+              <StaggerItem>
+                <MiniInfo
+                  title="Interacción real"
+                  text="DJs + presentador/a + dinámicas."
+                />
+              </StaggerItem>
+              <StaggerItem>
+                <MiniInfo
+                  title="Momentos sorpresa"
+                  text="Diseñados para subir energía y consumo."
+                />
+              </StaggerItem>
+              <StaggerItem>
+                <MiniInfo
+                  title="Viralidad"
+                  text="El club se ve grande en redes."
+                />
+              </StaggerItem>
+            </Stagger>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       {/* PROPUESTA DE VALOR */}
@@ -729,43 +768,47 @@ export default function B2BPage() {
         id="valor"
         className="mx-auto max-w-[1200px] px-6 mt-10 md:mt-14"
       >
-        <div className="flex items-end justify-between gap-6">
-          <div>
-            <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
-              Propuesta de valor
-            </p>
-            <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90 secondaryFont">
-              Esto es lo que cambia en tu sala
-            </h2>
-            <p className="mt-3 text-sm text-white/65 max-w-2xl">
-              No prometemos humo. Diseñamos la noche para que la pista no se
-              apague y el consumo tenga momentos claros.
-            </p>
-          </div>
-
-          <a
-            href="#contacto"
-            className="hidden md:inline-flex rounded-2xl border border-white/15 bg-white/[0.03] px-4 py-2 text-sm font-semibold text-white/90 hover:bg-white/[0.06] hover:border-white/25 transition"
-          >
-            Quiero propuesta
-          </a>
-        </div>
-
-        <div className="mt-6 grid gap-4 md:grid-cols-2">
-          {VALUE_PROPOSITION.map((x) => (
-            <div
-              key={x.title}
-              className="glass rounded-3xl border border-white/10 p-7"
-            >
-              <p className="text-base font-black uppercase tracking-[0.06em] text-white/90">
-                {x.title}
+        <Reveal>
+          <div className="flex items-end justify-between gap-6">
+            <div>
+              <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
+                Propuesta de valor
               </p>
-              <p className="mt-3 text-sm leading-relaxed text-white/70">
-                {x.text}
+              <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90 secondaryFont">
+                Esto es lo que cambia en tu sala
+              </h2>
+              <p className="mt-3 text-sm text-white/65 max-w-2xl">
+                No prometemos humo. Diseñamos la noche para que la pista no se
+                apague y el consumo tenga momentos claros.
               </p>
             </div>
-          ))}
-        </div>
+
+            <a
+              href="#contacto"
+              className="hidden md:inline-flex rounded-2xl border border-white/15 bg-white/[0.03] px-4 py-2 text-sm font-semibold text-white/90 hover:bg-white/[0.06] hover:border-white/25 transition"
+            >
+              Quiero propuesta
+            </a>
+          </div>
+
+          <Stagger className="mt-6 grid gap-4 md:grid-cols-2">
+            {VALUE_PROPOSITION.map((x) => (
+              <StaggerItem>
+                <div
+                  key={x.title}
+                  className="glass rounded-3xl border border-white/10 p-7"
+                >
+                  <p className="text-base font-black uppercase tracking-[0.06em] text-white/90">
+                    {x.title}
+                  </p>
+                  <p className="mt-3 text-sm leading-relaxed text-white/70">
+                    {x.text}
+                  </p>
+                </div>
+              </StaggerItem>
+            ))}
+          </Stagger>
+        </Reveal>
       </section>
 
       {/* QUÉ OFRECEMOS */}
@@ -773,56 +816,60 @@ export default function B2BPage() {
         id="ofrecemos"
         className="mx-auto max-w-[1200px] px-6 mt-10 md:mt-14"
       >
-        <div className="glass rounded-3xl border border-white/10 p-7 md:p-10">
-          <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
-            <div>
-              <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
-                Producción
-              </p>
-              <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90 secondaryFont">
-                ¿Qué incluye la experiencia?
-              </h2>
-              <p className="mt-3 text-sm text-white/65 max-w-2xl">
-                Lo importante: no te “metemos” cosas por meter. Diseñamos
-                alcance según objetivo y operativa real del local.
-              </p>
+        <Reveal>
+          <div className="glass rounded-3xl border border-white/10 p-7 md:p-10">
+            <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+              <div>
+                <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
+                  Producción
+                </p>
+                <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90 secondaryFont">
+                  ¿Qué incluye la experiencia?
+                </h2>
+                <p className="mt-3 text-sm text-white/65 max-w-2xl">
+                  Lo importante: no te “metemos” cosas por meter. Diseñamos
+                  alcance según objetivo y operativa real del local.
+                </p>
+              </div>
+
+              <a
+                href="#packs"
+                className="mt-4 inline-flex w-fit rounded-2xl border border-white/15 bg-white/[0.03] px-4 py-2 text-sm font-semibold text-white/90 hover:bg-white/[0.06] hover:border-white/25 transition md:mt-0"
+              >
+                Ver packs
+              </a>
             </div>
 
-            <a
-              href="#packs"
-              className="mt-4 inline-flex w-fit rounded-2xl border border-white/15 bg-white/[0.03] px-4 py-2 text-sm font-semibold text-white/90 hover:bg-white/[0.06] hover:border-white/25 transition md:mt-0"
-            >
-              Ver packs
-            </a>
+            <Stagger className="mt-8 grid gap-4 md:grid-cols-2">
+              {OFFER.map((o) => (
+                <StaggerItem>
+                  <div
+                    key={o.title}
+                    className="rounded-3xl border border-white/10 bg-black/20 p-7"
+                  >
+                    <div className="flex items-center justify-between gap-4">
+                      <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-white/60">
+                        {o.tag}
+                      </p>
+                      <span className="h-2 w-2 rounded-full bg-[var(--primary)] shadow-[0_0_16px_rgba(255,77,94,0.35)]" />
+                    </div>
+                    <h3 className="mt-2 text-base font-black uppercase tracking-[0.06em] text-white/90">
+                      {o.title}
+                    </h3>
+                    <ul className="mt-5 space-y-2 text-sm text-white/80">
+                      {o.bullets.map((b) => (
+                        <li key={b} className="flex gap-2">
+                          <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/60" />
+                          <span>{b}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </StaggerItem>
+              ))}
+            </Stagger>
           </div>
-
-          <div className="mt-8 grid gap-4 md:grid-cols-2">
-            {OFFER.map((o) => (
-              <div
-                key={o.title}
-                className="rounded-3xl border border-white/10 bg-black/20 p-7"
-              >
-                <div className="flex items-center justify-between gap-4">
-                  <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-white/60">
-                    {o.tag}
-                  </p>
-                  <span className="h-2 w-2 rounded-full bg-[var(--primary)] shadow-[0_0_16px_rgba(255,77,94,0.35)]" />
-                </div>
-                <h3 className="mt-2 text-base font-black uppercase tracking-[0.06em] text-white/90">
-                  {o.title}
-                </h3>
-                <ul className="mt-5 space-y-2 text-sm text-white/80">
-                  {o.bullets.map((b) => (
-                    <li key={b} className="flex gap-2">
-                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/60" />
-                      <span>{b}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
+        </Reveal>
       </section>
 
       {/* PROCESO */}
@@ -830,118 +877,127 @@ export default function B2BPage() {
         id="proceso"
         className="mx-auto max-w-[1200px] px-6 mt-10 md:mt-14"
       >
-        <div className="glass rounded-3xl border border-white/10 p-7 md:p-10">
-          <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
-            <div>
-              <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
-                Operativa
-              </p>
-              <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90 secondaryFont">
-                Cómo trabajamos (sin complicarte)
-              </h2>
-              <p className="mt-3 text-sm text-white/65 max-w-2xl">
-                Flujo simple, replicable y pensado para dirección: claridad
-                antes, control durante y cierre con datos.
-              </p>
+        <Reveal>
+          <div className="glass rounded-3xl border border-white/10 p-7 md:p-10">
+            <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+              <div>
+                <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
+                  Operativa
+                </p>
+                <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90 secondaryFont">
+                  Cómo trabajamos (sin complicarte)
+                </h2>
+                <p className="mt-3 text-sm text-white/65 max-w-2xl">
+                  Flujo simple, replicable y pensado para dirección: claridad
+                  antes, control durante y cierre con datos.
+                </p>
+              </div>
+
+              <a
+                href="#contacto"
+                className="mt-4 inline-flex w-fit rounded-2xl bg-white px-4 py-2 text-sm font-semibold text-black hover:opacity-90 transition md:mt-0"
+              >
+                Enviar datos y fechas
+              </a>
             </div>
 
-            <a
-              href="#contacto"
-              className="mt-4 inline-flex w-fit rounded-2xl bg-white px-4 py-2 text-sm font-semibold text-black hover:opacity-90 transition md:mt-0"
-            >
-              Enviar datos y fechas
-            </a>
-          </div>
+            <Stagger className="mt-8 grid gap-4 md:grid-cols-3">
+              {PROCESS.map((s) => (
+                <StaggerItem key={s.n}>
+                  <Step n={s.n} title={s.title} text={s.text} />
+                </StaggerItem>
+              ))}
+            </Stagger>
 
-          <div className="mt-8 grid gap-4 md:grid-cols-3">
-            {PROCESS.map((s) => (
-              <Step key={s.n} n={s.n} title={s.title} text={s.text} />
-            ))}
+            <Reveal>
+              <div className="mt-6 rounded-2xl border border-white/10 bg-black/20 p-5">
+                <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
+                  Resultado esperado
+                </p>
+                <p className="mt-2 text-sm text-white/70">
+                  Una noche con narrativa, momentos y ejecución que se notan:
+                  pista con ambiente, picos claros y contenido útil para
+                  repetir.
+                </p>
+              </div>
+            </Reveal>
           </div>
-
-          <div className="mt-6 rounded-2xl border border-white/10 bg-black/20 p-5">
-            <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
-              Resultado esperado
-            </p>
-            <p className="mt-2 text-sm text-white/70">
-              Una noche con narrativa, momentos y ejecución que se notan: pista
-              con ambiente, picos claros y contenido útil para repetir.
-            </p>
-          </div>
-        </div>
+        </Reveal>
       </section>
 
-      <Timeline />
+      <Reveal>
+        <Timeline />
+      </Reveal>
 
       {/* NOCHE */}
       <section
         id="noche"
         className="mx-auto max-w-[1200px] px-6 mt-10 md:mt-14"
       >
-        <div className="grid gap-6 md:grid-cols-2">
-          <div className="glass rounded-3xl border border-white/10 p-7 md:p-8">
-            <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
-              Estructura
-            </p>
-            <h2 className="mt-2 text-xl md:text-2xl font-black uppercase tracking-tight text-white/90 secondaryFont">
-              Así transcurre la noche
-            </h2>
-            <div className="mt-6 space-y-3">
-              {NIGHT_FLOW.map((x) => (
-                <div
-                  key={x.title}
-                  className="rounded-2xl border border-white/10 bg-black/20 p-5"
-                >
-                  <p className="text-sm font-semibold text-white/90">
-                    {x.title}
-                  </p>
-                  <p className="mt-2 text-sm leading-relaxed text-white/65">
-                    {x.text}
-                  </p>
-                </div>
-              ))}
+        <Reveal>
+          <div className="grid gap-6 md:grid-cols-2">
+            <div className="glass rounded-3xl border border-white/10 p-7 md:p-8">
+              <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
+                Estructura
+              </p>
+              <h2 className="mt-2 text-xl md:text-2xl font-black uppercase tracking-tight text-white/90 secondaryFont">
+                Así transcurre la noche
+              </h2>
+              <Stagger className="mt-6 space-y-3">
+                {NIGHT_FLOW.map((x) => (
+                  <StaggerItem key={x.title}>
+                    <div className="rounded-2xl border border-white/10 bg-black/20 p-5">
+                      <p className="text-sm font-semibold text-white/90">
+                        {x.title}
+                      </p>
+                      <p className="mt-2 text-sm leading-relaxed text-white/65">
+                        {x.text}
+                      </p>
+                    </div>
+                  </StaggerItem>
+                ))}
+              </Stagger>
+            </div>
+
+            <div className="glass rounded-3xl border border-white/10 p-7 md:p-8">
+              <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
+                Activación
+              </p>
+              <h2 className="mt-2 text-xl md:text-2xl font-black uppercase tracking-tight text-white/90 secondaryFont">
+                Juegos y retos con el público
+              </h2>
+              <p className="mt-3 text-sm text-white/65">
+                Activaciones que suben energía y crean contenido, siempre
+                pactadas y adaptadas a la sala.
+              </p>
+
+              <Stagger className="mt-6 space-y-3">
+                {GAMES_AND_CHALLENGES.map((x) => (
+                  <StaggerItem key={x.title}>
+                    <div className="rounded-2xl border border-white/10 bg-black/20 p-5">
+                      <p className="text-sm font-semibold text-white/90">
+                        {x.title}
+                      </p>
+                      <p className="mt-2 text-sm leading-relaxed text-white/65">
+                        {x.text}
+                      </p>
+                    </div>
+                  </StaggerItem>
+                ))}
+              </Stagger>
+
+              <div className="mt-6 rounded-2xl border border-white/10 bg-white/[0.02] px-5 py-4">
+                <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-white/55">
+                  Nota operativa
+                </p>
+                <p className="mt-2 text-sm text-white/70">
+                  Las dinámicas se cierran con antelación y se ajustan a
+                  seguridad, flujo de puerta y perfil del local.
+                </p>
+              </div>
             </div>
           </div>
-
-          <div className="glass rounded-3xl border border-white/10 p-7 md:p-8">
-            <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
-              Activación
-            </p>
-            <h2 className="mt-2 text-xl md:text-2xl font-black uppercase tracking-tight text-white/90 secondaryFont">
-              Juegos y retos con el público
-            </h2>
-            <p className="mt-3 text-sm text-white/65">
-              Activaciones que suben energía y crean contenido, siempre pactadas
-              y adaptadas a la sala.
-            </p>
-
-            <div className="mt-6 space-y-3">
-              {GAMES_AND_CHALLENGES.map((x) => (
-                <div
-                  key={x.title}
-                  className="rounded-2xl border border-white/10 bg-black/20 p-5"
-                >
-                  <p className="text-sm font-semibold text-white/90">
-                    {x.title}
-                  </p>
-                  <p className="mt-2 text-sm leading-relaxed text-white/65">
-                    {x.text}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-6 rounded-2xl border border-white/10 bg-white/[0.02] px-5 py-4">
-              <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-white/55">
-                Nota operativa
-              </p>
-              <p className="mt-2 text-sm text-white/70">
-                Las dinámicas se cierran con antelación y se ajustan a
-                seguridad, flujo de puerta y perfil del local.
-              </p>
-            </div>
-          </div>
-        </div>
+        </Reveal>
       </section>
 
       {/* CONTENIDO */}
@@ -949,61 +1005,65 @@ export default function B2BPage() {
         id="contenido"
         className="mx-auto max-w-[1200px] px-6 mt-10 md:mt-14"
       >
-        <div className="glass rounded-3xl border border-white/10 p-7 md:p-10">
-          <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
-            Contenido
-          </p>
-          <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90 secondaryFont">
-            Contenido viral para tus redes
-          </h2>
-          <p className="mt-3 text-sm text-white/65 max-w-2xl">
-            Lo que se graba esa noche no se pierde: se convierte en piezas para
-            amplificar antes/durante/después.
-          </p>
+        <Reveal>
+          <div className="glass rounded-3xl border border-white/10 p-7 md:p-10">
+            <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
+              Contenido
+            </p>
+            <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90 secondaryFont">
+              Contenido viral para tus redes
+            </h2>
+            <p className="mt-3 text-sm text-white/65 max-w-2xl">
+              Lo que se graba esa noche no se pierde: se convierte en piezas
+              para amplificar antes/durante/después.
+            </p>
 
-          <div className="mt-6 grid gap-4 md:grid-cols-2">
-            {CONTENT_BLOCK.map((x) => (
-              <div
-                key={x.title}
-                className="rounded-3xl border border-white/10 bg-black/20 p-7"
-              >
-                <p className="text-sm font-semibold text-white/90">{x.title}</p>
-                <p className="mt-2 text-sm leading-relaxed text-white/65">
-                  {x.text}
+            <Stagger className="mt-6 grid gap-4 md:grid-cols-2">
+              {CONTENT_BLOCK.map((x) => (
+                <StaggerItem key={x.title}>
+                  <div className="rounded-3xl border border-white/10 bg-black/20 p-7">
+                    <p className="text-sm font-semibold text-white/90">
+                      {x.title}
+                    </p>
+                    <p className="mt-2 text-sm leading-relaxed text-white/65">
+                      {x.text}
+                    </p>
+                  </div>
+                </StaggerItem>
+              ))}
+            </Stagger>
+
+            <div className="mt-8 rounded-3xl border border-white/10 bg-black/20 p-7">
+              <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
+                Requerimientos técnicos orientativos
+              </p>
+              <Stagger className="mt-4 grid gap-4 md:grid-cols-2">
+                {TECH_REQUIREMENTS.map((x) => (
+                  <StaggerItem key={x.title}>
+                    <div className="rounded-2xl border border-white/10 bg-black/25 p-5">
+                      <p className="text-sm font-semibold text-white/90">
+                        {x.title}
+                      </p>
+                      <p className="mt-2 text-sm leading-relaxed text-white/65">
+                        {x.text}
+                      </p>
+                    </div>
+                  </StaggerItem>
+                ))}
+              </Stagger>
+
+              <div className="mt-6 rounded-2xl border border-white/10 bg-white/[0.02] px-5 py-4">
+                <p className="text-sm font-semibold text-white/85">
+                  Importante
+                </p>
+                <p className="mt-2 text-sm text-white/70">
+                  El detalle completo se confirma al cerrar fecha, para
+                  adaptarlo a tu sala (sin exigir de más ni quedarnos cortos).
                 </p>
               </div>
-            ))}
-          </div>
-
-          <div className="mt-8 rounded-3xl border border-white/10 bg-black/20 p-7">
-            <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
-              Requerimientos técnicos orientativos
-            </p>
-            <div className="mt-4 grid gap-4 md:grid-cols-2">
-              {TECH_REQUIREMENTS.map((x) => (
-                <div
-                  key={x.title}
-                  className="rounded-2xl border border-white/10 bg-black/25 p-5"
-                >
-                  <p className="text-sm font-semibold text-white/90">
-                    {x.title}
-                  </p>
-                  <p className="mt-2 text-sm leading-relaxed text-white/65">
-                    {x.text}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-6 rounded-2xl border border-white/10 bg-white/[0.02] px-5 py-4">
-              <p className="text-sm font-semibold text-white/85">Importante</p>
-              <p className="mt-2 text-sm text-white/70">
-                El detalle completo se confirma al cerrar fecha, para adaptarlo
-                a tu sala (sin exigir de más ni quedarnos cortos).
-              </p>
             </div>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       {/* PACKS */}
@@ -1011,114 +1071,117 @@ export default function B2BPage() {
         id="packs"
         className="mx-auto max-w-[1200px] px-6 mt-10 md:mt-14"
       >
-        <div className="flex items-end justify-between gap-6">
-          <div>
-            <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
-              Packs
-            </p>
-            <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90 secondaryFont">
-              Alcance por pack + personalización
-            </h2>
-            <p className="mt-3 text-sm text-white/65 max-w-2xl">
-              Los packs son niveles de alcance. El presupuesto es a medida según
-              ciudad, aforo, fecha y objetivo.
-            </p>
+        <Reveal>
+          <div className="flex items-end justify-between gap-6">
+            <div>
+              <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
+                Packs
+              </p>
+              <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90 secondaryFont">
+                Alcance por pack + personalización
+              </h2>
+              <p className="mt-3 text-sm text-white/65 max-w-2xl">
+                Los packs son niveles de alcance. El presupuesto es a medida
+                según ciudad, aforo, fecha y objetivo.
+              </p>
+            </div>
+
+            <a
+              href="#contacto"
+              className="hidden md:inline-flex rounded-2xl bg-[var(--primary)] px-4 py-2 text-sm font-semibold text-white hover:bg-[color:rgba(255,77,94,0.82)] transition neon-border"
+            >
+              Pedir propuesta
+            </a>
           </div>
 
-          <a
-            href="#contacto"
-            className="hidden md:inline-flex rounded-2xl bg-[var(--primary)] px-4 py-2 text-sm font-semibold text-white hover:bg-[color:rgba(255,77,94,0.82)] transition neon-border"
-          >
-            Pedir propuesta
-          </a>
-        </div>
+          <Stagger className="mt-6 grid gap-4 md:grid-cols-3">
+            {PACKS.map((p) => (
+              <StaggerItem key={p.title}>
+                <div className="glass relative overflow-hidden rounded-3xl border border-white/10 p-7">
+                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,77,94,0.10),transparent_55%)]" />
+                  <div className="relative">
+                    <div className="flex items-center justify-between gap-4">
+                      <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-white/60">
+                        {p.tag}
+                      </p>
+                      <span className="h-2 w-2 rounded-full bg-[var(--primary)] shadow-[0_0_16px_rgba(255,77,94,0.35)]" />
+                    </div>
 
-        <div className="mt-6 grid gap-4 md:grid-cols-3">
-          {PACKS.map((p) => (
-            <div
-              key={p.title}
-              className="glass relative overflow-hidden rounded-3xl border border-white/10 p-7"
-            >
-              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,77,94,0.10),transparent_55%)]" />
-              <div className="relative">
-                <div className="flex items-center justify-between gap-4">
-                  <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-white/60">
-                    {p.tag}
-                  </p>
-                  <span className="h-2 w-2 rounded-full bg-[var(--primary)] shadow-[0_0_16px_rgba(255,77,94,0.35)]" />
+                    <h3 className="mt-2 text-base font-black uppercase tracking-[0.06em] text-white/90 secondaryFont">
+                      {p.title}
+                    </h3>
+                    <p className="mt-2 text-sm text-white/65">{p.subtitle}</p>
+
+                    <div className="mt-4 rounded-2xl border border-white/10 bg-black/20 px-4 py-3">
+                      <p className="text-sm font-semibold text-white/85">
+                        ¿Para quién?
+                      </p>
+                      <p className="mt-1 text-sm text-white/70">{p.whoFor}</p>
+                    </div>
+
+                    <ul className="mt-5 space-y-2 text-sm text-white/80">
+                      {p.bullets.map((b) => (
+                        <li key={b} className="flex gap-2">
+                          <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/60" />
+                          <span>{b}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="mt-5 rounded-2xl border border-white/10 bg-black/25 px-4 py-3">
+                      <p className="text-sm font-semibold text-white/85">
+                        Presupuesto a medida
+                      </p>
+                      <p className="mt-1 text-xs text-white/55">
+                        Se define tras revisar sala, fecha, operativa y
+                        objetivos.
+                      </p>
+                    </div>
+
+                    <div className="mt-6 flex gap-2">
+                      <a
+                        href="#contacto"
+                        className="inline-flex rounded-2xl border border-white/15 bg-white/[0.03] px-4 py-2 text-sm font-semibold text-white/90 hover:bg-white/[0.06] hover:border-white/25 transition"
+                      >
+                        Pedir propuesta
+                      </a>
+                      <a
+                        href={whatsappPrimaryHref}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex rounded-2xl bg-white px-4 py-2 text-sm font-semibold text-black hover:opacity-90 transition"
+                      >
+                        <Image
+                          src="/whatsapp.png"
+                          alt="La Put* Vuelta"
+                          width={160}
+                          height={40}
+                          priority
+                          className="h-6 w-auto"
+                        />
+                      </a>
+                    </div>
+                  </div>
                 </div>
-
-                <h3 className="mt-2 text-base font-black uppercase tracking-[0.06em] text-white/90 secondaryFont">
-                  {p.title}
-                </h3>
-                <p className="mt-2 text-sm text-white/65">{p.subtitle}</p>
-
-                <div className="mt-4 rounded-2xl border border-white/10 bg-black/20 px-4 py-3">
-                  <p className="text-sm font-semibold text-white/85">
-                    ¿Para quién?
-                  </p>
-                  <p className="mt-1 text-sm text-white/70">{p.whoFor}</p>
-                </div>
-
-                <ul className="mt-5 space-y-2 text-sm text-white/80">
-                  {p.bullets.map((b) => (
-                    <li key={b} className="flex gap-2">
-                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/60" />
-                      <span>{b}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="mt-5 rounded-2xl border border-white/10 bg-black/25 px-4 py-3">
-                  <p className="text-sm font-semibold text-white/85">
-                    Presupuesto a medida
-                  </p>
-                  <p className="mt-1 text-xs text-white/55">
-                    Se define tras revisar sala, fecha, operativa y objetivos.
-                  </p>
-                </div>
-
-                <div className="mt-6 flex gap-2">
-                  <a
-                    href="#contacto"
-                    className="inline-flex rounded-2xl border border-white/15 bg-white/[0.03] px-4 py-2 text-sm font-semibold text-white/90 hover:bg-white/[0.06] hover:border-white/25 transition"
-                  >
-                    Pedir propuesta
-                  </a>
-                  <a
-                    href={whatsappPrimaryHref}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex rounded-2xl bg-white px-4 py-2 text-sm font-semibold text-black hover:opacity-90 transition"
-                  >
-                    <Image
-                      src="/whatsapp.png"
-                      alt="La Put* Vuelta"
-                      width={160}
-                      height={40}
-                      priority
-                      className="h-6 w-auto"
-                    />
-                  </a>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-6 glass rounded-3xl border border-white/10 p-7">
-          <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
-            Extras y ajustes
-          </p>
-          <ul className="mt-4 space-y-2 text-sm text-white/80">
-            {EXTRAS.map((x) => (
-              <li key={x} className="flex gap-2">
-                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/60" />
-                <span>{x}</span>
-              </li>
+              </StaggerItem>
             ))}
-          </ul>
-        </div>
+          </Stagger>
+          <Reveal>
+            <div className="mt-6 glass rounded-3xl border border-white/10 p-7">
+              <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
+                Extras y ajustes
+              </p>
+              <ul className="mt-4 space-y-2 text-sm text-white/80">
+                {EXTRAS.map((x) => (
+                  <li key={x} className="flex gap-2">
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/60" />
+                    <span>{x}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Reveal>
+        </Reveal>
       </section>
 
       {/* EQUIPO */}
@@ -1126,112 +1189,118 @@ export default function B2BPage() {
         id="equipo"
         className="mx-auto max-w-[1200px] px-6 mt-10 md:mt-14"
       >
-        <div className="glass rounded-3xl border border-white/10 p-7 md:p-10">
-          <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
-            Quién trabaja
-          </p>
-          <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90 secondaryFont">
-            Equipo artístico
-          </h2>
-          <p className="mt-3 text-sm text-white/65 max-w-2xl">
-            Line-up con DJs de referencia. Se concreta por plaza y fecha al
-            cerrar propuesta.
-          </p>
+        <Reveal>
+          <div className="glass rounded-3xl border border-white/10 p-7 md:p-10">
+            <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
+              Quién trabaja
+            </p>
+            <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90 secondaryFont">
+              Equipo artístico
+            </h2>
+            <p className="mt-3 text-sm text-white/65 max-w-2xl">
+              Line-up con DJs de referencia. Se concreta por plaza y fecha al
+              cerrar propuesta.
+            </p>
 
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {TEAM.map((t) => (
-              <a
-                key={t.name}
-                href={t.ig}
-                target="_blank"
-                rel="noreferrer"
-                className="rounded-3xl border border-white/10 bg-black/20 p-6 hover:border-white/20 hover:bg-white/[0.03] transition block"
-              >
-                <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]">
-                  <Image
-                    src={t.img}
-                    alt={t.name}
-                    fill
-                    className="object-cover"
-                    sizes="(min-width: 1024px) 240px, (min-width: 640px) 45vw, 90vw"
-                    priority={false}
-                  />
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
+            <Stagger className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {TEAM.map((t) => (
+                <StaggerItem key={t.name}>
+                  <a
+                    href={t.ig}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="rounded-3xl border border-white/10 bg-black/20 p-6 hover:border-white/20 hover:bg-white/[0.03] transition block"
+                  >
+                    <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]">
+                      <Image
+                        src={t.img}
+                        alt={t.name}
+                        fill
+                        className="object-cover"
+                        sizes="(min-width: 1024px) 240px, (min-width: 640px) 45vw, 90vw"
+                        priority={false}
+                      />
+                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
 
-                  {/* Stats badge (top-right) */}
-                  {(t.sig || t.stk) && (
-                    <div className="absolute right-3 bottom-3">
-                      <div className="rounded-2xl border border-white/15 bg-black/55 backdrop-blur-xl px-3 py-2 shadow-[0_18px_50px_rgba(0,0,0,0.45)]">
-                        <div className="mt-1 flex items-center gap-3">
-                          {t.sig ? (
-                            <div className="flex items-center gap-1.5">
-                              <span className="inline-flex h-5 w-5 items-center justify-center rounded-full border border-white/15 bg-white/[0.04]">
-                                <Image
-                                  src="/instagram.png"
-                                  alt="Instagram"
-                                  width={16}
-                                  height={16}
-                                  className="h-3.5 w-3.5 invert opacity-90"
-                                />
-                              </span>
+                      {/* Stats badge (top-right) */}
+                      {(t.sig || t.stk) && (
+                        <div className="absolute right-3 bottom-3">
+                          <div className="rounded-2xl border border-white/15 bg-black/55 backdrop-blur-xl px-3 py-2 shadow-[0_18px_50px_rgba(0,0,0,0.45)]">
+                            <div className="mt-1 flex items-center gap-3">
+                              {t.sig ? (
+                                <div className="flex items-center gap-1.5">
+                                  <span className="inline-flex h-5 w-5 items-center justify-center rounded-full border border-white/15 bg-white/[0.04]">
+                                    <Image
+                                      src="/instagram.png"
+                                      alt="Instagram"
+                                      width={16}
+                                      height={16}
+                                      className="h-3.5 w-3.5 invert opacity-90"
+                                    />
+                                  </span>
 
-                              <span className="text-[11px] font-semibold text-white/90 tabular-nums">
-                                {t.sig}
-                              </span>
+                                  <span className="text-[11px] font-semibold text-white/90 tabular-nums">
+                                    {t.sig}
+                                  </span>
+                                </div>
+                              ) : null}
+
+                              {t.stk ? (
+                                <div className="flex items-center gap-1.5">
+                                  <span className="inline-flex h-5 w-5 items-center justify-center rounded-full border border-white/15 bg-white/[0.04]">
+                                    <Image
+                                      src="/tk.png"
+                                      alt="TikTok"
+                                      width={16}
+                                      height={16}
+                                      className="h-3.5 w-3.5 opacity-90"
+                                    />
+                                  </span>
+
+                                  <span className="text-[11px] font-semibold text-white/90 tabular-nums">
+                                    {t.stk}
+                                  </span>
+                                </div>
+                              ) : null}
                             </div>
-                          ) : null}
-
-                          {t.stk ? (
-                            <div className="flex items-center gap-1.5">
-                              <span className="inline-flex h-5 w-5 items-center justify-center rounded-full border border-white/15 bg-white/[0.04]">
-                                <Image
-                                  src="/tk.png"
-                                  alt="TikTok"
-                                  width={16}
-                                  height={16}
-                                  className="h-3.5 w-3.5 opacity-90"
-                                />
-                              </span>
-
-                              <span className="text-[11px] font-semibold text-white/90 tabular-nums">
-                                {t.stk}
-                              </span>
-                            </div>
-                          ) : null}
+                          </div>
                         </div>
-                      </div>
+                      )}
                     </div>
-                  )}
-                </div>
 
-                <p className="mt-4 text-sm font-semibold text-white/90">
-                  {t.name} <span className="text-white/60">· </span>
-                  <span className="text-[var(--primary)]">@{t.acc}</span>
-                </p>
-                <p className="mt-2 text-[11px] font-bold uppercase tracking-[0.22em] text-white/55">
-                  {t.role} · Abrir →
-                </p>
-              </a>
-            ))}
+                    <p className="mt-4 text-sm font-semibold text-white/90">
+                      {t.name} <span className="text-white/60">· </span>
+                      <span className="text-[var(--primary)]">@{t.acc}</span>
+                    </p>
+                    <p className="mt-2 text-[11px] font-bold uppercase tracking-[0.22em] text-white/55">
+                      {t.role} · Abrir →
+                    </p>
+                  </a>
+                </StaggerItem>
+              ))}
+            </Stagger>
+            <Reveal>
+              <p className="mt-6 text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
+                Con presencia en escenarios como:
+              </p>
+              <p className="mt-2 text-sm text-white/65">
+                <strong>Starlite Fest</strong> (Marbella),{" "}
+                <strong>Pelicano</strong> (A Coruña), <strong>Fitz</strong>{" "}
+                (Madrid), <strong>Marchica</strong> (Formigal),{" "}
+                <strong>Condado</strong> (Denia),{" "}
+                <strong>Teatro Barceló</strong> (Madrid), Playa Canalla, Phiphi
+                y Blu Puerto Sherry (Pto Sta Mª), <strong>Santos Club</strong>{" "}
+                (Castellón), <strong>Bahia Sound</strong> (Cádiz),{" "}
+                <strong>Santalia</strong> (Badajoz), <strong>Cocoa</strong>{" "}
+                (Barcelona), <strong>Granada 10</strong> (Granada),{" "}
+                <strong>Lust in Rio</strong> (Lisboa), <strong>WSNF</strong>{" "}
+                (Andorra), <strong>Mute</strong> (Mar de Plata, ARG),{" "}
+                <strong>Rocbar</strong> (Chicago, US), <strong>Mün</strong>{" "}
+                (Cancún, MX)
+              </p>
+            </Reveal>
           </div>
-          <p className="mt-6 text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
-            Con presencia en escenarios como:
-          </p>
-          <p className="mt-2 text-sm text-white/65">
-            <strong>Starlite Fest</strong> (Marbella), <strong>Pelicano</strong>{" "}
-            (A Coruña), <strong>Fitz</strong> (Madrid),{" "}
-            <strong>Marchica</strong> (Formigal), <strong>Condado</strong>{" "}
-            (Denia), <strong>Teatro Barceló</strong> (Madrid), Playa Canalla,
-            Phiphi y Blu Puerto Sherry (Pto Sta Mª),{" "}
-            <strong>Santos Club</strong> (Castellón),{" "}
-            <strong>Bahia Sound</strong> (Cádiz), <strong>Santalia</strong>{" "}
-            (Badajoz), <strong>Cocoa</strong> (Barcelona),{" "}
-            <strong>Granada 10</strong> (Granada), <strong>Lust in Rio</strong>{" "}
-            (Lisboa), <strong>WSNF</strong> (Andorra), <strong>Mute</strong>{" "}
-            (Mar de Plata, ARG), <strong>Rocbar</strong> (Chicago, US),{" "}
-            <strong>Mün</strong> (Cancún, MX)
-          </p>
-        </div>
+        </Reveal>
       </section>
 
       {/* FILMMAKERS */}
@@ -1239,76 +1308,81 @@ export default function B2BPage() {
         id="filmmakers"
         className="mx-auto max-w-[1200px] px-6 mt-10 md:mt-14"
       >
-        <div className="glass rounded-3xl border border-white/10 p-7 md:p-10">
-          <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
-            Equipo audiovisual
-          </p>
-          <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90 secondaryFont">
-            Filmmakers (contenido que se nota)
-          </h2>
-          <p className="mt-3 text-sm text-white/65 max-w-2xl">
-            Cobertura orientada a piezas útiles para RRSS y para elevar imagen
-            de la sala.
-          </p>
+        <Reveal>
+          <div className="glass rounded-3xl border border-white/10 p-7 md:p-10">
+            <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
+              Equipo audiovisual
+            </p>
+            <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90 secondaryFont">
+              Filmmakers (contenido que se nota)
+            </h2>
+            <p className="mt-3 text-sm text-white/65 max-w-2xl">
+              Cobertura orientada a piezas útiles para RRSS y para elevar imagen
+              de la sala.
+            </p>
 
-          <div className="mt-6 grid gap-4 md:grid-cols-2">
-            {FILMMAKERS.map((f) => (
-              <a
-                key={f.name}
-                href={f.ig}
-                target="_blank"
-                rel="noreferrer"
-                className="rounded-3xl border border-white/10 bg-black/20 p-7 hover:border-white/20 hover:bg-white/[0.03] transition block"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]">
-                    <Image
-                      src={f.img}
-                      alt={f.name}
-                      fill
-                      className="object-cover"
-                      sizes="56px"
-                    />
-                  </div>
+            <Stagger className="mt-6 grid gap-4 md:grid-cols-2">
+              {FILMMAKERS.map((f) => (
+                <StaggerItem key={f.name}>
+                  <a
+                    href={f.ig}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="rounded-3xl border border-white/10 bg-black/20 p-7 hover:border-white/20 hover:bg-white/[0.03] transition block"
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]">
+                        <Image
+                          src={f.img}
+                          alt={f.name}
+                          fill
+                          className="object-cover"
+                          sizes="56px"
+                        />
+                      </div>
 
-                  <div className="min-w-0">
-                    <p className="text-base font-black uppercase tracking-[0.06em] text-white/90">
-                      {f.name} <span className="text-white/60">· </span>
-                      <span className="text-[var(--primary)]">@{f.acc}</span>
-                    </p>
-                    <p className="mt-2 text-sm leading-relaxed text-white/70">
-                      {f.text}
-                    </p>
-                    <p className="mt-3 text-[11px] font-bold uppercase tracking-[0.22em] text-white/55">
-                      Abrir →
-                    </p>
-                  </div>
-                </div>
-              </a>
-            ))}
-          </div>
-          <div className="mt-6 grid gap-4 md:grid-cols-2">
-            {/* Bloque 1 */}
-            <div className="p-5">
-              <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
-                Experiencia en proyectos con artistas como:
-              </p>
-              <p className="mt-2 text-sm text-white/65">
-                Anuel AA, Mora, Eladio Carrión, Omar Courtz…
-              </p>
+                      <div className="min-w-0">
+                        <p className="text-base font-black uppercase tracking-[0.06em] text-white/90">
+                          {f.name} <span className="text-white/60">· </span>
+                          <span className="text-[var(--primary)]">
+                            @{f.acc}
+                          </span>
+                        </p>
+                        <p className="mt-2 text-sm leading-relaxed text-white/70">
+                          {f.text}
+                        </p>
+                        <p className="mt-3 text-[11px] font-bold uppercase tracking-[0.22em] text-white/55">
+                          Abrir →
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </StaggerItem>
+              ))}
+            </Stagger>
+            <div className="mt-6 grid gap-4 md:grid-cols-2">
+              {/* Bloque 1 */}
+              <div className="p-5">
+                <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
+                  Experiencia en proyectos con artistas como:
+                </p>
+                <p className="mt-2 text-sm text-white/65">
+                  Anuel AA, Mora, Eladio Carrión, Omar Courtz…
+                </p>
+              </div>
+
+              {/* Bloque 2 */}
+              <div className="p-5">
+                <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
+                  Además de festivales como:
+                </p>
+                <p className="mt-2 text-sm text-white/65">
+                  Arenal Sound, Bienvenida Fest, Daddytheparty, etc…
+                </p>
+              </div>
             </div>
-
-            {/* Bloque 2 */}
-            <div className="p-5">
-              <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
-                Además de festivales como:
-              </p>
-              <p className="mt-2 text-sm text-white/65">
-                Arenal Sound, Bienvenida Fest, Daddytheparty, etc…
-              </p>
-            </div>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       {/* FAQ */}
@@ -1355,82 +1429,97 @@ export default function B2BPage() {
         id="contacto"
         className="mx-auto max-w-[1200px] px-6 mt-10 md:mt-14"
       >
-        <div className="grid gap-6 md:grid-cols-2">
-          <ContactForm />
+        <Reveal>
+          <Stagger className="grid gap-6 md:grid-cols-2">
+            <StaggerItem>
+              <ContactForm />
+            </StaggerItem>
 
-          <div className="glass rounded-3xl border border-white/10 p-7 md:p-8 showing">
-            <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
-              Contacto y propuesta
-            </p>
-            <h3 className="mt-2 text-xl font-black uppercase tracking-tight text-white/90 secondaryFont">
-              Si te encaja, cerremos fecha
-            </h3>
-            <p className="mt-3 text-sm text-white/65">
-              Envíanos ciudad, sala, aforo y 2 fechas. Te devolvemos un plan
-              recomendado y presupuesto a medida.
-            </p>
+            <StaggerItem>
+              <div className="glass rounded-3xl border border-white/10 p-7 md:p-8 showing">
+                <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
+                  Contacto y propuesta
+                </p>
+                <h3 className="mt-2 text-xl font-black uppercase tracking-tight text-white/90 secondaryFont">
+                  Si te encaja, cerremos fecha
+                </h3>
+                <p className="mt-3 text-sm text-white/65">
+                  Envíanos ciudad, sala, aforo y 2 fechas. Te devolvemos un plan
+                  recomendado y presupuesto a medida.
+                </p>
 
-            <div className="mt-6 grid gap-3">
-              <div
-                className={
-                  CONTACTS.length > 1
-                    ? "grid gap-3 sm:grid-cols-2"
-                    : "grid gap-3"
-                }
-              >
-                <ActionCard
-                  title={`WhatsApp (${primaryContact.name})`}
-                  text=" "
-                  href={whatsappPrimaryHref}
-                  primary
-                />
+                <Stagger className="mt-6 grid gap-3">
+                  <div
+                    className={
+                      CONTACTS.length > 1
+                        ? "grid gap-3 sm:grid-cols-2"
+                        : "grid gap-3"
+                    }
+                  >
+                    <ActionCard
+                      title={`WhatsApp (${primaryContact.name})`}
+                      text=" "
+                      href={whatsappPrimaryHref}
+                      primary
+                    />
 
-                {CONTACTS.length > 1 ? (
-                  <ActionCard
-                    title={`WhatsApp (${CONTACTS[1].name})`}
-                    text=""
-                    href={whatsappSecondaryHref}
-                    primary
-                  />
-                ) : null}
-              </div>
-              <ActionCard title="Email" text={BRAND.email} href={mailHref} />
-              <div className="grid gap-3 sm:grid-cols-2">
-                <ActionCard
-                  title="Instagram"
-                  text={`@${BRAND.instagramHandle}`}
-                  href={igLink(BRAND.instagramHandle)}
-                />
-                <ActionCard
-                  title="TikTok"
-                  text={`@${BRAND.tiktokHandle}`}
-                  href={ttLink(BRAND.tiktokHandle)}
-                />
-              </div>
-            </div>
+                    {CONTACTS.length > 1 ? (
+                      <ActionCard
+                        title={`WhatsApp (${CONTACTS[1].name})`}
+                        text=""
+                        href={whatsappSecondaryHref}
+                        primary
+                      />
+                    ) : null}
+                  </div>
 
-            <div className="mt-7 rounded-2xl border border-white/10 bg-black/20 p-5">
-              <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
-                Checklist para propuesta
-              </p>
-              <ul className="mt-3 space-y-2 text-sm text-white/80">
-                {[
-                  "Ciudad y nombre de sala",
-                  "Aforo aproximado",
-                  "Día/horario habitual",
-                  "Dos fechas candidatas",
-                  "Objetivo principal (afluencia / barra / imagen)",
-                  "Preferencia de pack (Base / Pro / Full) si la tienes",
-                ].map((x) => (
-                  <li key={x} className="flex gap-2">
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/60" />
-                    <span>{x}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+                  <StaggerItem>
+                    <ActionCard
+                      title="Email"
+                      text={BRAND.email}
+                      href={mailHref}
+                    />
+                  </StaggerItem>
+                  <StaggerItem>
+                    <div className="grid gap-3 sm:grid-cols-2">
+                      <ActionCard
+                        title="Instagram"
+                        text={`@${BRAND.instagramHandle}`}
+                        href={igLink(BRAND.instagramHandle)}
+                      />
+                      <ActionCard
+                        title="TikTok"
+                        text={`@${BRAND.tiktokHandle}`}
+                        href={ttLink(BRAND.tiktokHandle)}
+                      />
+                    </div>
+                  </StaggerItem>
+                </Stagger>
 
-            {/* <div className="mt-7 flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.02] px-5 py-4">
+                <Reveal>
+                  <div className="mt-7 rounded-2xl border border-white/10 bg-black/20 p-5">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
+                      Checklist para propuesta
+                    </p>
+                    <ul className="mt-3 space-y-2 text-sm text-white/80">
+                      {[
+                        "Ciudad y nombre de sala",
+                        "Aforo aproximado",
+                        "Día/horario habitual",
+                        "Dos fechas candidatas",
+                        "Objetivo principal (afluencia / barra / imagen)",
+                        "Preferencia de pack (Base / Pro / Full) si la tienes",
+                      ].map((x) => (
+                        <li key={x} className="flex gap-2">
+                          <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/60" />
+                          <span>{x}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </Reveal>
+
+                {/* <div className="mt-7 flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.02] px-5 py-4">
               <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-white/55">
                 Tiempo de respuesta
               </p>
@@ -1439,7 +1528,7 @@ export default function B2BPage() {
               </p>
             </div> */}
 
-            {/* <div className="mt-5 text-xs text-[var(--primary)]">
+                {/* <div className="mt-5 text-xs text-[var(--primary)]">
               <p className="font-semibold text-white/60">Contactos</p>
               <ul className="mt-2 space-y-1">
                 {CONTACTS.map((c) => (
@@ -1451,12 +1540,16 @@ export default function B2BPage() {
                 </li>
               </ul>
             </div> */}
-          </div>
-        </div>
+              </div>
+            </StaggerItem>
+          </Stagger>
+        </Reveal>
 
-        <footer className="mt-10 border-t border-white/10 pt-6 text-xs text-[var(--offwhite)] text-center">
-          © {new Date().getFullYear()} {BRAND.name}. Sección B2B.
-        </footer>
+        <Reveal>
+          <footer className="mt-10 border-t border-white/10 pt-6 text-xs text-[var(--offwhite)] text-center">
+            © {new Date().getFullYear()} {BRAND.name}. Sección B2B.
+          </footer>
+        </Reveal>
       </section>
 
       {/* Mobile floating CTA */}
