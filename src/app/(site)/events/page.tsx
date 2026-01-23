@@ -10,7 +10,7 @@ import type { Metadata } from "next";
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: "Shows | La Put* Vuelta",
+  title: "Shows",
   description:
     "Shows oficiales de La Put* Vuelta. Consulta las próximas fechas y salas donde estaremos presentando el show en vivo.",
 };
@@ -55,10 +55,10 @@ export default async function EventsPage() {
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_20%,rgba(255,77,94,0.14),transparent_55%),radial-gradient(circle_at_85%_75%,rgba(255,77,94,0.08),transparent_60%)]" />
 
           <div className="relative flex flex-col gap-4">
-            <div className="flex flex-wrap items-center gap-2">
+            {/* <div className="flex flex-wrap items-center gap-2">
               <Badge>Shows</Badge>
               <Badge>La Put* Vuelta</Badge>
-            </div>
+            </div> */}
 
             <div className="flex items-end justify-between gap-4">
               <div>

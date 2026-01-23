@@ -5,7 +5,7 @@ import { Badge } from "@/components/site/Badge";
 import { ContactForm } from "@/components/site/ContactForm";
 
 export const metadata: Metadata = {
-  title: "Contacto | La Put* Vuelta",
+  title: "Contacto",
   description:
     "Contacto oficial de La Put* Vuelta. Partners, salas, prensa o cualquier consulta: escríbenos desde aquí.",
 };
@@ -26,10 +26,10 @@ export default function ContactPage() {
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_20%,rgba(255,77,94,0.14),transparent_55%),radial-gradient(circle_at_85%_75%,rgba(255,77,94,0.08),transparent_60%)]" />
 
           <div className="relative flex flex-col gap-4">
-            <div className="flex flex-wrap items-center gap-2">
+            {/* <div className="flex flex-wrap items-center gap-2">
               <Badge>Contacto</Badge>
               <Badge>La Put* Vuelta</Badge>
-            </div>
+            </div> */}
 
             <div className="flex items-end justify-between gap-4">
               <div>
@@ -67,7 +67,7 @@ export default function ContactPage() {
                   <span className="material-symbols-outlined text-[var(--primary)] text-2xl">
                     photo_camera
                   </span>
-                  <p className="text-sm font-black uppercase tracking-[0.18em] text-white/90 secondaryFont">
+                  <p className="text-lg md:text-xl font-black uppercase tracking-[0.18em] text-white/90 secondaryFont">
                     Instagram
                   </p>
                 </div>
@@ -96,7 +96,7 @@ export default function ContactPage() {
                   <span className="material-symbols-outlined text-[var(--primary)] text-2xl">
                     live_tv
                   </span>
-                  <p className="text-sm font-black uppercase tracking-[0.18em] text-white/90 secondaryFont">
+                  <p className="text-lg md:text-xl font-black uppercase tracking-[0.18em] text-white/90 secondaryFont">
                     Live (Kick)
                   </p>
                 </div>
@@ -134,7 +134,7 @@ export default function ContactPage() {
                   <span className="material-symbols-outlined text-[var(--primary)] text-2xl">
                     confirmation_number
                   </span>
-                  <p className="text-sm font-black uppercase tracking-[0.18em] text-white/90 secondaryFont">
+                  <p className="text-lg md:text-xl font-black uppercase tracking-[0.18em] text-white/90 secondaryFont">
                     Entradas
                   </p>
                 </div>

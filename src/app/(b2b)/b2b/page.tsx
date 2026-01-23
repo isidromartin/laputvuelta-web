@@ -5,7 +5,7 @@ import { ContactForm } from "@/components/site/ContactForm";
 import { Timeline } from "@/components/b2b/Timeline";
 
 export const metadata: Metadata = {
-  title: "Para salas | La Put* Vuelta",
+  title: "Para salas",
   description:
     "Dossier B2B: formato 360º llave en mano (show + activación + contenido + streaming opcional) orientado a pista activa, picos de consumo y visibilidad.",
   robots: {
@@ -380,7 +380,7 @@ export default function B2BPage() {
       : whatsappPrimaryHref;
 
   const mailHref = `mailto:${BRAND.email}?subject=${encodeURIComponent(
-    "Propuesta B2B — La Put* Vuelta"
+    "Propuesta B2B — La Put* Vuelta",
   )}&body=${encodeURIComponent(PRIMARY_MESSAGE)}`;
 
   return (

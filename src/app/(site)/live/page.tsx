@@ -4,7 +4,7 @@ import { Container } from "@/components/site/Container";
 import { Badge } from "@/components/site/Badge";
 
 export const metadata: Metadata = {
-  title: "Live | La Put* Vuelta",
+  title: "Live",
   description:
     "Directo oficial de La Put* Vuelta en Kick. Si el reproductor no carga, abre el live en una pestaña.",
 };
@@ -30,10 +30,10 @@ export default function LivePage() {
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_20%,rgba(255,77,94,0.14),transparent_55%),radial-gradient(circle_at_85%_75%,rgba(255,77,94,0.08),transparent_60%)]" />
 
           <div className="relative flex flex-col gap-4">
-            <div className="flex flex-wrap items-center gap-2">
+            {/* <div className="flex flex-wrap items-center gap-2">
               <Badge>Live</Badge>
               <Badge>Kick</Badge>
-            </div>
+            </div> */}
 
             <div className="flex items-end justify-between gap-4">
               <div>
@@ -134,7 +134,9 @@ export default function LivePage() {
         {/* Info / Avisos */}
         <div className="mt-6 grid gap-4 md:grid-cols-2">
           <div className="glass rounded-3xl border border-white/10 p-6">
-            <p className="text-sm font-semibold text-white/90">Cómo funciona</p>
+            <p className="text-lg font-semibold text-white/90 secondaryFont">
+              ¿Cómo funciona?
+            </p>
             <p className="mt-2 text-sm text-white/65 leading-relaxed">
               La fiesta será retransmitida desde que entre la PRIMERA persona
               hasta que se vaya la ÚLTIMA para que no te pierdas NADA de lo que
@@ -149,7 +151,7 @@ export default function LivePage() {
             <span className="pointer-events-none absolute -inset-10 -z-10 rounded-3xl bg-[var(--primary)]/0 blur-3xl transition group-hover:bg-[var(--primary)]/14" />
             <span className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-white/5" />
 
-            <p className="relative text-sm font-semibold text-white/90">
+            <p className="relative text-lg font-semibold text-white/90 secondaryFont">
               Entradas
             </p>
             <p className="relative mt-2 text-sm text-white/65 leading-relaxed">

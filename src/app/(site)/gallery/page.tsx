@@ -12,7 +12,7 @@ import { ButtonLink } from "@/components/site/ButtonLink";
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: "Galería | La Put* Vuelta",
+  title: "Galería",
   description:
     "Fotos por evento de La Put* Vuelta. Entra en cada edición para ver el álbum.",
 };
@@ -163,10 +163,10 @@ export default async function GalleryPage() {
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_20%,rgba(255,77,94,0.14),transparent_55%),radial-gradient(circle_at_85%_75%,rgba(255,77,94,0.08),transparent_60%)]" />
 
           <div className="relative flex flex-col gap-4">
-            <div className="flex flex-wrap items-center gap-2">
+            {/* <div className="flex flex-wrap items-center gap-2">
               <Badge>Galería</Badge>
               <Badge>Por evento</Badge>
-            </div>
+            </div> */}
 
             <div className="flex items-end justify-between gap-4">
               <div>

@@ -94,7 +94,7 @@ export async function generateMetadata({
 
   if (!event?.title) {
     return {
-      title: "Evento | La Put* Vuelta",
+      title: "Evento",
       description:
         "Detalles del evento de La Put* Vuelta: entradas, live y activaciones.",
     };
@@ -122,10 +122,10 @@ export async function generateMetadata({
     : undefined;
 
   return {
-    title: `${event.title} | La Put* Vuelta`,
+    title: `${event.title}`,
     description,
     openGraph: {
-      title: `${event.title} | La Put* Vuelta`,
+      title: `${event.title}`,
       description,
       type: "website",
       ...(ogImage
@@ -208,7 +208,7 @@ function formatTimeES(iso?: string) {
 
 function getSection<T extends { _type: string }>(
   sections: any[] | undefined,
-  type: T["_type"]
+  type: T["_type"],
 ): T | undefined {
   return (sections || []).find((s) => s?._type === type);
 }
@@ -272,7 +272,7 @@ export default async function EventPage({
   const live = getSection<SectionLive>(event.sections, "sectionLive");
   const activations = getSection<SectionActivations>(
     event.sections,
-    "sectionActivations"
+    "sectionActivations",
   );
 
   const kickUrl =
@@ -316,7 +316,7 @@ export default async function EventPage({
         {/* HERO */}
         <section className="glass group relative overflow-hidden rounded-3xl border border-white/10">
           {/* watermark opcional (si tienes /devil-mark.png) */}
-          <div className="pointer-events-none absolute -right-8 -bottom-10 opacity-60 hidden md:block">
+          {/* <div className="pointer-events-none absolute -right-8 -bottom-10 opacity-60 hidden md:block">
             <div className="relative h-[220px] w-[220px]">
               <Image
                 src="/devil-mark.png"
@@ -326,7 +326,7 @@ export default async function EventPage({
                 priority={false}
               />
             </div>
-          </div>
+          </div> */}
 
           {coverUrl ? (
             <div className="relative aspect-[21/9] w-full border-b border-white/10 bg-black/40">
@@ -346,7 +346,7 @@ export default async function EventPage({
           )}
 
           <div className="relative p-6 md:p-8">
-            <div className="flex flex-wrap items-center gap-2">
+            {/* <div className="flex flex-wrap items-center gap-2">
               <Badge>La Put* Vuelta</Badge>
               {event.venue?.name ? (
                 <Badge>
@@ -357,13 +357,13 @@ export default async function EventPage({
               {event.startAt ? (
                 <Badge>{formatDateES(event.startAt)}</Badge>
               ) : null}
-            </div>
+            </div> */}
 
             <div className="mt-4 flex items-end justify-between gap-4">
               <h1 className="text-2xl md:text-5xl font-black uppercase tracking-tight text-white/95 secondaryFont">
                 {event.title ?? "Evento"}
               </h1>
-              <span className="hidden md:block text-[var(--primary)] font-black text-6xl opacity-20 leading-none">
+              <span className="hidden md:block text-[var(--primary)] font-black text-6xl leading-none secondaryFont">
                 01
               </span>
             </div>
@@ -558,7 +558,7 @@ export default async function EventPage({
           {(() => {
             const partnersSection = getSection<SectionPartners>(
               event.sections,
-              "sectionPartners"
+              "sectionPartners",
             );
             if (!partnersSection) return null;
 

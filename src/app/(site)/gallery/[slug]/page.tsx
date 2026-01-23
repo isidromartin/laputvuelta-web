@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { groq } from "next-sanity";
 import { client } from "@/sanity/lib/client";
-
+import type { Metadata } from "next";
 import { Container } from "@/components/site/Container";
 import { Section } from "@/components/site/Section";
 import { Badge } from "@/components/site/Badge";
@@ -12,6 +12,12 @@ import {
 } from "@/components/gallery/GalleryGrid";
 
 export const revalidate = 60;
+
+export const metadata: Metadata = {
+  title: "Galería",
+  description:
+    "Shows oficiales de La Put* Vuelta. Consulta las próximas fechas y salas donde estaremos presentando el show en vivo.",
+};
 
 const eventQuery = groq`*[_type=="event" && slug.current==$slug][0]{
   title,
@@ -98,8 +104,8 @@ export default async function GalleryEventPage({
                 </h1>
               </div>
 
-              <span className="hidden md:block text-[var(--primary)] font-black text-6xl opacity-20 leading-none">
-                02
+              <span className="hidden md:block text-[var(--primary)] font-black text-6xl leading-none secondaryFont">
+                03
               </span>
             </div>
 

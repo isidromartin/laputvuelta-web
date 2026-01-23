@@ -147,16 +147,12 @@ export default function HomePage() {
 
       <Container>
         {/* CTAs */}
-        <div className="mt-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-          {/* Badges (envueltas en glass) */}
-          <div className="glass inline-flex w-fit flex-wrap items-center gap-2 rounded-2xl border border-white/10 px-4 py-3">
-            {/* <Badge>La Put* Vuelta</Badge> */}
+        {/* <div className="mt-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between"> */}
+        {/* <div className="glass inline-flex w-fit flex-wrap items-center gap-2 rounded-2xl border border-white/10 px-4 py-3">
             <Badge>Live en Kick</Badge>
             <Badge>Activaciones</Badge>
-          </div>
-
-          {/* Links (wrap en glass + neon hover) */}
-          <div className="glass flex flex-wrap gap-3 rounded-2xl border border-white/10 p-3">
+          </div> */}
+        {/* <div className="glass flex flex-wrap gap-3 rounded-2xl border border-white/10 p-3">
             <ButtonLink href="/tickets" variant="solid">
               Entradas
             </ButtonLink>
@@ -164,7 +160,7 @@ export default function HomePage() {
             <ButtonLink href="/events">Eventos</ButtonLink>
             <ButtonLink href="/gallery">Galería</ButtonLink>
           </div>
-        </div>
+        </div> */}
 
         {/* Info */}
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
