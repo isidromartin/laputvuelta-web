@@ -144,7 +144,7 @@ html.dark {
     background: rgba(22, 22, 29, 0.88);
   }
 }
-
+/* 
 .grain {
   position: fixed;
   top: 0;
@@ -161,7 +161,7 @@ html.dark {
   .grain {
     display: none;
   }
-}
+} */
 
 @media (max-width: 768px) {
   .neon-border {
