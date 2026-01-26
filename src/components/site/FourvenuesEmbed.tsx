@@ -3,9 +3,7 @@
 import { useMemo, useState } from "react";
 
 type Props = {
-  /** Ej: "team-la-putvuelta1/events" */
   path: string;
-  /** URL pública alternativa (si el iframe falla) */
   publicUrl: string;
   title?: string;
   minHeight?: number;
@@ -67,8 +65,8 @@ export function FourvenuesEmbed({
           className="w-full"
           style={{ minHeight }}
           loading="lazy"
-          // Importante para flujos de pago en algunos navegadores
-          allow="payment *; fullscreen"
+          allow="payment *; clipboard-write; fullscreen"
+          referrerPolicy="strict-origin-when-cross-origin"
         />
       ) : // </div>
       null}

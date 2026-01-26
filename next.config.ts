@@ -7,12 +7,26 @@ const nextConfig: NextConfig = {
       "cdn-icons-png.flaticon.com",
       "lh3.googleusercontent.com",
     ],
-    remotePatterns: [
+    remotePatterns: [{ protocol: "https", hostname: "cdn.sanity.io" }],
+  },
+
+  async headers() {
+    return [
       {
-        protocol: "https",
-        hostname: "cdn.sanity.io",
+        source: "/:path*",
+        headers: [
+          {
+            key: "Permissions-Policy",
+            value:
+              'payment=(self "https://web.fourvenues.com" "https://www.fourvenues.com")',
+          },
+          {
+            key: "Cross-Origin-Opener-Policy",
+            value: "same-origin-allow-popups",
+          },
+        ],
       },
-    ],
+    ];
   },
 };
 

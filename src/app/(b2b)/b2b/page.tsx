@@ -391,12 +391,12 @@ export default function B2BPage() {
       className="relative min-h-screen bg-[color:var(--background-dark,#0b0b10)] text-white pt-24 pb-16 md:pt-28 md:pb-24"
     >
       {/* Ambient + grain */}
-      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+      {/* <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute left-1/2 top-[-260px] h-[620px] w-[620px] -translate-x-1/2 rounded-full bg-[var(--primary)]/18 blur-[190px]" />
         <div className="absolute right-[-220px] top-[240px] h-[540px] w-[540px] rounded-full bg-[var(--primary)]/10 blur-[210px]" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-black/10 to-black/45" />
       </div>
-      <div className="grain" />
+      <div className="grain" /> */}
 
       {/* Top bar (sticky) */}
       <header className="fixed top-0 left-0 right-0 z-40 px-6 py-4 flex justify-center">

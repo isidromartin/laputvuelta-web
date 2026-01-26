@@ -16,11 +16,11 @@ export default function ContactPage() {
   return (
     <main className="relative pt-28 pb-16 md:pt-32 md:pb-24">
       {/* Ambient */}
-      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+      {/* <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute left-1/2 top-[-220px] h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-[var(--primary)]/18 blur-[180px]" />
         <div className="absolute right-[-140px] top-[260px] h-[420px] w-[420px] rounded-full bg-[var(--primary)]/10 blur-[170px]" />
       </div>
-      <div className="grain" />
+      <div className="grain" /> */}
 
       <Container>
         {/* Header */}

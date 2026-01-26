@@ -42,17 +42,17 @@ export function FourvenuesEmbedEvent({
             title={title}
             src={embedUrl}
             className="w-full"
-            // Altura responsiva (sin campo editable):
-            // - usa el viewport
-            // - con límites razonables para que no sea ni enano ni enorme
             style={{
               height: "calc(100vh - 240px)",
               minHeight: 740,
               maxHeight: 980,
             }}
             loading="lazy"
-            allow="payment *; fullscreen"
+            // allow="payment *; fullscreen"
+            // allow="payment"
             allowFullScreen
+            allow="payment *; clipboard-write; fullscreen"
+            referrerPolicy="strict-origin-when-cross-origin"
           />
         </div>
       ) : null}
