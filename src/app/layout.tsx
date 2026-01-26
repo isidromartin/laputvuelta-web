@@ -4,6 +4,7 @@ import { Space_Grotesk } from "next/font/google";
 import { MotionProvider } from "@/components/providers/MotionProvider";
 import Script from "next/script";
 import AnalyticsPageView from "@/components/AnalyticsPageView";
+import { Analytics } from "@vercel/analytics/next";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://laputvuelta.com";
 
@@ -106,6 +107,7 @@ export default function RootLayout({
       </head>
       <body className="relative min-h-screen-ios overflow-x-hidden min-h-dvh antialiased">
         <MotionProvider>
+          <Analytics />
           <AnalyticsPageView />
           {children}
         </MotionProvider>
