@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Space_Grotesk } from "next/font/google";
 import { MotionProvider } from "@/components/providers/MotionProvider";
+import Script from "next/script";
+import AnalyticsPageView from "@/components/AnalyticsPageView";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://laputvuelta.com";
 
@@ -79,6 +81,8 @@ export const metadata: Metadata = {
   },
 };
 
+const gaId = process.env.NEXT_PUBLIC_GA_ID;
+
 export default function RootLayout({
   children,
 }: {
@@ -99,9 +103,29 @@ export default function RootLayout({
           type="font/woff2"
           crossOrigin="anonymous"
         />
+
+        {gaId ? (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+              strategy="afterInteractive"
+            />
+            <Script id="ga4-init" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${gaId}', { anonymize_ip: true });
+              `}
+            </Script>
+          </>
+        ) : null}
       </head>
       <body className="relative min-h-screen-ios overflow-x-hidden min-h-dvh antialiased">
-        <MotionProvider>{children}</MotionProvider>
+        <MotionProvider>
+          <AnalyticsPageView />
+          {children}
+        </MotionProvider>
       </body>
     </html>
   );
