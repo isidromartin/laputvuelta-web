@@ -103,7 +103,12 @@ export default function RootLayout({
           type="font/woff2"
           crossOrigin="anonymous"
         />
-
+      </head>
+      <body className="relative min-h-screen-ios overflow-x-hidden min-h-dvh antialiased">
+        <MotionProvider>
+          <AnalyticsPageView />
+          {children}
+        </MotionProvider>
         {gaId ? (
           <>
             <Script
@@ -120,12 +125,6 @@ export default function RootLayout({
             </Script>
           </>
         ) : null}
-      </head>
-      <body className="relative min-h-screen-ios overflow-x-hidden min-h-dvh antialiased">
-        <MotionProvider>
-          <AnalyticsPageView />
-          {children}
-        </MotionProvider>
       </body>
     </html>
   );
