@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { FourvenuesPrivacyBridge } from "@/components/FourvenuesPrivacyBridge";
 
 type Props = {
   publicUrl: string; // la URL que guardas en Sanity
@@ -10,17 +11,15 @@ type Props = {
 function toFourvenuesEmbedUrl(publicUrl: string) {
   try {
     const u = new URL(publicUrl);
-
-    // Ej público:
-    // /es/team-la-putvuelta1/events/<slug>
     const parts = u.pathname.split("/").filter(Boolean);
 
-    // quita idioma si existe (es/en/...)
-    const withoutLang = parts[0]?.length === 2 ? parts.slice(1) : parts;
+    const hasLang = parts[0]?.length === 2;
+    const lang = hasLang ? parts[0] : "es";
+    const rest = hasLang ? parts.slice(1) : parts;
 
-    if (withoutLang.length < 2) return null;
+    if (rest.length < 2) return null;
 
-    return `https://www.fourvenues.com/iframe/${withoutLang.join("/")}`;
+    return `https://web.fourvenues.com/${lang}/iframe/${rest.join("/")}`;
   } catch {
     return null;
   }
@@ -36,6 +35,7 @@ export function FourvenuesEmbedEvent({
 
   return (
     <div className="rounded-3xl border border-white/10 bg-white/[0.02] overflow-hidden">
+      <FourvenuesPrivacyBridge />
       {embedUrl && showEmbed ? (
         <div className=" bg-white">
           <iframe
@@ -48,10 +48,8 @@ export function FourvenuesEmbedEvent({
               maxHeight: 980,
             }}
             loading="lazy"
-            // allow="payment *; fullscreen"
-            // allow="payment"
             allowFullScreen
-            allow="payment *; clipboard-write; fullscreen"
+            allow="payment; clipboard-write; fullscreen"
             referrerPolicy="strict-origin-when-cross-origin"
           />
         </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { FourvenuesPrivacyBridge } from "@/components/FourvenuesPrivacyBridge";
 
 type Props = {
   path: string;
@@ -11,7 +12,7 @@ type Props = {
 
 function buildFourvenuesEmbedUrl(path: string) {
   const clean = path.replace(/^\/+/, "");
-  return `https://www.fourvenues.com/iframe/${clean}`;
+  return `https://www.fourvenues.com/es/iframe/${clean}`;
 }
 
 export function FourvenuesEmbed({
@@ -26,6 +27,7 @@ export function FourvenuesEmbed({
 
   return (
     <div className="rounded-3xl overflow-hidden">
+      <FourvenuesPrivacyBridge />
       {/* <div className="p-5 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
         <div className="min-w-0">
           <p className="text-sm font-semibold text-white/90">Entradas</p>
@@ -65,7 +67,7 @@ export function FourvenuesEmbed({
           className="w-full"
           style={{ minHeight }}
           loading="lazy"
-          allow="payment *; clipboard-write; fullscreen"
+          allow="payment; clipboard-write; fullscreen"
           referrerPolicy="strict-origin-when-cross-origin"
         />
       ) : // </div>
