@@ -105,7 +105,7 @@ export default function TicketsPage() {
               <div className="p-2 md:p-3">
                 <FourvenuesEmbed
                   path={embedPath}
-                  publicUrl={publicUrl}
+                  // publicUrl={publicUrl}
                   minHeight={860}
                 />
               </div>
