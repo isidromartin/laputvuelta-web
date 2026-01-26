@@ -131,8 +131,8 @@ export default async function EventsPage() {
                     )}
 
                     {/* overlays premium */}
-                    <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,77,94,0.14),transparent_45%)]" />
-                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                    <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,77,94,0.14),transparent_45%)] transition duration-700 group-hover:scale-[1.03]" />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent transition duration-700 group-hover:scale-[1.03]" />
 
                     {/* Top meta bar */}
                     <div className="absolute left-4 right-4 top-4">
