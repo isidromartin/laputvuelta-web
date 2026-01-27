@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
-import { FourvenuesPrivacyBridge } from "@/components/FourvenuesPrivacyBridge";
+import { FourvenuesPrivacyBridge } from "@/components/consent/FourvenuesPrivacyBridge";
 import Script from "next/script";
 
 type Props = {
@@ -47,7 +47,7 @@ export function FourvenuesEmbedEvent({
       className={`rounded-3xl border border-white/10 bg-white/[0.02] overflow-hidden ${className}`}
     >
       <FourvenuesPrivacyBridge />
-      <script src="www.fourvenues.com/assets/iframe/team-la-putvuelta1"></script>
+      <script src="https://web.fourvenues.com/assets/iframe/team-la-putvuelta1"></script>
       {embedUrl ? (
         <div className="bg-white">
           <iframe

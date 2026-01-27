@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef } from "react";
-import { FourvenuesPrivacyBridge } from "@/components/FourvenuesPrivacyBridge";
+import { FourvenuesPrivacyBridge } from "@/components/consent/FourvenuesPrivacyBridge";
 
 type Props = {
   /**

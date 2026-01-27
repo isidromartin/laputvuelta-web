@@ -2,9 +2,10 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Space_Grotesk } from "next/font/google";
 import { MotionProvider } from "@/components/providers/MotionProvider";
-import Script from "next/script";
-import AnalyticsPageView from "@/components/AnalyticsPageView";
 import { Analytics } from "@vercel/analytics/next";
+
+import GoogleAnalytics from "@/components/consent/GoogleAnalytics";
+import CookieBanner from "@/components/consent/CookieBanner";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://laputvuelta.com";
 
@@ -82,8 +83,6 @@ export const metadata: Metadata = {
   },
 };
 
-const gaId = process.env.NEXT_PUBLIC_GA_ID;
-
 export default function RootLayout({
   children,
 }: {
@@ -92,7 +91,6 @@ export default function RootLayout({
   return (
     <html lang="es" className={`dark`}>
       <head>
-        {/* Material Symbols Outlined */}
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
@@ -106,27 +104,10 @@ export default function RootLayout({
         />
       </head>
       <body className="relative min-h-screen-ios overflow-x-hidden min-h-dvh antialiased">
-        <MotionProvider>
-          <Analytics />
-          <AnalyticsPageView />
-          {children}
-        </MotionProvider>
-        {gaId ? (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
-              strategy="afterInteractive"
-            />
-            <Script id="ga4-init" strategy="afterInteractive">
-              {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${gaId}', { anonymize_ip: true });
-              `}
-            </Script>
-          </>
-        ) : null}
+        <Analytics />
+        <MotionProvider>{children}</MotionProvider>
+        <GoogleAnalytics />
+        <CookieBanner />
       </body>
     </html>
   );
