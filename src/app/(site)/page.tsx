@@ -4,6 +4,7 @@ import { Container } from "@/components/site/Container";
 import { ContainerFull } from "@/components/site/ContainerFull";
 import { Badge } from "@/components/site/Badge";
 import { ButtonLink } from "@/components/site/ButtonLink";
+import { CallToAction } from "@/components/site/CallToAction";
 import { Section } from "@/components/site/Section";
 import Link from "next/link";
 import { HeroCarousel } from "@/components/site/HeroCarousel";
@@ -40,6 +41,51 @@ const slides = [
     subtitle:
       "Durante la fiesta irán ocurriendo MOMENTOS ESPECIALES, algunos con SORPRESAS y REGALOS y otros con… ¿esperabas saberlo todo aquí?",
   },
+];
+
+const experienceHighlights = [
+  {
+    title: "Momentos sorpresa",
+    description:
+      "Shows, regalos y activaciones que hacen que cada edición sea distinta.",
+    icon: "stars",
+  },
+  {
+    title: "Música sin fricción",
+    description:
+      "Setlists que mezclan clásicos y bangers actuales para que no pares.",
+    icon: "graphic_eq",
+  },
+  {
+    title: "Comunidad + energía",
+    description:
+      "Una fiesta pensada para compartir, grabar y vivirlo con tu gente.",
+    icon: "diversity_3",
+  },
+];
+
+const testimonials = [
+  {
+    quote: "“No sé qué pasó, pero me levanté con ganas de repetirlo. 10/10.”",
+    name: "Carla M.",
+    city: "Madrid",
+  },
+  {
+    quote: "“La mejor forma de empezar el finde. La energía es real.”",
+    name: "Diego P.",
+    city: "Barcelona",
+  },
+  {
+    quote: "“Puro show, puro ritmo y cero postureo. Volvemos seguro.”",
+    name: "Laura G.",
+    city: "Valencia",
+  },
+];
+
+const collageImages = [
+  { src: "/hero/slide-1.png", alt: "La Put* Vuelta show" },
+  { src: "/hero/slide-2.png", alt: "La Put* Vuelta live" },
+  { src: "/hero/slide-3.png", alt: "La Put* Vuelta moments" },
 ];
 
 /** Helpers locales (ponlos debajo del componente o arriba del return) **/
@@ -386,43 +432,112 @@ export default function HomePage() {
 
         {/* CTA final (conversion) */}
         <Reveal>
-          <div className="mt-10 md:mt-12">
-            <div className="glass relative overflow-hidden rounded-3xl border border-white/10 p-8 md:p-10">
-              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(255,77,94,0.18),transparent_55%),radial-gradient(circle_at_80%_60%,rgba(255,77,94,0.10),transparent_60%)]" />
-
-              <Stagger className="relative flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-                {/* Left: limita ancho en desktop para dejar sitio a botones */}
-                <div className="md:max-w-[420px] lg:max-w-[460px]">
-                  <StaggerItem>
-                    <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tight secondaryFont">
-                      ¿Listo para dar la vuelta?
-                    </h3>
-                  </StaggerItem>
-                  <StaggerItem>
-                    <p className="mt-2 text-sm md:text-base text-white/60">
-                      Entra con entradas o asegura tu sitio con reserva. La
-                      noche se diseña para vivirse dentro.
+          <Section
+            title="Lo que vas a vivir"
+            subtitle="Diseñamos la noche para que pasen cosas. Esto es lo que siempre aparece en la vuelta."
+            actions={
+              <ButtonLink href="/tickets" variant="outline">
+                Ver fechas
+              </ButtonLink>
+            }
+          >
+            <div className="grid gap-4 md:grid-cols-3">
+              {experienceHighlights.map((item) => (
+                <div
+                  key={item.title}
+                  className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-5 transition hover:border-[var(--primary)]/30 hover:bg-white/[0.06]"
+                >
+                  <div className="pointer-events-none absolute -inset-10 -z-10 rounded-3xl bg-[var(--primary)]/0 blur-3xl transition group-hover:bg-[var(--primary)]/14" />
+                  <div className="flex items-center gap-3">
+                    <span className="material-symbols-outlined text-[var(--primary)] text-2xl">
+                      {item.icon}
+                    </span>
+                    <p className="text-base font-black uppercase tracking-[0.08em] text-white/90 secondaryFont">
+                      {item.title}
                     </p>
-                  </StaggerItem>
+                  </div>
+                  <p className="mt-3 text-sm text-white/65 leading-relaxed">
+                    {item.description}
+                  </p>
                 </div>
+              ))}
+            </div>
+          </Section>
+        </Reveal>
 
-                {/* Right: en móvil columna, en desktop en línea */}
-                <Stagger className="flex w-full flex-col gap-3 md:w-auto md:flex-row md:items-center md:justify-end">
+        <Reveal>
+          <Section
+            title="Testimonios reales"
+            subtitle="Lo que nos dicen después de una vuelta."
+          >
+            <div className="grid gap-4 md:grid-cols-3">
+              {testimonials.map((testimonial) => (
+                <div
+                  key={testimonial.name}
+                  className="glass card-hover relative overflow-hidden rounded-3xl border border-white/10 p-5"
+                >
+                  <p className="text-sm text-white/70 leading-relaxed">
+                    {testimonial.quote}
+                  </p>
+                  <div className="mt-4 flex items-center justify-between text-xs uppercase tracking-[0.3em] text-white/45">
+                    <span>{testimonial.name}</span>
+                    <span>{testimonial.city}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Section>
+        </Reveal>
+
+        <Reveal>
+          <Section
+            title="Recuerdos recientes"
+            subtitle="Un vistazo rápido a lo que se vive dentro."
+            actions={
+              <ButtonLink href="/gallery" variant="outline">
+                Ver galería
+              </ButtonLink>
+            }
+          >
+            <div className="grid gap-4 md:grid-cols-3">
+              {collageImages.map((image) => (
+                <div
+                  key={image.src}
+                  className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-white/10"
+                >
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    priority={false}
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+                </div>
+              ))}
+            </div>
+          </Section>
+        </Reveal>
+
+        {/* CTA final (conversion) */}
+        <Reveal>
+          <div className="mt-10 md:mt-12">
+            <CallToAction
+              title="¿Listo para dar la vuelta?"
+              description="Entra con entradas o asegura tu sitio con reserva. La noche se diseña para vivirse dentro."
+              actions={
+                <>
                   <div className="relative w-full md:w-auto">
                     <span className="pointer-events-none absolute -inset-2 -z-10 rounded-2xl bg-[var(--primary)]/25 blur-xl" />
-                    <StaggerItem>
-                      <ButtonLink href="/tickets" variant="solid">
-                        Comprar entradas
-                      </ButtonLink>
-                    </StaggerItem>
+                    <ButtonLink href="/tickets" variant="solid">
+                      Comprar entradas
+                    </ButtonLink>
                   </div>
-
-                  <StaggerItem>
-                    <ButtonLink href="/events">Ver próximos eventos</ButtonLink>
-                  </StaggerItem>
-                </Stagger>
-              </Stagger>
-            </div>
+                  <ButtonLink href="/events">Ver próximos eventos</ButtonLink>
+                </>
+              }
+            />
           </div>
         </Reveal>
       </Container>

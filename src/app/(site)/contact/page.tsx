@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/site/Container";
+import { CallToAction } from "@/components/site/CallToAction";
 import { ContactForm } from "@/components/site/ContactForm";
 import { PageHeader } from "@/components/site/PageHeader";
 import { Reveal } from "@/components/ui/Reveal";
 import { Stagger, StaggerItem } from "@/components/ui/Stagger";
+import { ButtonLink } from "@/components/site/ButtonLink";
 
 export const metadata: Metadata = {
   title: "Contacto",
@@ -147,6 +149,24 @@ export default function ContactPage() {
             <ContactForm />
           </StaggerItem>
         </Stagger>
+
+        <Reveal className="mt-12">
+          <CallToAction
+            eyebrow="Más info"
+            title="¿Quieres colaborar?"
+            description="Salas, marcas o prensa: te ayudamos a crear una vuelta a medida."
+            actions={
+              <>
+                <ButtonLink href="/tickets" variant="solid">
+                  Ver calendario
+                </ButtonLink>
+                <ButtonLink href="/contact" variant="outline">
+                  Contacto
+                </ButtonLink>
+              </>
+            }
+          />
+        </Reveal>
       </Container>
     </main>
   );

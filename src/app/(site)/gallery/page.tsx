@@ -5,6 +5,7 @@ import { client } from "@/sanity/lib/client";
 import { urlForImage } from "@/sanity/lib/image";
 
 import { Container } from "@/components/site/Container";
+import { CallToAction } from "@/components/site/CallToAction";
 import { PageHeader } from "@/components/site/PageHeader";
 import { Section } from "@/components/site/Section";
 import { ButtonLink } from "@/components/site/ButtonLink";
@@ -253,6 +254,27 @@ export default async function GalleryPage() {
             )}
           </Section>
         </div> */}
+        <Reveal className="mt-12">
+          <CallToAction
+            eyebrow="Comunidad"
+            title="Comparte tu vuelta"
+            description="Súbelo a Instagram y etiqueta a @laputivuelta.oficial para aparecer en la galería."
+            actions={
+              <>
+                <ButtonLink
+                  href="https://instagram.com/laputivuelta.oficial"
+                  external
+                  variant="solid"
+                >
+                  Abrir Instagram
+                </ButtonLink>
+                <ButtonLink href="/events" variant="outline">
+                  Próximos eventos
+                </ButtonLink>
+              </>
+            }
+          />
+        </Reveal>
       </Container>
     </main>
   );

@@ -1,9 +1,11 @@
 import { Container } from "@/components/site/Container";
+import { CallToAction } from "@/components/site/CallToAction";
 import { FourvenuesEmbed } from "@/components/site/FourvenuesEmbed";
 import { PageHeader } from "@/components/site/PageHeader";
 import type { Metadata } from "next";
 import { Reveal } from "@/components/ui/Reveal";
 import { Stagger, StaggerItem } from "@/components/ui/Stagger";
+import { ButtonLink } from "@/components/site/ButtonLink";
 
 export const revalidate = 60;
 
@@ -103,6 +105,23 @@ export default function TicketsPage() {
               </div>
             </div>
           </div>
+        </Reveal>
+        <Reveal className="mt-12">
+          <CallToAction
+            eyebrow="¿Dudas?"
+            title="Te ayudamos a entrar"
+            description="Si tienes problemas con la compra o necesitas una reserva especial, escríbenos."
+            actions={
+              <>
+                <ButtonLink href="/contact" variant="solid">
+                  Contactar
+                </ButtonLink>
+                <ButtonLink href="/events" variant="outline">
+                  Ver eventos
+                </ButtonLink>
+              </>
+            }
+          />
         </Reveal>
       </Container>
     </main>

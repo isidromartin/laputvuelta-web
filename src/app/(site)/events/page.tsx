@@ -4,10 +4,12 @@ import { groq } from "next-sanity";
 import { client } from "@/sanity/lib/client";
 import { urlForImage } from "@/sanity/lib/image";
 import { Container } from "@/components/site/Container";
+import { CallToAction } from "@/components/site/CallToAction";
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/site/PageHeader";
 import { Reveal } from "@/components/ui/Reveal";
 import { Stagger, StaggerItem } from "@/components/ui/Stagger";
+import { ButtonLink } from "@/components/site/ButtonLink";
 
 export const revalidate = 60;
 
@@ -179,6 +181,24 @@ export default async function EventsPage() {
             </p>
           </div>
         ) : null}
+
+        <Reveal className="mt-12">
+          <CallToAction
+            eyebrow="¿Quieres venir?"
+            title="Consigue tu entrada"
+            description="Compra oficial en Fourvenues o entra en el calendario para reservar."
+            actions={
+              <>
+                <ButtonLink href="/events" variant="outline">
+                  Ver eventos
+                </ButtonLink>
+                <ButtonLink href="/tickets" variant="solid">
+                  Comprar entradas
+                </ButtonLink>
+              </>
+            }
+          />
+        </Reveal>
       </Container>
     </main>
   );

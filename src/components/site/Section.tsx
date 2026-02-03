@@ -12,7 +12,7 @@ export function Section({
   children: ReactNode;
 }) {
   return (
-    <section className="glass card-hover group relative overflow-hidden rounded-3xl border border-white/10 p-6 md:p-8">
+    <section className="mt-8 glass card-hover group relative overflow-hidden rounded-3xl border border-white/10 p-6 md:p-8">
       {/* halo suave */}
       <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-[var(--primary)]/10 blur-3xl transition group-hover:bg-[var(--primary)]/16" />
       <div className="pointer-events-none absolute -left-24 -bottom-24 h-72 w-72 rounded-full bg-[var(--primary)]/8 blur-3xl transition group-hover:bg-[var(--primary)]/12" />

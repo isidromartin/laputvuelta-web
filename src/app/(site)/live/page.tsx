@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/site/Container";
 import { ButtonLink } from "@/components/site/ButtonLink";
+import { CallToAction } from "@/components/site/CallToAction";
 import { PageHeader } from "@/components/site/PageHeader";
 import { Reveal } from "@/components/ui/Reveal";
 import { Stagger, StaggerItem } from "@/components/ui/Stagger";
@@ -144,6 +145,23 @@ export default function LivePage() {
             </Link>
           </StaggerItem>
         </Stagger>
+        <Reveal className="mt-12">
+          <CallToAction
+            eyebrow="Vívelo en persona"
+            title="La vuelta completa está dentro"
+            description="Compra entradas y vive los momentos especiales con tu gente."
+            actions={
+              <>
+                <ButtonLink href="/tickets" variant="solid">
+                  Comprar entradas
+                </ButtonLink>
+                <ButtonLink href="/events" variant="outline">
+                  Ver fechas
+                </ButtonLink>
+              </>
+            }
+          />
+        </Reveal>
       </Container>
     </main>
   );
