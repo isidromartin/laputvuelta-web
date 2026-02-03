@@ -15,7 +15,7 @@ export function ButtonLink({
 }: Props) {
   const base =
     "relative inline-flex items-center justify-center whitespace-nowrap " +
-    "rounded-full px-5 py-2 text-sm font-black uppercase tracking-[0.22em] " +
+    "rounded-full px-5 py-2.5 text-[11px] md:text-sm font-black uppercase tracking-[0.22em] " +
     "transition will-change-transform active:scale-[0.99] focus-visible:outline-none " +
     "focus-visible:ring-2 focus-visible:ring-[var(--primary)]/60 focus-visible:ring-offset-2 " +
     "focus-visible:ring-offset-black";

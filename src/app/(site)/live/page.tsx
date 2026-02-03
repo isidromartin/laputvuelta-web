@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/site/Container";
-import { Badge } from "@/components/site/Badge";
+import { ButtonLink } from "@/components/site/ButtonLink";
+import { PageHeader } from "@/components/site/PageHeader";
 import { Reveal } from "@/components/ui/Reveal";
 import { Stagger, StaggerItem } from "@/components/ui/Stagger";
 
@@ -28,66 +29,37 @@ export default function LivePage() {
 
       <Container>
         {/* Header premium */}
-        <Reveal className="glass relative overflow-hidden rounded-3xl border border-white/10 p-7 md:p-10">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_20%,rgba(255,77,94,0.14),transparent_55%),radial-gradient(circle_at_85%_75%,rgba(255,77,94,0.08),transparent_60%)]" />
-
-          <div className="relative flex flex-col gap-4">
-            {/* <div className="flex flex-wrap items-center gap-2">
-              <Badge>Live</Badge>
-              <Badge>Kick</Badge>
-            </div> */}
-
-            <div className="flex items-end justify-between gap-4">
-              <div>
-                <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
-                  Directo oficial
-                </p>
-                <h1 className="mt-2 text-3xl md:text-5xl font-black uppercase tracking-tight text-white/95 secondaryFont">
-                  ALL IN LIVE
-                </h1>
-              </div>
-
-              <span className="hidden md:block text-[var(--primary)] font-black text-6xl leading-none secondaryFont">
-                04
-              </span>
-            </div>
-
-            <p className="text-white/65 max-w-2xl leading-relaxed">
-              Desde aquí, puedes ver todo lo que pasa en la fiesta, pero que no
-              te dé FOMO.
-            </p>
-
-            <div className="flex flex-wrap gap-3 pt-1">
-              <a
-                href={KICK_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center justify-center rounded-2xl kick px-5 py-3 text-sm font-semibold text-black hover:opacity-90 transition"
-              >
-                Abrir en Kick
-              </a>
-
-              <a
-                href="https://instagram.com/laputvuelta.oficial"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white/[0.03] px-5 py-3 text-sm font-semibold text-white/90 hover:bg-white/[0.06] hover:border-white/25 transition"
-              >
-                Instagram
-              </a>
-            </div>
-
-            <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-white/45">
-              @{KICK_CHANNEL}
-            </p>
-          </div>
+        <Reveal>
+          <PageHeader
+            eyebrow="Directo oficial"
+            title="ALL IN LIVE"
+            description="Desde aquí, puedes ver todo lo que pasa en la fiesta, pero que no te dé FOMO."
+            index="04"
+            actions={
+              <>
+                <ButtonLink href={KICK_URL} external variant="solid">
+                  Abrir en Kick
+                </ButtonLink>
+                <ButtonLink
+                  href="https://instagram.com/laputvuelta.oficial"
+                  external
+                  variant="outline"
+                >
+                  Instagram
+                </ButtonLink>
+              </>
+            }
+          />
+          <p className="mt-3 text-[11px] font-bold uppercase tracking-[0.22em] text-white/45">
+            @{KICK_CHANNEL}
+          </p>
         </Reveal>
 
         {/* Embed */}
         <Stagger className="mt-10 grid gap-4 lg:grid-cols-12">
           {/* Player */}
 
-          <StaggerItem className="lg:col-span-8 group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] backdrop-blur transition hover:border-[var(--primary)]/30 hover:bg-white/[0.06]">
+          <StaggerItem className="card-hover lg:col-span-8 group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] backdrop-blur transition hover:border-[var(--primary)]/30 hover:bg-white/[0.06]">
             <span className="pointer-events-none absolute -inset-10 -z-10 rounded-3xl bg-[var(--primary)]/0 blur-3xl transition group-hover:bg-[var(--primary)]/14" />
             <span className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-white/5" />
 
@@ -114,7 +86,7 @@ export default function LivePage() {
           </StaggerItem>
 
           {/* Chat */}
-          <StaggerItem className="lg:col-span-4 group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] backdrop-blur transition hover:border-[var(--primary)]/30 hover:bg-white/[0.06]">
+          <StaggerItem className="card-hover lg:col-span-4 group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] backdrop-blur transition hover:border-[var(--primary)]/30 hover:bg-white/[0.06]">
             <aside>
               <span className="pointer-events-none absolute -inset-10 -z-10 rounded-3xl bg-[var(--primary)]/0 blur-3xl transition group-hover:bg-[var(--primary)]/14" />
               <span className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-white/5" />
@@ -138,7 +110,7 @@ export default function LivePage() {
 
         {/* Info / Avisos */}
         <Stagger className="mt-6 grid gap-4 md:grid-cols-2">
-          <StaggerItem className="glass rounded-3xl border border-white/10 p-6">
+          <StaggerItem className="card-hover glass rounded-3xl border border-white/10 p-6">
             <p className="text-lg font-semibold text-white/90 secondaryFont">
               ¿Cómo funciona?
             </p>
@@ -149,7 +121,7 @@ export default function LivePage() {
             </p>
           </StaggerItem>
 
-          <StaggerItem className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] backdrop-blur p-6 transition hover:border-[var(--primary)]/30 hover:bg-white/[0.06]">
+          <StaggerItem className="card-hover group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] backdrop-blur p-6 transition hover:border-[var(--primary)]/30 hover:bg-white/[0.06]">
             <Link href="/tickets">
               <span className="pointer-events-none absolute -inset-10 -z-10 rounded-3xl bg-[var(--primary)]/0 blur-3xl transition group-hover:bg-[var(--primary)]/14" />
               <span className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-white/5" />

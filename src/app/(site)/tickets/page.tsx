@@ -1,5 +1,6 @@
 import { Container } from "@/components/site/Container";
 import { FourvenuesEmbed } from "@/components/site/FourvenuesEmbed";
+import { PageHeader } from "@/components/site/PageHeader";
 import type { Metadata } from "next";
 import { Reveal } from "@/components/ui/Reveal";
 import { Stagger, StaggerItem } from "@/components/ui/Stagger";
@@ -31,50 +32,41 @@ export default function TicketsPage() {
 
       <Container>
         {/* Header de página (dossier style) */}
-        <Reveal className="glass relative overflow-hidden rounded-3xl border border-white/10 p-7 md:p-10">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,77,94,0.14),transparent_55%),radial-gradient(circle_at_80%_70%,rgba(255,77,94,0.08),transparent_60%)]" />
-          <div className="relative flex flex-col gap-3">
-            <div className="flex items-end justify-between gap-4">
-              <span className="text-[var(--primary)] font-black text-6xl leading-none secondaryFont">
-                02
-              </span>
-              <span className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
-                CALENDARIO
-              </span>
-            </div>
-
-            <h1 className="text-3xl md:text-5xl font-black uppercase tracking-tight secondaryFont">
-              Próximos eventos
-            </h1>
-            <p className="text-white/65 max-w-2xl leading-relaxed">
-              Consulta las fechas disponibles y accede a{" "}
-              <span className="text-white/85">entradas</span>,{" "}
-              <span className="text-white/85">lista</span> y{" "}
-              <span className="text-white/85">reservas</span> desde el
-              calendario oficial.
-            </p>
-
-            {/* Micro-CTAs (sin inventar links: usamos tu publicUrl como fallback) */}
-            <div className="mt-3 flex flex-wrap gap-3">
-              <a
-                href={publicUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="relative inline-flex items-center justify-center rounded-full bg-[var(--primary)] px-5 py-2 text-sm font-black uppercase tracking-widest text-white transition hover:bg-[color:rgba(255,77,94,0.9)] hover:scale-[1.02]"
-              >
-                <span className="pointer-events-none absolute -inset-[2px] rounded-full border border-white/15" />
-                <span className="pointer-events-none absolute -inset-2 -z-10 rounded-full bg-[var(--primary)]/25 blur-xl" />
-                Abrir en Fourvenues
-              </a>
-
-              <a
-                href="#embed"
-                className="glass inline-flex items-center justify-center rounded-full border border-white/10 px-5 py-2 text-sm font-bold uppercase tracking-widest text-white/80 transition hover:text-white hover:bg-white/[0.06]"
-              >
-                Ver calendario aquí
-              </a>
-            </div>
-          </div>
+        <Reveal>
+          <PageHeader
+            eyebrow="Calendario"
+            title="Próximos eventos"
+            description={
+              <>
+                Consulta las fechas disponibles y accede a{" "}
+                <span className="text-white/85">entradas</span>,{" "}
+                <span className="text-white/85">lista</span> y{" "}
+                <span className="text-white/85">reservas</span> desde el
+                calendario oficial.
+              </>
+            }
+            index="02"
+            actions={
+              <>
+                <a
+                  href={publicUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="relative inline-flex items-center justify-center rounded-full bg-[var(--primary)] px-5 py-2.5 text-[11px] md:text-sm font-black uppercase tracking-[0.22em] text-white transition hover:bg-[color:rgba(255,77,94,0.9)] hover:scale-[1.02]"
+                >
+                  <span className="pointer-events-none absolute -inset-[2px] rounded-full border border-white/15" />
+                  <span className="pointer-events-none absolute -inset-2 -z-10 rounded-full bg-[var(--primary)]/25 blur-xl" />
+                  Abrir en Fourvenues
+                </a>
+                <a
+                  href="#embed"
+                  className="glass inline-flex items-center justify-center rounded-full border border-white/10 px-5 py-2.5 text-[11px] md:text-sm font-bold uppercase tracking-[0.22em] text-white/80 transition hover:text-white hover:bg-white/[0.06]"
+                >
+                  Ver calendario aquí
+                </a>
+              </>
+            }
+          />
         </Reveal>
 
         {/* Embed */}

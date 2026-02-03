@@ -5,7 +5,7 @@ import { client } from "@/sanity/lib/client";
 import { urlForImage } from "@/sanity/lib/image";
 
 import { Container } from "@/components/site/Container";
-import { Badge } from "@/components/site/Badge";
+import { PageHeader } from "@/components/site/PageHeader";
 import { Section } from "@/components/site/Section";
 import { ButtonLink } from "@/components/site/ButtonLink";
 import { Reveal } from "@/components/ui/Reveal";
@@ -66,7 +66,7 @@ function EventCard({ e }: { e: EventListItem }) {
   return (
     <Link
       href={`/gallery/${e.slug}`}
-      className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] backdrop-blur transition hover:border-[var(--primary)]/30 hover:bg-white/[0.06]"
+      className="card-hover group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] backdrop-blur transition hover:border-[var(--primary)]/30 hover:bg-white/[0.06]"
     >
       {/* Halo hover */}
       <span className="pointer-events-none absolute -inset-10 -z-10 rounded-3xl bg-[var(--primary)]/0 blur-3xl transition group-hover:bg-[var(--primary)]/14" />
@@ -162,37 +162,13 @@ export default async function GalleryPage() {
       <Container>
         {/* Header premium */}
         <Reveal>
-          <div className="glass relative overflow-hidden rounded-3xl border border-white/10 p-7 md:p-10">
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_20%,rgba(255,77,94,0.14),transparent_55%),radial-gradient(circle_at_85%_75%,rgba(255,77,94,0.08),transparent_60%)]" />
-
-            <div className="relative flex flex-col gap-4">
-              {/* <div className="flex flex-wrap items-center gap-2">
-              <Badge>Galería</Badge>
-              <Badge>Por evento</Badge>
-            </div> */}
-
-              <div className="flex items-end justify-between gap-4">
-                <div>
-                  <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
-                    Álbumes oficiales
-                  </p>
-                  <h1 className="mt-2 text-3xl md:text-5xl font-black uppercase tracking-tight text-white/95 secondaryFont">
-                    Fotos por edición
-                  </h1>
-                </div>
-
-                <span className="hidden md:block text-[var(--primary)] font-black text-6xl leading-none secondaryFont">
-                  03
-                </span>
-              </div>
-
-              <p className="text-white/65 max-w-2xl leading-relaxed">
-                No creo que quieras verte la cara después de todo lo que te
-                bebiste aquel día, pero por si acaso: aquí tienes recuerdos de
-                nuestros shows.
-              </p>
-
-              <div className="flex flex-wrap gap-3 pt-1">
+          <PageHeader
+            eyebrow="Álbumes oficiales"
+            title="Fotos por edición"
+            description="No creo que quieras verte la cara después de todo lo que te bebiste aquel día, pero por si acaso: aquí tienes recuerdos de nuestros shows."
+            index="03"
+            actions={
+              <>
                 <ButtonLink
                   href="https://instagram.com/laputvuelta.oficial"
                   external
@@ -203,9 +179,9 @@ export default async function GalleryPage() {
                 <ButtonLink href="/events" variant="outline">
                   Ver Shows
                 </ButtonLink>
-              </div>
-            </div>
-          </div>
+              </>
+            }
+          />
         </Reveal>
 
         {/* Últimos álbumes */}

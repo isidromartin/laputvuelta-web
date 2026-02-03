@@ -10,7 +10,7 @@ export function Footer() {
         <div className="absolute left-1/2 top-[-180px] h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-[var(--primary)]/12 blur-[170px]" />
       </div>
 
-      <div className="mx-auto max-w-6xl px-5 py-12">
+      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8 py-12">
         <div className="glass relative overflow-hidden rounded-3xl border border-white/10 p-7 md:p-9">
           {/* subtle inner gradient */}
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_20%,rgba(255,77,94,0.12),transparent_55%),radial-gradient(circle_at_85%_75%,rgba(255,77,94,0.06),transparent_60%)]" />
@@ -40,7 +40,7 @@ export function Footer() {
               </div>
 
               {/* Links */}
-              <div className="flex flex-wrap items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2 md:justify-end">
                 <a
                   href={site.urls.instagram}
                   target="_blank"

@@ -4,8 +4,8 @@ import { groq } from "next-sanity";
 import { client } from "@/sanity/lib/client";
 import { urlForImage } from "@/sanity/lib/image";
 import { Container } from "@/components/site/Container";
-import { Badge } from "@/components/site/Badge";
 import type { Metadata } from "next";
+import { PageHeader } from "@/components/site/PageHeader";
 import { Reveal } from "@/components/ui/Reveal";
 import { Stagger, StaggerItem } from "@/components/ui/Stagger";
 
@@ -54,36 +54,12 @@ export default async function EventsPage() {
       <Container>
         {/* Header */}
         <Reveal>
-          <div className="glass relative overflow-hidden rounded-3xl border border-white/10 p-7 md:p-10">
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_20%,rgba(255,77,94,0.14),transparent_55%),radial-gradient(circle_at_85%_75%,rgba(255,77,94,0.08),transparent_60%)]" />
-
-            <div className="relative flex flex-col gap-4">
-              {/* <div className="flex flex-wrap items-center gap-2">
-              <Badge>Shows</Badge>
-              <Badge>La Put* Vuelta</Badge>
-            </div> */}
-
-              <div className="flex items-end justify-between gap-4">
-                <div>
-                  <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
-                    Agenda oficial
-                  </p>
-                  <h1 className="mt-2 text-3xl md:text-5xl font-black uppercase tracking-tight text-white/95 secondaryFont">
-                    Dónde y cuándo
-                  </h1>
-                </div>
-
-                <span className="hidden md:block text-[var(--primary)] font-black text-6xl leading-none secondaryFont">
-                  01
-                </span>
-              </div>
-
-              <p className="text-white/65 max-w-2xl leading-relaxed">
-                Aquí tienes dónde y cuándo puedes salir a dar una vuelta.
-                Tranqui, tenemos muchas vueltas pendientes…
-              </p>
-            </div>
-          </div>
+          <PageHeader
+            eyebrow="Agenda oficial"
+            title="Dónde y cuándo"
+            description="Aquí tienes dónde y cuándo puedes salir a dar una vuelta. Tranqui, tenemos muchas vueltas pendientes…"
+            index="01"
+          />
         </Reveal>
 
         {/* Grid */}
@@ -103,7 +79,7 @@ export default async function EventsPage() {
             return (
               <StaggerItem
                 key={e._id}
-                className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] backdrop-blur transition hover:border-[var(--primary)]/30 hover:bg-white/[0.06]"
+                className="card-hover group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] backdrop-blur transition hover:border-[var(--primary)]/30 hover:bg-white/[0.06]"
               >
                 <Link href={`/events/${e.slug}`}>
                   {/* Halo hover */}

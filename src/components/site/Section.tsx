@@ -12,7 +12,7 @@ export function Section({
   children: ReactNode;
 }) {
   return (
-    <section className="glass group relative overflow-hidden rounded-3xl border border-white/10 p-6 md:p-8">
+    <section className="glass card-hover group relative overflow-hidden rounded-3xl border border-white/10 p-6 md:p-8">
       {/* halo suave */}
       <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-[var(--primary)]/10 blur-3xl transition group-hover:bg-[var(--primary)]/16" />
       <div className="pointer-events-none absolute -left-24 -bottom-24 h-72 w-72 rounded-full bg-[var(--primary)]/8 blur-3xl transition group-hover:bg-[var(--primary)]/12" />
@@ -26,7 +26,9 @@ export function Section({
             {title}
           </h2>
           {subtitle ? (
-            <p className="text-sm text-white/60 leading-relaxed">{subtitle}</p>
+            <p className="text-sm md:text-base text-white/60 leading-relaxed">
+              {subtitle}
+            </p>
           ) : null}
         </div>
 

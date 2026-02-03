@@ -36,7 +36,7 @@ export function HeroCarousel({
   return (
     <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-black">
       {/* Imagen */}
-      <div className="relative h-[72vh] min-h-[520px] w-full">
+      <div className="relative h-[62vh] min-h-[460px] md:h-[70vh] md:min-h-[560px] w-full">
         <Image
           src={active.src}
           alt={active.alt}
@@ -122,7 +122,7 @@ export function HeroCarousel({
           <button
             type="button"
             onClick={() => setIndex((i) => (i - 1 + count) % count)}
-            className="absolute left-4 top-1/2 -translate-y-1/2 rounded-2xl border border-white/12 bg-black/35 p-2 backdrop-blur hover:bg-black/55 hover:border-[var(--primary)]/35 transition"
+            className="absolute left-4 top-1/2 -translate-y-1/2 rounded-2xl border border-white/12 bg-black/35 p-2 backdrop-blur hover:bg-black/55 hover:border-[var(--primary)]/35 transition hidden md:inline-flex"
             aria-label="Anterior"
           >
             <span className="relative block h-6 w-6">
@@ -140,7 +140,7 @@ export function HeroCarousel({
           <button
             type="button"
             onClick={() => setIndex((i) => (i + 1) % count)}
-            className="absolute right-4 top-1/2 -translate-y-1/2 rounded-2xl border border-white/12 bg-black/35 p-2 backdrop-blur hover:bg-black/55 hover:border-[var(--primary)]/35 transition"
+            className="absolute right-4 top-1/2 -translate-y-1/2 rounded-2xl border border-white/12 bg-black/35 p-2 backdrop-blur hover:bg-black/55 hover:border-[var(--primary)]/35 transition  hidden md:inline-flex"
             aria-label="Siguiente"
           >
             <span className="relative block h-6 w-6">

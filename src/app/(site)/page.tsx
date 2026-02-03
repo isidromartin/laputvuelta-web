@@ -60,7 +60,7 @@ function InfoCard({
   children: React.ReactNode;
 }) {
   return (
-    <div className="glass group relative overflow-hidden rounded-3xl border border-white/10 p-1">
+    <div className="glass card-hover group relative overflow-hidden rounded-3xl border border-white/10 p-1">
       {/* <div className="pointer-events-none absolute -right-12 -top-12 h-48 w-48 rounded-full bg-[var(--primary)]/10 blur-3xl transition group-hover:bg-[var(--primary)]/20" /> */}
       <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute left-1/2 top-[-260px] h-[620px] w-[620px] -translate-x-1/2 rounded-full bg-[var(--primary)]/18 blur-[190px] hidden md:block" />
@@ -109,7 +109,7 @@ function Dot() {
 
 function Pill({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-flex items-center rounded-full border border-white/15 bg-white/[0.03] px-3 py-1 text-xs font-semibold text-white/80">
+    <span className="inline-flex items-center rounded-full border border-white/15 bg-white/[0.03] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/80">
       {children}
     </span>
   );
@@ -117,7 +117,7 @@ function Pill({ children }: { children: React.ReactNode }) {
 
 export default function HomePage() {
   return (
-    <main className="relative pt-28 pb-16 md:pt-32 md:pb-24">
+    <main className="relative pt-28 pb-20 md:pt-32 md:pb-28">
       {/* <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute left-1/2 top-[-220px] h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-[var(--primary)]/20 blur-[180px]" />
         <div className="absolute right-[-120px] top-[240px] h-[420px] w-[420px] rounded-full bg-[var(--primary)]/10 blur-[160px]" />
@@ -154,21 +154,38 @@ export default function HomePage() {
       </ContainerFull>
 
       <Container>
-        {/* CTAs */}
-        {/* <div className="mt-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between"> */}
-        {/* <div className="glass inline-flex w-fit flex-wrap items-center gap-2 rounded-2xl border border-white/10 px-4 py-3">
-            <Badge>Live en Kick</Badge>
-            <Badge>Activaciones</Badge>
-          </div> */}
-        {/* <div className="glass flex flex-wrap gap-3 rounded-2xl border border-white/10 p-3">
-            <ButtonLink href="/tickets" variant="solid">
-              Entradas
-            </ButtonLink>
-            <ButtonLink href="/live">Live</ButtonLink>
-            <ButtonLink href="/events">Eventos</ButtonLink>
-            <ButtonLink href="/gallery">Galería</ButtonLink>
+        <Reveal>
+          <div className="mt-8 glass card-hover relative rounded-3xl border border-white/10 p-6 md:p-8">
+            <div className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-white/5" />
+            <div className="relative flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+              <div>
+                <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
+                  Accesos rápidos
+                </p>
+                <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight secondaryFont">
+                  Entradas, live y agenda en un clic
+                </h2>
+                <p className="mt-3 text-sm md:text-base text-white/60 max-w-2xl">
+                  Diseñamos cada edición para que navegues sin fricción: compra
+                  entradas, entra al directo o consulta próximas fechas en
+                  segundos.
+                </p>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  <Badge>Live en Kick</Badge>
+                  <Badge>Shows oficiales</Badge>
+                  <Badge>Contenido exclusivo</Badge>
+                </div>
+              </div>
+
+              <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+                <ButtonLink href="/tickets" variant="solid">
+                  Comprar entradas
+                </ButtonLink>
+                <ButtonLink href="/live">Ver directo</ButtonLink>
+              </div>
+            </div>
           </div>
-        </div> */}
+        </Reveal>
 
         {/* Info */}
         <Reveal>

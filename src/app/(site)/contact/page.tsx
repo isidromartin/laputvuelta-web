@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/site/Container";
-import { Badge } from "@/components/site/Badge";
 import { ContactForm } from "@/components/site/ContactForm";
+import { PageHeader } from "@/components/site/PageHeader";
 import { Reveal } from "@/components/ui/Reveal";
 import { Stagger, StaggerItem } from "@/components/ui/Stagger";
 
@@ -24,35 +24,13 @@ export default function ContactPage() {
 
       <Container>
         {/* Header */}
-        <Reveal className="glass relative overflow-hidden rounded-3xl border border-white/10 p-7 md:p-10">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_20%,rgba(255,77,94,0.14),transparent_55%),radial-gradient(circle_at_85%_75%,rgba(255,77,94,0.08),transparent_60%)]" />
-
-          <div className="relative flex flex-col gap-4">
-            {/* <div className="flex flex-wrap items-center gap-2">
-              <Badge>Contacto</Badge>
-              <Badge>La Put* Vuelta</Badge>
-            </div> */}
-
-            <div className="flex items-end justify-between gap-4">
-              <div>
-                <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
-                  Oficial
-                </p>
-                <h1 className="mt-2 text-3xl md:text-5xl font-black uppercase tracking-tight text-white/95 secondaryFont">
-                  Hablemos
-                </h1>
-              </div>
-
-              <span className="hidden md:block text-[var(--primary)] font-black text-6xl leading-none secondaryFont">
-                05
-              </span>
-            </div>
-
-            <p className="text-white/65 max-w-2xl leading-relaxed">
-              Partners, salas, prensa o cualquier idea canalla bien hecha.
-              Escríbenos y te respondemos.
-            </p>
-          </div>
+        <Reveal>
+          <PageHeader
+            eyebrow="Oficial"
+            title="Hablemos"
+            description="Partners, salas, prensa o cualquier idea canalla bien hecha. Escríbenos y te respondemos."
+            index="05"
+          />
         </Reveal>
 
         {/* Body */}
@@ -60,7 +38,7 @@ export default function ContactPage() {
           {/* Info */}
           <div className="lg:col-span-5 space-y-4">
             {/* Instagram */}
-            <StaggerItem className="glass group relative overflow-hidden rounded-3xl border border-white/10 p-6">
+            <StaggerItem className="glass card-hover group relative overflow-hidden rounded-3xl border border-white/10 p-6">
               <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-[var(--primary)]/10 blur-3xl transition group-hover:bg-[var(--primary)]/16" />
               <div className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-white/5" />
 
@@ -89,7 +67,7 @@ export default function ContactPage() {
             </StaggerItem>
 
             {/* Live */}
-            <StaggerItem className="glass group relative overflow-hidden rounded-3xl border border-white/10 p-6">
+            <StaggerItem className="glass card-hover group relative overflow-hidden rounded-3xl border border-white/10 p-6">
               <div className="pointer-events-none absolute -left-16 -top-16 h-56 w-56 rounded-full bg-[var(--primary)]/10 blur-3xl transition group-hover:bg-[var(--primary)]/16" />
               <div className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-white/5" />
 
@@ -127,7 +105,7 @@ export default function ContactPage() {
             </StaggerItem>
 
             {/* Entradas */}
-            <StaggerItem className="glass group relative overflow-hidden rounded-3xl border border-white/10 p-6">
+            <StaggerItem className="glass card-hover group relative overflow-hidden rounded-3xl border border-white/10 p-6">
               <div className="pointer-events-none absolute -right-16 -bottom-20 h-64 w-64 rounded-full bg-[var(--primary)]/10 blur-3xl transition group-hover:bg-[var(--primary)]/16" />
               <div className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-white/5" />
 
