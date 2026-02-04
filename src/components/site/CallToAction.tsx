@@ -12,30 +12,33 @@ export function CallToAction({
   actions?: ReactNode;
 }) {
   return (
-    <div className="glass relative overflow-hidden rounded-3xl border border-white/10 p-8 md:p-10">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(255,77,94,0.18),transparent_55%),radial-gradient(circle_at_80%_60%,rgba(255,77,94,0.10),transparent_60%)]" />
+    <section className="relative w-full overflow-hidden py-10 md:py-12">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
-      <div className="relative flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-        <div className="md:max-w-[440px] lg:max-w-[480px]">
+      <div className="flex flex-col gap-7 md:flex-row md:items-end md:justify-between">
+        <div className="max-w-3xl">
           {eyebrow ? (
-            <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
+            <p className="text-[11px] font-black uppercase tracking-[0.38em] text-[var(--primary)]/80">
               {eyebrow}
             </p>
           ) : null}
-          <h3 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight secondaryFont">
+
+          <h3 className="mt-3 secondaryFont font-black uppercase tracking-tight text-white leading-[0.95] text-[clamp(1.9rem,3.1vw,2.7rem)]">
             {title}
           </h3>
-          <p className="mt-2 text-sm md:text-base text-white/60">
+
+          <p className="mt-4 text-sm md:text-base text-white/62 max-w-2xl">
             {description}
           </p>
         </div>
 
         {actions ? (
-          <div className="flex w-full flex-col gap-3 md:w-auto md:flex-row md:items-center md:justify-end">
+          <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:items-center sm:justify-end">
             {actions}
           </div>
         ) : null}
       </div>
-    </div>
+    </section>
   );
 }

@@ -1,13 +1,17 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
+
 import { Container } from "@/components/site/Container";
-import { ContainerFull } from "@/components/site/ContainerFull";
 import { Badge } from "@/components/site/Badge";
 import { ButtonLink } from "@/components/site/ButtonLink";
 import { CallToAction } from "@/components/site/CallToAction";
 import { Section } from "@/components/site/Section";
-import Link from "next/link";
 import { HeroCarousel } from "@/components/site/HeroCarousel";
+import { InfoCard } from "@/components/site/InfoCard";
+import { AnnouncementBar } from "@/components/site/AnnouncementBar";
+import { ScrollBasedVelocity } from "@/components/site/ScrollBasedVelocity";
+
 import { Reveal } from "@/components/ui/Reveal";
 import { Stagger, StaggerItem } from "@/components/ui/Stagger";
 
@@ -88,65 +92,6 @@ const collageImages = [
   { src: "/hero/slide-3.png", alt: "La Put* Vuelta moments" },
 ];
 
-/** Helpers locales (ponlos debajo del componente o arriba del return) **/
-
-function InfoCard({
-  index,
-  tag,
-  title,
-  subtitle,
-  actions,
-  children,
-}: {
-  index: string;
-  tag: string;
-  title: string;
-  subtitle: string;
-  actions?: React.ReactNode;
-  children: React.ReactNode;
-}) {
-  return (
-    <div className="glass card-hover group relative overflow-hidden rounded-3xl border border-white/10 p-1">
-      {/* <div className="pointer-events-none absolute -right-12 -top-12 h-48 w-48 rounded-full bg-[var(--primary)]/10 blur-3xl transition group-hover:bg-[var(--primary)]/20" /> */}
-      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute left-1/2 top-[-260px] h-[620px] w-[620px] -translate-x-1/2 rounded-full bg-[var(--primary)]/18 blur-[190px] hidden md:block" />
-        <div className="absolute right-[-220px] top-[240px] h-[540px] w-[540px] rounded-full bg-[var(--primary)]/10 blur-[210px] hidden md:block" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-black/10 to-black/45" />
-      </div>
-
-      <div className="rounded-[22px] p-7 md:p-8">
-        <Stagger className="flex flex-col">
-          {/* 1) Index + Tag */}
-          <StaggerItem>
-            <div className="mb-5 flex items-end justify-between gap-4">
-              <span className="text-[var(--primary)] font-black text-5xl leading-none">
-                {index}
-              </span>
-              <span className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/40">
-                {tag}
-              </span>
-            </div>
-          </StaggerItem>
-          <StaggerItem>
-            <div className="flex items-start justify-between gap-4">
-              <div className="min-w-0">
-                <h3 className="text-lg md:text-xl font-black uppercase tracking-tight text-white/90 secondaryFont">
-                  {title}
-                </h3>
-                <p className="mt-2 text-sm text-white/65">{subtitle}</p>
-              </div>
-              {actions ? <div className="shrink-0">{actions}</div> : null}
-            </div>
-          </StaggerItem>
-          <StaggerItem>
-            <div className="mt-6">{children}</div>
-          </StaggerItem>
-        </Stagger>
-      </div>
-    </div>
-  );
-}
-
 function Dot() {
   return (
     <span className="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-[var(--primary)] shadow-[0_0_14px_rgba(255,77,94,0.35)]" />
@@ -155,68 +100,53 @@ function Dot() {
 
 function Pill({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-flex items-center rounded-full border border-white/15 bg-white/[0.03] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/80">
+    <span className="inline-flex items-center rounded-full ring-1 ring-white/15 bg-white/[0.03] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/80">
       {children}
     </span>
   );
 }
 
+function FullBleed({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen">
+      {children}
+    </div>
+  );
+}
+
 export default function HomePage() {
   return (
-    <main className="relative pt-28 pb-20 md:pt-32 md:pb-28">
-      {/* <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute left-1/2 top-[-220px] h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-[var(--primary)]/20 blur-[180px]" />
-        <div className="absolute right-[-120px] top-[240px] h-[420px] w-[420px] rounded-full bg-[var(--primary)]/10 blur-[160px]" />
-      </div>
-      <div className="grain" /> */}
-
-      <ContainerFull>
-        {/* Hero */}
-        <div className="relative">
-          {/* Marco glass alrededor del carrusel */}
-          <div className="glass relative overflow-hidden rounded-3xl border border-white/10 shadow-[0_30px_120px_rgba(0,0,0,0.60)]">
-            <HeroCarousel slides={slides} />
-
-            {/* Overlay sutil para “neon night” */}
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/10 via-black/15 to-black/55" />
-
-            {/* Watermark diablo */}
-            {/* <div className="pointer-events-none absolute -right-6 -bottom-10 opacity-70 md:opacity-80">
-              <div className="relative h-[180px] w-[180px] md:h-[260px] md:w-[260px]">
-                <Image
-                  src="/devil-mark.png"
-                  alt="La Put* Vuelta"
-                  fill
-                  className="object-contain drop-shadow-[0_0_45px_rgba(255,77,94,0.18)]"
-                  priority
-                />
-              </div>
-            </div> */}
-
-            {/* Borde neon sutil */}
-            <div className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-white/10" />
-          </div>
-        </div>
-      </ContainerFull>
+    <main className="relative">
+      <HeroCarousel slides={slides} />
 
       <Container>
         <Reveal>
-          <div className="mt-8 glass card-hover relative rounded-3xl border border-white/10 p-6 md:p-8">
-            <div className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-white/5" />
-            <div className="relative flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-              <div>
-                <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
+          <div className="mt-10 relative overflow-hidden py-10 md:py-12">
+            <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+
+            <div className="pointer-events-none absolute inset-0 -z-10">
+              <div className="absolute left-1/2 top-[-220px] h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-[var(--primary)]/10 blur-[220px]" />
+              <div className="absolute -right-64 bottom-[-240px] h-[520px] w-[520px] rounded-full bg-[var(--primary)]/7 blur-[240px]" />
+            </div>
+
+            <div className="flex flex-col gap-7 md:flex-row md:items-end md:justify-between">
+              <div className="max-w-3xl">
+                <p className="text-[11px] font-black uppercase tracking-[0.38em] text-[var(--primary)]/80">
                   Accesos rápidos
                 </p>
-                <h2 className="mt-2 text-2xl md:text-3xl font-black uppercase tracking-tight secondaryFont">
+
+                <h2 className="mt-3 secondaryFont text-[clamp(1.8rem,3.2vw,2.6rem)] font-black uppercase leading-[0.95] tracking-tight text-white">
                   Entradas, live y agenda en un clic
                 </h2>
-                <p className="mt-3 text-sm md:text-base text-white/60 max-w-2xl">
+
+                <p className="mt-4 max-w-2xl text-sm text-white/62 md:text-base">
                   Diseñamos cada edición para que navegues sin fricción: compra
                   entradas, entra al directo o consulta próximas fechas en
                   segundos.
                 </p>
-                <div className="mt-4 flex flex-wrap gap-2">
+
+                <div className="mt-5 flex flex-wrap gap-2">
                   <Badge>Live en Kick</Badge>
                   <Badge>Shows oficiales</Badge>
                   <Badge>Contenido exclusivo</Badge>
@@ -233,7 +163,6 @@ export default function HomePage() {
           </div>
         </Reveal>
 
-        {/* Info */}
         <Reveal>
           <Stagger className="mt-10 grid gap-6 lg:grid-cols-3">
             <StaggerItem>
@@ -241,19 +170,18 @@ export default function HomePage() {
                 index="01"
                 tag="Fiesta + show + directo. Todo pasa."
                 title="¿Qué es La Put* Vuelta?"
-                subtitle=""
               >
-                <p className="text-sm text-white/70 leading-relaxed">
+                <p className="text-sm leading-relaxed text-white/70">
                   LA PUT*VUELTA es una noche donde se juntan fiesta, narrativa y
                   momentos. Está pensada para quien quiere que pasen cosas, para
                   quien quiere una historia que contar al día siguiente.
                 </p>
 
-                <p className="mt-4 text-sm text-white/70 leading-relaxed">
+                <p className="mt-4 text-sm leading-relaxed text-white/70">
                   Cada edición se vive dentro… y también fuera: retransmisión en
                   directo para seguir la noche incluso desde casa. Pero la
                   pregunta sigue siendo:
-                  <span className="text-white/85 font-semibold text-lg secondaryFont">
+                  <span className="secondaryFont text-lg font-semibold text-white/85">
                     {" "}
                     ¿hace cuánto no sales a dar una vuelta?
                   </span>
@@ -266,18 +194,18 @@ export default function HomePage() {
                 </div>
               </InfoCard>
             </StaggerItem>
+
             <StaggerItem>
               <InfoCard
                 index="02"
                 tag="Entradas, directo y activación sin líos."
                 title="Cómo funciona"
-                subtitle=""
               >
                 <ul className="mt-1 space-y-3 text-sm text-white/70">
                   <li className="flex gap-3">
                     <Dot />
                     <div>
-                      <p className="text-white/85 font-semibold">Entradas</p>
+                      <p className="font-semibold text-white/85">Entradas</p>
                       <p className="text-white/60">
                         Venta oficial desde la web (Fourvenues).
                       </p>
@@ -287,7 +215,7 @@ export default function HomePage() {
                   <li className="flex gap-3">
                     <Dot />
                     <div>
-                      <p className="text-white/85 font-semibold">Directo</p>
+                      <p className="font-semibold text-white/85">Directo</p>
                       <p className="text-white/60">
                         Streaming durante la noche en Kick.
                       </p>
@@ -297,7 +225,7 @@ export default function HomePage() {
                   <li className="flex gap-3">
                     <Dot />
                     <div>
-                      <p className="text-white/85 font-semibold">
+                      <p className="font-semibold text-white/85">
                         Activaciones
                       </p>
                       <p className="text-white/60">
@@ -307,7 +235,7 @@ export default function HomePage() {
                   </li>
                 </ul>
 
-                <div className="mt-6 rounded-2xl border border-white/10 bg-black/20 p-4">
+                <div className="mt-6 rounded-2xl bg-black/20 p-4 ring-1 ring-white/10">
                   <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-white/45">
                     Operativa
                   </p>
@@ -318,15 +246,15 @@ export default function HomePage() {
                 </div>
               </InfoCard>
             </StaggerItem>
+
             <StaggerItem>
               <InfoCard
                 index="03"
                 tag="Canales oficiales y acceso directo."
                 title="Dónde verlo"
-                subtitle=""
                 actions={
                   <div className="relative inline-flex">
-                    <span className="pointer-events-none absolute -inset-2 -z-10 rounded-2xl bg-[var(--primary)]/20 blur-xl" />
+                    <span className="pointer-events-none absolute -inset-2 -z-10 rounded-2xl bg-[var(--primary)]/25 blur-xl" />
                     <ButtonLink
                       href="https://kick.com/laputvuelta-oficial"
                       external
@@ -338,71 +266,67 @@ export default function HomePage() {
                 }
               >
                 <div className="space-y-3 text-sm text-white/70">
-                  {/* Kick */}
                   <a
                     href="https://kick.com/laputvuelta-oficial"
                     target="_blank"
                     rel="noreferrer"
-                    className="group flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.02] px-4 py-3 hover:bg-white/[0.04] hover:border-[var(--primary)]/50 transition"
+                    className="group flex items-center justify-between rounded-2xl bg-white/[0.02] px-4 py-3 ring-1 ring-white/10 transition hover:bg-white/[0.04] hover:ring-[var(--primary)]/25"
                   >
                     <span className="flex items-center gap-3">
-                      <span className="relative inline-flex h-9 w-9 items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04]">
+                      <span className="relative inline-flex h-9 w-9 items-center justify-center overflow-hidden rounded-xl bg-black/25 ring-1 ring-white/10">
                         <Image
                           src="/kick.png"
                           alt="Kick"
                           width={20}
                           height={20}
-                          className="h-5 w-5 object-contain opacity-90 group-hover:opacity-100 transition fill-white"
+                          className="h-5 w-5 object-contain opacity-90 transition group-hover:opacity-100"
                           priority={false}
                         />
                       </span>
                     </span>
 
-                    <span className="text-sm text-white/55 group-hover:text-white/75 transition">
+                    <span className="text-sm text-white/55 transition group-hover:text-white/75">
                       laputvuelta-oficial <span className="opacity-70">→</span>
                     </span>
                   </a>
 
-                  {/* Instagram */}
                   <a
                     href="https://instagram.com/laputvuelta.oficial"
                     target="_blank"
                     rel="noreferrer"
-                    className="group flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.02] px-4 py-3 hover:bg-white/[0.04] hover:border-[var(--primary)]/50 transition"
+                    className="group flex items-center justify-between rounded-2xl bg-white/[0.02] px-4 py-3 ring-1 ring-white/10 transition hover:bg-white/[0.04] hover:ring-[var(--primary)]/25"
                   >
                     <span className="flex items-center gap-3">
-                      <span className="relative inline-flex h-9 w-9 items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04]">
+                      <span className="relative inline-flex h-9 w-9 items-center justify-center overflow-hidden rounded-xl bg-black/25 ring-1 ring-white/10">
                         <Image
                           src="/instagram.png"
                           alt="Instagram"
                           width={20}
                           height={20}
-                          className="h-5 w-5 object-contain opacity-90 group-hover:opacity-100 transition invert"
+                          className="h-5 w-5 object-contain opacity-90 transition group-hover:opacity-100 invert"
                           priority={false}
                         />
                       </span>
                     </span>
 
-                    <span className="text-sm text-white/55 group-hover:text-white/75 transition">
+                    <span className="text-sm text-white/55 transition group-hover:text-white/75">
                       @laputvuelta.oficial <span className="opacity-70">→</span>
                     </span>
                   </a>
 
-                  {/* Tickets */}
                   <Link
                     href="/tickets"
-                    className="group flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.02] px-4 py-3 hover:bg-white/[0.04] hover:border-[var(--primary)]/50 transition"
+                    className="group flex items-center justify-between rounded-2xl bg-white/[0.02] px-4 py-3 ring-1 ring-white/10 transition hover:bg-white/[0.04] hover:ring-[var(--primary)]/25"
                   >
                     <span className="flex items-center gap-3">
-                      <span className="relative inline-flex h-9 w-9 items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04]">
-                        {/* Icono simple para “tickets” sin librerías */}
+                      <span className="relative inline-flex h-9 w-9 items-center justify-center overflow-hidden rounded-xl bg-black/25 ring-1 ring-white/10">
                         <svg
                           width="18"
                           height="18"
                           viewBox="0 0 24 24"
                           fill="none"
                           aria-hidden="true"
-                          className="opacity-90 group-hover:opacity-100 transition"
+                          className="opacity-90 transition group-hover:opacity-100"
                         >
                           <path
                             d="M4 8h16v4a2 2 0 010 4v4H4v-4a2 2 0 010-4V8z"
@@ -420,7 +344,7 @@ export default function HomePage() {
                       </span>
                     </span>
 
-                    <span className="text-sm text-white/55 group-hover:text-white/75 transition">
+                    <span className="text-sm text-white/55 transition group-hover:text-white/75">
                       Ver calendario <span className="opacity-70">→</span>
                     </span>
                   </Link>
@@ -430,7 +354,6 @@ export default function HomePage() {
           </Stagger>
         </Reveal>
 
-        {/* CTA final (conversion) */}
         <Reveal>
           <Section
             title="Lo que vas a vivir"
@@ -445,18 +368,20 @@ export default function HomePage() {
               {experienceHighlights.map((item) => (
                 <div
                   key={item.title}
-                  className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-5 transition hover:border-[var(--primary)]/30 hover:bg-white/[0.06]"
+                  className="group relative overflow-hidden rounded-2xl bg-white/[0.02] p-6 ring-1 ring-white/10 transition hover:bg-white/[0.04] hover:ring-[var(--primary)]/25"
                 >
-                  <div className="pointer-events-none absolute -inset-10 -z-10 rounded-3xl bg-[var(--primary)]/0 blur-3xl transition group-hover:bg-[var(--primary)]/14" />
+                  <div className="pointer-events-none absolute -inset-16 -z-10 rounded-[24px] bg-[var(--primary)]/0 blur-3xl transition group-hover:bg-[var(--primary)]/12" />
+
                   <div className="flex items-center gap-3">
-                    <span className="material-symbols-outlined text-[var(--primary)] text-2xl">
+                    <span className="material-symbols-outlined text-2xl text-[var(--primary)]">
                       {item.icon}
                     </span>
-                    <p className="text-base font-black uppercase tracking-[0.08em] text-white/90 secondaryFont">
+                    <p className="secondaryFont text-base font-black uppercase tracking-[0.08em] text-white/90">
                       {item.title}
                     </p>
                   </div>
-                  <p className="mt-3 text-sm text-white/65 leading-relaxed">
+
+                  <p className="mt-3 text-sm leading-relaxed text-white/65">
                     {item.description}
                   </p>
                 </div>
@@ -464,6 +389,18 @@ export default function HomePage() {
             </div>
           </Section>
         </Reveal>
+
+        <FullBleed>
+          <ScrollBasedVelocity baseVelocity={4} direction={1}>
+            <AnnouncementBar
+              items={[
+                "Tickets disponibles en Fourvenues",
+                "Live en Kick durante toda la noche",
+                "Próxima fecha: martes 23:59",
+              ]}
+            />
+          </ScrollBasedVelocity>
+        </FullBleed>
 
         <Reveal>
           <Section
@@ -474,12 +411,13 @@ export default function HomePage() {
               {testimonials.map((testimonial) => (
                 <div
                   key={testimonial.name}
-                  className="glass card-hover relative overflow-hidden rounded-3xl border border-white/10 p-5"
+                  className="relative overflow-hidden rounded-2xl bg-white/[0.02] p-6 ring-1 ring-white/10"
                 >
-                  <p className="text-sm text-white/70 leading-relaxed">
+                  <p className="text-sm leading-relaxed text-white/70">
                     {testimonial.quote}
                   </p>
-                  <div className="mt-4 flex items-center justify-between text-xs uppercase tracking-[0.3em] text-white/45">
+
+                  <div className="mt-5 flex items-center justify-between text-xs uppercase tracking-[0.3em] text-white/45">
                     <span>{testimonial.name}</span>
                     <span>{testimonial.city}</span>
                   </div>
@@ -503,7 +441,7 @@ export default function HomePage() {
               {collageImages.map((image) => (
                 <div
                   key={image.src}
-                  className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-white/10"
+                  className="relative aspect-[4/5] overflow-hidden rounded-2xl ring-1 ring-white/10"
                 >
                   <Image
                     src={image.src}
@@ -520,9 +458,8 @@ export default function HomePage() {
           </Section>
         </Reveal>
 
-        {/* CTA final (conversion) */}
         <Reveal>
-          <div className="mt-10 md:mt-12">
+          <div className="mt-10 md:mt-12 pb-20 md:pb-28">
             <CallToAction
               title="¿Listo para dar la vuelta?"
               description="Entra con entradas o asegura tu sitio con reserva. La noche se diseña para vivirse dentro."
@@ -540,6 +477,20 @@ export default function HomePage() {
             />
           </div>
         </Reveal>
+        <div className="opacity-5">
+          <FullBleed>
+            <ScrollBasedVelocity baseVelocity={20} direction={1}>
+              <Image
+                src="/logo.png"
+                alt="Logo"
+                width={180}
+                height={44}
+                priority
+                className="h-12 w-auto"
+              />
+            </ScrollBasedVelocity>
+          </FullBleed>
+        </div>
       </Container>
     </main>
   );
