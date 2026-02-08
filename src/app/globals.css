@@ -59,8 +59,8 @@
     sans-serif;
   --font-secondary: "SecondaryFont", "HelveticaLocal", system-ui, sans-serif;
 
-  --primary: oklch(0.205 0 0);
-  --secondary: oklch(0.97 0 0);
+  /* --primary: oklch(0.205 0 0);
+  --secondary: oklch(0.97 0 0); */
   --background-dark: #212121;
   --background-light: #ffe3db;
   --surface: #212121;
@@ -377,4 +377,13 @@ section[id] {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+:root {
+  --primary: #b01c1c;
+  --secondary: #edc7bf;
+  --background-dark: #212121;
+  --background-light: #ffe3db;
+  --surface: #212121;
+  --oficial-white: #ffe3db;
 }

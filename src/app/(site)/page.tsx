@@ -396,7 +396,7 @@ export default function HomePage() {
               items={[
                 "Tickets disponibles en Fourvenues",
                 "Live en Kick durante toda la noche",
-                "Próxima fecha: martes 23:59",
+                "Ep 3... próximamente",
               ]}
             />
           </ScrollBasedVelocity>

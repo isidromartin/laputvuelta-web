@@ -88,7 +88,7 @@ export function GalleryGrid({
           aria-modal="true"
         >
           <div
-            className="absolute inset-x-0 top-6 mx-auto w-[min(1100px,92vw)]"
+            className="absolute inset-x-0 top-6 mx-auto w-[min(1100px,92vw)] mt-20"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="rounded-3xl border border-white/10 bg-black/70 overflow-hidden shadow-2xl">
@@ -107,7 +107,7 @@ export function GalleryGrid({
                   <a
                     href={current.full}
                     download
-                    className="rounded-xl bg-white px-3 py-2 text-xs font-semibold text-black hover:opacity-90 transition"
+                    className="rounded-xl bg-[var(--primary)] px-3 py-2 text-xs font-semibold text-black hover:opacity-90 transition"
                   >
                     Descargar
                   </a>
