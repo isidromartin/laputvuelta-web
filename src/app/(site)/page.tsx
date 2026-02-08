@@ -496,7 +496,7 @@ export default function HomePage() {
                     </div>
                   ) : null}
                 </div>
-              ))}
+              </div>
             </div>
           </Section>
         </Reveal>
