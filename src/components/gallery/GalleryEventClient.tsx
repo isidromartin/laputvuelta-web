@@ -8,7 +8,6 @@ import {
   useState,
   useTransition,
 } from "react";
-
 import {
   GalleryGrid,
   type GalleryImage,

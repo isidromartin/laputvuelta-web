@@ -73,6 +73,8 @@ export function GalleryGrid({
                 src={img.thumb}
                 alt={title}
                 fill
+                placeholder="blur"
+                blurDataURL={img.blur}
                 className="object-cover group-hover:scale-[1.02] transition"
                 sizes="(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 22vw"
               />
