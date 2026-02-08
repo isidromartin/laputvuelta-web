@@ -6,9 +6,10 @@ import { Container } from "@/components/site/Container";
 import { Section } from "@/components/site/Section";
 import { Badge } from "@/components/site/Badge";
 import {
-  listImagesByFolder,
+  blurUrl,
   thumbUrl,
   listImagesByFolderPaged,
+  fullUrl,
 } from "@/lib/cloudinary";
 import {
   GalleryGrid,
@@ -65,13 +66,15 @@ export default async function GalleryEventPage({
   const { images, nextCursor, totalCount } = await listImagesByFolderPaged(
     folder,
     {
-      max: 60,
+      max: 36,
     },
   );
   const initialItems: GalleryImage[] = images.map((img) => ({
     public_id: img.public_id,
     thumb: thumbUrl(img.public_id),
-    full: img.secure_url,
+    full: fullUrl(img.public_id),
+    blur: blurUrl(img.public_id),
+    download: img.secure_url,
     width: img.width,
     height: img.height,
     created_at: img.created_at,
@@ -172,7 +175,7 @@ export default async function GalleryEventPage({
                   folder={folder}
                   initialItems={initialItems}
                   initialNextCursor={nextCursor}
-                  pageSize={60}
+                  pageSize={36}
                 />
               </div>
             ) : (
