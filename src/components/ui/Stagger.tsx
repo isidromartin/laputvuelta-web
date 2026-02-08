@@ -17,10 +17,11 @@ export function Stagger({
   disabled,
 }: StaggerProps) {
   const reduceMotion = useReducedMotion();
+  const [mounted, setMounted] = React.useState(false);
 
-  if (disabled || reduceMotion) {
-    return <div className={className}>{children}</div>;
-  }
+  React.useEffect(() => setMounted(true), []);
+
+  const enabled = mounted && !disabled && !reduceMotion;
 
   const container: Variants = {
     hidden: {},
@@ -35,10 +36,10 @@ export function Stagger({
   return (
     <motion.div
       className={className}
-      variants={container}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.22 }}
+      variants={enabled ? container : undefined}
+      initial={enabled ? "hidden" : false}
+      whileInView={enabled ? "show" : undefined}
+      viewport={enabled ? { once: true, amount: 0.22 } : undefined}
     >
       {children}
     </motion.div>
@@ -53,10 +54,11 @@ type StaggerItemProps = {
 
 export function StaggerItem({ children, className, subtle }: StaggerItemProps) {
   const reduceMotion = useReducedMotion();
+  const [mounted, setMounted] = React.useState(false);
 
-  if (reduceMotion) {
-    return <div className={className}>{children}</div>;
-  }
+  React.useEffect(() => setMounted(true), []);
+
+  const enabled = mounted && !reduceMotion;
 
   const item: Variants = {
     hidden: { opacity: 0, y: subtle ? 12 : 22 },
@@ -73,8 +75,10 @@ export function StaggerItem({ children, className, subtle }: StaggerItemProps) {
   return (
     <motion.div
       className={className}
-      style={{ willChange: "transform, opacity" }}
-      variants={item}
+      style={enabled ? { willChange: "transform, opacity" } : undefined}
+      variants={enabled ? item : undefined}
+      initial={enabled ? "hidden" : false}
+      animate={enabled ? "show" : undefined}
     >
       {children}
     </motion.div>

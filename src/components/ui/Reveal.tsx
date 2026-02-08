@@ -24,20 +24,22 @@ export function Reveal({
   once = true,
 }: RevealProps) {
   const reduceMotion = useReducedMotion();
+  const [mounted, setMounted] = React.useState(false);
+  React.useEffect(() => setMounted(true), []);
 
-  if (reduceMotion) {
-    return <div className={className}>{children}</div>;
-  }
+  const enabled = mounted && !reduceMotion;
 
   return (
     <motion.div
       className={className}
-      style={{ willChange: "transform, opacity" }}
-      variants={variants(y)}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once, amount: 0.25 }}
-      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay }}
+      style={{ willChange: enabled ? "transform, opacity" : undefined }}
+      variants={enabled ? variants(y) : undefined}
+      initial={enabled ? "hidden" : false}
+      whileInView={enabled ? "show" : undefined}
+      viewport={enabled ? { once, amount: 0.25 } : undefined}
+      transition={
+        enabled ? { duration: 0.8, ease: [0.22, 1, 0.36, 1], delay } : undefined
+      }
     >
       {children}
     </motion.div>

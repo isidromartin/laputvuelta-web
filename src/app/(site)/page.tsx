@@ -441,6 +441,7 @@ export default function HomePage() {
               </ButtonLink>
             }
           >
+            {/* Intro cards */}
             <div className="mb-6 grid gap-4 md:grid-cols-[1.2fr_0.8fr]">
               <div className="glass relative overflow-hidden rounded-2xl border border-white/10 p-5">
                 <div className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-[var(--primary)]/20 blur-2xl" />
@@ -448,20 +449,31 @@ export default function HomePage() {
                   La galería oficial
                 </p>
                 <p className="mt-3 text-sm text-white/70">
-                  Entra a los álbumes de cada edición, guarda tus fotos y revive
-                  los momentos más locos. Actualizamos cada show.
+                  Álbumes por edición, fotos destacadas y momentos de cada show.
+                  Actualizamos tras cada noche.
                 </p>
+
+                <div className="mt-4">
+                  <Link
+                    href="/gallery"
+                    className="inline-flex items-center gap-2 text-xs font-semibold text-white/80 transition hover:text-white"
+                  >
+                    Explorar álbumes{" "}
+                    <span className="transition hover:translate-x-0.5">→</span>
+                  </Link>
+                </div>
               </div>
 
-              <div className="glass flex flex-col justify-between rounded-2xl border border-white/10 p-5">
-                <div>
-                  <p className="text-[11px] font-bold uppercase tracking-[0.35em] text-white/45">
-                    ¿Quieres salir?
-                  </p>
-                  <p className="mt-3 text-sm text-white/70">
-                    Etiqueta @laputivuelta.oficial para aparecer en la galería.
-                  </p>
-                </div>
+              <div className="glass relative overflow-hidden rounded-2xl border border-white/10 p-5">
+                <p className="text-[11px] font-bold uppercase tracking-[0.35em] text-white/45">
+                  ¿Quieres salir?
+                </p>
+                <p className="mt-3 text-sm text-white/70">
+                  Etiqueta{" "}
+                  <span className="text-white/90">@laputivuelta.oficial</span> y
+                  revisa la siguiente actualización.
+                </p>
+
                 <div className="mt-4">
                   <ButtonLink href="/gallery" variant="solid">
                     Entrar ahora
@@ -469,34 +481,55 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
+
+            {/* Collage */}
             <div className="grid gap-4 md:grid-cols-3">
-              {collageImages.map((image, index) => (
-                <div
-                  key={`${image.alt}-${index}`}
-                  className="relative aspect-[4/5] overflow-hidden rounded-2xl ring-1 ring-white/10"
-                >
-                  <Image
-                    src={image.src}
-                    alt={image.alt}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    placeholder="blur"
-                    priority={false}
-                  />
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
-                  {image.cta ? (
-                    <div className="absolute inset-x-4 bottom-4">
-                      <Link
-                        href="/gallery"
-                        className="glass inline-flex items-center justify-between gap-3 rounded-xl border border-white/20 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-white/90 transition hover:border-[var(--primary)]/40 hover:text-white"
-                      >
-                        Explorar galería <span>→</span>
-                      </Link>
-                    </div>
-                  ) : null}
-                </div>
-              </div>
+              {collageImages.map((image, index) => {
+                const Tile = (
+                  <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]">
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      fill
+                      className="object-cover transition duration-500 group-hover:scale-[1.03]"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      placeholder="blur"
+                      priority={false}
+                    />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+                    <div className="pointer-events-none absolute inset-0 opacity-0 transition duration-500 group-hover:opacity-100 bg-white/[0.04]" />
+
+                    {/* CTA only when needed */}
+                    {image.cta ? (
+                      <div className="absolute inset-x-4 bottom-4">
+                        <div className="glass inline-flex items-center justify-between gap-3 rounded-xl border border-white/20 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.3em] text-white/90 transition group-hover:border-[var(--primary)]/40">
+                          Explorar{" "}
+                          <span className="transition group-hover:translate-x-0.5">
+                            →
+                          </span>
+                        </div>
+                      </div>
+                    ) : null}
+                  </div>
+                );
+
+                // Si tiene cta, todo el tile es clickable (mejor).
+                // Si no, lo dejamos como imagen estática.
+                return image.cta ? (
+                  <Link
+                    key={`${image.alt}-${index}`}
+                    href="/gallery"
+                    className="group block"
+                    aria-label="Explorar galería"
+                  >
+                    {Tile}
+                  </Link>
+                ) : (
+                  <div key={`${image.alt}-${index}`} className="group">
+                    {Tile}
+                  </div>
+                );
+              })}
             </div>
           </Section>
         </Reveal>
