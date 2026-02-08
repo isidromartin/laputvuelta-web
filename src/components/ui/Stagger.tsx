@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion, type Variants } from "framer-motion";
+import { motion, type Variants, useReducedMotion } from "framer-motion";
 
 type StaggerProps = {
   children: React.ReactNode;
@@ -16,7 +16,11 @@ export function Stagger({
   subtle,
   disabled,
 }: StaggerProps) {
-  if (disabled) return <div className={className}>{children}</div>;
+  const reduceMotion = useReducedMotion();
+
+  if (disabled || reduceMotion) {
+    return <div className={className}>{children}</div>;
+  }
 
   const container: Variants = {
     hidden: {},
@@ -48,6 +52,12 @@ type StaggerItemProps = {
 };
 
 export function StaggerItem({ children, className, subtle }: StaggerItemProps) {
+  const reduceMotion = useReducedMotion();
+
+  if (reduceMotion) {
+    return <div className={className}>{children}</div>;
+  }
+
   const item: Variants = {
     hidden: { opacity: 0, y: subtle ? 12 : 22 },
     show: {

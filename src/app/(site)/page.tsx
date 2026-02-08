@@ -91,7 +91,7 @@ const testimonials = [
 ];
 
 const collageImages = [
-  { src: slide1, alt: "La Put* Vuelta show" },
+  { src: slide1, alt: "La Put* Vuelta show", cta: true },
   { src: slide2, alt: "La Put* Vuelta live" },
   { src: slide3, alt: "La Put* Vuelta moments" },
 ];
@@ -441,17 +441,39 @@ export default function HomePage() {
               </ButtonLink>
             }
           >
-            <div className="relative">
-              {/* Ambient halo + soft grid */}
-              <div className="pointer-events-none absolute -inset-8 -z-10 rounded-[40px] bg-[var(--primary)]/10 blur-3xl" />
-              <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.06] [background-image:linear-gradient(to_right,rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.06)_1px,transparent_1px)] [background-size:32px_32px]" />
+            <div className="mb-6 grid gap-4 md:grid-cols-[1.2fr_0.8fr]">
+              <div className="glass relative overflow-hidden rounded-2xl border border-white/10 p-5">
+                <div className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-[var(--primary)]/20 blur-2xl" />
+                <p className="text-[11px] font-bold uppercase tracking-[0.35em] text-white/45">
+                  La galería oficial
+                </p>
+                <p className="mt-3 text-sm text-white/70">
+                  Entra a los álbumes de cada edición, guarda tus fotos y revive
+                  los momentos más locos. Actualizamos cada show.
+                </p>
+              </div>
 
-              <div className="grid gap-4 md:grid-cols-12">
-                {/* HERO */}
-                <Link
-                  href="/gallery"
-                  className="group relative md:col-span-7 overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.03] shadow-2xl transition hover:border-white/20"
-                  aria-label="Abrir galería completa"
+              <div className="glass flex flex-col justify-between rounded-2xl border border-white/10 p-5">
+                <div>
+                  <p className="text-[11px] font-bold uppercase tracking-[0.35em] text-white/45">
+                    ¿Quieres salir?
+                  </p>
+                  <p className="mt-3 text-sm text-white/70">
+                    Etiqueta @laputivuelta.oficial para aparecer en la galería.
+                  </p>
+                </div>
+                <div className="mt-4">
+                  <ButtonLink href="/gallery" variant="solid">
+                    Entrar ahora
+                  </ButtonLink>
+                </div>
+              </div>
+            </div>
+            <div className="grid gap-4 md:grid-cols-3">
+              {collageImages.map((image, index) => (
+                <div
+                  key={`${image.alt}-${index}`}
+                  className="relative aspect-[4/5] overflow-hidden rounded-2xl ring-1 ring-white/10"
                 >
                   <Image
                     src={image.src}
@@ -463,6 +485,16 @@ export default function HomePage() {
                     priority={false}
                   />
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+                  {image.cta ? (
+                    <div className="absolute inset-x-4 bottom-4">
+                      <Link
+                        href="/gallery"
+                        className="glass inline-flex items-center justify-between gap-3 rounded-xl border border-white/20 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-white/90 transition hover:border-[var(--primary)]/40 hover:text-white"
+                      >
+                        Explorar galería <span>→</span>
+                      </Link>
+                    </div>
+                  ) : null}
                 </div>
               </div>
             </div>
