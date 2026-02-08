@@ -15,6 +15,10 @@ import { ScrollBasedVelocity } from "@/components/site/ScrollBasedVelocity";
 import { Reveal } from "@/components/ui/Reveal";
 import { Stagger, StaggerItem } from "@/components/ui/Stagger";
 
+import slide1 from "@/../public/hero/slide-1.png";
+import slide2 from "@/../public/hero/slide-2.png";
+import slide3 from "@/../public/hero/slide-3.png";
+
 export const metadata: Metadata = {
   title: "Inicio",
   description: "La Put* Vuelta - ¿Hace cuanto no sales a dar una vuelta?",
@@ -22,7 +26,7 @@ export const metadata: Metadata = {
 
 const slides = [
   {
-    src: "/hero/slide-1.png",
+    src: slide1,
     alt: "La Put* Vuelta",
     eyebrow: "",
     title: "LA PUT* VUELTA",
@@ -30,7 +34,7 @@ const slides = [
       "Una fiesta pensada para los que nos gustan tener una historia que contar al día siguiente",
   },
   {
-    src: "/hero/slide-2.png",
+    src: slide2,
     alt: "La Put* Vuelta",
     eyebrow: "",
     title: "ALL IN LIVE",
@@ -38,7 +42,7 @@ const slides = [
       "TODO lo que ocurra se emitirá en DIRECTO a través de nuestro canal de KICK. Por si no te quieres acordar de algo… ya sabes",
   },
   {
-    src: "/hero/slide-3.png",
+    src: slide3,
     alt: "La Put* Vuelta",
     eyebrow: "",
     title: "LA PUT* VUELTA SHOW",
@@ -87,9 +91,9 @@ const testimonials = [
 ];
 
 const collageImages = [
-  { src: "/collage/img1.jpg", alt: "La Put* Vuelta show" },
-  { src: "/hero/slide-2.png", alt: "La Put* Vuelta live" },
-  { src: "/hero/slide-3.png", alt: "La Put* Vuelta moments" },
+  { src: slide1, alt: "La Put* Vuelta show" },
+  { src: slide2, alt: "La Put* Vuelta live" },
+  { src: slide3, alt: "La Put* Vuelta moments" },
 ];
 
 function Dot() {
@@ -449,185 +453,16 @@ export default function HomePage() {
                   className="group relative md:col-span-7 overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.03] shadow-2xl transition hover:border-white/20"
                   aria-label="Abrir galería completa"
                 >
-                  {/* gradient border (pseudo) */}
-                  <div className="pointer-events-none absolute inset-0 rounded-[32px] ring-1 ring-inset ring-white/10" />
-
-                  <div className="relative aspect-[16/11]">
-                    {collageImages[0] ? (
-                      <Image
-                        src={collageImages[0].src}
-                        alt={collageImages[0].alt}
-                        fill
-                        className="object-cover transition duration-700 ease-out group-hover:scale-[1.04]"
-                        sizes="(max-width: 768px) 100vw, 58vw"
-                        priority={false}
-                      />
-                    ) : (
-                      <div className="absolute inset-0 grid place-items-center text-white/60">
-                        Sin imágenes
-                      </div>
-                    )}
-
-                    {/* overlays */}
-                    <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_18%,rgba(255,77,94,0.22),transparent_58%),radial-gradient(circle_at_82%_82%,rgba(255,77,94,0.12),transparent_60%)]" />
-                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
-
-                    {/* scanline sheen */}
-                    <div className="pointer-events-none absolute inset-0 opacity-0 transition duration-500 group-hover:opacity-100">
-                      <div className="absolute -left-1/3 top-[-20%] h-[140%] w-1/2 rotate-12 bg-gradient-to-r from-transparent via-white/12 to-transparent blur-[1px]" />
-                    </div>
-
-                    {/* Top row: badges + index */}
-                    <div className="absolute left-4 right-4 top-4 flex items-center justify-between gap-3">
-                      <div className="flex items-center gap-2">
-                        <span className="rounded-full border border-white/15 bg-black/45 px-3 py-1 text-[10px] font-black uppercase tracking-[0.35em] text-white/85 backdrop-blur">
-                          Reciente
-                        </span>
-                        <span className="rounded-full border border-white/15 bg-black/45 px-3 py-1 text-[10px] font-black uppercase tracking-[0.35em] text-white/60 backdrop-blur">
-                          Oficial
-                        </span>
-                      </div>
-
-                      <span className="text-[var(--primary)]/90 font-black text-3xl leading-none secondaryFont drop-shadow-[0_0_25px_rgba(255,77,94,0.25)]">
-                        01
-                      </span>
-                    </div>
-
-                    {/* Bottom copy */}
-                    <div className="absolute inset-x-0 bottom-0 p-5 md:p-6">
-                      <p className="text-[10px] font-black uppercase tracking-[0.35em] text-white/55">
-                        La Put* Vuelta
-                      </p>
-
-                      <div className="mt-2 flex items-end justify-between gap-4">
-                        <div className="min-w-0">
-                          <p className="text-xl md:text-2xl font-black uppercase tracking-tight text-white/95 secondaryFont">
-                            Momentos del show
-                          </p>
-                          <p className="mt-1 text-sm text-white/70">
-                            Entra, mira todo y guarda lo que se pueda contar.
-                          </p>
-                        </div>
-
-                        <span className="hidden md:inline-flex items-center gap-2 rounded-full border border-white/15 bg-black/35 px-3 py-2 text-[11px] font-semibold text-white/85 backdrop-blur">
-                          Ver galería
-                          <span className="inline-block translate-y-[1px]">
-                            ↗
-                          </span>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-
-                {/* RIGHT COLUMN */}
-                <div className="md:col-span-5 grid gap-4">
-                  {/* TILE 02 */}
-                  <Link
-                    href="/gallery"
-                    className="group relative overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.03] shadow-xl transition hover:border-white/20"
-                    aria-label="Ver más fotos"
-                  >
-                    <div className="relative aspect-[16/12]">
-                      {collageImages[1] ? (
-                        <Image
-                          src={collageImages[1].src}
-                          alt={collageImages[1].alt}
-                          fill
-                          className="object-cover transition duration-700 ease-out group-hover:scale-[1.04]"
-                          sizes="(max-width: 768px) 100vw, 40vw"
-                          priority={false}
-                        />
-                      ) : (
-                        <div className="absolute inset-0 grid place-items-center text-white/60">
-                          Sin imagen
-                        </div>
-                      )}
-
-                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/78 via-black/18 to-transparent" />
-
-                      <div className="absolute left-4 right-4 top-4 flex items-center justify-between">
-                        <span className="rounded-full border border-white/15 bg-black/45 px-3 py-1 text-[10px] font-black uppercase tracking-[0.35em] text-white/70 backdrop-blur">
-                          Flash
-                        </span>
-                        <span className="text-white/75 font-black text-xl secondaryFont">
-                          02
-                        </span>
-                      </div>
-
-                      <div className="absolute bottom-0 p-4">
-                        <p className="text-[10px] font-black uppercase tracking-[0.35em] text-white/55">
-                          Captura
-                        </p>
-                        <p className="mt-1 text-sm font-semibold text-white/90">
-                          {collageImages[1]?.alt ?? "Momento"}
-                        </p>
-                      </div>
-                    </div>
-                  </Link>
-
-                  {/* TILE 03 */}
-                  <Link
-                    href="/gallery"
-                    className="group relative overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.03] shadow-xl transition hover:border-white/20"
-                    aria-label="Explorar álbum"
-                  >
-                    <div className="relative aspect-[16/12]">
-                      {collageImages[2] ? (
-                        <Image
-                          src={collageImages[2].src}
-                          alt={collageImages[2].alt}
-                          fill
-                          className="object-cover transition duration-700 ease-out group-hover:scale-[1.04]"
-                          sizes="(max-width: 768px) 100vw, 40vw"
-                          priority={false}
-                        />
-                      ) : (
-                        <div className="absolute inset-0 grid place-items-center text-white/60">
-                          Sin imagen
-                        </div>
-                      )}
-
-                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/78 via-black/18 to-transparent" />
-
-                      <div className="absolute left-4 right-4 top-4 flex items-center justify-between">
-                        <span className="rounded-full border border-white/15 bg-black/45 px-3 py-1 text-[10px] font-black uppercase tracking-[0.35em] text-white/70 backdrop-blur">
-                          Dentro
-                        </span>
-                        <span className="text-white/75 font-black text-xl secondaryFont">
-                          03
-                        </span>
-                      </div>
-
-                      <div className="absolute bottom-0 p-4">
-                        <p className="text-[10px] font-black uppercase tracking-[0.35em] text-white/55">
-                          Pista
-                        </p>
-                        <p className="mt-1 text-sm font-semibold text-white/90">
-                          {collageImages[2]?.alt ?? "Noche"}
-                        </p>
-                      </div>
-                    </div>
-                  </Link>
-
-                  {/* CTA GLASS */}
-                  <div className="glass relative overflow-hidden rounded-[32px] border border-white/10 p-5">
-                    <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(255,77,94,0.18),transparent_55%)]" />
-                    <p className="text-[10px] font-black uppercase tracking-[0.35em] text-white/45">
-                      Galería completa
-                    </p>
-                    <p className="mt-2 text-sm text-white/70 leading-relaxed">
-                      Todos los álbumes por evento. Descarga en grande,
-                      compártelo y revívelo.
-                    </p>
-
-                    <div className="mt-4 flex items-center gap-3">
-                      <ButtonLink href="/gallery">Entrar ahora</ButtonLink>
-                      <span className="text-xs text-white/45">
-                        Actualizado constantemente
-                      </span>
-                    </div>
-                  </div>
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    placeholder="blur"
+                    priority={false}
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
                 </div>
               </div>
             </div>
