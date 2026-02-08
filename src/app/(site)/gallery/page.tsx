@@ -53,7 +53,7 @@ function formatDate(dateIso?: string) {
   return d.toLocaleDateString("es-ES", { dateStyle: "medium" });
 }
 
-function EventCard({ e }: { e: EventListItem }) {
+function EventCard({ e, priority }: { e: EventListItem; priority?: boolean }) {
   const coverUrl = e.coverImage
     ? urlForImage(e.coverImage)
         .width(900)
@@ -82,7 +82,11 @@ function EventCard({ e }: { e: EventListItem }) {
             alt={e.title}
             fill
             sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 30vw"
-            className="object-cover transition duration-700 group-hover:scale-[1.03]"
+            className="object-cover transition md:duration-700 md:group-hover:scale-[1.03]"
+            priority={priority}
+            fetchPriority={priority ? "high" : "auto"}
+            loading={priority ? "eager" : "lazy"}
+            decoding="async"
           />
         ) : (
           <div className="h-full w-full flex items-center justify-center">
@@ -202,8 +206,8 @@ export default async function GalleryPage() {
               }
             >
               <StaggerItem className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {latestAlbums.map((e) => (
-                  <EventCard key={e._id} e={e} />
+                {latestAlbums.map((e, index) => (
+                  <EventCard key={e._id} e={e} priority={index === 0} />
                 ))}
               </StaggerItem>
             </Section>
