@@ -5,12 +5,18 @@ import type { Metadata } from "next";
 import { Container } from "@/components/site/Container";
 import { Section } from "@/components/site/Section";
 import { Badge } from "@/components/site/Badge";
-import { listImagesByFolder, thumbUrl } from "@/lib/cloudinary";
+import {
+  listImagesByFolder,
+  thumbUrl,
+  listImagesByFolderPaged,
+} from "@/lib/cloudinary";
 import {
   GalleryGrid,
   type GalleryImage,
 } from "@/components/gallery/GalleryGrid";
 import { Reveal } from "@/components/ui/Reveal";
+
+import { GalleryEventClient } from "@/components/gallery/GalleryEventClient";
 
 export const revalidate = 60;
 
@@ -56,9 +62,13 @@ export default async function GalleryEventPage({
   if (!event) return notFound();
 
   const folder = folderForEventSlug(slug);
-  const images = await listImagesByFolder(folder, 90);
-
-  const items: GalleryImage[] = images.map((img) => ({
+  const { images, nextCursor, totalCount } = await listImagesByFolderPaged(
+    folder,
+    {
+      max: 60,
+    },
+  );
+  const initialItems: GalleryImage[] = images.map((img) => ({
     public_id: img.public_id,
     thumb: thumbUrl(img.public_id),
     full: img.secure_url,
@@ -66,6 +76,8 @@ export default async function GalleryEventPage({
     height: img.height,
     created_at: img.created_at,
   }));
+
+  const totalPhotos = totalCount ?? initialItems.length;
 
   const venueText = event.venue?.name
     ? `${event.venue.name}${event.venue.city ? ` · ${event.venue.city}` : ""}`
@@ -111,7 +123,7 @@ export default async function GalleryEventPage({
             </div>
 
             <p className="text-white/65 max-w-2xl leading-relaxed">
-              {items.length
+              {initialItems.length
                 ? "Entra, revísalo todo y guarda lo que se pueda contar."
                 : "Aún no hay fotos publicadas para este evento."}
             </p>
@@ -123,7 +135,7 @@ export default async function GalleryEventPage({
                   Fotos
                 </p>
                 <p className="mt-1 text-sm font-semibold text-white/90">
-                  {items.length}
+                  {totalPhotos}
                 </p>
               </div>
 
@@ -146,18 +158,21 @@ export default async function GalleryEventPage({
           <Section
             title="Fotos"
             subtitle={
-              items.length
+              initialItems.length
                 ? ""
                 : "Aún no hay fotos publicadas para este evento."
             }
           >
-            {items.length ? (
+            {initialItems.length ? (
               <div className="relative">
                 {/* halo suave alrededor de la sección */}
                 <div className="pointer-events-none absolute -inset-6 -z-10 rounded-3xl bg-[var(--primary)]/8 blur-3xl" />
-                <GalleryGrid
+                <GalleryEventClient
                   title={event.title ?? "La Put* Vuelta"}
-                  images={items}
+                  folder={folder}
+                  initialItems={initialItems}
+                  initialNextCursor={nextCursor}
+                  pageSize={60}
                 />
               </div>
             ) : (
