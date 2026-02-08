@@ -17,8 +17,9 @@ export function Stagger({
   disabled,
 }: StaggerProps) {
   const reduceMotion = useReducedMotion();
+  const enabled = !(disabled || reduceMotion);
 
-  if (disabled || reduceMotion) {
+  if (!enabled) {
     return <div className={className}>{children}</div>;
   }
 
@@ -53,8 +54,9 @@ type StaggerItemProps = {
 
 export function StaggerItem({ children, className, subtle }: StaggerItemProps) {
   const reduceMotion = useReducedMotion();
+  const enabled = !reduceMotion;
 
-  if (reduceMotion) {
+  if (!enabled) {
     return <div className={className}>{children}</div>;
   }
 
