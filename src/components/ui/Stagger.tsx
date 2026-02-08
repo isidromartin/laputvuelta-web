@@ -35,10 +35,10 @@ export function Stagger({
   return (
     <motion.div
       className={className}
-      variants={container}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.22 }}
+      variants={enabled ? container : undefined}
+      initial={enabled ? "hidden" : false}
+      whileInView={enabled ? "show" : undefined}
+      viewport={enabled ? { once: true, amount: 0.22 } : undefined}
     >
       {children}
     </motion.div>
@@ -73,8 +73,10 @@ export function StaggerItem({ children, className, subtle }: StaggerItemProps) {
   return (
     <motion.div
       className={className}
-      style={{ willChange: "transform, opacity" }}
-      variants={item}
+      style={enabled ? { willChange: "transform, opacity" } : undefined}
+      variants={enabled ? item : undefined}
+      initial={enabled ? "hidden" : false}
+      animate={enabled ? "show" : undefined}
     >
       {children}
     </motion.div>
