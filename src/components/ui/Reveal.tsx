@@ -24,8 +24,9 @@ export function Reveal({
   once = true,
 }: RevealProps) {
   const reduceMotion = useReducedMotion();
+  const enabled = !reduceMotion;
 
-  if (reduceMotion) {
+  if (!enabled) {
     return <div className={className}>{children}</div>;
   }
 
