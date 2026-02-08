@@ -7,12 +7,12 @@ export default function CookieBanner() {
     <CookieConsent
       location="bottom"
       cookieName="cookie_analytics_consent"
-      buttonText="Aceptar"
-      declineButtonText="Rechazar"
+      buttonText="Aceptar todo"
+      declineButtonText="Solo necesarias"
       enableDeclineButton
       expires={180}
       sameSite="Lax"
-      overlay
+      overlay={false}
       onAccept={() =>
         window.dispatchEvent(
           new CustomEvent("cookie_consent_update", {
@@ -31,6 +31,10 @@ export default function CookieBanner() {
         background: "rgba(10,10,12,0.92)",
         borderTop: "1px solid rgba(255,255,255,0.12)",
         fontSize: "14px",
+        padding: "16px 18px",
+        maxWidth: "1080px",
+        margin: "0 auto",
+        borderRadius: "16px 16px 0 0",
       }}
       buttonStyle={{
         background: "#ffffff",
@@ -50,7 +54,28 @@ export default function CookieBanner() {
         border: "1px solid rgba(255,255,255,0.25)",
       }}
     >
-      Usamos cookies para mejorar tu experiencia en la web.
+      <div>
+        <strong style={{ display: "block", marginBottom: 6 }}>
+          Configuración de cookies
+        </strong>
+        <span style={{ color: "rgba(255,255,255,0.8)" }}>
+          Usamos cookies necesarias y, con tu permiso, analíticas para mejorar
+          la experiencia. Puedes cambiar tu decisión en cualquier momento.
+        </span>{" "}
+        <a
+          href="/cookies"
+          style={{ color: "#ffffff", textDecoration: "underline" }}
+        >
+          Ver política de cookies
+        </a>
+        <span style={{ color: "rgba(255,255,255,0.6)" }}> · </span>
+        <a
+          href="/privacidad"
+          style={{ color: "#ffffff", textDecoration: "underline" }}
+        >
+          Privacidad
+        </a>
+      </div>
     </CookieConsent>
   );
 }
