@@ -54,8 +54,30 @@ export function thumbUrl(publicId: string) {
   return cloudinary.url(publicId, {
     secure: true,
     transformation: [
-      { width: 900, crop: "limit" },
+      { width: 480, crop: "limit" },
       { quality: "auto" },
+      { fetch_format: "auto" },
+    ],
+  });
+}
+
+export function fullUrl(publicId: string) {
+  return cloudinary.url(publicId, {
+    secure: true,
+    transformation: [
+      { width: 1600, crop: "limit" },
+      { quality: "auto" },
+      { fetch_format: "auto" },
+    ],
+  });
+}
+
+export function blurUrl(publicId: string) {
+  return cloudinary.url(publicId, {
+    secure: true,
+    transformation: [
+      { width: 20, crop: "limit" },
+      { quality: "auto:low" },
       { fetch_format: "auto" },
     ],
   });

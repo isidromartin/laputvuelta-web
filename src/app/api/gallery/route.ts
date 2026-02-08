@@ -1,5 +1,10 @@
 import { NextResponse } from "next/server";
-import { listImagesByFolderPaged, thumbUrl } from "@/lib/cloudinary";
+import {
+  blurUrl,
+  fullUrl,
+  listImagesByFolderPaged,
+  thumbUrl,
+} from "@/lib/cloudinary";
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
@@ -20,7 +25,9 @@ export async function GET(req: Request) {
   const items = images.map((img) => ({
     public_id: img.public_id,
     thumb: thumbUrl(img.public_id),
-    full: img.secure_url,
+    full: fullUrl(img.public_id),
+    blur: blurUrl(img.public_id),
+    download: img.secure_url,
     width: img.width,
     height: img.height,
     created_at: img.created_at,

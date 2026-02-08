@@ -1,6 +1,13 @@
 "use client";
 
-import { useEffect, useMemo, useState, useTransition } from "react";
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  useTransition,
+} from "react";
 import {
   GalleryGrid,
   type GalleryImage,
@@ -38,6 +45,7 @@ export function GalleryEventClient({
   );
   const [isPending, startTransition] = useTransition();
   const [error, setError] = useState<string | null>(null);
+  const sentinelRef = useRef<HTMLDivElement | null>(null);
 
   // dedupe por seguridad (evita repetidos si Cloudinary cambia el orden)
   const deduped = useMemo(() => {
@@ -46,7 +54,7 @@ export function GalleryEventClient({
     return Array.from(map.values());
   }, [items]);
 
-  async function loadMore() {
+  const loadMore = useCallback(() => {
     if (!nextCursor || isPending) return;
 
     setError(null);
@@ -59,7 +67,25 @@ export function GalleryEventClient({
         setError("No se pudieron cargar más fotos. Intenta de nuevo.");
       }
     });
-  }
+  }, [folder, isPending, nextCursor, pageSize]);
+
+  useEffect(() => {
+    if (!nextCursor) return;
+    const target = sentinelRef.current;
+    if (!target) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0]?.isIntersecting) {
+          loadMore();
+        }
+      },
+      { rootMargin: "400px" },
+    );
+
+    observer.observe(target);
+    return () => observer.disconnect();
+  }, [loadMore, nextCursor]);
 
   return (
     <div className="space-y-6">
@@ -69,14 +95,17 @@ export function GalleryEventClient({
         {error ? <p className="text-sm text-white/70">{error}</p> : null}
 
         {nextCursor ? (
-          <button
-            type="button"
-            onClick={loadMore}
-            disabled={isPending}
-            className="rounded-2xl border border-white/15 bg-white/[0.04] px-5 py-3 text-sm font-semibold text-white/90 hover:bg-white/[0.07] hover:border-white/25 disabled:opacity-60 transition"
-          >
-            {isPending ? "Cargando..." : "Cargar más"}
-          </button>
+          <>
+            <div ref={sentinelRef} className="h-1 w-full" />
+            <button
+              type="button"
+              onClick={loadMore}
+              disabled={isPending}
+              className="rounded-2xl border border-white/15 bg-white/[0.04] px-5 py-3 text-sm font-semibold text-white/90 hover:bg-white/[0.07] hover:border-white/25 disabled:opacity-60 transition"
+            >
+              {isPending ? "Cargando..." : "Cargar más"}
+            </button>
+          </>
         ) : (
           <p className="text-xs text-white/45">
             No hay más fotos en este álbum.

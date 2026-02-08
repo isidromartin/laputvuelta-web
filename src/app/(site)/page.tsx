@@ -15,6 +15,10 @@ import { ScrollBasedVelocity } from "@/components/site/ScrollBasedVelocity";
 import { Reveal } from "@/components/ui/Reveal";
 import { Stagger, StaggerItem } from "@/components/ui/Stagger";
 
+import slide1 from "@/../public/hero/slide-1.png";
+import slide2 from "@/../public/hero/slide-2.png";
+import slide3 from "@/../public/hero/slide-3.png";
+
 export const metadata: Metadata = {
   title: "Inicio",
   description: "La Put* Vuelta - ¿Hace cuanto no sales a dar una vuelta?",
@@ -22,7 +26,7 @@ export const metadata: Metadata = {
 
 const slides = [
   {
-    src: "/hero/slide-1.png",
+    src: slide1,
     alt: "La Put* Vuelta",
     eyebrow: "",
     title: "LA PUT* VUELTA",
@@ -30,7 +34,7 @@ const slides = [
       "Una fiesta pensada para los que nos gustan tener una historia que contar al día siguiente",
   },
   {
-    src: "/hero/slide-2.png",
+    src: slide2,
     alt: "La Put* Vuelta",
     eyebrow: "",
     title: "ALL IN LIVE",
@@ -38,7 +42,7 @@ const slides = [
       "TODO lo que ocurra se emitirá en DIRECTO a través de nuestro canal de KICK. Por si no te quieres acordar de algo… ya sabes",
   },
   {
-    src: "/hero/slide-3.png",
+    src: slide3,
     alt: "La Put* Vuelta",
     eyebrow: "",
     title: "LA PUT* VUELTA SHOW",
@@ -87,9 +91,9 @@ const testimonials = [
 ];
 
 const collageImages = [
-  { src: "/hero/slide-1.png", alt: "La Put* Vuelta show" },
-  { src: "/hero/slide-2.png", alt: "La Put* Vuelta live" },
-  { src: "/hero/slide-3.png", alt: "La Put* Vuelta moments" },
+  { src: slide1, alt: "La Put* Vuelta show", cta: true },
+  { src: slide2, alt: "La Put* Vuelta live" },
+  { src: slide3, alt: "La Put* Vuelta moments" },
 ];
 
 function Dot() {
@@ -437,10 +441,38 @@ export default function HomePage() {
               </ButtonLink>
             }
           >
+            <div className="mb-6 grid gap-4 md:grid-cols-[1.2fr_0.8fr]">
+              <div className="glass relative overflow-hidden rounded-2xl border border-white/10 p-5">
+                <div className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-[var(--primary)]/20 blur-2xl" />
+                <p className="text-[11px] font-bold uppercase tracking-[0.35em] text-white/45">
+                  La galería oficial
+                </p>
+                <p className="mt-3 text-sm text-white/70">
+                  Entra a los álbumes de cada edición, guarda tus fotos y revive
+                  los momentos más locos. Actualizamos cada show.
+                </p>
+              </div>
+
+              <div className="glass flex flex-col justify-between rounded-2xl border border-white/10 p-5">
+                <div>
+                  <p className="text-[11px] font-bold uppercase tracking-[0.35em] text-white/45">
+                    ¿Quieres salir?
+                  </p>
+                  <p className="mt-3 text-sm text-white/70">
+                    Etiqueta @laputivuelta.oficial para aparecer en la galería.
+                  </p>
+                </div>
+                <div className="mt-4">
+                  <ButtonLink href="/gallery" variant="solid">
+                    Entrar ahora
+                  </ButtonLink>
+                </div>
+              </div>
+            </div>
             <div className="grid gap-4 md:grid-cols-3">
-              {collageImages.map((image) => (
+              {collageImages.map((image, index) => (
                 <div
-                  key={image.src}
+                  key={`${image.alt}-${index}`}
                   className="relative aspect-[4/5] overflow-hidden rounded-2xl ring-1 ring-white/10"
                 >
                   <Image
@@ -449,9 +481,20 @@ export default function HomePage() {
                     fill
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, 33vw"
+                    placeholder="blur"
                     priority={false}
                   />
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+                  {image.cta ? (
+                    <div className="absolute inset-x-4 bottom-4">
+                      <Link
+                        href="/gallery"
+                        className="glass inline-flex items-center justify-between gap-3 rounded-xl border border-white/20 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-white/90 transition hover:border-[var(--primary)]/40 hover:text-white"
+                      >
+                        Explorar galería <span>→</span>
+                      </Link>
+                    </div>
+                  ) : null}
                 </div>
               ))}
             </div>

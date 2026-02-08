@@ -89,6 +89,7 @@ function ScrollVelocityRowImpl({
   const isInViewRef = useRef(true)
   const isPageVisibleRef = useRef(true)
   const prefersReducedMotionRef = useRef(false)
+  const isLowPowerRef = useRef(false)
 
   useEffect(() => {
     const container = containerRef.current
@@ -129,11 +130,21 @@ function ScrollVelocityRowImpl({
     mq.addEventListener("change", handlePRM)
     handlePRM()
 
+    const lowPower = window.matchMedia(
+      "(pointer: coarse), (max-width: 768px)"
+    )
+    const handleLowPower = () => {
+      isLowPowerRef.current = lowPower.matches
+    }
+    lowPower.addEventListener("change", handleLowPower)
+    handleLowPower()
+
     return () => {
       ro.disconnect()
       io.disconnect()
       document.removeEventListener("visibilitychange", handleVisibility)
       mq.removeEventListener("change", handlePRM)
+      lowPower.removeEventListener("change", handleLowPower)
     }
   }, [children, unitWidth])
 
@@ -145,6 +156,7 @@ function ScrollVelocityRowImpl({
 
   useAnimationFrame((_, delta) => {
     if (!isInViewRef.current || !isPageVisibleRef.current) return
+    if (prefersReducedMotionRef.current || isLowPowerRef.current) return
     const dt = delta / 1000
     const vf = velocityFactor.get()
     const absVf = Math.min(5, Math.abs(vf))
