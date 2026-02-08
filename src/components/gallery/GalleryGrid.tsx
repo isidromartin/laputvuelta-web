@@ -7,6 +7,8 @@ export type GalleryImage = {
   public_id: string;
   thumb: string;
   full: string;
+  blur: string;
+  download: string;
   width: number;
   height: number;
   created_at?: string;
@@ -71,8 +73,10 @@ export function GalleryGrid({
                 src={img.thumb}
                 alt={title}
                 fill
+                placeholder="blur"
+                blurDataURL={img.blur}
                 className="object-cover group-hover:scale-[1.02] transition"
-                sizes="(max-width: 768px) 50vw, 25vw"
+                sizes="(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 22vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition" />
             </div>
@@ -105,7 +109,7 @@ export function GalleryGrid({
 
                 <div className="flex items-center gap-2">
                   <a
-                    href={current.full}
+                    href={current.download}
                     download
                     className="rounded-xl bg-[var(--primary)] px-3 py-2 text-xs font-semibold text-black hover:opacity-90 transition"
                   >

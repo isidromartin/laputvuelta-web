@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { groq } from "next-sanity";
 import { client } from "@/sanity/lib/client";
@@ -55,8 +56,8 @@ function formatDate(dateIso?: string) {
 function EventCard({ e }: { e: EventListItem }) {
   const coverUrl = e.coverImage
     ? urlForImage(e.coverImage)
-        .width(1200)
-        .height(1500)
+        .width(900)
+        .height(1125)
         .fit("crop")
         .auto("format")
         .url()
@@ -76,12 +77,12 @@ function EventCard({ e }: { e: EventListItem }) {
 
       <div className="relative aspect-[4/5] w-full border-b border-white/10 bg-black/40">
         {coverUrl ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
+          <Image
             src={coverUrl}
             alt={e.title}
-            className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]"
-            loading="lazy"
+            fill
+            sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 30vw"
+            className="object-cover transition duration-700 group-hover:scale-[1.03]"
           />
         ) : (
           <div className="h-full w-full flex items-center justify-center">

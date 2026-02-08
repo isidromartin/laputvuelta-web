@@ -1,13 +1,13 @@
 "use client";
 
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
 import * as React from "react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 type Slide = {
-  src: string;
+  src: StaticImageData | string;
   alt: string;
   eyebrow?: string;
   title?: string;
@@ -122,7 +122,8 @@ export function HeroCarousel({
               src={active.src}
               alt={active.alt}
               fill
-              priority
+              priority={index === 0}
+              placeholder="blur"
               className="object-cover"
               sizes="100vw"
             />
@@ -163,7 +164,8 @@ export function HeroCarousel({
                 src={active.src}
                 alt={active.alt}
                 fill
-                priority
+                priority={index === 0}
+                placeholder="blur"
                 className="object-cover"
                 sizes="100vw"
               />

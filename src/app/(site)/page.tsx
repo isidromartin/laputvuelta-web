@@ -15,6 +15,10 @@ import { ScrollBasedVelocity } from "@/components/site/ScrollBasedVelocity";
 import { Reveal } from "@/components/ui/Reveal";
 import { Stagger, StaggerItem } from "@/components/ui/Stagger";
 
+import slide1 from "@/../public/hero/slide-1.png";
+import slide2 from "@/../public/hero/slide-2.png";
+import slide3 from "@/../public/hero/slide-3.png";
+
 export const metadata: Metadata = {
   title: "Inicio",
   description: "La Put* Vuelta - ¿Hace cuanto no sales a dar una vuelta?",
@@ -22,7 +26,7 @@ export const metadata: Metadata = {
 
 const slides = [
   {
-    src: "/hero/slide-1.png",
+    src: slide1,
     alt: "La Put* Vuelta",
     eyebrow: "",
     title: "LA PUT* VUELTA",
@@ -30,7 +34,7 @@ const slides = [
       "Una fiesta pensada para los que nos gustan tener una historia que contar al día siguiente",
   },
   {
-    src: "/hero/slide-2.png",
+    src: slide2,
     alt: "La Put* Vuelta",
     eyebrow: "",
     title: "ALL IN LIVE",
@@ -38,7 +42,7 @@ const slides = [
       "TODO lo que ocurra se emitirá en DIRECTO a través de nuestro canal de KICK. Por si no te quieres acordar de algo… ya sabes",
   },
   {
-    src: "/hero/slide-3.png",
+    src: slide3,
     alt: "La Put* Vuelta",
     eyebrow: "",
     title: "LA PUT* VUELTA SHOW",
@@ -87,9 +91,9 @@ const testimonials = [
 ];
 
 const collageImages = [
-  { src: "/hero/slide-1.png", alt: "La Put* Vuelta show" },
-  { src: "/hero/slide-2.png", alt: "La Put* Vuelta live" },
-  { src: "/hero/slide-3.png", alt: "La Put* Vuelta moments" },
+  { src: slide1, alt: "La Put* Vuelta show" },
+  { src: slide2, alt: "La Put* Vuelta live" },
+  { src: slide3, alt: "La Put* Vuelta moments" },
 ];
 
 function Dot() {
@@ -449,6 +453,7 @@ export default function HomePage() {
                     fill
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, 33vw"
+                    placeholder="blur"
                     priority={false}
                   />
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
