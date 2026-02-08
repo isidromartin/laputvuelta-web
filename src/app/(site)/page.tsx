@@ -441,11 +441,17 @@ export default function HomePage() {
               </ButtonLink>
             }
           >
-            <div className="grid gap-4 md:grid-cols-3">
-              {collageImages.map((image) => (
-                <div
-                  key={image.src}
-                  className="relative aspect-[4/5] overflow-hidden rounded-2xl ring-1 ring-white/10"
+            <div className="relative">
+              {/* Ambient halo + soft grid */}
+              <div className="pointer-events-none absolute -inset-8 -z-10 rounded-[40px] bg-[var(--primary)]/10 blur-3xl" />
+              <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.06] [background-image:linear-gradient(to_right,rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.06)_1px,transparent_1px)] [background-size:32px_32px]" />
+
+              <div className="grid gap-4 md:grid-cols-12">
+                {/* HERO */}
+                <Link
+                  href="/gallery"
+                  className="group relative md:col-span-7 overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.03] shadow-2xl transition hover:border-white/20"
+                  aria-label="Abrir galería completa"
                 >
                   <Image
                     src={image.src}
@@ -458,7 +464,7 @@ export default function HomePage() {
                   />
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
                 </div>
-              ))}
+              </div>
             </div>
           </Section>
         </Reveal>
