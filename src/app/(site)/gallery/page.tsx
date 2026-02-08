@@ -92,8 +92,8 @@ function EventCard({ e }: { e: EventListItem }) {
         )}
 
         {/* Overlays premium */}
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,77,94,0.14),transparent_45%)]" />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,77,94,0.14),transparent_45%)] transition duration-700 group-hover:scale-[1.03]" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent transition duration-700 group-hover:scale-[1.03]" />
 
         {/* Bottom meta bar */}
         <div className="absolute left-4 right-4 bottom-4">
