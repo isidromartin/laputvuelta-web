@@ -478,10 +478,13 @@ export default function HomePage() {
                       src={image.src}
                       alt={image.alt}
                       fill
-                      className="object-cover transition duration-500 group-hover:scale-[1.03]"
+                      className="object-cover transition md:duration-500 md:group-hover:scale-[1.03]"
                       sizes="(max-width: 768px) 100vw, 33vw"
                       placeholder="blur"
-                      priority={false}
+                      priority={index === 0}
+                      fetchPriority={index === 0 ? "high" : "auto"}
+                      loading={index === 0 ? "eager" : "lazy"}
+                      decoding="async"
                     />
                     <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
                     <div className="pointer-events-none absolute inset-0 opacity-0 transition duration-500 group-hover:opacity-100 bg-white/[0.04]" />
