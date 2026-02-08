@@ -24,10 +24,10 @@ export function Reveal({
   once = true,
 }: RevealProps) {
   const reduceMotion = useReducedMotion();
-  const [mounted, setMounted] = React.useState(false);
-  React.useEffect(() => setMounted(true), []);
 
-  const enabled = mounted && !reduceMotion;
+  if (reduceMotion) {
+    return <div className={className}>{children}</div>;
+  }
 
   return (
     <motion.div

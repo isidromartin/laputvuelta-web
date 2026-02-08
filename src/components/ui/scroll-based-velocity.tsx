@@ -114,11 +114,10 @@ function ScrollVelocityRowImpl({
   const baseDirectionRef = useRef<number>(direction >= 0 ? 1 : -1);
   const currentDirectionRef = useRef<number>(direction >= 0 ? 1 : -1);
 
-  // Runtime guards
-  const isInViewRef = useRef(true);
-  const isPageVisibleRef = useRef(true);
-  const prefersReducedMotionRef = useRef(false);
-  const isLowPowerRef = useRef(false);
+  const isInViewRef = useRef(true)
+  const isPageVisibleRef = useRef(true)
+  const prefersReducedMotionRef = useRef(false)
+  const isLowPowerRef = useRef(false)
 
   // Ensure direction updates if prop changes
   useEffect(() => {
@@ -176,18 +175,23 @@ function ScrollVelocityRowImpl({
     handleLowPower();
     const offLP = onMediaChange(lowPower, handleLowPower);
 
+    const lowPower = window.matchMedia(
+      "(pointer: coarse), (max-width: 768px)"
+    )
+    const handleLowPower = () => {
+      isLowPowerRef.current = lowPower.matches
+    }
+    lowPower.addEventListener("change", handleLowPower)
+    handleLowPower()
+
     return () => {
-      ro.disconnect();
-      io.disconnect();
-      document.removeEventListener("visibilitychange", handleVisibility);
-      offPRM();
-      offLP();
-    };
-    // IMPORTANT:
-    // We do NOT depend on `children` here to avoid re-attaching observers
-    // for every render. Resizing/scrollWidth changes are handled by ResizeObserver.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [unitWidth]);
+      ro.disconnect()
+      io.disconnect()
+      document.removeEventListener("visibilitychange", handleVisibility)
+      mq.removeEventListener("change", handlePRM)
+      lowPower.removeEventListener("change", handleLowPower)
+    }
+  }, [children, unitWidth])
 
   // Convert baseX into wrapped negative translateX pixels string
   const x = useTransform([baseX, unitWidth], ([v, bw]) => {
@@ -197,10 +201,13 @@ function ScrollVelocityRowImpl({
   });
 
   useAnimationFrame((_, delta) => {
-    if (!isInViewRef.current || !isPageVisibleRef.current) return;
-    if (prefersReducedMotionRef.current || isLowPowerRef.current) return;
-
-    const dt = delta / 1000;
+    if (!isInViewRef.current || !isPageVisibleRef.current) return
+    if (prefersReducedMotionRef.current) return
+    const dt = delta / 1000
+    const vf = velocityFactor.get()
+    const absVf = Math.min(5, Math.abs(vf))
+    const lowPowerMultiplier = isLowPowerRef.current ? 0.35 : 1
+    const speedMultiplier = (1 + absVf) * lowPowerMultiplier
 
     const vf = velocityFactor.get(); // [-5..5]
     const absVf = Math.min(5, Math.abs(vf));

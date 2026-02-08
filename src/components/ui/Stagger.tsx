@@ -17,11 +17,10 @@ export function Stagger({
   disabled,
 }: StaggerProps) {
   const reduceMotion = useReducedMotion();
-  const [mounted, setMounted] = React.useState(false);
 
-  React.useEffect(() => setMounted(true), []);
-
-  const enabled = mounted && !disabled && !reduceMotion;
+  if (disabled || reduceMotion) {
+    return <div className={className}>{children}</div>;
+  }
 
   const container: Variants = {
     hidden: {},
@@ -54,11 +53,10 @@ type StaggerItemProps = {
 
 export function StaggerItem({ children, className, subtle }: StaggerItemProps) {
   const reduceMotion = useReducedMotion();
-  const [mounted, setMounted] = React.useState(false);
 
-  React.useEffect(() => setMounted(true), []);
-
-  const enabled = mounted && !reduceMotion;
+  if (reduceMotion) {
+    return <div className={className}>{children}</div>;
+  }
 
   const item: Variants = {
     hidden: { opacity: 0, y: subtle ? 12 : 22 },
