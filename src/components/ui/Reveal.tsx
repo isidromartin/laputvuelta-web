@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion, type Variants, useReducedMotion } from "framer-motion";
 
 type RevealProps = {
@@ -24,10 +24,13 @@ export function Reveal({
   once = true,
 }: RevealProps) {
   const reduceMotion = useReducedMotion();
+  const [enabled, setEnabled] = useState(false);
 
-  if (reduceMotion) {
-    return <div className={className}>{children}</div>;
-  }
+  useEffect(() => {
+    if (!reduceMotion) {
+      setEnabled(true);
+    }
+  }, [reduceMotion]);
 
   return (
     <motion.div

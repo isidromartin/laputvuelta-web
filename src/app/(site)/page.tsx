@@ -469,53 +469,6 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-            <div className="grid gap-4 md:grid-cols-3">
-              {collageImages.map((image, index) => (
-                <div
-                  key={`${image.alt}-${index}`}
-                  className="relative aspect-[4/5] overflow-hidden rounded-2xl ring-1 ring-white/10"
-                >
-                  <Image
-                    src={image.src}
-                    alt={image.alt}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    placeholder="blur"
-                    priority={false}
-                  />
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
-                  {image.cta ? (
-                    <div className="absolute inset-x-4 bottom-4">
-                      <Link
-                        href="/gallery"
-                        className="glass inline-flex items-center justify-between gap-3 rounded-xl border border-white/20 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-white/90 transition hover:border-[var(--primary)]/40 hover:text-white"
-                      >
-                        Explorar galería <span>→</span>
-                      </Link>
-                    </div>
-                  ) : null}
-                </div>
-              </div>
-
-              <div className="glass relative overflow-hidden rounded-2xl border border-white/10 p-5">
-                <p className="text-[11px] font-bold uppercase tracking-[0.35em] text-white/45">
-                  ¿Quieres salir?
-                </p>
-                <p className="mt-3 text-sm text-white/70">
-                  Etiqueta{" "}
-                  <span className="text-white/90">@laputivuelta.oficial</span> y
-                  revisa la siguiente actualización.
-                </p>
-
-                <div className="mt-4">
-                  <ButtonLink href="/gallery" variant="solid">
-                    Entrar ahora
-                  </ButtonLink>
-                </div>
-              </div>
-            </div>
-
             {/* Collage */}
             <div className="grid gap-4 md:grid-cols-3">
               {collageImages.map((image, index) => {
@@ -525,10 +478,13 @@ export default function HomePage() {
                       src={image.src}
                       alt={image.alt}
                       fill
-                      className="object-cover transition duration-500 group-hover:scale-[1.03]"
+                      className="object-cover transition md:duration-500 md:group-hover:scale-[1.03]"
                       sizes="(max-width: 768px) 100vw, 33vw"
                       placeholder="blur"
-                      priority={false}
+                      priority={index === 0}
+                      fetchPriority={index === 0 ? "high" : "auto"}
+                      loading={index === 0 ? "eager" : "lazy"}
+                      decoding="async"
                     />
                     <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
                     <div className="pointer-events-none absolute inset-0 opacity-0 transition duration-500 group-hover:opacity-100 bg-white/[0.04]" />

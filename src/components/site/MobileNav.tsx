@@ -136,12 +136,12 @@ export function MobileNav({ nav }: { nav: readonly NavItem[] }) {
                       <Link
                         href={item.href}
                         onClick={() => setOpen(false)}
-                        className="group flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm font-semibold text-white/85 hover:bg-white/[0.06] hover:border-white/20 hover:text-white transition"
+                        className="group flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm font-semibold text-white/85 transition md:hover:bg-white/[0.06] md:hover:border-white/20 md:hover:text-white md:transition"
                       >
                         <span className="uppercase tracking-widest text-[13px]">
                           {item.label}
                         </span>
-                        <span className="text-[var(--primary)]/80 group-hover:text-[var(--primary)] transition">
+                        <span className="text-[var(--primary)]/80 md:group-hover:text-[var(--primary)] md:transition">
                           →
                         </span>
                       </Link>
