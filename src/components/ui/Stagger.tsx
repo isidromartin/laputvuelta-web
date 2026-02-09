@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion, type Variants, useReducedMotion } from "framer-motion";
 
 type StaggerProps = {
@@ -17,11 +17,13 @@ export function Stagger({
   disabled,
 }: StaggerProps) {
   const reduceMotion = useReducedMotion();
-  const enabled = !(disabled || reduceMotion);
+  const [enabled, setEnabled] = useState(false);
 
-  if (!enabled) {
-    return <div className={className}>{children}</div>;
-  }
+  useEffect(() => {
+    if (!(disabled || reduceMotion)) {
+      setEnabled(true);
+    }
+  }, [disabled, reduceMotion]);
 
   const container: Variants = {
     hidden: {},
@@ -54,11 +56,13 @@ type StaggerItemProps = {
 
 export function StaggerItem({ children, className, subtle }: StaggerItemProps) {
   const reduceMotion = useReducedMotion();
-  const enabled = !reduceMotion;
+  const [enabled, setEnabled] = useState(false);
 
-  if (!enabled) {
-    return <div className={className}>{children}</div>;
-  }
+  useEffect(() => {
+    if (!reduceMotion) {
+      setEnabled(true);
+    }
+  }, [reduceMotion]);
 
   const item: Variants = {
     hidden: { opacity: 0, y: subtle ? 12 : 22 },
