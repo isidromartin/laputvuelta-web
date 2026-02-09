@@ -175,23 +175,14 @@ function ScrollVelocityRowImpl({
     handleLowPower();
     const offLP = onMediaChange(lowPower, handleLowPower);
 
-    const lowPower = window.matchMedia(
-      "(pointer: coarse), (max-width: 768px)"
-    )
-    const handleLowPower = () => {
-      isLowPowerRef.current = lowPower.matches
-    }
-    lowPower.addEventListener("change", handleLowPower)
-    handleLowPower()
-
     return () => {
-      ro.disconnect()
-      io.disconnect()
-      document.removeEventListener("visibilitychange", handleVisibility)
-      mq.removeEventListener("change", handlePRM)
-      lowPower.removeEventListener("change", handleLowPower)
-    }
-  }, [children, unitWidth])
+      ro.disconnect();
+      io.disconnect();
+      document.removeEventListener("visibilitychange", handleVisibility);
+      offPRM();
+      offLP();
+    };
+  }, [children, unitWidth]);
 
   // Convert baseX into wrapped negative translateX pixels string
   const x = useTransform([baseX, unitWidth], ([v, bw]) => {
@@ -201,17 +192,13 @@ function ScrollVelocityRowImpl({
   });
 
   useAnimationFrame((_, delta) => {
-    if (!isInViewRef.current || !isPageVisibleRef.current) return
-    if (prefersReducedMotionRef.current) return
-    const dt = delta / 1000
-    const vf = velocityFactor.get()
-    const absVf = Math.min(5, Math.abs(vf))
-    const lowPowerMultiplier = isLowPowerRef.current ? 0.35 : 1
-    const speedMultiplier = (1 + absVf) * lowPowerMultiplier
-
+    if (!isInViewRef.current || !isPageVisibleRef.current) return;
+    if (prefersReducedMotionRef.current) return;
+    const dt = delta / 1000;
     const vf = velocityFactor.get(); // [-5..5]
     const absVf = Math.min(5, Math.abs(vf));
-    const speedMultiplier = 1 + absVf;
+    const lowPowerMultiplier = isLowPowerRef.current ? 0.35 : 1;
+    const speedMultiplier = (1 + absVf) * lowPowerMultiplier;
 
     // Reverse direction based on scroll direction, preserving base direction
     if (absVf > 0.1) {
